@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> 
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <header style="background: white;">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-logo">
+                    <img src="logo.png" alt="宏源气体 Logo" style="width: 120px; height:auto;">
+                </div>
+                <nav>
+                    <ul style="list-style-type: none; padding-left: 0; display: flex; gap: 15px;">
+                        <li><a href="index.html" style="color: #000000;">Home</a></li>
+                        <li><a href="about.html" style="color: #000000;">About Us</a></li>
+                        <li><a href="products.html" style="color: #000000;">Products & Services</a></li>
+                        <li><a href="applications.html" style="color: #000000;">Applications</a></li>
+                        <li><a href="contact.html" style="color: #000000;">Contact Us</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- 英雄区域容器 -->
+    <section class="hero-slider-container">
+        <div class="hero-slider">
+            <!-- 第一个英雄区域 -->
+            <div class="hero-slide" style="background-image: url('hero-bg1.jpg');">
+                <div class="container">
+                    <h2>Welcome to Airocean Gases</h2>
+                    <p>We are committed to driving industry progress through innovation and service excellence.</p>
+                    <a href="about.html" class="cta-btn">Learn More</a>
+                </div>
+            </div>
+
+            <!-- 第二个英雄区域 -->
+            <div class="hero-slide" style="background-image: url('hero-bg2.jpg');">
+                <div class="container">
+                    <h2>High-Quality Industrial Gases</h2>
+                    <p>We offer a wide range of industrial gas solutions to meet your needs.</p>
+                    <a href="products.html" class="cta-btn">View Products</a>
+                </div>
+            </div>
+
+            <!-- 第三个英雄区域 -->
+            <div class="hero-slide" style="background-image: url('hero-bg3.jpg');">
+                <div class="container">
+                    <h2>Industrial, Medical and Specialty Gas Applications</h2>
+                    <p>Stay informed and be knowledgeable about gases applications.</p>
+                    <a href="applications.html" class="cta-btn">Read Applications</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 导航箭头 -->
+        <button class="slider-nav prev-btn" aria-label="上一张">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="slider-nav next-btn" aria-label="下一张">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        
+        <!-- 指示点 -->
+        <div class="slider-dots">
+            <span class="dot active" data-slide="0"></span>
+            <span class="dot" data-slide="1"></span>
+            <span class="dot" data-slide="2"></span>
+        </div>
+    </section>
+
+    <!-- 服务特色区域 -->
+    <section class="service-section">
+        <div class="service-content">
+            <h2>Commitment to Excellence in Every Service</h2>
+            <p class="subtitle">Comprehensive global ocean and air freight solutions ensuring secure, fully visible, and on-time delivery.</p>
+            
+            <div class="service-grid">
+                <div class="service-item">
+                    <h3><i class="fas fa-user-tie"></i> Dedicated Account Management</h3>
+                    <p>From initial consultation through delivery and ongoing support, our account managers provide a single point of contact to ensure responsive, tailored service.</p>
+                </div>
+                
+                <div class="service-item">
+                    <h3><i class="fas fa-cogs"></i> Custom Installation & System Integration</h3>
+                    <p>Our engineering team designs and implements gas systems that meet stringent safety standards while maximizing operational efficiency.</p>
+                </div>
+                
+                <div class="service-item">
+                    <h3><i class="fas fa-flask"></i> State-of-the-Art Laboratory & Packaging Solutions</h3>
+                    <p>Equipped with advanced technology, our laboratories and packaging facilities handle all volumes and gas types with precision, purity, and compliance.</p>
+                </div>
+                
+                <div class="service-item">
+                    <h3><i class="fas fa-truck"></i> Dependable and Safe Delivery Operations</h3>
+                    <p>Our trained drivers uphold the highest standards of transportation safety, ensuring timely, secure deliveries to even the most challenging sites.</p>
+                </div>
+                
+                <div class="service-item">
+                    <h3><i class="fas fa-chart-line"></i> Intelligent Cylinder Tracking & Telemetry</h3>
+                    <p>Reduce rental costs and optimize inventory management through real-time monitoring, automated alerts, and detailed usage reporting.</p>
+                </div>
+                
+                <div class="service-item">
+                    <h3><i class="fas fa-laptop"></i> Streamlined Digital Ordering & Account Access</h3>
+                    <p>Securely manage orders, invoices, and account details online, enabling fast reorders and simplified account administration.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 特色产品和服务区域 -->
+    <section class="featured-section">
+        <div class="featured-content">
+            <h2>Featured Products & Services</h2>
+            <p class="subtitle">We provide comprehensive industrial gas solutions, from basic services to advanced technologies, to meet your diverse needs.</p>
+            
+            <div class="featured-grid">
+                <div class="featured-card">
+                    <div class="card-background" style="background-image: url('westair1.jpg');"></div>
+                    <div class="card-overlay">
+                        <div class="card-category">Nitrogen Services</div>
+                        <div class="card-title">Purge, Pressurize, and Cover</div>
+                        <div class="card-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="featured-card">
+                    <div class="card-background" style="background-image: url('westair2.jpg');"></div>
+                    <div class="card-overlay">
+                        <div class="card-category">Cylinder Tracking</div>
+                        <div class="card-title">Precise Cylinder Management</div>
+                        <div class="card-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="featured-card">
+                    <div class="card-background" style="background-image: url('westair3.jpg');"></div>
+                    <div class="card-overlay">
+                        <div class="card-category">Process Piping Design & Installation</div>
+                        <div class="card-title">Optimize Your Gas Process</div>
+                        <div class="card-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="featured-card">
+                    <div class="card-background" style="background-image: url('westair4.jpg');"></div>  
+                    <div class="card-overlay">
+                        <div class="card-category">Telemetry Technology</div>
+                        <div class="card-title">Tank Management at Your Fingertips</div>
+                        <div class="card-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="featured-card">
+                    <div class="card-background" style="background-image: url('westair5.jpg');"></div>
+                    <div class="card-overlay">
+                        <div class="card-category">Hydrogen Services</div>
+                        <div class="card-title">Next-Generation Mobility</div>
+                        <div class="card-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="featured-card">
+                    <div class="card-background" style="background-image: url('westair6.jpg');"></div>
+                    <div class="card-overlay">
+                        <div class="card-category">Propane Services</div>
+                        <div class="card-title">Unique Propane Services</div>
+                        <div class="card-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Clients 区域 -->
+    <section class="clients-section">
+        <div class="clients-content">
+            <h2>Our Clients</h2>
+            <p class="subtitle">We provide premium gas solutions to a wide range of clients, from large manufacturing companies to healthcare providers, energy companies to tech giants, we are committed to meeting the needs of every customer.</p>
+            
+            <div class="clients-grid">
+                <div class="client-card">
+                    <div class="client-logo-bg"></div>
+                    <div class="client-content">
+                        <div class="client-logo">
+                            <img src="gree_logo.jpg" alt="Gree Logo">
+                        </div>
+                        <h3>Gree Electric Appliances</h3>
+                    </div>
+                </div>
+                
+                <div class="client-card">
+                    <div class="client-logo-bg"></div>
+                    <div class="client-content">
+                        <div class="client-logo">
+                            <img src="tsingtao_logo.png" alt="Tsingtao Logo">
+                        </div>
+                        <h3>Tsingtao Brewery</h3>
+                    </div>
+                </div>
+                
+                <div class="client-card">
+                    <div class="client-logo-bg"></div>
+                    <div class="client-content">
+                        <div class="client-logo">
+                            <img src="miqi_logo.png" alt="Mickey Logo">
+                        </div>
+                        <h3>Mickey</h3>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="clients-stats">
+                <div class="stat-item">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Satisfied Clients</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">99%</div>
+                    <div class="stat-label">Supply Chain Reliability & Continuity</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">~75 Days</div>
+                    <div class="stat-label">Global Lead Time - Sea Freight</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">95%</div>
+                    <div class="stat-label">On-Time Delivery</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 底部信息 -->
+    <footer style="background: white; border-top: 1px solid #000000;">
+        <div class="container">
+            <div class="footer-content" style="display: flex; justify-content: space-between; align-items: center;">
+                <div class="footer-logo">
+                    <img src="logo.png" alt="宏源气体 Logo" style="width: 120px; height:auto;">
+                </div>
+                <div class="footer-column">
+                    <div class="social-media">
+                        <h3 style="font-size: 16px; margin-bottom: 8px;">Follow Us</h3>
+                        <ul style="list-style-type: none; padding-left: 0;">
+                            <li style="margin-bottom: 4px;"><a href="https://api.whatsapp.com/send/?phone=9174317883&text&type=phone_number&app_absent=0" style="color: #000000; font-size: 13px;"><i class="fab fa-whatsapp"></i> Whatsapp</a></li>
+                            <li style="margin-bottom: 4px;"><a href="https://www.linkedin.com/company/hygas/?viewAsMember=true" style="color: #000000; font-size: 13px;"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                            <li style="margin-bottom: 4px;"><a href="https://www.instagram.com/airoceangases/?hl=en" style="color: #000000; font-size: 13px;"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <div class="legal-info">
+                        <h3 style="font-size: 16px; margin-bottom: 8px;">Legal Information</h3>
+                        <ul style="list-style-type: none; padding-left: 0;">
+                            <li style="margin-bottom: 4px;"><a href="privacy-policy.html" style="color: #000000; font-size: 13px;">Privacy Policy</a></li>
+                            <li style="margin-bottom: 4px;"><a href="terms-conditions.html" style="color: #000000; font-size: 13px;">Terms & Conditions</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <div class="quick-links">
+                        <h3 style="font-size: 16px; margin-bottom: 8px;">Quick Links</h3>
+                        <ul style="list-style-type: none; padding-left: 0;">
+                            <li style="margin-bottom: 4px;"><a href="index.html" style="color: #000000; font-size: 13px;">Home</a></li>
+                            <li style="margin-bottom: 4px;"><a href="about.html" style="color: #000000; font-size: 13px;">About Us</a></li>
+                            <li style="margin-bottom: 4px;"><a href="products.html" style="color: #000000; font-size: 13px;">Products & Services</a></li>
+                            <li style="margin-bottom: 4px;"><a href="applications.html" style="color: #000000; font-size: 13px;">Applications</a></li>
+                            <li style="margin-bottom: 4px;"><a href="contact.html" style="color: #000000; font-size: 13px;">Contact Us</a></li>   
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p style="font-size: 12px; margin-top: 10px;">&copy; 2023 Airocean Gases. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

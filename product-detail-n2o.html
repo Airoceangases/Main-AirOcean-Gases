@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N₂O - 一氧化二氮产品详情 - 宏源气体</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .product-detail-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        .product-header {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 50px;
+            margin-top: 40px;
+        }
+        
+        .chemical-symbol {
+            width: 120px;
+            height: 120px;
+            background: #ff6b35;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #000;
+        }
+        
+        .product-info {
+            flex: 1;
+        }
+        
+        .product-name {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .product-description {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        .info-tables {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .info-table {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .info-table::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(111,66,193,0.1), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .info-table:hover::before {
+            left: 100%;
+        }
+        
+        .info-table:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .table-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+            position: relative;
+            animation: slideInFromLeft 0.6s ease;
+        }
+        
+        .table-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: #ff6b35;
+            transition: width 0.3s ease;
+        }
+        
+        .info-table:hover .table-title::after {
+            width: 50px;
+        }
+        
+        .table-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #dee2e6;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.6s ease;
+            animation-fill-mode: both;
+        }
+        
+        .table-row:nth-child(2) { animation-delay: 0.1s; }
+        .table-row:nth-child(3) { animation-delay: 0.2s; }
+        .table-row:nth-child(4) { animation-delay: 0.3s; }
+        .table-row:nth-child(5) { animation-delay: 0.4s; }
+        .table-row:nth-child(6) { animation-delay: 0.5s; }
+        .table-row:nth-child(7) { animation-delay: 0.6s; }
+        
+        .table-row:hover {
+            background: rgba(111,66,193,0.05);
+            transform: translateX(5px);
+            border-radius: 5px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        
+        .table-row:last-child {
+            border-bottom: none;
+        }
+        
+        .table-label {
+            font-weight: bold;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+        
+        .table-row:hover .table-label {
+            color: #ff6b35;
+        }
+        
+        .table-value {
+            color: #666;
+            transition: all 0.3s ease;
+        }
+        
+        .table-row:hover .table-value {
+            color: #333;
+            font-weight: 600;
+        }
+        
+        @keyframes slideInFromLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .about-section {
+            margin-bottom: 50px;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .about-content {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #555;
+            margin-bottom: 30px;
+        }
+        
+        .download-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .btn-sds {
+            background: #ff6b35;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-sds:hover {
+            background: #ff6b35;
+        }
+        
+        .btn-pdf {
+            background: white;
+            color: #333;
+            border: 2px solid #333;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-pdf:hover {
+            background: #333;
+            color: white;
+        }
+        
+        .product-grade-section {
+            margin-bottom: 50px;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-grade-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(111,66,193,0.1), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .product-grade-section:hover::before {
+            left: 100%;
+        }
+        
+        .product-grade-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .grade-tabs {
+            display: flex;
+            gap: 2px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #e9ecef;
+            background: #f8f9fa;
+            border-radius: 8px 8px 0 0;
+            padding: 5px 5px 0 5px;
+        }
+        
+        .grade-tab {
+            padding: 15px 20px;
+            background: #f8f9fa;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            color: #6c757d;
+            transition: all 0.3s ease;
+            border-radius: 6px 6px 0 0;
+            flex: 1;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .grade-tab::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(111,66,193,0.2), transparent);
+            transition: left 0.3s ease;
+        }
+        
+        .grade-tab:hover::before {
+            left: 100%;
+        }
+        
+        .grade-tab.active {
+            background: white;
+            color: #333;
+            border-bottom: 3px solid #ff6b35;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            animation: tabActivate 0.3s ease;
+        }
+        
+        .grade-tab:hover {
+            background: #e9ecef;
+            color: #333;
+            transform: translateY(-2px);
+        }
+        
+        .grade-specs {
+            background: white;
+            padding: 30px;
+            border-radius: 0 0 8px 8px;
+            border: 1px solid #e9ecef;
+            border-top: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .grade-specs::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(111,66,193,0.1), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .grade-specs:hover::before {
+            left: 100%;
+        }
+        
+        .grade-specs:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+        }
+        
+        .spec-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.6s ease;
+            animation-fill-mode: both;
+        }
+        
+        .spec-row:nth-child(1) { animation-delay: 0.1s; }
+        .spec-row:nth-child(2) { animation-delay: 0.2s; }
+        .spec-row:nth-child(3) { animation-delay: 0.3s; }
+        .spec-row:nth-child(4) { animation-delay: 0.4s; }
+        
+        .spec-row:hover {
+            background: rgba(111,66,193,0.05);
+            transform: translateX(5px);
+            border-radius: 6px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        
+        .spec-row:last-child {
+            border-bottom: none;
+        }
+        
+        .spec-label {
+            font-weight: 600;
+            color: #495057;
+            transition: color 0.3s ease;
+        }
+        
+        .spec-row:hover .spec-label {
+            color: #ff6b35;
+        }
+        
+        .spec-value {
+            color: #6c757d;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .spec-row:hover .spec-value {
+            color: #333;
+            font-weight: 600;
+        }
+        
+        .spec-value.highlight {
+            color: #ff6b35;
+            font-weight: bold;
+            background: rgba(111,66,193,0.1);
+            padding: 4px 8px;
+            border-radius: 4px;
+            animation: pulse 2s infinite;
+        }
+        
+        /* Package tabs/specs (供货方式与包装规格) - 同步 He 页效果 */
+        .package-tabs { display: flex; gap: 2px; margin-bottom: 30px; border-bottom: 2px solid #e9ecef; background: #f8f9fa; border-radius: 8px 8px 0 0; padding: 5px 5px 0 5px; }
+        .package-tab { padding: 15px 20px; background: #f8f9fa; border: none; cursor: pointer; font-weight: 600; color: #6c757d; transition: all 0.3s ease; border-radius: 6px 6px 0 0; flex: 1; text-align: center; position: relative; overflow: hidden; }
+        .package-tab::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,107,53,0.2), transparent); transition: left 0.3s ease; }
+        .package-tab:hover::before { left: 100%; }
+        .package-tab:hover { background: #e9ecef; color: #333; transform: translateY(-2px); }
+        .package-tab.active { background: #ffffff; color: #333; border-bottom: 3px solid #ff6b35; box-shadow: 0 -2px 10px rgba(0,0,0,0.1); animation: tabActivate 0.3s ease; }
+        .package-specs { background: #ffffff; padding: 30px; border-radius: 0 0 8px 8px; border: 1px solid #e9ecef; border-top: none; }
+        .package-row { display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid #e9ecef; transition: all 0.3s ease; animation: fadeInUp 0.6s ease; animation-fill-mode: both; }
+        .package-row:hover { background: rgba(255,107,53,0.05); transform: translateX(5px); border-radius: 6px; padding-left: 10px; padding-right: 10px; }
+        .package-row:last-child { border-bottom: none; }
+        
+        .footnote {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #e9ecef;
+            font-style: italic;
+            animation: fadeInUp 0.8s ease;
+            animation-delay: 0.5s;
+            animation-fill-mode: both;
+        }
+        
+        .back-btn {
+            position: fixed;
+            top: 100px;
+            left: 30px;
+            background: none;
+            color: #2a5298;
+            border: none;
+            padding: 15px 25px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            color: #1e3f6b;
+            transform: translateX(-5px);
+        }
+        
+        @media (max-width: 768px) {
+            .product-header {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .info-tables {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .download-buttons {
+                flex-direction: column;
+            }
+            
+            .grade-tabs {
+                flex-wrap: wrap;
+            }
+            
+            .back-btn {
+                top: 80px;
+                left: 15px;
+                padding: 12px 20px;
+                font-size: 1rem;
+            }
+        }
+
+        @keyframes tabActivate {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.8;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header style="background: white;">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-logo">
+                    <img src="logo.png" alt="宏源气体 Logo" style="width: 120px; height:auto;">
+                </div>
+                <nav>
+                    <ul style="list-style-type: none; padding-left: 0; display: flex; gap: 15px;">
+                        <li><a href="index.html" style="color: #000000;">Home</a></li>
+                        <li><a href="about.html" style="color: #000000;">About Us</a></li>
+                        <li><a href="products.html" style="color: #000000;">Products & Services</a></li>
+                        <li><a href="applications.html" style="color: #000000;">Applications</a></li>
+                        <li><a href="contact.html" style="color: #000000;">Contact Us</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <button class="back-btn" onclick="window.history.back()">
+        <i class="fas fa-arrow-left"></i> Back
+    </button>
+
+    <main>
+        <div class="product-detail-container">
+            <div class="product-header">
+                <div class="chemical-symbol">N₂O</div>
+                <div class="product-info">
+                    <h1 class="product-name">一氧化二氮 (N₂O)</h1>
+                    <p class="product-description">Colorless, slightly sweet-tasting gas, used as an anesthetic and oxidizer</p>
+                </div>
+            </div>
+
+            <div class="info-tables">
+                <div class="info-table">
+                    <h3 class="table-title">Transportation Information</h3>
+                    <div class="table-row">
+                        <span class="table-label">D.O.T. Transportation Name</span>
+                        <span class="table-value">Nitrous Oxide</span>
+                    </div>
+                    <div class="table-row">
+                        <span class="table-label">Name</span>
+                        <span class="table-value">Laughing Gas</span>
+                    </div>
+                    <div class="table-row">
+                        <span class="table-label">ID Number</span>
+                        <span class="table-value">UN1070</span>
+                    </div>
+                    <div class="table-row">
+                        <span class="table-label">Hazard Class</span>
+                        <span class="table-value">2.2 (5.1)</span>
+                    </div>
+                    <div class="table-row">
+                        <span class="table-label">Transportation Label</span>
+                        <span class="table-value">Nonflammable Gas, Oxidizer</span>
+                    </div>
+                </div>
+
+                <div class="info-table">
+                    <h3 class="table-title">Technical Information</h3>
+                    <div class="table-row">
+                        <span class="table-label">Molecular Weight</span>
+                        <span class="table-value">44.013</span>
+                    </div>
+                    <div class="table-row">
+                        <span class="table-label">Specific Volume</span>
+                        <span class="table-value">8.79ft3/lb</span>
+                    </div>
+                    <div class="table-row">
+                        <span class="table-label">CAS Registration Number</span>
+                        <span class="table-value">10024-97-2</span>
+                    </div>
+                    <div class="table-row">
+                        <span class="table-label">SDS Reference</span>
+                        <span class="table-value">Nitrous Oxide</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-section">
+                <h2 class="section-title">About</h2>
+                <div class="about-content">
+                    <p>Nitrous oxide (N₂O), also known as laughing gas, is a colorless, slightly sweet-tasting gas in the gaseous state at room temperature. It has a mild anesthetic effect and was one of the earliest gases used as an anesthetic. </p>
+                    <p>In the medical field, nitrous oxide is widely used as an anesthetic and analgesic. It is particularly commonly used in dental surgery. In the food industry, it is used as a foaming agent and preservative. In rocket propulsion, nitrous oxide is used as an oxidizer. In semiconductor manufacturing, it is used for plasma etching processes. Due to its high greenhouse gas potential, it needs to be strictly controlled when used.</p>
+                </div>
+                <div class="download-buttons">
+                    <button class="btn-sds">Download SDS</button>
+                    <button class="btn-pdf">Download PDF</button>
+                </div>
+            </div>
+
+            <div class="product-grade-section">
+                <h2 class="section-title">Product Grade</h2>
+                <div class="grade-tabs">
+                    <button class="grade-tab active" data-grade="aa">Atomic Absorption</button>
+                    <button class="grade-tab" data-grade="uhp">Ultra High Purity</button>
+                    <button class="grade-tab" data-grade="lab-spec">Lab & Spec</button>
+                    <button class="grade-tab" data-grade="ultra-plus">Ultra Plus</button>
+                    <button class="grade-tab" data-grade="electronic">Electronic</button>
+                </div>
+                <div class="grade-specs" id="gradeSpecs">
+                    <div class="spec-row">
+                        <span class="spec-label">Grade</span>
+                        <span class="spec-value" data-spec="grade">2.6</span>
+                    </div>
+                    <div class="spec-row">
+                        <span class="spec-label">Lowest Purity</span>
+                        <span class="spec-value highlight" data-spec="minPurity">99.6%</span>
+                    </div>
+                    <div class="spec-row">
+                        <span class="spec-label">Grade Code</span>
+                        <span class="spec-value" data-spec="gradeCode">AA</span>
+                    </div>
+                    <div class="spec-row">
+                        <span class="spec-label">Catalog Number¹</span>
+                        <span class="spec-value" data-spec="catalog">SG NXAA-（Fill in the catalog number based on the bottle size code below.）</span>
+                    </div>
+                    <div class="footnote">
+                        Maximum impurity specifications are related to the selected grade // Typical values²<br>
+                        ¹ Please select the cylinder size code below to complete the catalog number. "SG" will be replaced with "DSP" for disposable cylinders.<br>
+                        ² Specifications are typical values and may change without notice.
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-grade-section">
+                <h2 class="section-title">Supply Method & Packaging</h2>
+                <div class="about-content" style="margin-bottom: 10px;">
+                    The supply method and packaging specifications may vary depending on the product grade selected (refer to WestAir). First select the supply method, then select the size to view the detailed specifications.
+                </div>
+                <!-- Mode tabs -->
+                <div class="package-tabs" id="modeTabs">
+                    <button class="package-tab active" data-mode="AL">High Pressure Aluminum</button>
+                    <button class="package-tab" data-mode="CS">High Pressure Carbon Steel</button>
+                </div>
+                <!-- Size tabs (dynamic) -->
+                <div class="package-tabs" id="sizeTabs"></div>
+                <div class="package-specs" id="packageSpecs">
+                    <div class="package-row"><span class="spec-label" data-label="volumeLabel">Gas Volume (Ft³)</span><span class="spec-value" data-field="volume">-</span></div>
+                    <div class="package-row"><span class="spec-label">Pressure</span><span class="spec-value" data-field="pressure">-</span></div>
+                    <div class="package-row"><span class="spec-label">Valve Interface</span><span class="spec-value" data-field="valve">-</span></div>
+                    <div class="package-row"><span class="spec-label">Dimensions</span><span class="spec-value" data-field="dimensions">-</span></div>
+                    <div class="package-row"><span class="spec-label">Tare</span><span class="spec-value" data-field="tare">-</span></div>
+                    <div class="package-row"><span class="spec-label">Product Code</span><span class="spec-value" data-field="code">-</span></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer style="background: white; border-top: 1px solid #000000;">
+        <div class="container">
+            <div class="footer-content" style="display: flex; justify-content: space-between; align-items: center;">
+                <div class="footer-logo">
+                    <img src="logo.png" alt="宏源气体 Logo" style="width: 120px; height:auto;">
+                </div>
+                <div class="footer-column">
+                    <div class="social-media">
+                        <h3 style="font-size: 16px; margin-bottom: 8px;">Follow Us</h3>
+                        <ul style="list-style-type: none; padding-left: 0;">
+                            <li style="margin-bottom: 4px;"><a href="https://api.whatsapp.com/send/?phone=9174317883&text&type=phone_number&app_absent=0" style="color: #000000; font-size: 13px;"><i class="fab fa-whatsapp"></i> Whatsapp</a></li>
+                            <li style="margin-bottom: 4px;"><a href="https://www.linkedin.com/company/hygas/?viewAsMember=true" style="color: #000000; font-size: 13px;"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                            <li style="margin-bottom: 4px;"><a href="https://www.instagram.com/airoceangases/?hl=en" style="color: #000000; font-size: 13px;"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <div class="legal-info">
+                        <h3 style="font-size: 16px; margin-bottom: 8px;">Legal Information</h3>
+                        <ul style="list-style-type: none; padding-left: 0;">
+                            <li style="margin-bottom: 4px;"><a href="privacy-policy.html" style="color: #000000; font-size: 13px;">Privacy Policy</a></li>
+                            <li style="margin-bottom: 4px;"><a href="terms-conditions.html" style="color: #000000; font-size: 13px;">Terms & Conditions</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <div class="quick-links">
+                        <h3 style="font-size: 16px; margin-bottom: 8px;">Quick Links</h3>
+                        <ul style="list-style-type: none; padding-left: 0;">
+                            <li style="margin-bottom: 4px;"><a href="index.html" style="color: #000000; font-size: 13px;">Home</a></li>
+                            <li style="margin-bottom: 4px;"><a href="about.html" style="color: #000000; font-size: 13px;">About Us</a></li>
+                            <li style="margin-bottom: 4px;"><a href="products.html" style="color: #000000; font-size: 13px;">Products & Services</a></li>
+                            <li style="margin-bottom: 4px;"><a href="applications.html" style="color: #000000; font-size: 13px;">Applications</a></li>
+                            <li style="margin-bottom: 4px;"><a href="contact.html" style="color: #000000; font-size: 13px;">Contact Us</a></li>   
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p style="font-size: 12px; margin-top: 10px;">&copy; 2023 Airocean Gases. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+        // N2O 等级与供货/包装（参考 WestAir Nitrous Oxide 页面）
+        document.addEventListener('DOMContentLoaded', function() {
+            // ---------- Grade tabs/specs ----------
+            const gradeTabs = document.querySelectorAll('.grade-tab');
+            const gradeSpecs = document.getElementById('gradeSpecs');
+            const gradeData = {
+                aa:          { display: '2.6', minPurity: '99.6%',    gradeCode: 'AA', catalogPrefix: 'SG NXAA-' },
+                uhp:         { display: '4.0', minPurity: '99.99%', gradeCode: 'UHP', catalogPrefix: 'SG NXUHP-' },
+                'lab-spec':  { display: '4.5',   minPurity: '99.995%',        gradeCode: 'LAB', catalogPrefix: 'SG NXLAB-' },
+                'ultra-plus':{ display: '5.0',   minPurity: '99.999%',        gradeCode: 'UP',  catalogPrefix: 'SG NXUP-' },
+                electronic:  { display: '5.5', minPurity: '99.9995%', gradeCode: 'EL',  catalogPrefix: 'SG NXEL-' }
+            };
+
+            let currentGradeKey = 'aa';
+
+            function updateGradeSpecs(key) {
+                const data = gradeData[key];
+                if (!data) return;
+                gradeSpecs.querySelector('[data-spec="grade"]').textContent = data.display;
+                const purityEl = gradeSpecs.querySelector('[data-spec="minPurity"]');
+                purityEl.textContent = data.minPurity;
+                purityEl.className = 'spec-value highlight';
+                gradeSpecs.querySelector('[data-spec="gradeCode"]').textContent = data.gradeCode;
+                gradeSpecs.querySelector('[data-spec="catalog"]').textContent = data.catalogPrefix + '（Fill in the catalog number based on the bottle size code below.）';
+            }
+
+            gradeTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    gradeTabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    currentGradeKey = this.getAttribute('data-grade') || 'aa';
+                    updateGradeSpecs(currentGradeKey);
+                });
+            });
+
+            // ---------- Modes / Sizes / Package specs ----------
+            const modeTabs = document.querySelectorAll('#modeTabs .package-tab');
+            const sizeTabsContainer = document.getElementById('sizeTabs');
+            const packageSpecs = document.getElementById('packageSpecs');
+
+            // Data from WestAir N2O reference (https://westairgases.com/products/consumables/gas/nitrous-oxide/)
+            const catalog = {
+                AL: {
+                    sizes: {
+                        TA:   { volume: '40 Ft³', pressure: '745 psig', valve: 'CGA 326', dimensions: '10 × 55 in / 25 × 132 cm', tare: '90 lbs / 41.0 kg' },
+                        DA:   { volume: '40 Ft³', pressure: '745 psig', valve: 'CGA 326', dimensions: '8 × 48 in / 20 × 122 cm',  tare: '48 lbs / 22 kg' },
+                        QA:   { volume: '—',      pressure: '745 psig', valve: 'CGA 326', dimensions: '7 × 33 in / 18 × 84 cm',  tare: '32 lbs / 15.0 kg' },
+                        '55A':{ volume: '—',      pressure: '745 psig', valve: 'CGA 326', dimensions: '7 × 16 in / 18 × 41 cm',  tare: '15 lbs / 7.0 kg' },
+                        '5A': { volume: '6 Ft³',  pressure: '745 psig', valve: 'CGA 326', dimensions: '4.5 × 15 in / 10 × 26 cm', tare: '9 lbs / 4.4 kg' }
+                    }
+                },
+                CS: {
+                    sizes: {
+                        T:    { volume: '—',      pressure: '745 psig', valve: 'CGA 326', dimensions: '9 × 55 in / 23 × 140 cm',  tare: '137 lbs / 62.0 kg' },
+                        K:    { volume: '56 Ft³', pressure: '745 psig', valve: 'CGA 326', dimensions: '9 × 51 in / 23 × 130 cm',  tare: '119 lbs / 54.0 kg' },
+                        Q:    { volume: '20 Ft³', pressure: '745 psig', valve: 'CGA 326', dimensions: '7 × 33 in / 18 × 84 cm',   tare: '57 lbs / 26.0 kg' },
+                        '55': { volume: '—',      pressure: '745 psig', valve: 'CGA 326', dimensions: '7 × 19 in / 18 × 48 cm',   tare: '26 lbs / 12.0 kg' },
+                        R:    { volume: '—',      pressure: '745 psig', valve: 'CGA 326', dimensions: '5.3 × 13.8 in / 13.5 × 35 cm', tare: '11 lbs / 4.8 kg' }
+                    }
+                }
+            };
+
+            function updatePackageCode(sizeCode) {
+                const codeEl = packageSpecs.querySelector('[data-field="code"]');
+                const prefix = (currentGradeKey && gradeData[currentGradeKey]) ? gradeData[currentGradeKey].catalogPrefix : gradeData.aa.catalogPrefix;
+                codeEl.textContent = prefix + (sizeCode || '');
+            }
+
+            function renderSizeTabs(modeKey) {
+                sizeTabsContainer.innerHTML = '';
+                const sizes = catalog[modeKey]?.sizes || {};
+                const sizeKeys = Object.keys(sizes);
+                sizeKeys.forEach((code, idx) => {
+                    const btn = document.createElement('button');
+                    btn.className = 'package-tab' + (idx === 0 ? ' active' : '');
+                    btn.setAttribute('data-size', code);
+                    btn.textContent = code;
+                    sizeTabsContainer.appendChild(btn);
+                });
+
+                const sizeTabs = sizeTabsContainer.querySelectorAll('.package-tab');
+                sizeTabs.forEach(tab => {
+                    tab.addEventListener('click', function() {
+                        sizeTabs.forEach(t => t.classList.remove('active'));
+                        this.classList.add('active');
+                        const sizeCode = this.getAttribute('data-size');
+                        applyPackageSpec(modeKey, sizeCode);
+                });
+            });
+            
+                if (sizeKeys.length > 0) {
+                    applyPackageSpec(modeKey, sizeKeys[0]);
+                } else {
+                    clearPackageSpec();
+                }
+            }
+
+            function applyPackageSpec(modeKey, sizeCode) {
+                const spec = catalog[modeKey]?.sizes?.[sizeCode];
+                if (!spec) return;
+                packageSpecs.querySelector('[data-field="volume"]').textContent = spec.volume;
+                packageSpecs.querySelector('[data-field="pressure"]').textContent = spec.pressure;
+                packageSpecs.querySelector('[data-field="valve"]').textContent = spec.valve;
+                packageSpecs.querySelector('[data-field="dimensions"]').textContent = spec.dimensions;
+                packageSpecs.querySelector('[data-field="tare"]').textContent = spec.tare;
+                updatePackageCode(sizeCode);
+
+                const volumeLabel = packageSpecs.querySelector('[data-label="volumeLabel"]');
+                volumeLabel.textContent = 'Gas Volume (Ft³)';
+            }
+
+            function clearPackageSpec() {
+                ['volume','pressure','valve','dimensions','tare','code'].forEach(f => {
+                    packageSpecs.querySelector(`[data-field="${f}"]`).textContent = '-';
+                });
+            }
+
+            // All modes clickable regardless of grade
+            function applyGradeModes() {
+                const modeTabsList = document.querySelectorAll('#modeTabs .package-tab');
+                modeTabsList.forEach(mt => {
+                    mt.disabled = false;
+                    mt.style.opacity = '1';
+                    mt.style.pointerEvents = 'auto';
+                });
+
+                let active = Array.from(modeTabsList).find(el => el.classList.contains('active'));
+                if (!active && modeTabsList.length > 0) {
+                    active = modeTabsList[0];
+                    modeTabsList.forEach(t => t.classList.remove('active'));
+                    active.classList.add('active');
+                }
+
+                if (active) {
+                    renderSizeTabs(active.getAttribute('data-mode'));
+                } else {
+                    sizeTabsContainer.innerHTML = '';
+                    clearPackageSpec();
+                }
+            }
+
+            document.querySelectorAll('#modeTabs .package-tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    if (this.disabled) return;
+                    document.querySelectorAll('#modeTabs .package-tab').forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    renderSizeTabs(this.getAttribute('data-mode'));
+                });
+            });
+
+            // Initialize
+            updateGradeSpecs(currentGradeKey);
+            applyGradeModes();
+        });
+    </script>
+</body>
+</html> 

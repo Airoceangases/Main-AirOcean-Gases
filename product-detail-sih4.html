@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SiH₄ - 硅烷产品详情 - 宏源气体</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .product-detail-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        .product-header {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 50px;
+            margin-top: 40px;
+        }
+        
+        .chemical-symbol {
+            width: 120px;
+            height: 120px;
+            background: #ff6b35;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #000;
+        }
+        
+        .product-info {
+            flex: 1;
+        }
+        
+        .product-name {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .product-description {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        .info-tables {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .info-table {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .info-table::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,107,53,0.1), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .info-table:hover::before {
+            left: 100%;
+        }
+        
+        .info-table:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .table-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+            position: relative;
+            animation: slideInFromLeft 0.6s ease;
+        }
+        
+        .table-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: #ff6b35;
+            transition: width 0.3s ease;
+        }
+        
+        .info-table:hover .table-title::after {
+            width: 50px;
+        }
+        
+        .table-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #dee2e6;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.6s ease;
+            animation-fill-mode: both;
+        }
+        
+        .table-row:nth-child(2) { animation-delay: 0.1s; }
+        .table-row:nth-child(3) { animation-delay: 0.2s; }
+        .table-row:nth-child(4) { animation-delay: 0.3s; }
+        .table-row:nth-child(5) { animation-delay: 0.4s; }
+        .table-row:nth-child(6) { animation-delay: 0.5s; }
+        .table-row:nth-child(7) { animation-delay: 0.6s; }
+        
+        .table-row:hover {
+            background: rgba(255,107,53,0.05);
+            transform: translateX(5px);
+            border-radius: 5px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        
+        .table-row:last-child {
+            border-bottom: none;
+        }
+        
+        .table-label {
+            font-weight: bold;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+        
+        .table-row:hover .table-label {
+            color: #ff6b35;
+        }
+        
+        .table-value {
+            color: #666;
+            transition: all 0.3s ease;
+        }
+        
+        .table-row:hover .table-value {
+            color: #333;
+            font-weight: 600;
+        }
+        
+        @keyframes slideInFromLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .about-section {
+            margin-bottom: 50px;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .about-content {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #555;
+            margin-bottom: 30px;
+        }
+        
+        .download-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .btn-sds {
+            background: #ff6b35;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-sds:hover {
+            background: #e55a2b;
+        }
+        
+        .btn-pdf {
+            background: white;
+            color: #333;
+            border: 2px solid #333;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-pdf:hover {
+            background: #333;
+            color: white;
+        }
+        
+        .product-grade-section {
+            margin-bottom: 50px;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-grade-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,107,53,0.1), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .product-grade-section:hover::before {
+            left: 100%;
+        }
+        
+        .product-grade-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .grade-tabs {
+            display: flex;
+            gap: 2px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #e9ecef;
+            background: #f8f9fa;
+            border-radius: 8px 8px 0 0;
+            padding: 5px 5px 0 5px;
+        }
+        
+        .grade-tab {
+            padding: 15px 20px;
+            background: #f8f9fa;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            color: #6c757d;
+            transition: all 0.3s ease;
+            border-radius: 6px 6px 0 0;
+            flex: 1;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .grade-tab::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,107,53,0.2), transparent);
+            transition: left 0.3s ease;
+        }
+        
+        .grade-tab:hover::before {
+            left: 100%;
+        }
+        
+        .grade-tab.active {
+            background: white;
+            color: #333;
+            border-bottom: 3px solid #ff6b35;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            animation: tabActivate 0.3s ease;
+        }
+        
+        .grade-tab:hover {
+            background: #e9ecef;
+            color: #333;
+            transform: translateY(-2px);
+        }
+        
+        .grade-specs {
+            background: white;
+            padding: 30px;
+            border-radius: 0 0 8px 8px;
+            border: 1px solid #e9ecef;
+            border-top: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .grade-specs::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,107,53,0.1), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .grade-specs:hover::before {
+            left: 100%;
+        }
+        
+        .grade-specs:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+        }
+        
+        .spec-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.6s ease;
+            animation-fill-mode: both;
+        }
+        
+        .spec-row:nth-child(1) { animation-delay: 0.1s; }
+        .spec-row:nth-child(2) { animation-delay: 0.2s; }
+        .spec-row:nth-child(3) { animation-delay: 0.3s; }
+        .spec-row:nth-child(4) { animation-delay: 0.4s; }
+        
+        .spec-row:hover {
+            background: rgba(255,107,53,0.05);
+            transform: translateX(5px);
+            border-radius: 6px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        
+        .spec-row:last-child {
+            border-bottom: none;
+        }
+        
+        .spec-label {
+            font-weight: 600;
+            color: #495057;
+            transition: color 0.3s ease;
+        }
+        
+        .spec-row:hover .spec-label {
+            color: #ff6b35;
+        }
+        
+        .spec-value {
+            color: #6c757d;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .spec-row:hover .spec-value {
+            color: #333;
+            font-weight: 600;
+        }
+        
+        .spec-value.highlight {
+            color: #ff6b35;
+            font-weight: bold;
+            background: rgba(255,107,53,0.1);
+            padding: 4px 8px;
+            border-radius: 4px;
+            animation: pulse 2s infinite;
+        }
+        
+        .footnote {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #e9ecef;
+            font-style: italic;
+            animation: fadeInUp 0.8s ease;
+            animation-delay: 0.5s;
+            animation-fill-mode: both;
+        }
+        
+        .back-btn {
+            position: fixed;
+            top: 100px;
+            left: 30px;
+            background: none;
+            color: #2a5298;
+            border: none;
+            padding: 15px 25px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            color: #1e3f6b;
+            transform: translateX(-5px);
+        }
+        
+        @media (max-width: 768px) {
+            .product-header {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .info-tables {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .download-buttons {
+                flex-direction: column;
+            }
+            
+            .grade-tabs {
+                flex-wrap: wrap;
+            }
+            
+            .back-btn {
+                top: 80px;
+                left: 15px;
+                padding: 12px 20px;
+                font-size: 1rem;
+            }
+        }
+
+        @keyframes tabActivate {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.8;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header style="background: white;">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-logo">
+                    <img src="logo.png" alt="宏源气体 Logo" style="width: 120px; height:auto;">
+                </div>
+                <nav>
+                    <ul style="list-style-type: none; padding-left: 0; display: flex; gap: 15px;">
+                        <li><a href="index.html" style="color: #000000;">Home</a></li>
+                        <li><a href="about.html" style="color: #000000;">About Us</a></li>
+                        <li><a href="products.html" style="color: #000000;">Products & Services</a></li>
+                        <li><a href="applications.html" style="color: #000000;">Applications</a></li>
+                        <li><a href="contact.html" style="color: #000000;">Contact Us</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <button class="back-btn" onclick="window.history.back()">
+        <i class="fas fa-arrow-left"></i> 返回
+    </button>
+
+    <main>
+        <div class="product-detail-container">
+            <div class="product-header">
+                <div class="chemical-symbol">SiH₄</div>
+                <div class="product-info">
+                    <h1 class="product-name">硅烷 (Silane)</h1>
+                    <p class="product-description">无色、易燃的气体，用作半导体制造中的沉积气体</p>
+                </div>
+            </div>
+
+            <div class="info-tables">
+                <div class="info-table">
+                    <h3 class="table-title">运输信息</h3>
+                    <div class="table-row">
+                        <span class="table-label">D.O.T. 运输名称</span>
+                        <span class="table-value">硅烷，压缩</span>
+                    </div>
+                    <div class="table-row">
+                        <span class="table-label">名称</span>
+                        <span class="table-value">Silane</span>
+                    </div>
+                    <div class="table-row">
+                        <span class="table-label">ID编号</span>
+                        <span class="table-value">UN2203</span>
+                    </div>
+                    <div class="table-row">
+                        <span class="table-label">危险等级</span>
+                        <span class="table-value">2.1</span>
+                    </div>
+                    <div class="table-row">
+                        <span class="table-label">运输标签</span>
+                        <span class="table-value">易燃气体</span>
+                    </div>
+                </div>
+
+                <div class="info-table">
+                    <h3 class="table-title">技术信息</h3>
+                    <div class="table-row">
+                        <span class="table-label">分子量</span>
+                        <span class="table-value">32.12</span>
+                    </div>
+                    <div class="table-row">
+                        <span class="table-label">比容</span>
+                        <span class="table-value">12.1 ft³/lb</span>
+                    </div>
+                    <div class="table-row">
+                        <span class="table-label">CAS注册号</span>
+                        <span class="table-value">7803-62-5</span>
+                    </div>
+                    <div class="table-row">
+                        <span class="table-label">SDS参考</span>
+                        <span class="table-value">硅烷</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-section">
+                <h2 class="section-title">关于</h2>
+                <div class="about-content">
+                    <p>硅烷（SiH₄）是一种无色、易燃的气体，在常温下为气态。它具有强还原性，是重要的半导体制造气体之一。</p>
+                    <p>硅烷在半导体制造中用作化学气相沉积（CVD）的源气体，用于生长硅薄膜。在太阳能电池制造中，硅烷用于沉积非晶硅层。在平板显示器制造中，硅烷用于沉积硅薄膜。由于其易燃性和毒性，在使用时需要严格的安全措施。</p>
+                </div>
+                <div class="download-buttons">
+                    <button class="btn-sds">SDS下载文件</button>
+                    <button class="btn-pdf">下载PDF</button>
+                </div>
+            </div>
+
+            <div class="product-grade-section">
+                <h2 class="section-title">产品等级</h2>
+                <div class="grade-tabs">
+                    <button class="grade-tab active">工业级</button>
+                    <button class="grade-tab">电子级</button>
+                    <button class="grade-tab">高纯度</button>
+                    <button class="grade-tab">超纯级</button>
+                    <button class="grade-tab">沉积级</button>
+                    <button class="grade-tab">研究级</button>
+                </div>
+                <div class="grade-specs">
+                    <div class="spec-row">
+                        <span class="spec-label">等级</span>
+                        <span class="spec-value">-</span>
+                    </div>
+                    <div class="spec-row">
+                        <span class="spec-label">最低纯度</span>
+                        <span class="spec-value highlight">99.9%</span>
+                    </div>
+                    <div class="spec-row">
+                        <span class="spec-label">等级代码</span>
+                        <span class="spec-value">-</span>
+                    </div>
+                    <div class="spec-row">
+                        <span class="spec-label">目录编号¹</span>
+                        <span class="spec-value">SIH4-</span>
+                    </div>
+                    <div class="footnote">
+                        最大杂质规格（按体积ppm计）// 除非另有说明²
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer style="background: white; border-top: 1px solid #000000;">
+        <div class="container">
+            <div class="footer-content" style="display: flex; justify-content: space-between; align-items: center;">
+                <div class="footer-logo">
+                    <img src="logo.png" alt="宏源气体 Logo" style="width: 120px; height:auto;">
+                </div>
+                <div class="footer-column">
+                    <div class="social-media">
+                        <h3 style="font-size: 16px; margin-bottom: 8px;">Follow Us</h3>
+                        <ul style="list-style-type: none; padding-left: 0;">
+                            <li style="margin-bottom: 4px;"><a href="https://api.whatsapp.com/send/?phone=9174317883&text&type=phone_number&app_absent=0" style="color: #000000; font-size: 13px;"><i class="fab fa-whatsapp"></i> Whatsapp</a></li>
+                            <li style="margin-bottom: 4px;"><a href="https://www.linkedin.com/company/hygas/?viewAsMember=true" style="color: #000000; font-size: 13px;"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                            <li style="margin-bottom: 4px;"><a href="https://www.instagram.com/airoceangases/?hl=en" style="color: #000000; font-size: 13px;"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <div class="legal-info">
+                        <h3 style="font-size: 16px; margin-bottom: 8px;">Legal Information</h3>
+                        <ul style="list-style-type: none; padding-left: 0;">
+                            <li style="margin-bottom: 4px;"><a href="privacy-policy.html" style="color: #000000; font-size: 13px;">Privacy Policy</a></li>
+                            <li style="margin-bottom: 4px;"><a href="terms-conditions.html" style="color: #000000; font-size: 13px;">Terms & Conditions</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <div class="quick-links">
+                        <h3 style="font-size: 16px; margin-bottom: 8px;">Quick Links</h3>
+                        <ul style="list-style-type: none; padding-left: 0;">
+                            <li style="margin-bottom: 4px;"><a href="index.html" style="color: #000000; font-size: 13px;">Home</a></li>
+                            <li style="margin-bottom: 4px;"><a href="about.html" style="color: #000000; font-size: 13px;">About Us</a></li>
+                            <li style="margin-bottom: 4px;"><a href="products.html" style="color: #000000; font-size: 13px;">Products & Services</a></li>
+                            <li style="margin-bottom: 4px;"><a href="applications.html" style="color: #000000; font-size: 13px;">Applications</a></li>
+                            <li style="margin-bottom: 4px;"><a href="contact.html" style="color: #000000; font-size: 13px;">Contact Us</a></li>   
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p style="font-size: 12px; margin-top: 10px;">&copy; 2023 Airocean Gases. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+        // Product grade tab functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const gradeTabs = document.querySelectorAll('.grade-tab');
+            const gradeSpecs = document.querySelector('.grade-specs');
+            
+            // Product grade specifications data
+            const gradeSpecsData = {
+                'industrial': {
+                    grade: '-',
+                    minPurity: '99.9%',
+                    gradeCode: '-',
+                    catalogNumber: 'SIH4-IND'
+                },
+                'electronic': {
+                    grade: 'EL',
+                    minPurity: '99.99%',
+                    gradeCode: 'EL',
+                    catalogNumber: 'SIH4-EL'
+                },
+                'high-purity': {
+                    grade: 'HP',
+                    minPurity: '99.999%',
+                    gradeCode: 'HP',
+                    catalogNumber: 'SIH4-HP'
+                },
+                'ultra-pure': {
+                    grade: 'UP',
+                    minPurity: '99.9999%',
+                    gradeCode: 'UP',
+                    catalogNumber: 'SIH4-UP'
+                },
+                'deposition': {
+                    grade: 'DP',
+                    minPurity: '99.999%',
+                    gradeCode: 'DP',
+                    catalogNumber: 'SIH4-DP'
+                },
+                'research': {
+                    grade: 'RS',
+                    minPurity: '99.9999%',
+                    gradeCode: 'RS',
+                    catalogNumber: 'SIH4-RS'
+                }
+            };
+            
+            // Tab click event handler
+            gradeTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Remove active class from all tabs
+                    gradeTabs.forEach(t => t.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                    
+                    // Get the grade type from tab text
+                    const tabText = this.textContent.trim();
+                    let gradeType = 'industrial'; // default
+                    
+                    if (tabText.includes('电子级')) {
+                        gradeType = 'electronic';
+                    } else if (tabText.includes('高纯度')) {
+                        gradeType = 'high-purity';
+                    } else if (tabText.includes('超纯级')) {
+                        gradeType = 'ultra-pure';
+                    } else if (tabText.includes('沉积级')) {
+                        gradeType = 'deposition';
+                    } else if (tabText.includes('研究级')) {
+                        gradeType = 'research';
+                    }
+                    
+                    // Update specifications
+                    updateSpecifications(gradeType);
+                });
+            });
+            
+            // Function to update specifications
+            function updateSpecifications(gradeType) {
+                const data = gradeSpecsData[gradeType];
+                if (!data) return;
+                
+                const specRows = gradeSpecs.querySelectorAll('.spec-row');
+                
+                // Update each specification row
+                specRows.forEach((row, index) => {
+                    const valueSpan = row.querySelector('.spec-value');
+                    if (valueSpan) {
+                        switch(index) {
+                            case 0: // Grade
+                                valueSpan.textContent = data.grade;
+                                break;
+                            case 1: // Min Purity
+                                valueSpan.textContent = data.minPurity;
+                                valueSpan.className = 'spec-value highlight';
+                                break;
+                            case 2: // Grade Code
+                                valueSpan.textContent = data.gradeCode;
+                                break;
+                            case 3: // Catalog Number
+                                valueSpan.textContent = data.catalogNumber;
+                                break;
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html> 

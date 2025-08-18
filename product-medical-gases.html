@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <!-- 基本元数据设置 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>产品中心 - 宏源气体</title>
+    
+    <!-- 外部样式表引用 -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- 页面特定样式 -->
+    <style>
+        /* 产品页面头部区域样式 */
+        .product-header { 
+            text-align: center; 
+            padding: 120px 0 80px 0; /* 上下内边距，扩大占有度 */
+            background: linear-gradient(135deg, rgba(189, 189, 189, 0.8) 0%, rgba(42, 82, 152, 0.9) 100%), url('images/gas-background.jpg'); /* 渐变背景 + 背景图片 */
+            background-size: cover; /* 背景图片覆盖整个区域 */
+            background-position: center; /* 背景图片居中 */
+            background-attachment: fixed; /* 固定背景，产生视差效果 */
+            color: #fff; 
+            min-height: 50vh; /* 最小高度为视口高度的50% */
+            display: flex; /* 弹性布局 */
+            flex-direction: column; /* 垂直排列 */
+            justify-content: center; /* 垂直居中 */
+            position: relative;
+        }
+        /* 头部标题样式 */
+        .product-header h1 { font-size: 2.8rem; margin-bottom: 18px; }
+        .product-header p { font-size: 1.2rem; margin-bottom: 30px; }
+        
+        /* 分类标签导航样式 */
+        .category-tabs { display: flex; justify-content: center; gap: 30px; margin-bottom: 40px; }
+        .category-tab { 
+            background: #fff; 
+            color: #2a5298; 
+            border: none; 
+            border-radius: 25px; 
+            padding: 12px 32px; 
+            font-size: 1.1rem; 
+            cursor: pointer; 
+            font-weight: bold; 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08); 
+            transition: background 0.2s, color 0.2s; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            text-decoration: none; 
+        }
+        .category-tab.active, .category-tab:hover { background: #2a5298; color: #fff; }
+        /* 产品分类区域显示控制 */
+        .product-category-section { display: none; }
+        .product-category-section.active { display: block; }
+        
+        /* 产品网格布局 */
+        .product-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; margin-bottom: 60px; 
+            max-width: 1600px; /* 最大宽度限制 */
+            min-height: auto; /* 调整底部与底部信息栏间距 */}
+        
+        /* 产品卡片样式 */
+        .product-card { 
+            background: #fff; 
+            border-radius: 12px; 
+            overflow: hidden; 
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1); 
+            transition: all 0.3s ease; 
+            height: 180px; 
+            display: flex; 
+            flex-direction: column; 
+            border: 1px solid #e8e8e8; 
+        }
+        .product-card a { text-decoration: none; color: inherit; display: flex; flex-direction: column; height: 100%; }
+        .product-card:hover { transform: translateY(-8px); box-shadow: 0 12px 30px rgba(0,0,0,0.15); border-color: #007bff; }
+        /* 产品缩写区域样式 */
+        .product-abbreviation { 
+            flex: 2; 
+            background: linear-gradient(135deg, #2a5298, #007bff); 
+            color: white; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 2.2rem; 
+            font-weight: bold; 
+            position: relative; 
+        }
+        .product-abbreviation::after { 
+            content: ''; 
+            position: absolute; 
+            bottom: 0; 
+            left: 0; 
+            right: 0; 
+            height: 3px; 
+            background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1); 
+        }
+        
+        /* 产品全名区域样式 */
+        .product-fullname { 
+            flex: 1; 
+            background: #f8f9fa; 
+            color: #333; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 0.9rem; 
+            font-weight: 500; 
+            padding: 12px 8px; 
+            text-align: center; 
+            border-top: 1px solid #e8e8e8; 
+        }
+        /* 产品图片区域样式 */
+        .product-image { height: 200px; overflow: hidden; }
+        .product-image img { width: 100%; height: 100%; object-fit: cover; }
+        
+        /* 产品信息区域样式 */
+        .product-info { padding: 22px; }
+        .product-info h3 { font-size: 1.3rem; color: #2a5298; margin-bottom: 10px; }
+        .product-info p { color: #666; font-size: 1rem; margin-bottom: 10px; }
+        .product-specs, .product-apps { font-size: 0.97rem; color: #444; margin-bottom: 8px; }
+        .product-specs span, .product-apps span { display: inline-block; margin-right: 12px; }
+        
+        /* 产品操作按钮区域 */
+        .product-actions { margin-top: 12px; display: flex; gap: 10px; }
+        .inquiry-btn, .detail-btn { 
+            flex: 1; 
+            background: #007bff; 
+            color: #fff; 
+            border: none; 
+            padding: 10px; 
+            border-radius: 7px; 
+            cursor: pointer; 
+            font-size: 14px; 
+            transition: background 0.2s; 
+        }
+        .detail-btn { background: #28a745; }
+        .inquiry-btn:hover { background: #0056b3; }
+        .detail-btn:hover { background: #218838; }
+        /* 浮动询价按钮样式 */
+        .floating-inquiry-btn { 
+            position: fixed; 
+            right: 30px; 
+            bottom: 100px; 
+            background: #ff9800; 
+            color: #fff; 
+            border: none; 
+            border-radius: 50%; 
+            width: 65px; 
+            height: 65px; 
+            box-shadow: 0 4px 16px rgba(0,0,0,0.2); 
+            font-size: 2rem; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            z-index: 2000; 
+            cursor: pointer; 
+        }
+        
+        /* 询价弹窗样式 */
+        .inquiry-modal { 
+            display: none; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100vw; 
+            height: 100vh; 
+            background: rgba(0,0,0,0.4); 
+            z-index: 3000; 
+            align-items: center; 
+            justify-content: center; 
+        }
+        .inquiry-modal .modal-content { 
+            background: #fff; 
+            border-radius: 15px; 
+            padding: 40px 30px; 
+            max-width: 400px; 
+            width: 90%; 
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2); 
+            position: relative; 
+        }
+        .close-inquiry-modal { 
+            position: absolute; 
+            top: 15px; 
+            right: 15px; 
+            background: none; 
+            border: none; 
+            font-size: 1.5rem; 
+            color: #888; 
+            cursor: pointer; 
+        }
+        /* 响应式设计 - 大屏幕 */
+        @media (max-width: 1200px) { .product-grid { grid-template-columns: repeat(3, 1fr); } }
+        
+        /* 响应式设计 - 中等屏幕 */
+        @media (max-width: 900px) { .product-grid { grid-template-columns: repeat(2, 1fr); } }
+        /* 服务特色区域样式 */
+        .service-section {
+            background: white; /* 浅灰色渐变背景 */
+            padding: 40px 0; /* 上下内边距 */
+            min-height: 20vh; /* 最小高度为视口高度的1/3 */
+            display: flex; /* 弹性布局 */
+            align-items: center; /* 垂直居中 */
+            justify-content: center; /* 水平居中 */
+        }
+        
+        /* 服务内容容器样式 */
+        .service-content {
+            max-width: 1600px; /* 最大宽度限制 */
+            margin: 0 auto; /* 水平居中 */
+            padding: 0 20px; /* 左右内边距 */
+            text-align: center; /* 文本居中 */
+        }
+        
+        /* 服务网格布局 */
+        .service-grid {
+            display: grid; /* 网格布局 */
+            grid-template-columns: repeat(3, 1fr); /* 自适应列数，最小300px */
+            gap: 30px; /* 网格间距 */
+            margin-top: 40px; /* 顶部外边距 */
+        }
+        
+        /* 服务项目卡片样式 */
+        .service-item {
+            background: white; /* 白色背景 */
+            padding: 30px 25px; /* 内边距 */
+            border-radius: 15px; /* 圆角 */
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08); /* 阴影效果 */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* 过渡动画 */
+            text-align: left; /* 文本左对齐 */
+        }
+        
+        /* 服务项目悬停效果 */
+        .service-item:hover {
+            transform: translateY(-5px); /* 向上移动5px */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15); /* 增强阴影 */
+        }
+        
+        /* 服务项目标题样式 */
+        .service-item h3 {
+            color: #2a5298; /* 主题蓝色 */
+            font-size: 1.4rem; /* 字体大小 */
+            margin-bottom: 15px; /* 底部外边距 */
+            font-weight: 600; /* 字体粗细 */
+        }
+        
+        /* 服务项目描述样式 */
+        .service-item p {
+            color: #666; /* 灰色文字 */
+            line-height: 1.6; /* 行高 */
+            font-size: 1rem; /* 字体大小 */
+        }
+        
+        /* 服务区域主标题样式 */
+        .service-section h2 {
+            color: #2a5298; /* 主题蓝色 */
+            font-size: 2.5rem; /* 大字体 */
+            margin-bottom: 20px; /* 底部外边距 */
+            font-weight: 700; /* 粗体 */
+        }
+        
+        /* 服务区域副标题样式 */
+        .service-section .subtitle {
+            color: #666; /* 灰色文字 */
+            font-size: 1.2rem; /* 字体大小 */
+            margin-bottom: 40px; /* 底部外边距 */
+            max-width: 1000px; /* 最大宽度限制 */
+            margin-left: auto; /* 自动左边距 */
+            margin-right: auto; /* 自动右边距 */
+        }
+        
+        /* 响应式设计 - 小屏幕 */
+        @media (max-width: 600px) { 
+            .product-grid { grid-template-columns: repeat(1, 1fr); } /* 单列布局 */
+            .category-tabs { flex-direction: column; gap: 12px; } /* 垂直排列 */
+            .product-header { 
+                padding: 80px 0 40px 0; /* 调整内边距 */
+                min-height: 50vh; /* 调整最小高度 */
+                background-attachment: scroll; /* 禁用固定背景 */
+            }
+            .service-section {
+                padding: 60px 0; /* 调整内边距 */
+                min-height: auto; /* 自动高度 */
+            }
+            .service-grid {
+                grid-template-columns: 1fr; /* 单列布局 */
+                gap: 20px; /* 调整间距 */
+            }
+            .service-section h2 {
+                font-size: 2rem; /* 调整字体大小 */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header style="background: white;">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-logo">
+                    <img src="logo.png" alt="宏源气体 Logo" style="width: 120px; height:auto;">
+                </div>
+                <nav>
+                    <ul style="list-style-type: none; padding-left: 0; display: flex; gap: 15px;">
+                        <li><a href="index.html" style="color: #000000;">Home</a></li>
+                        <li><a href="about.html" style="color: #000000;">About Us</a></li>
+                        <li><a href="products.html" style="color: #000000;">Products & Services</a></li>
+                        <li><a href="applications.html" style="color: #000000;">Applications</a></li>
+                        <li><a href="contact.html" style="color: #000000;">Contact Us</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main style="padding-top: 0;">
+        <div class="product-header">
+            <h1><i class="fas fa-microchip"></i> Quality products, trusted worldwide.</h1>
+            <p>Specializing in electronic, high-purity, specialty, and rare gases, we serve global clients in electronics, pharmaceuticals, semiconductors, photovoltaics, and display panel manufacturing.</p>
+            <p style="margin-top: -25px;">Backed by guaranteed quality, a professional team, and rapid response capabilities.</p>
+            
+            <div class="category-tabs">
+                <a href="product-industrial-gases.html" class="category-tab"><i class="fas fa-flask"></i> Rare Gases</a>
+                <button class="category-tab active" data-category="special"><i class="fas fas fa-microchip"></i> Special Gases</button>
+                <a href="product-special-gases.html" class="category-tab"><i class="fas fa-vial"></i> Mixed Gases</a>
+                <a href="product-gas-equipment.html" class="category-tab"><i class="fas fa-cogs"></i> Gas Equipment</a>
+            </div>
+        </div>
+
+        <!-- 服务特色区域 -->
+        <section class="service-section">
+            <div class="service-content">
+                <h2>Commitment to Excellence in Every Service</h2>
+                <p class="subtitle">Comprehensive global ocean and air freight solutions ensuring secure, fully visible, and on-time delivery.</p>
+                
+                <div class="service-grid">
+                    <div class="service-item">
+                        <h3><i class="fas fa-user-tie"></i> Dedicated Account Management</h3>
+                        <p>From initial consultation through delivery and ongoing support, our account managers provide a single point of contact to ensure responsive, tailored service.</p>
+                    </div>
+                    
+                    <div class="service-item">
+                        <h3><i class="fas fa-cogs"></i> Custom Installation & System Integration</h3>
+                        <p>Our engineering team designs and implements gas systems that meet stringent safety standards while maximizing operational efficiency.</p>
+                    </div>
+                    
+                    <div class="service-item">
+                        <h3><i class="fas fa-flask"></i> State-of-the-Art Laboratory & Packaging Solutions</h3>
+                        <p>Equipped with advanced technology, our laboratories and packaging facilities handle all volumes and gas types with precision, purity, and compliance.</p>
+                    </div>
+                    
+                    <div class="service-item">
+                        <h3><i class="fas fa-truck"></i> Dependable and Safe Delivery Operations</h3>
+                        <p>Our trained drivers uphold the highest standards of transportation safety, ensuring timely, secure deliveries to even the most challenging sites.</p>
+                    </div>
+                    
+                    <div class="service-item">
+                        <h3><i class="fas fa-chart-line"></i> Intelligent Cylinder Tracking & Telemetry</h3>
+                        <p>Reduce rental costs and optimize inventory management through real-time monitoring, automated alerts, and detailed usage reporting.</p>
+                    </div>
+                    
+                    <div class="service-item">
+                        <h3><i class="fas fa-laptop"></i> Streamlined Digital Ordering & Account Access</h3>
+                        <p>Securely manage orders, invoices, and account details online, enabling fast reorders and simplified account administration.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 分类内容区 -->
+        <section class="product-category-section active" data-category="special">
+            <div style="text-align:center; margin-bottom:30px;"><h2><i class="fas fa-microchip" style="color:#007bff;"></i> Special Gases</h2></div>
+            <!-- 搜索框：放置于分类标题与卡片网格之间 -->
+            <div class="products-search">
+                <input id="productsSearch" type="text" placeholder="Search products... (e.g. N2, H2, SiH4, NF3)" aria-label="Search products">
+            </div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <a href="product-detail-n2.html">
+                        <div class="product-abbreviation">N₂</div>
+                        <div class="product-fullname">Nitrogen</div>
+                    </a>
+                </div>
+                <div class="product-card">
+                    <a href="product-detail-h2.html">
+                        <div class="product-abbreviation">H₂</div>
+                        <div class="product-fullname">Hydrogen</div>
+                    </a>
+                </div>
+                <div class="product-card">
+                    <a href="product-detail-bcl3.html">
+                        <div class="product-abbreviation">BCl₃</div>
+                        <div class="product-fullname">Boron Trichloride</div>
+                    </a>
+                </div>
+                <div class="product-card">
+                    <a href="product-detail-ch2f2.html">
+                        <div class="product-abbreviation">CH₂F₂</div>
+                        <div class="product-fullname">Difluoromethane</div>
+                    </a>
+                </div>
+                <div class="product-card">
+                    <a href="product-detail-so2.html">
+                        <div class="product-abbreviation">SO₂</div>
+                        <div class="product-fullname">Sulfur Dioxide</div>
+                    </a>
+                </div>
+                <div class="product-card">
+                    <a href="product-detail-c2f6.html">
+                        <div class="product-abbreviation">C₂F₆</div>
+                        <div class="product-fullname">Hexafluoroethane</div>
+                    </a>
+                </div>
+                <div class="product-card">
+                    <a href="product-detail-n2o.html">
+                        <div class="product-abbreviation">N₂O</div>
+                        <div class="product-fullname">Nitrous Oxide</div>
+                    </a>
+                </div>
+                <div class="product-card">
+                    <a href="product-detail-chf3.html">
+                        <div class="product-abbreviation">CHF₃</div>
+                        <div class="product-fullname">Trifluoromethane (R23)</div>
+                    </a>
+                </div>
+                <div class="product-card">
+                    <a href="product-detail-sf6.html">
+                        <div class="product-abbreviation">SF₆</div>
+                        <div class="product-fullname">Sulfur Hexafluoride</div>
+                    </a>
+                </div>
+                <div class="product-card">
+                    <a href="product-detail-sih4.html">
+                        <div class="product-abbreviation">SiH₄</div>
+                        <div class="product-fullname">Silane</div>
+                    </a>
+                </div>
+                <div class="product-card">
+                    <a href="product-detail-c4f8.html">
+                        <div class="product-abbreviation">C₄F₈</div>
+                        <div class="product-fullname">Octafluorocyclobutane</div>
+                    </a>
+                </div>
+                <div class="product-card">
+                    <a href="product-detail-nf3.html">
+                        <div class="product-abbreviation">NF₃</div>
+                        <div class="product-fullname">Nitrogen Trifluoride</div>
+                    </a>
+                </div>
+                <div class="product-card">
+                    <a href="product-detail-hcl.html">
+                        <div class="product-abbreviation">HCl</div>
+                        <div class="product-fullname">Hydrogen Chloride</div>
+                    </a>
+                </div>
+                <div class="product-card">
+                    <a href="product-detail-geh4.html">
+                        <div class="product-abbreviation">GeH₄</div>
+                        <div class="product-fullname">Germane</div>
+                    </a>
+                </div>
+                <div class="product-card">
+                    <a href="product-detail-cf4.html">
+                        <div class="product-abbreviation">CF₄</div>
+                        <div class="product-fullname">Carbon Tetrafluoride (R14)</div>
+                    </a>
+                </div>
+                <div class="product-card">
+                    <a href="product-detail-co.html">
+                        <div class="product-abbreviation">CO</div>
+                        <div class="product-fullname">Carbon Monoxide</div>
+                    </a>
+                </div>
+                <div class="product-card">
+                    <a href="product-detail-co2.html">
+                        <div class="product-abbreviation">CO₂</div>
+                        <div class="product-fullname">Carbon Dioxide</div>
+                    </a>
+                </div>
+                <div class="product-card">
+                    <a href="product-detail-bf3.html">
+                        <div class="product-abbreviation">BF₃</div>
+                        <div class="product-fullname">Boron Trifluoride</div>
+                    </a>
+                </div>
+                <div class="product-card">
+                    <a href="product-detail-nh3.html">
+                        <div class="product-abbreviation">NH₃</div>
+                        <div class="product-fullname">Ammonia</div>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <!-- 快速询价浮动按钮 -->
+        <button class="floating-inquiry-btn" title="快速询价"><i class="fas fa-comment-dots"></i></button>
+        <!-- 快速询价弹窗 -->
+        <div class="inquiry-modal">
+            <div class="modal-content">
+                <button class="close-inquiry-modal"><i class="fas fa-times"></i></button>
+                <h3 style="margin-bottom: 20px; color: #007bff;">Request a Quote</h3>
+                <form>
+                    <div style="margin-bottom: 15px;">
+                        <input type="text" placeholder="您的姓名" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <input type="email" placeholder="您的邮箱" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <input type="text" placeholder="感兴趣的产品" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <textarea placeholder="您的需求或问题..." rows="3" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px;"></textarea>
+                    </div>
+                    <button type="submit" style="width: 100%; background: #007bff; color: white; border: none; padding: 12px; border-radius: 6px; font-size: 16px; margin-bottom: 10px;">Submit Inquiry</button>
+                    <div style="font-size: 13px; color: #888; text-align: center;">We commit to responding to your inquiry within 24 hours.</div>
+                </form>
+            </div>
+        </div>
+    </main>
+    <footer style="background: white; border-top: 1px solid #000000;">
+        <div class="container">
+            <div class="footer-content" style="display: flex; justify-content: space-between; align-items: center;">
+                <div class="footer-logo">
+                    <img src="logo.png" alt="宏源气体 Logo" style="width: 120px; height:auto;">
+                </div>
+                <div class="footer-column">
+                    <div class="social-media">
+                        <h3 style="font-size: 16px; margin-bottom: 8px;">Follow Us</h3>
+                        <ul style="list-style-type: none; padding-left: 0;">
+                            <li style="margin-bottom: 4px;"><a href="https://api.whatsapp.com/send/?phone=9174317883&text&type=phone_number&app_absent=0" style="color: #000000; font-size: 13px;"><i class="fab fa-whatsapp"></i> Whatsapp</a></li>
+                            <li style="margin-bottom: 4px;"><a href="https://www.linkedin.com/company/hygas/?viewAsMember=true" style="color: #000000; font-size: 13px;"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                            <li style="margin-bottom: 4px;"><a href="https://www.instagram.com/airoceangases/?hl=en" style="color: #000000; font-size: 13px;"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <div class="legal-info">
+                        <h3 style="font-size: 16px; margin-bottom: 8px;">Legal Information</h3>
+                        <ul style="list-style-type: none; padding-left: 0;">
+                            <li style="margin-bottom: 4px;"><a href="privacy-policy.html" style="color: #000000; font-size: 13px;">Privacy Policy</a></li>
+                            <li style="margin-bottom: 4px;"><a href="terms-conditions.html" style="color: #000000; font-size: 13px;">Terms & Conditions</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <div class="quick-links">
+                        <h3 style="font-size: 16px; margin-bottom: 8px;">Quick Links</h3>
+                        <ul style="list-style-type: none; padding-left: 0;">
+                            <li style="margin-bottom: 4px;"><a href="index.html" style="color: #000000; font-size: 13px;">Home</a></li>
+                            <li style="margin-bottom: 4px;"><a href="about.html" style="color: #000000; font-size: 13px;">About Us</a></li>
+                            <li style="margin-bottom: 4px;"><a href="products.html" style="color: #000000; font-size: 13px;">Products & Services</a></li>
+                            <li style="margin-bottom: 4px;"><a href="applications.html" style="color: #000000; font-size: 13px;">Applications</a></li>
+                            <li style="margin-bottom: 4px;"><a href="contact.html" style="color: #000000; font-size: 13px;">Contact Us</a></li>   
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p style="font-size: 12px; margin-top: 10px;">&copy; 2023 Airocean Gases. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <!-- 全站交互脚本（搜索、动画等） -->
+    <script src="script.js"></script>
+    <script>
+        // 快速询价弹窗
+        const inquiryBtn = document.querySelector('.floating-inquiry-btn');
+        const inquiryModal = document.querySelector('.inquiry-modal');
+        const closeInquiry = document.querySelector('.close-inquiry-modal');
+        inquiryBtn.addEventListener('click', () => inquiryModal.style.display = 'flex');
+        closeInquiry.addEventListener('click', () => inquiryModal.style.display = 'none');
+        inquiryModal.addEventListener('click', e => { if (e.target === inquiryModal) inquiryModal.style.display = 'none'; });
+    </script>
+</body>
+</html> 

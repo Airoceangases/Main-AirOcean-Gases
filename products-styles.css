@@ -1,0 +1,398 @@
+/* 基本样式 */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.7;
+    color: #333;
+    background: white;
+    min-height: 100vh;
+    /* 移除 padding-top，让内容区域直接连接导航栏 */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+    scroll-behavior: smooth;
+    background: white;
+}
+
+.container {
+    width: 90%;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+/* 顶部导航栏 */
+header {
+    background: rgba(255, 255, 255, 0.95); /* 半透明白色背景 */
+    color: #333;
+    padding: 15px 0; /* 增加上下padding，确保导航栏有足够高度 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    border-bottom: 1px solid #e0e0e0; /* 初始状态显示水平线 */
+    box-shadow: none; /* 初始无阴影 */
+    transition: all 0.3s ease, transform 0.3s ease; /* 添加transform过渡效果 */
+    transform: translateY(0) !important; /* 强制显示，避免任何隐藏 */
+    opacity: 1 !important; /* 强制显示，避免任何透明度变化 */
+    visibility: visible !important; /* 强制显示，避免任何隐藏 */
+}
+
+/* 当滚动时导航栏样式 */
+header.scrolled {
+    background: rgba(255, 255, 255, 0.98);
+    border-bottom: none; /* 滚动时隐藏水平线 */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* 滚动时显示灰色阴影 */
+}
+
+/* 导航栏内容布局 */
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+.header-logo img {
+    width: 120px;
+    height: auto;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 15px; /* 减少菜单项间距 */
+}
+
+nav a {
+    color: #333; /* 改为深色文字，与styles.css保持一致 */
+    text-decoration: none;
+    font-size: 14px; /* 减小字体大小 */
+    padding: 5px 8px; /* 添加一些内边距 */
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #007bff;
+}
+
+.language-switcher {
+    display: flex;
+    gap: 8px;
+}
+
+.lang-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.lang-btn img {
+    width: 28px;
+    height: auto;
+}
+
+/* 英雄区域轮播图 */
+.hero-carousel {
+    height: 100vh; /* 恢复全屏高度 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    overflow: hidden;
+    margin-top: 0; /* 确保没有额外的顶部边距 */
+    position: relative; /* 添加相对定位 */
+}
+
+/* 轮播图容器 - 自动检测导航栏高度并调整位置 */
+.carousel-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: 0; /* 从顶部开始 */
+}
+
+.carousel-item {
+    flex: 1;
+    height: 100%;
+    position: relative;
+    transition: flex 0.5s ease;
+    overflow: hidden;
+}
+
+/* 轮播图图片蒙版
+   - 作用：提升文字在亮背景图上的对比度与可读性
+   - 不透明度建议：0.22–0.35（亮图取高，暗图取低）
+   - 颜色建议：常用黑色 rgba(0,0,0,alpha)；如需更柔和可用灰色 rgba(128,128,128,alpha)
+   - 交互：悬停时稍加深，突出当前项
+   - 层级关系：图片 < 蒙版 (z=1) < 文本 (z=2)
+   - 如文字仍不够清晰：优先略微提高 alpha；或加强 text-shadow；或为内容容器加半透明背景
+   可选移动端策略（示例，按需启用）：
+   @media (max-width: 576px) {
+     .carousel-item::before { background: rgba(0,0,0,0.30); }
+   }
+*/
+.carousel-item::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.22);
+    transition: background 0.3s ease;
+    z-index: 1;
+}
+
+.carousel-item:hover::before {
+    background: rgba(31, 31, 31, 0.35);
+}
+
+.carousel-item:hover {
+    flex: 2;
+}
+
+/* 注意：图片处于底层，避免设置 z-index 以免盖住蒙版 */
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 文字层级与可读性
+   - 置于蒙版之上：z-index: 2
+   - 若仍不清晰，可：
+     1) 提高蒙版不透明度
+     2) 增强 text-shadow 强度
+     3) 给 .carousel-content 添加浅色或深色半透明背景
+*/
+.carousel-title {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 1.5rem;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    z-index: 2; /* 置于蒙版之上 */
+}
+
+.carousel-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: transparent;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    width: 80%;
+    max-width: 600px;
+    font-size: 1.2rem;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 2; /* 置于蒙版之上 */
+}
+
+.carousel-item:hover .carousel-content {
+    opacity: 1;
+}
+
+.cta-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.cta-btn:hover {
+    background-color: #0056b3;
+}
+
+footer {
+    background: white !important; /* 白色背景，与其他页面保持一致 */
+    color: #333; /* 深色文字 */
+    text-align: center;
+    padding: 10px 0; /* 减少padding与顶部导航栏保持一致 */
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    border-top: 1px solid #e0e0e0; /* 添加顶部边框线 */
+    /* 移除动画效果 */
+}
+
+/* 移除footer动画 */
+/* @keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+} */
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-logo img {
+    width: 120px;
+    height: auto;
+}
+
+.footer-column {
+    margin: 0 20px;
+}
+
+.footer-column h3 {
+    color: #333 !important; /* 深色标题 */
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.footer-column a {
+    color: #333 !important; /* 深色链接 */
+    text-decoration: underline; /* 添加下划线 */
+    transition: color 0.3s ease;
+    font-size: 13px;
+}
+
+.footer-column a:hover {
+    color: #007bff; /* 悬停时变为蓝色 */
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column li {
+    margin-bottom: 5px;
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.copyright p {
+    font-size: 12px;
+    color: #333 !important;
+    margin: 0;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    header {
+        padding: 12px 0; /* 在移动设备上调整padding */
+    }
+    
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    nav a {
+        font-size: 13px;
+        padding: 3px 6px;
+    }
+
+    .header-logo img {
+        width: 100px !important; /* 在移动设备上进一步缩小logo */
+    }
+    
+    .language-switcher img {
+        width: 24px !important; /* 在移动设备上缩小语言切换按钮 */
+    }
+    
+    /* 底部信息在移动设备上的调整 */
+    footer {
+        padding: 8px 0; /* 与styles.css保持一致 */
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .footer-logo img {
+        width: 100px !important;
+    }
+    
+    .footer-column h3 {
+        font-size: 14px !important;
+        margin-bottom: 6px !important;
+        color: #333 !important; /* 确保移动设备上也是深色 */
+    }
+    
+    .footer-column a {
+        font-size: 12px !important;
+        color: #333 !important; /* 确保移动设备上也是深色 */
+    }
+    
+    .footer-column li {
+        margin-bottom: 3px !important;
+    }
+    
+    .copyright p {
+        font-size: 11px !important;
+        margin-top: 8px !important;
+        color: #333 !important; /* 确保移动设备上也是深色 */
+    }
+}
+
+/* ======================================== */
+/* Products页面统一字体族 */
+/* ======================================== */
+.hero-carousel,
+.hero-carousel *,
+.carousel-item,
+.carousel-title,
+.carousel-content,
+.carousel-content p,
+.cta-btn,
+nav,
+nav ul,
+nav li,
+nav a,
+footer,
+footer *,
+h1, h2, h3, h4, h5, h6,
+p, div, span, a, button {
+    font-family: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+}
+
+/* Font Awesome图标字体例外规则 - 确保图标正常显示 */
+.fab, .fas, .far, .fal, .fad, .fa,
+[class^="fa-"], [class*=" fa-"],
+i[class^="fa"], i[class*=" fa"] {
+    font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands", "Font Awesome 6 Pro" !important;
+    font-weight: 900 !important;
+}
+
+.fab {
+    font-family: "Font Awesome 6 Brands" !important;
+    font-weight: 400 !important;
+} 
