@@ -1600,6 +1600,281 @@ html {
 }
 
 /* ======================================== */
+/* Popular Products 区域样式 */
+/* ======================================== */
+
+/* Popular Products 区域容器 */
+.popular-products-section {
+    background: white; /* 白色背景，与其他区域保持一致 */
+    padding: 80px 0; /* 上下内边距，与其他主要区域一致 */
+    min-height: 40vh; /* 最小高度 */
+    display: flex; /* 弹性布局 */
+    align-items: center; /* 垂直居中 */
+    justify-content: center; /* 水平居中 */
+    font-family: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Popular Products 内容容器样式 */
+.popular-products-content {
+    max-width: 1600px; /* 最大宽度限制 */
+    margin: 0 auto; /* 水平居中 */
+    padding: 0 20px; /* 左右内边距 */
+    text-align: center; /* 文本居中 */
+    width: 100%; /* 确保占满可用宽度 */
+}
+
+/* Popular Products 主标题样式 - 渐变文字效果 */
+.popular-products-section h2 {
+    color: #2a5298; /* 主题蓝色 */
+    font-size: 3.2rem; /* 与其他主标题保持一致 */
+    margin-bottom: 15px; /* 调整底部外边距 */
+    font-weight: 800; /* 更粗字体 */
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    background: linear-gradient(135deg, #2a5298 0%, #1e3a5f 50%, #ff9800 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Popular Products 副标题样式 */
+.popular-products-section .subtitle {
+    color: #555; /* 稍深的灰色文字，增强可读性 */
+    font-size: 1.25rem; /* 略大字体 */
+    margin-bottom: 50px; /* 增加底部外边距 */
+    max-width: 1000px; /* 最大宽度限制 */
+    margin-left: auto; /* 自动左边距 */
+    margin-right: auto; /* 自动右边距 */
+    line-height: 1.6;
+    font-weight: 400;
+    background: linear-gradient(135deg, #2a5298 0%, #1e3a5f 50%, #ff9800 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Popular Products 网格布局 */
+.popular-products-grid {
+    display: grid; /* 网格布局 */
+    grid-template-columns: repeat(3, 1fr); /* 3列布局 */
+    gap: 30px; /* 网格间距 */
+    margin-bottom: 50px; /* 底部外边距 */
+    width: 100%; /* 确保占满容器宽度 */
+}
+
+/* Popular Product 卡片样式 */
+.popular-product-card {
+    display: block; /* 确保链接显示为块级元素 */
+    background: white; /* 白色背景 */
+    padding: 35px 25px; /* 内边距 */
+    border-radius: 15px; /* 圆角 */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08); /* 阴影效果 */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* 过渡动画 */
+    text-align: center; /* 文本居中 */
+    position: relative; /* 相对定位 */
+    border: 1px solid #f0f0f0; /* 淡边框 */
+    text-decoration: none; /* 移除链接下划线 */
+    color: inherit; /* 继承文字颜色 */
+    cursor: pointer; /* 确保显示手形光标 */
+}
+
+/* Popular Product 卡片悬停效果 */
+.popular-product-card:hover {
+    transform: translateY(-8px); /* 向上移动 */
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15); /* 增强阴影 */
+    border-color: #e0e0e0; /* 悬停时边框颜色 */
+    text-decoration: none; /* 确保悬停时没有下划线 */
+}
+
+/* 确保链接内的文字颜色保持正确 */
+.popular-product-card:hover h3 {
+    color: #2a5298; /* 保持标题蓝色 */
+}
+
+.popular-product-card:hover p {
+    color: #666; /* 保持描述灰色 */
+}
+
+/* 产品图标样式 - 元素周期表风格 */
+.product-icon {
+    width: 80px; /* 图标容器宽度 */
+    height: 80px; /* 图标容器高度 */
+    border-radius: 12px; /* 圆角矩形，类似元素周期表 */
+    display: flex; /* 弹性布局 */
+    align-items: center; /* 垂直居中 */
+    justify-content: center; /* 水平居中 */
+    margin: 0 auto 20px; /* 居中外边距 */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* 过渡动画 */
+    font-size: 1.8rem; /* 元素符号字体大小 */
+    font-weight: 700; /* 粗体 */
+    color: white; /* 白色文字 */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* 阴影效果 */
+}
+
+/* 各个元素的特定颜色 */
+.kr-icon {
+    background: linear-gradient(135deg, #1443c5 0%, #6f58f0 100%); /* 橙色 - 氪气 */
+}
+
+.xe-icon {
+    background: linear-gradient(135deg, #1443c5 0%, #6f58f0 100%); /* 紫色 - 氙气 */
+}
+
+.ne-icon {
+    background: linear-gradient(135deg, #1443c5 0%, #6f58f0 100%); /* 红色 - 氖气 */
+}
+
+.ar-icon {
+    background: linear-gradient(135deg, #1443c5 0%, #6f58f0 100%); /* 蓝色 - 氩气 */
+}
+
+.he-icon {
+    background: linear-gradient(135deg, #1443c5 0%, #6f58f0 100%); /* 黄色 - 氦气 */
+}
+
+.nh3-icon {
+    background: linear-gradient(135deg, #1443c5 0%, #6f58f0 100%); /* 绿色 - 氨气 */
+}
+
+/* 卡片悬停时图标效果 */
+.popular-product-card:hover .product-icon {
+    transform: scale(1.1); /* 图标放大 */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25); /* 增强阴影 */
+}
+
+/* Popular Product 卡片标题样式 */
+.popular-product-card h3 {
+    color: #2a5298; /* 主题蓝色 */
+    font-size: 1.5rem; /* 字体大小 */
+    margin-bottom: 15px; /* 底部外边距 */
+    font-weight: 700; /* 粗体 */
+    line-height: 1.3;
+    letter-spacing: -0.005em;
+}
+
+/* Popular Product 卡片描述样式 */
+.popular-product-card p {
+    color: #666; /* 灰色文字 */
+    line-height: 1.6; /* 行高 */
+    font-size: 1rem; /* 字体大小 */
+    margin-bottom: 20px; /* 底部外边距 */
+    font-weight: 400;
+}
+
+
+
+/* Popular Products CTA 区域 */
+.popular-products-cta {
+    margin-top: 40px; /* 顶部外边距 */
+    text-align: center; /* 居中对齐 */
+}
+
+/* Popular Products 按钮样式 */
+.popular-products-btn {
+    display: inline-block; /* 行内块级元素 */
+    padding: 16px 32px; /* 内边距 */
+    background: linear-gradient(135deg, #728edb 0%, #6f58f0 100%); /* 橙色渐变背景 */
+    color: white; /* 白色文字 */
+    text-decoration: none; /* 移除下划线 */
+    border-radius: 12px; /* 圆角 */
+    font-weight: 700; /* 粗体 */
+    font-size: 1.1rem; /* 字体大小 */
+    transition: all 0.3s ease; /* 过渡动画 */
+    box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3); /* 阴影效果 */
+    position: relative; /* 相对定位 */
+    overflow: hidden; /* 隐藏溢出 */
+}
+
+/* 按钮悬停效果 */
+.popular-products-btn:hover {
+    transform: translateY(-3px); /* 向上移动 */
+    box-shadow: 0 8px 25px rgba(255, 152, 0, 0.4); /* 增强阴影 */
+    background: linear-gradient(135deg, #728edb 0%, #6f58f0 100%); /* 深色渐变 */
+}
+
+/* 按钮点击效果 */
+.popular-products-btn:active {
+    transform: translateY(-1px); /* 轻微向上移动 */
+}
+
+/* ======================================== */
+/* 响应式设计 - 中等屏幕 */
+/* ======================================== */
+@media (max-width: 900px) {
+    .popular-products-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2列布局 */
+        gap: 25px; /* 调整间距 */
+    }
+    
+    .popular-products-section {
+        padding: 60px 0; /* 调整内边距 */
+    }
+    
+    .popular-products-section h2 {
+        font-size: 2rem; /* 调整字体大小 */
+    }
+    
+    .popular-product-card {
+        padding: 30px 20px; /* 调整内边距 */
+    }
+    
+    .product-icon {
+        width: 70px; /* 调整图标大小 */
+        height: 70px;
+        margin-bottom: 15px;
+        font-size: 1.6rem; /* 调整元素符号字体大小 */
+    }
+}
+
+/* ======================================== */
+/* 响应式设计 - 小屏幕 */
+/* ======================================== */
+@media (max-width: 600px) {
+    .popular-products-grid {
+        grid-template-columns: 1fr; /* 单列布局 */
+        gap: 20px; /* 调整间距 */
+    }
+    
+    .popular-products-section {
+        padding: 40px 0; /* 调整内边距 */
+        min-height: auto; /* 自动高度 */
+    }
+    
+    .popular-products-section h2 {
+        font-size: 1.8rem; /* 调整字体大小 */
+    }
+    
+    .popular-products-section .subtitle {
+        font-size: 1rem; /* 调整字体大小 */
+        margin-bottom: 40px;
+    }
+    
+    .popular-product-card {
+        padding: 25px 20px; /* 调整内边距 */
+    }
+    
+    .popular-product-card h3 {
+        font-size: 1.3rem; /* 调整字体大小 */
+    }
+    
+    .popular-product-card p {
+        font-size: 0.95rem; /* 调整字体大小 */
+    }
+    
+    .product-icon {
+        width: 65px; /* 调整图标大小 */
+        height: 65px;
+        margin-bottom: 15px;
+        font-size: 1.4rem; /* 调整元素符号字体大小 */
+    }
+    
+    .popular-products-btn {
+        padding: 14px 28px; /* 调整内边距 */
+        font-size: 1rem; /* 调整字体大小 */
+    }
+}
+
+/* ======================================== */
 /* 管理团队部分 - 重新设计为WestAir风格 */
 /* ======================================== */
 
