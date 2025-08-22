@@ -598,26 +598,30 @@
 
             <div class="product-grade-section">
                 <h2 class="section-title">Product Grade</h2>
-                <div class="grade-specs">
+                <div class="grade-tabs" id="gradeTabs">
+                    <button class="grade-tab active" data-grade="5.0">Grade 5.0</button>
+                    <button class="grade-tab" data-grade="6.0">Grade 6.0</button>
+                </div>
+                <div class="grade-specs" id="gradeSpecs">
                     <div class="spec-row">
                         <span class="spec-label">Grade</span>
-                        <span class="spec-value">5.0</span>
+                        <span class="spec-value" data-field="grade">5.0</span>
                     </div>
                     <div class="spec-row">
                         <span class="spec-label">Lowest Purity</span>
-                        <span class="spec-value highlight">99.999%</span>
+                        <span class="spec-value highlight" data-field="purity">99.999%</span>
                     </div>
                     <div class="spec-row">
                         <span class="spec-label">Grade Code</span>
-                        <span class="spec-value">RES</span>
+                        <span class="spec-value" data-field="code">RES</span>
                     </div>
                     <div class="spec-row">
                         <span class="spec-label">Catalog Number¹</span>
-                        <span class="spec-value">SG XERES-（fill in the code based on the bottle size below）</span>
+                        <span class="spec-value" data-field="catalog">SG XERES-（fill in the code based on the bottle size below）</span>
                     </div>
-                    <div class="footnote">
+                    <div class="footnote" data-field="footnote">
                         Maximum Total Impurities &lt; 10 ppm (by volume)<br>
-                        ¹ Please fill in the catalog number based on the bottle size code below. Replace “SG” with “DSP” for disposable bottles. <br>
+                        ¹ Please fill in the catalog number based on the bottle size code below. Replace "SG" with "DSP" for disposable bottles. <br>
                         ² The specifications are typical values and may change without notice.
                     </div>
                 </div>
@@ -689,8 +693,43 @@
     </footer>
     <script src="script.js"></script>
     <script>
-        // 页面交互脚本
+       // 页面交互脚本
         document.addEventListener('DOMContentLoaded', function() {
+            // 产品等级 Tab 交互
+            const gradeTabs = document.querySelectorAll('.grade-tab');
+            const gradeSpecs = document.getElementById('gradeSpecs');
+            const gradeData = {
+                '5.0': {
+                    grade: '5.0',
+                    purity: '99.999%',
+                    code: 'RES',
+                    catalog: 'SG XERES-（fill in the code based on the bottle size below）',
+                    footnote: 'Maximum Total Impurities &lt; 10 ppm (by volume)<br>¹ Please fill in the catalog number based on the bottle size code below. Replace "SG" with "DSP" for disposable bottles. <br>² The specifications are typical values and may change without notice.'
+                },
+                '6.0': {
+                    grade: '6.0',
+                    purity: '99.9999%',
+                    code: 'UHP',
+                    catalog: 'SG XEUHP-（fill in the code based on the bottle size below）',
+                    footnote: 'Maximum Total Impurities &lt; 1 ppm (by volume)<br>¹ Please fill in the catalog number based on the bottle size code below. Replace "SG" with "DSP" for disposable bottles. <br>² The specifications are typical values and may change without notice.'
+                }
+            };
+
+            gradeTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    gradeTabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    const key = this.getAttribute('data-grade');
+                    const data = gradeData[key];
+                    if (!data) return;
+                    gradeSpecs.querySelector('[data-field="grade"]').textContent = data.grade;
+                    gradeSpecs.querySelector('[data-field="purity"]').textContent = data.purity;
+                    gradeSpecs.querySelector('[data-field="code"]').textContent = data.code;
+                    gradeSpecs.querySelector('[data-field="catalog"]').textContent = data.catalog;
+                    gradeSpecs.querySelector('[data-field="footnote"]').innerHTML = data.footnote;
+                });
+            });
+
             // 包装规格 Tab 交互（与 Kr 页面一致）
             const packageTabs = document.querySelectorAll('.package-tab');
             const packageSpecs = document.getElementById('packageSpecs');
