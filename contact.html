@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Airocean Gases | Professional Gas Solutions Consultation</title>
+    <meta name="description" content="Contact Airocean Gases for professional gas solutions. We provide consultation services for industrial gases, medical gases, and specialty gases. 
+    Phone: +1 302 561 2790">
+    <meta name="keywords" content="contact us, gas consultation, industrial gas supply, Hongyuan Gas contact, Airocean Gases">
+    <meta name="author" content="Airocean Gases">
+    <meta property="og:title" content="Contact Us - Airocean Gases">
+    <meta property="og:description" content="Professional gas solutions consultation service, contact us for quotes and technical support">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <style>
+        .contact-card { position: relative; }
+        .contact-card .company-logo {
+            position: absolute;
+            right: 16px;
+            top: 16px;
+            width: 200px;
+            height: auto;
+            opacity: 0.9;
+            z-index: 10;
+        }
+        @media (max-width: 768px) {
+            .contact-card .company-logo {
+                width: 150px;
+                right: 12px;
+                top: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header style="background: white;">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-logo">
+                    <img src="logo.png" alt="宏源气体 Logo" style="width: 120px; height:auto;">
+                </div>
+                <nav>
+                    <ul style="list-style-type: none; padding-left: 0; display: flex; gap: 15px;">
+                        <li><a href="index.html" style="color: #000000;">Home</a></li>
+                        <li><a href="about.html" style="color: #000000;">About Us</a></li>
+                        <li><a href="products.html" style="color: #000000;">Products & Services</a></li>
+                        <li><a href="applications.html" style="color: #000000;">Applications</a></li>
+                        <li><a href="contact.html" style="color: #000000;">Contact Us</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="contact-hero">
+        <div class="container">
+            <div class="eyebrow">CONTACT</div>
+            <h1 class="contact-title">Let's Connect, Together for the Future</h1>
+            <p class="contact-subtitle">Connecting You to Purity and Safety</p>
+            <p class="contact-description">We are committed to quality and sustainable development, providing stable supply chains, strict safety standards, and professional support to ensure your operations are efficient and worry-free. No matter your industry, we can provide the right gas of high purity and high performance.</p>
+        </div>
+    </section>
+
+    <section class="contact-main">
+        <div class="container contact-grid">
+            <div class="contact-left">
+
+                <div class="contact-card">
+                    <h3 class="contact-card-title">Airocean Gases</h3>
+                    <ul class="contact-list">
+                        <li><i class="fa-solid fa-location-dot"></i>USA</li>
+                        <li><i class="fa-solid fa-phone"></i><a href="tel:+13025612790">+1 302 561 2790</a></li>
+                        <li><i class="fa-solid fa-envelope"></i><a href="mailto:Guo@airoceangases.com">Guo@airoceangases.com</a></li>
+                        <li><i class="fa-regular fa-clock"></i>Monday - Friday 9:00 - 18:00</li>
+                    </ul>
+                    <div class="contact-description-text">
+                        <p>We are committed to providing professional gas solutions and excellent customer service. Whether you need industrial gases, medical gases, or specialty gases, our team is ready to assist you with technical consultation and customized solutions.</p>
+                        <p>Feel free to reach out to us through email or phone during business hours. We typically respond within 24 hours and are happy to discuss your specific requirements.</p>
+                    </div>
+                    <div class="contact-actions">
+                        <a class="btn primary" href="mailto:guo@airoceangases.com"><i class="fa-solid fa-paper-plane"></i> Send Email</a>
+                        <a class="btn secondary" href="tel:+13025612790"><i class="fa-solid fa-phone"></i> Call Us</a>
+                    </div>
+                    <img class="company-logo" src="logo.png" alt="Airocean Gases 标志">
+                </div>
+            </div>
+
+            <div class="contact-right">
+                <div id="formMessage"></div>
+                <form id="quoteForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="qName">Name</label>
+                                <input type="text" id="qName" name="Name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="qCompany">Company</label>
+                                <input type="text" id="qCompany" name="Company">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="qEmail">Email</label>
+                                <input type="email" id="qEmail" name="Email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="qPhone">Phone</label>
+                                <input type="tel" id="qPhone" name="Phone">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="qProduct">Product/Gas</label>
+                            <input type="text" id="qProduct" name="Product">
+                        </div>
+                        <div class="form-group">
+                            <label for="qMessage">Project Description / Other Requirements</label>
+                            <textarea id="qMessage" name="Message" rows="15" required></textarea>
+                        </div>
+                        <button type="submit" class="btn primary full">Submit Request</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="map-section">
+        <div class="container">
+            <div class="map embed">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3291.36225542222!2d112.4930420770723!3d34.417552398350345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x367886e6b198b34f%3A0x452755c7eb08f737!2sYichuan%20Hongyuan%20Gas%20Technology%20Co.%2C%20Ltd.%20%EF%BC%88Northeast%20Gate%EF%BC%89!5e0!3m2!1sen!2sus!4v1741846766776!5m2!1sen!2sus"
+                    width="100%"
+                    height="450"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer style="background: white; border-top: 1px solid #000000;">
+        <div class="container">
+            <div class="footer-content" style="display: flex; justify-content: space-between; align-items: center;">
+                <div class="footer-logo">
+                    <img src="logo.png" alt="宏源气体 Logo" style="width: 120px; height:auto;">
+                </div>
+                <div class="footer-column">
+                    <div class="social-media">
+                        <h3 style="font-size: 16px; margin-bottom: 8px;">Follow Us</h3>
+                        <ul style="list-style-type: none; padding-left: 0;">
+                            <li style="margin-bottom: 4px;"><a href="https://api.whatsapp.com/send/?phone=9174317883&text&type=phone_number&app_absent=0" style="color: #000000; font-size: 13px;"><i class="fab fa-whatsapp"></i> Whatsapp</a></li>
+                            <li style="margin-bottom: 4px;"><a href="https://www.linkedin.com/company/hygas/?viewAsMember=true" style="color: #000000; font-size: 13px;"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                            <li style="margin-bottom: 4px;"><a href="https://www.instagram.com/airoceangases/?hl=en" style="color: #000000; font-size: 13px;"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <div class="legal-info">
+                        <h3 style="font-size: 16px; margin-bottom: 8px;">Legal Information</h3>
+                        <ul style="list-style-type: none; padding-left: 0;">
+                            <li style="margin-bottom: 4px;"><a href="privacy-policy.html" style="color: #000000; font-size: 13px;">Privacy Policy</a></li>
+                            <li style="margin-bottom: 4px;"><a href="terms-conditions.html" style="color: #000000; font-size: 13px;">Terms & Conditions</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <div class="quick-links">
+                        <h3 style="font-size: 16px; margin-bottom: 8px;">Quick Links</h3>
+                        <ul style="list-style-type: none; padding-left: 0;">
+                            <li style="margin-bottom: 4px;"><a href="index.html" style="color: #000000; font-size: 13px;">Home</a></li>
+                            <li style="margin-bottom: 4px;"><a href="about.html" style="color: #000000; font-size: 13px;">About Us</a></li>
+                            <li style="margin-bottom: 4px;"><a href="products.html" style="color: #000000; font-size: 13px;">Products & Services</a></li>
+                            <li style="margin-bottom: 4px;"><a href="applications.html" style="color: #000000; font-size: 13px;">Applications</a></li>
+                            <li style="margin-bottom: 4px;"><a href="contact.html" style="color: #000000; font-size: 13px;">Contact Us</a></li>   
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p style="font-size: 12px; margin-top: 10px;">&copy; 2023 Airocean Gases. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    
+    <script src="script.js"></script>
+    <script type="text/javascript">
+        // 等待页面和EmailJS库加载完成
+        document.addEventListener('DOMContentLoaded', function() {
+            // 检查EmailJS是否加载
+            if (typeof emailjs === 'undefined') {
+                console.error('EmailJS library not loaded');
+                return;
+            }
+            
+            // 初始化EmailJS
+            emailjs.init("TvpBmzayCfUho8Rzj");
+            console.log('EmailJS initialized');
+
+            // 表单提交处理
+            const quoteForm = document.getElementById('quoteForm');
+            if (!quoteForm) {
+                console.error('Form not found');
+                return;
+            }
+
+            quoteForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                const formMessage = document.getElementById('formMessage');
+                const submitButton = this.querySelector('button[type="submit"]');
+                const originalButtonText = submitButton.innerHTML;
+                
+                // 显示加载状态
+                submitButton.disabled = true;
+                submitButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+                formMessage.style.display = 'none';
+                
+                // 收集表单数据
+                const formData = {
+                    from_name: document.getElementById('qName').value.trim(),
+                    from_email: document.getElementById('qEmail').value.trim(),
+                    company: document.getElementById('qCompany').value.trim(),
+                    phone: document.getElementById('qPhone').value.trim(),
+                    product: document.getElementById('qProduct').value.trim(),
+                    message: document.getElementById('qMessage').value.trim(),
+                    to_email: 'guo@airoceangases.com'
+                };
+                
+                // 验证必填字段
+                if (!formData.from_name || !formData.from_email || !formData.message) {
+                    formMessage.style.display = 'block';
+                    formMessage.style.backgroundColor = '#f8d7da';
+                    formMessage.style.color = '#721c24';
+                    formMessage.style.border = '1px solid #f5c6cb';
+                    formMessage.innerHTML = '<i class="fa-solid fa-exclamation-circle"></i> Please fill in all required fields (Name, Email, and Message).';
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = originalButtonText;
+                    return;
+                }
+                
+                console.log('Sending email with data:', formData);
+                
+                // 发送邮件
+                emailjs.send('service_feex15j', 'template_qa78uco', formData)
+                    .then(function(response) {
+                        console.log('Email sent successfully!', response.status, response.text);
+                        
+                        // 成功
+                        formMessage.style.display = 'block';
+                        formMessage.style.backgroundColor = '#d4edda';
+                        formMessage.style.color = '#155724';
+                        formMessage.style.border = '1px solid #c3e6cb';
+                        formMessage.innerHTML = '<i class="fa-solid fa-check-circle"></i> Thank you! Your message has been sent successfully. We will respond to you within 24 hours.';
+                        
+                        // 重置表单
+                        quoteForm.reset();
+                        
+                        // 恢复按钮
+                        submitButton.disabled = false;
+                        submitButton.innerHTML = originalButtonText;
+                    }, function(error) {
+                        console.error('EmailJS error:', error);
+                        
+                        // 失败 - 显示详细错误信息
+                        let errorMessage = 'Sorry, there was an error sending your message. ';
+                        
+                        if (error.text) {
+                            errorMessage += 'Error: ' + error.text;
+                        } else if (error.status) {
+                            errorMessage += 'Error code: ' + error.status;
+                        } else {
+                            errorMessage += 'Please try again or contact us directly at guo@airoceangases.com';
+                        }
+                        
+                        formMessage.style.display = 'block';
+                        formMessage.style.backgroundColor = '#f8d7da';
+                        formMessage.style.color = '#721c24';
+                        formMessage.style.border = '1px solid #f5c6cb';
+                        formMessage.innerHTML = '<i class="fa-solid fa-exclamation-circle"></i> ' + errorMessage;
+                        
+                        // 恢复按钮
+                        submitButton.disabled = false;
+                        submitButton.innerHTML = originalButtonText;
+                    });
+            });
+        });
+    </script>
+</body>
+</html> 
