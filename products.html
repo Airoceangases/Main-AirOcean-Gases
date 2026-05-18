@@ -132,11 +132,12 @@
             padding: 16px 14px 18px;
             background: rgba(255,255,255,0.03);
             transition: border-color 0.4s var(--ease), background 0.4s var(--ease), transform 0.4s var(--ease);
-            cursor: default;
+            cursor: pointer;
             aspect-ratio: 1;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            text-decoration: none;
         }
 
         .ph-el:hover {
@@ -495,46 +496,46 @@
         </div>
 
         <div class="ph-elements">
-            <div class="ph-el ne">
+            <a class="ph-el ne" href="#gas-ne">
                 <span class="ph-el-num">10</span>
                 <span class="ph-el-sym">Ne</span>
                 <span class="ph-el-name">Neon</span>
-            </div>
-            <div class="ph-el kr">
+            </a>
+            <a class="ph-el kr" href="#gas-kr">
                 <span class="ph-el-num">36</span>
                 <span class="ph-el-sym">Kr</span>
                 <span class="ph-el-name">Krypton</span>
-            </div>
-            <div class="ph-el xe">
+            </a>
+            <a class="ph-el xe" href="#gas-xe">
                 <span class="ph-el-num">54</span>
                 <span class="ph-el-sym">Xe</span>
                 <span class="ph-el-name">Xenon</span>
-            </div>
-            <div class="ph-el he">
+            </a>
+            <a class="ph-el he" href="#gas-he">
                 <span class="ph-el-num">2</span>
                 <span class="ph-el-sym">He</span>
                 <span class="ph-el-name">Helium</span>
-            </div>
-            <div class="ph-el sf6">
+            </a>
+            <a class="ph-el sf6" href="#gas-sf6">
                 <span class="ph-el-num">Dielectric</span>
                 <span class="ph-el-sym">SF&#x2086;</span>
                 <span class="ph-el-name">Sulf. Hexafluoride</span>
-            </div>
-            <div class="ph-el n2o">
+            </a>
+            <a class="ph-el n2o" href="#gas-n2o">
                 <span class="ph-el-num">Medical</span>
                 <span class="ph-el-sym">N&#x2082;O</span>
                 <span class="ph-el-name">Nitrous Oxide</span>
-            </div>
-            <div class="ph-el cf4">
+            </a>
+            <a class="ph-el cf4" href="#gas-cf4">
                 <span class="ph-el-num">Etchant</span>
                 <span class="ph-el-sym">CF&#x2084;</span>
                 <span class="ph-el-name">Tetrafluoromethane</span>
-            </div>
+            </a>
         </div>
     </section>
 
     <!-- ─── KRYPTON ──────────────────────────────── -->
-    <section class="gs">
+    <section class="gs" id="gas-kr">
         <div class="gs-inner sr">
             <div class="gs-ident">
                 <div class="gs-ghost">36</div>
@@ -581,7 +582,7 @@
     </section>
 
     <!-- ─── XENON ────────────────────────────────── -->
-    <section class="gs">
+    <section class="gs" id="gas-xe">
         <div class="gs-inner rev sr">
             <div class="gs-ident">
                 <div class="gs-ghost">54</div>
@@ -628,7 +629,7 @@
     </section>
 
     <!-- ─── NEON ─────────────────────────────────── -->
-    <section class="gs">
+    <section class="gs" id="gas-ne">
         <div class="gs-inner sr">
             <div class="gs-ident">
                 <div class="gs-ghost">10</div>
@@ -675,7 +676,7 @@
     </section>
 
     <!-- ─── HELIUM ───────────────────────────────── -->
-    <section class="gs">
+    <section class="gs" id="gas-he">
         <div class="gs-inner rev sr">
             <div class="gs-ident">
                 <div class="gs-ghost">2</div>
@@ -722,7 +723,7 @@
     </section>
 
     <!-- ─── SULFUR HEXAFLUORIDE ─────────────────── -->
-    <section class="gs">
+    <section class="gs" id="gas-sf6">
         <div class="gs-inner sr">
             <div class="gs-ident">
                 <div class="gs-ghost" style="font-size:clamp(4rem,8vw,7rem);letter-spacing:-4px;">SF&#x2086;</div>
@@ -769,7 +770,7 @@
     </section>
 
     <!-- ─── NITROUS OXIDE ─────────────────────── -->
-    <section class="gs">
+    <section class="gs" id="gas-n2o">
         <div class="gs-inner rev sr">
             <div class="gs-ident">
                 <div class="gs-ghost" style="font-size:clamp(4rem,8vw,7rem);letter-spacing:-4px;">N&#x2082;O</div>
@@ -816,7 +817,7 @@
     </section>
 
     <!-- ─── TETRAFLUOROMETHANE ────────────────── -->
-    <section class="gs">
+    <section class="gs" id="gas-cf4">
         <div class="gs-inner sr">
             <div class="gs-ident">
                 <div class="gs-ghost" style="font-size:clamp(4rem,8vw,7rem);letter-spacing:-4px;">CF&#x2084;</div>

@@ -121,6 +121,17 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 
+    // ─── Gas element card scroll-to-center ───────────────────────────────────
+    document.querySelectorAll('.ph-el[href]').forEach(card => {
+        card.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').slice(1);
+            const target = document.getElementById(targetId);
+            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+    });
+
+
     // ─── Application cards background ────────────────────────────────────────
     document.querySelectorAll('.app-card[data-bg-index]').forEach(card => {
         const idx = card.getAttribute('data-bg-index');
