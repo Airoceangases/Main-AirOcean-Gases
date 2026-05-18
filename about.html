@@ -1,249 +1,839 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Airocean Gases | 40 years of industrial gas experience</title>
-    <meta name="description" content="Learn about the history of Airocean Gases and Hongyuan Gas. Established in 1982, with 40 years of experience in the industrial gas industry, we specialize in providing high-quality gas products and professional services to global customers.">
-    <meta name="keywords" content="Hongyuan Gas, Airocean Gases, company history, industrial gas experience, gas supplier, company introduction">
+    <title>About Us — Airocean Gases | 40 Years of Rare Gas Expertise</title>
+    <meta name="description" content="Learn about Airocean Gases and Hongyuan Gas — established in 1982, with 40+ years of industrial and specialty gas expertise serving semiconductor, medical, and aerospace industries.">
+    <meta name="keywords" content="Hongyuan Gas, Airocean Gases, company history, specialty gas experience, rare gas supplier, about us">
     <meta name="author" content="Airocean Gases">
-    <meta property="og:title" content="About Us - Airocean Gases">
-    <meta property="og:description" content="40 years of experience in the industrial gas industry, a professional gas product and service provider">
+    <meta property="og:title" content="About Us — Airocean Gases">
+    <meta property="og:description" content="40+ years of industrial gas expertise. Family-owned heritage meeting global-standard supply.">
     <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <!-- 引入Font Awesome图标库的CSS文件，用于显示社交媒体图标 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* ── Design tokens ── */
+        :root {
+            --ink:   #0c0e10;
+            --ink-2: #3d4147;
+            --ink-3: #8a909a;
+            --bg:    #f8f7f4;
+            --bg-2:  #f0ede8;
+            --rule:  #d8d4ce;
+            --navy:  #080f1d;
+            --kr:    #6d28d9;
+            --xe:    #1d4ed8;
+            --ne:    #b91c1c;
+            --he:    #047857;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        .ab-page {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg);
+            color: var(--ink);
+        }
+
+        /* ══════════════════════════════
+           HERO
+        ══════════════════════════════ */
+        .ab-hero {
+            background: var(--navy);
+            min-height: 88dvh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+            padding: 100px 60px 72px;
+        }
+        .ab-hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+            background-size: 48px 48px;
+            pointer-events: none;
+        }
+        .ab-hero-photo {
+            position: absolute;
+            inset: 0;
+            background-image: url('about_page_1.jpg');
+            background-size: cover;
+            background-position: center 30%;
+            opacity: 0.18;
+        }
+        .ab-hero-inner {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        .ab-hero-text { max-width: 620px; }
+        .ab-hero-eyebrow {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.36);
+            margin-bottom: 24px;
+        }
+        .ab-hero-title {
+            font-size: clamp(2.8rem, 5.5vw, 5rem);
+            font-weight: 700;
+            line-height: 1.04;
+            letter-spacing: -0.04em;
+            color: #fff;
+            margin-bottom: 24px;
+        }
+        .ab-hero-sub {
+            font-size: 1.05rem;
+            color: rgba(255,255,255,0.52);
+            line-height: 1.75;
+            font-weight: 300;
+            max-width: 480px;
+            margin-bottom: 40px;
+        }
+        .ab-hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+        .ab-hero-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 13px 26px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+        .ab-hero-btn.primary { background: #fff; color: var(--navy); }
+        .ab-hero-btn.secondary {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.26);
+            color: rgba(255,255,255,0.76);
+        }
+        .ab-hero-btn:hover { opacity: 0.82; }
+        .ab-hero-ghost {
+            font-size: clamp(8rem, 18vw, 18rem);
+            font-weight: 900;
+            letter-spacing: -0.06em;
+            line-height: 0.82;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(255,255,255,0.08);
+            user-select: none;
+            pointer-events: none;
+            flex-shrink: 0;
+        }
+
+        /* ══════════════════════════════
+           MISSION STRIP
+        ══════════════════════════════ */
+        .ab-mission {
+            background: var(--bg-2);
+            border-top: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            padding: 56px 60px;
+        }
+        .ab-mission-inner {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 60px;
+            align-items: start;
+        }
+        .ab-mission-label {
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--ink-3);
+            margin-bottom: 14px;
+        }
+        .ab-mission-tag {
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: var(--ink);
+            line-height: 1.3;
+            letter-spacing: -0.02em;
+        }
+        .ab-mission-body {
+            font-size: 1.08rem;
+            color: var(--ink-2);
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        /* ══════════════════════════════
+           SECTION HEADER
+        ══════════════════════════════ */
+        .ab-section-hd {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            padding-bottom: 28px;
+            border-bottom: 1px solid var(--rule);
+        }
+        .ab-section-label {
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--ink-3);
+        }
+        .ab-section-title {
+            font-size: clamp(1.7rem, 3vw, 2.5rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: var(--ink);
+        }
+
+        /* ══════════════════════════════
+           HISTORY TIMELINE
+        ══════════════════════════════ */
+        .ab-history { padding: 80px 60px; }
+        .ab-history-inner { max-width: 1300px; margin: 0 auto; }
+
+        .ab-timeline-nav {
+            display: flex;
+            gap: 0;
+            margin-top: 40px;
+            border-bottom: 1px solid var(--rule);
+            overflow-x: auto;
+        }
+        /* timeline-btn: class used by script.js — style only */
+        .timeline-btn {
+            background: none;
+            border: none;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -1px;
+            padding: 14px 28px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            color: var(--ink-3);
+            cursor: pointer;
+            transition: color 0.2s, border-color 0.2s;
+            white-space: nowrap;
+        }
+        .timeline-btn.active { color: var(--ink); border-bottom-color: var(--ink); }
+        .timeline-btn:hover { color: var(--ink); }
+
+        /* history-section: class used by script.js — style only */
+        .history-section {
+            display: none;
+            padding: 52px 0 0;
+        }
+        .history-section.active { display: block; }
+
+        .ab-history-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .ab-history-year {
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--ink-3);
+            margin-bottom: 18px;
+        }
+        .ab-history-title {
+            font-size: 1.9rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: var(--ink);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        .ab-history-desc {
+            font-size: 1rem;
+            color: var(--ink-2);
+            line-height: 1.8;
+            font-weight: 300;
+        }
+        .ab-history-img {
+            aspect-ratio: 4/3;
+            overflow: hidden;
+            background: var(--bg-2);
+            border: 1px solid var(--rule);
+        }
+        .ab-history-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* ══════════════════════════════
+           SAFETY (dark navy)
+        ══════════════════════════════ */
+        .ab-safety {
+            background: var(--navy);
+            padding: 80px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+        .ab-safety-grid-bg {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+            background-size: 48px 48px;
+            pointer-events: none;
+        }
+        .ab-safety-inner {
+            max-width: 1300px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        .ab-safety-hd {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            padding-bottom: 28px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 52px;
+        }
+        .ab-safety-label {
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.3);
+        }
+        .ab-safety-title {
+            font-size: clamp(1.7rem, 3vw, 2.4rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: #fff;
+        }
+        .ab-safety-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0 80px;
+            margin-bottom: 52px;
+        }
+        .ab-safety-para {
+            font-size: 0.97rem;
+            color: rgba(255,255,255,0.52);
+            line-height: 1.82;
+            font-weight: 300;
+        }
+        .ab-safety-features {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .ab-safety-feat {
+            padding: 28px 0;
+            border-right: 1px solid rgba(255,255,255,0.1);
+        }
+        .ab-safety-feat:last-child { border-right: none; }
+        .ab-safety-feat-icon {
+            width: 36px;
+            height: 36px;
+            border: 1px solid rgba(255,255,255,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.88rem;
+            margin-bottom: 14px;
+        }
+        .ab-safety-feat-name {
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: rgba(255,255,255,0.6);
+            letter-spacing: 0.04em;
+        }
+
+        /* ══════════════════════════════
+           LEADERSHIP
+        ══════════════════════════════ */
+        .ab-leadership { padding: 80px 60px; }
+        .ab-leadership-inner { max-width: 1300px; margin: 0 auto; }
+        .ab-leadership-sub {
+            font-size: 0.92rem;
+            color: var(--ink-3);
+            font-weight: 300;
+        }
+
+        .ab-leader {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 60px;
+            align-items: start;
+            border-top: 1px solid var(--rule);
+            padding: 52px 0;
+        }
+        .ab-leader:last-child { border-bottom: 1px solid var(--rule); }
+        .ab-leader-photo {
+            aspect-ratio: 3/4;
+            overflow: hidden;
+            background: var(--bg-2);
+            border: 1px solid var(--rule);
+        }
+        .ab-leader-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: grayscale(20%);
+            transition: filter 0.4s;
+        }
+        .ab-leader:hover .ab-leader-photo img { filter: grayscale(0%); }
+        .ab-leader-position {
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--ink-3);
+            margin-bottom: 10px;
+        }
+        .ab-leader-name {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: var(--ink);
+            margin-bottom: 28px;
+            line-height: 1.1;
+        }
+        .ab-leader-bio {
+            font-size: 0.95rem;
+            color: var(--ink-2);
+            line-height: 1.82;
+            font-weight: 300;
+        }
+        .ab-leader-bio p + p { margin-top: 16px; }
+
+        /* ══════════════════════════════
+           CAREERS CTA
+        ══════════════════════════════ */
+        .ab-careers { background: var(--navy); }
+        .ab-careers-inner {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 80px 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .ab-careers-photo {
+            aspect-ratio: 4/3;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .ab-careers-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            opacity: 0.7;
+        }
+        .ab-careers-label {
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.3);
+            margin-bottom: 20px;
+        }
+        .ab-careers-title {
+            font-size: clamp(1.9rem, 3.5vw, 3rem);
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            color: #fff;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+        .ab-careers-desc {
+            font-size: 0.97rem;
+            color: rgba(255,255,255,0.48);
+            line-height: 1.8;
+            font-weight: 300;
+            margin-bottom: 36px;
+        }
+        .ab-careers-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 13px 26px;
+            background: #fff;
+            color: var(--navy);
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+        .ab-careers-btn:hover { opacity: 0.82; }
+
+        /* ══════════════════════════════
+           SCROLL REVEAL
+        ══════════════════════════════ */
+        .sr {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .sr.in { opacity: 1; transform: none; }
+
+        /* ══════════════════════════════
+           RESPONSIVE
+        ══════════════════════════════ */
+        @media (max-width: 960px) {
+            .ab-hero { padding: 100px 32px 64px; min-height: 72dvh; }
+            .ab-hero-ghost { display: none; }
+            .ab-mission { padding: 48px 32px; }
+            .ab-mission-inner { grid-template-columns: 1fr; gap: 24px; }
+            .ab-history { padding: 60px 32px; }
+            .ab-safety { padding: 60px 32px; }
+            .ab-safety-body { grid-template-columns: 1fr; gap: 24px; }
+            .ab-safety-features { grid-template-columns: 1fr 1fr; }
+            .ab-leadership { padding: 60px 32px; }
+            .ab-leader { grid-template-columns: 220px 1fr; gap: 36px; }
+            .ab-careers-inner { grid-template-columns: 1fr; padding: 60px 32px; }
+        }
+        @media (max-width: 700px) {
+            .ab-hero { padding: 96px 20px 56px; }
+            .ab-mission { padding: 40px 20px; }
+            .ab-history { padding: 52px 20px; }
+            .ab-history-grid { grid-template-columns: 1fr; gap: 32px; }
+            .ab-history-img { order: -1; }
+            .ab-safety { padding: 52px 20px; }
+            .ab-safety-features { grid-template-columns: 1fr 1fr; }
+            .ab-leadership { padding: 52px 20px; }
+            .ab-leader { grid-template-columns: 1fr; gap: 28px; }
+            .ab-leader-photo { aspect-ratio: 3/2; max-width: 280px; }
+            .ab-careers-inner { padding: 52px 20px; }
+            .ab-section-hd { flex-direction: column; gap: 10px; }
+            .ab-safety-hd { flex-direction: column; gap: 10px; }
+            .timeline-btn { padding: 12px 18px; font-size: 0.76rem; }
+        }
+    </style>
 </head>
-<body>
-    <header style="background: white;">
+<body class="ab-page">
+
+    <header>
         <div class="container">
             <div class="header-content">
                 <div class="header-logo">
-                    <img src="logo.png" alt="宏源气体 Logo" style="width: 120px; height:auto;">
+                    <img src="logo.png" alt="Airocean Gases Logo" class="logo-img">
                 </div>
                 <nav>
-                    <ul style="list-style-type: none; padding-left: 0; display: flex; gap: 15px;">
-                        <li><a href="index.html" style="color: #000000;">Home</a></li>
-                        <li><a href="about.html" style="color: #000000;">About Us</a></li>
-                        <li><a href="products.html" style="color: #000000;">Products & Services</a></li>
-                        <li><a href="applications.html" style="color: #000000;">Applications</a></li>
-                        <li><a href="contact.html" style="color: #000000;">Contact Us</a></li>
+                    <ul class="nav-menu">
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li><a href="about.html" class="nav-link active-link">About Us</a></li>
+                        <li><a href="products.html" class="nav-link">Products &amp; Services</a></li>
+                        <li><a href="applications.html" class="nav-link">Applications</a></li>
+                        <li><a href="contact.html" class="nav-link">Contact Us</a></li>
                     </ul>
+                    <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                        <span></span><span></span><span></span>
+                    </button>
                 </nav>
             </div>
         </div>
     </header>
 
-    <section class="about-section" style="padding-top: 80px;">
-        <div class="container">
-            
-            <!-- 新增英雄区域 -->
-            <div class="hero-mission-section">
-                <div class="hero-content">
-                    <div class="hero-text">
-                        <h1 class="hero-title">A Trusted Service You Can Rely On</h1>
-                        <p class="hero-description">Airocean Gases, established in 2025, is one of the most reliable suppliers. 
-                            We specialize in providing high-quality gas products and solutions for the industrial, medical, electronics, and food sectors, committed to delivering safe, reliable, and efficient gas services.</p>
-                        <div class="hero-buttons">
-                            <a href="products.html" class="hero-btn primary">Explore Our Products</a>
-                            <a href="contact.html" class="hero-btn secondary">Contact Us</a>
-                        </div>
-                    </div>
-                    <div class="hero-image">
-                        <img src="about_page_1.jpg" alt="工业气体设备" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
-                    </div>
+    <!-- ═══ HERO ═══ -->
+    <section class="ab-hero">
+        <div class="ab-hero-grid"></div>
+        <div class="ab-hero-photo"></div>
+        <div class="ab-hero-inner">
+            <div class="ab-hero-text">
+                <p class="ab-hero-eyebrow">Airocean Gases · Est. 2024 · Hongyuan Heritage Since 1982</p>
+                <h1 class="ab-hero-title">A Trusted Service<br>You Can Rely On</h1>
+                <p class="ab-hero-sub">Family-owned industrial gas expertise spanning four decades — now serving North America with the highest-purity rare gases for semiconductor, medical, and aerospace applications.</p>
+                <div class="ab-hero-btns">
+                    <a href="products.html" class="ab-hero-btn primary">Explore Products <i class="fas fa-arrow-right"></i></a>
+                    <a href="contact.html" class="ab-hero-btn secondary">Contact Us</a>
                 </div>
             </div>
-            
-            <div class="mission-section">
-                <h2 class="mission-title">Our Mission? A Clear Goal:</h2>
-                <p class="mission-description">To provide exceptional gas solutions, become the most trusted independent gas distributor, leveraging our expertise, high-quality products, and personalized service to drive the success of our customers across industries.</p>
-            </div>
-            
-            <!-- ======================================== -->
-            <!-- 公司历史发展历程区域 -->
-            <!-- ======================================== -->
+            <span class="ab-hero-ghost" aria-hidden="true">42</span>
+        </div>
+    </section>
 
-                
-                <!-- 历史内容展示区域 -->
-                <div class="history-content">
-                    <!-- 2005年 - 公司创立时期 -->
-                    <div class="history-section active" data-year="1982">
-                        <div class="history-grid">
-                            <div class="history-text">
-                                <h4 class="history-title">Founding of Hongyuan Gas</h4>
-                                <p class="history-description">Hongyuan Gas Technology Co., Ltd. is established in Luoyang, Henan Province, China, with a mission to supply high-quality industrial gases to local manufacturing and medical sectors.</p>
-                            </div>
-                            <div class="history-image">
-                                <img src="gas-equipment.jpg" alt="公司创立时期的设备" class="history-img">
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- 2010年 - 质量认证时期 -->
-                    <div class="history-section" data-year="1990s">
-                        <div class="history-grid">
-                            <div class="history-text">
-                                <h4 class="history-title">Expanding Capabilities</h4>
-                                <p class="history-description">Hongyuan invests in advanced cryogenic separation units, increasing production capacity for oxygen, nitrogen, and argon to meet growing national demand.</p>
-                            </div>
-                            <div class="history-image">
-                                <img src="iso9001.jpg" alt="ISO 9001认证" class="history-img">
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- 2015年 - 医疗气体业务时期 -->
-                    <div class="history-section" data-year="2005">
-                        <div class="history-grid">
-                            <div class="history-text">
-                                <h4 class="history-title">Entering Specialty Gases</h4>
-                                <p class="history-description">Introduction of high-purity helium, neon, krypton, and xenon production lines, supplying China’s electronics, semiconductor, and research industries.</p>
-                            </div>
-                            <div class="history-image">
-                                <img src="medical-cert.jpg" alt="医疗气体业务" class="history-img">
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- 2020年 - 产能扩张时期 -->
-                    <div class="history-section" data-year="2015–2020">
-                        <div class="history-grid">
-                            <div class="history-text">
-                                <h4 class="history-title">Technology & Certification Milestones</h4>
-                                <p class="history-description">Facilities upgraded with automated filling lines, GMP certification obtained, and full ISO Quality Management system implemented, ensuring global-level quality and safety.</p>
-                            </div>
-                            <div class="history-image">
-                                <img src="industrial-gases.jpg" alt="新生产基地" class="history-img">
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- 2025年 - 国际化发展时期 -->
-                    <div class="history-section" data-year="2024">
-                        <div class="history-grid">
-                            <div class="history-text">
-                                <h4 class="history-title">Airocean Gases Launch</h4>
-                                <p class="history-description">Airocean Gases, LLC is established in the United States to serve the North American market, bringing Hongyuan’s 40+ years of expertise overseas.</p>
-                            </div>
-                            <div class="history-image">
-                                <img src="special-gases.jpg" alt="国际化发展" class="history-img">
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <!-- ═══ MISSION ═══ -->
+    <section class="ab-mission sr">
+        <div class="ab-mission-inner">
+            <div>
+                <p class="ab-mission-label">Our Mission</p>
+                <p class="ab-mission-tag">A Clear Goal</p>
             </div>
-            
-            <!-- ======================================== -->
-            <!-- 健康与安全区域 -->
-            <!-- ======================================== -->
-            <div class="health-safety-section">
-                <h3 class="section-title">Health and Safety</h3>
-                <div class="safety-content">
-                    <p class="safety-description">
-                        We are committed to providing a safe and healthy working environment for employees, customers, and visitors. As the largest independent gas distributor on the West Coast, we have established a comprehensive health and safety management system to ensure that all business activities meet the highest safety standards.
-                    </p>
-                    <p class="safety-description">
-                        We emphasize the concept of sustainable development and have established a positive safety culture that is supported by the company’s owners, management, and every employee. Through continuous safety training and strict execution standards, We ensure that every stage meets the highest safety standards.
-                    </p>
-                    <div class="safety-features">
-                        <div class="safety-feature">
-                            <i class="fas fa-shield-alt"></i>
-                            <span>Safety Standards</span>
-                        </div>
-                        <div class="safety-feature">
-                            <i class="fas fa-heartbeat"></i>
-                            <span>Health Management</span>
-                        </div>
-                        <div class="safety-feature">
-                            <i class="fas fa-leaf"></i>
-                            <span>Sustainable Development</span>
-                        </div>
-                        <div class="safety-feature">
-                            <i class="fas fa-users"></i>
-                            <span>Team Support</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- ======================================== -->
-            <!-- 管理团队区域 - 重新设计为WestAir风格 -->
-            <!-- ======================================== -->
+            <p class="ab-mission-body">To provide exceptional gas solutions and become the most trusted independent gas distributor — leveraging deep expertise, high-purity products, and personalized service to drive the success of our customers across industries worldwide.</p>
+        </div>
+    </section>
 
-            <!-- ======================================== -->
-            <!-- 招聘区域 - 类似截图设计 -->
-            <!-- ======================================== -->
-            <div class="careers-section">
-                <div class="careers-content">
-                    <!-- 左侧团队照片 -->
-                    <div class="careers-image">
-                        <img src="about_page_2.jpg" alt="宏源气体团队" class="team-photo">
-                    </div>
-                    
-                    <!-- 右侧招聘内容 -->
-                    <div class="careers-text">
-                        <div class="careers-header">
-                            <h3 class="careers-title">Join Our Team</h3>
-                            <p class="careers-description">
-                                We are committed to revolutionizing the gas industry. Are you ready to challenge the status quo and create a better future with us?
-                            </p>
+    <!-- ═══ HISTORY TIMELINE ═══ -->
+    <section class="ab-history sr">
+        <div class="ab-history-inner">
+            <div class="ab-section-hd">
+                <p class="ab-section-label">Company History</p>
+                <h2 class="ab-section-title">Four Decades of Progress</h2>
+            </div>
+
+            <div class="ab-timeline-nav">
+                <button class="timeline-btn active" data-year="1982">1982</button>
+                <button class="timeline-btn" data-year="1990s">1990s</button>
+                <button class="timeline-btn" data-year="2005">2005</button>
+                <button class="timeline-btn" data-year="2015–2020">2015–2020</button>
+                <button class="timeline-btn" data-year="2024">2024</button>
+            </div>
+
+            <div class="history-content">
+
+                <div class="history-section active" data-year="1982">
+                    <div class="ab-history-grid">
+                        <div class="ab-history-text">
+                            <p class="ab-history-year">1982 · Founding</p>
+                            <h3 class="ab-history-title">Founding of Hongyuan Gas</h3>
+                            <p class="ab-history-desc">Hongyuan Gas Technology Co., Ltd. is established in Luoyang, Henan Province, China, with a mission to supply high-quality industrial gases to local manufacturing and medical sectors. A family commitment to precision and reliability is built into the company from day one.</p>
                         </div>
-                        
-                        <div class="careers-cta">
-                            <a href="careers.html" class="careers-btn">View Job Openings</a>
+                        <div class="ab-history-img">
+                            <img src="gas-equipment.jpg" alt="Founding era equipment">
                         </div>
                     </div>
+                </div>
+
+                <div class="history-section" data-year="1990s">
+                    <div class="ab-history-grid">
+                        <div class="ab-history-text">
+                            <p class="ab-history-year">1990s · Expansion</p>
+                            <h3 class="ab-history-title">Expanding Capabilities</h3>
+                            <p class="ab-history-desc">Hongyuan invests in advanced cryogenic separation units, dramatically increasing production capacity for oxygen, nitrogen, and argon to meet China's rapidly growing industrial demand. Infrastructure and safety protocols are scaled to match.</p>
+                        </div>
+                        <div class="ab-history-img">
+                            <img src="iso9001.jpg" alt="Cryogenic expansion">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="history-section" data-year="2005">
+                    <div class="ab-history-grid">
+                        <div class="ab-history-text">
+                            <p class="ab-history-year">2005 · Specialty Gases</p>
+                            <h3 class="ab-history-title">Entering Specialty Gases</h3>
+                            <p class="ab-history-desc">Introduction of high-purity Helium, Neon, Krypton, and Xenon production lines — supplying China's rapidly advancing electronics, semiconductor, and research sectors. This marks the beginning of Hongyuan's rare gas specialization.</p>
+                        </div>
+                        <div class="ab-history-img">
+                            <img src="medical-cert.jpg" alt="Specialty gas production">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="history-section" data-year="2015–2020">
+                    <div class="ab-history-grid">
+                        <div class="ab-history-text">
+                            <p class="ab-history-year">2015–2020 · Certification</p>
+                            <h3 class="ab-history-title">Technology &amp; Certification Milestones</h3>
+                            <p class="ab-history-desc">Facilities upgraded with automated filling lines. GMP certification obtained and a full ISO Quality Management System implemented — ensuring global-standard quality, traceability, and safety across every product batch.</p>
+                        </div>
+                        <div class="ab-history-img">
+                            <img src="industrial-gases.jpg" alt="ISO certification milestone">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="history-section" data-year="2024">
+                    <div class="ab-history-grid">
+                        <div class="ab-history-text">
+                            <p class="ab-history-year">2024 · North America</p>
+                            <h3 class="ab-history-title">Airocean Gases Launch</h3>
+                            <p class="ab-history-desc">Airocean Gases, LLC is established in the United States to serve the North American market — bringing Hongyuan's 40+ years of rare gas expertise overseas. Headquartered in Delaware, we bridge proven production capability with U.S. customers' exacting standards.</p>
+                        </div>
+                        <div class="ab-history-img">
+                            <img src="special-gases.jpg" alt="Airocean Gases launch">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ HEALTH & SAFETY ═══ -->
+    <section class="ab-safety">
+        <div class="ab-safety-grid-bg"></div>
+        <div class="ab-safety-inner sr">
+            <div class="ab-safety-hd">
+                <p class="ab-safety-label">Commitment</p>
+                <h2 class="ab-safety-title">Health &amp; Safety</h2>
+            </div>
+            <div class="ab-safety-body">
+                <p class="ab-safety-para">We are committed to providing a safe and healthy working environment for employees, customers, and visitors. We have established a comprehensive health and safety management system ensuring all business activities meet the highest safety standards.</p>
+                <p class="ab-safety-para">We emphasize sustainable development and have built a positive safety culture supported by ownership, management, and every employee — through continuous training, strict execution standards, and full regulatory compliance at every operational stage.</p>
+            </div>
+            <div class="ab-safety-features">
+                <div class="ab-safety-feat">
+                    <div class="ab-safety-feat-icon"><i class="fas fa-shield-alt"></i></div>
+                    <p class="ab-safety-feat-name">Safety Standards</p>
+                </div>
+                <div class="ab-safety-feat">
+                    <div class="ab-safety-feat-icon"><i class="fas fa-heartbeat"></i></div>
+                    <p class="ab-safety-feat-name">Health Management</p>
+                </div>
+                <div class="ab-safety-feat">
+                    <div class="ab-safety-feat-icon"><i class="fas fa-leaf"></i></div>
+                    <p class="ab-safety-feat-name">Sustainable Development</p>
+                </div>
+                <div class="ab-safety-feat">
+                    <div class="ab-safety-feat-icon"><i class="fas fa-users"></i></div>
+                    <p class="ab-safety-feat-name">Team Support</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer style="background: white; border-top: 1px solid #000000;">
-        <div class="container">
-            <div class="footer-content" style="display: flex; justify-content: space-between; align-items: center;">
-                <div class="footer-logo">
-                    <img src="logo.png" alt="宏源气体 Logo" style="width: 120px; height:auto;">
+    <!-- ═══ LEADERSHIP ═══ -->
+    <section class="ab-leadership">
+        <div class="ab-leadership-inner">
+            <div class="ab-section-hd sr">
+                <div>
+                    <p class="ab-section-label">Our People</p>
+                    <h2 class="ab-section-title">Leadership</h2>
                 </div>
-                <div class="footer-column">
-                    <div class="social-media">
-                        <h3 style="font-size: 16px; margin-bottom: 8px;">Follow Us</h3>
-                        <ul style="list-style-type: none; padding-left: 0;">
-                            <li style="margin-bottom: 4px;"><a href="https://api.whatsapp.com/send/?phone=9174317883&text&type=phone_number&app_absent=0" style="color: #000000; font-size: 13px;"><i class="fab fa-whatsapp"></i> Whatsapp</a></li>
-                            <li style="margin-bottom: 4px;"><a href="https://www.linkedin.com/company/hygas/?viewAsMember=true" style="color: #000000; font-size: 13px;"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
-                            <li style="margin-bottom: 4px;"><a href="https://www.instagram.com/airoceangases/?hl=en" style="color: #000000; font-size: 13px;"><i class="fab fa-instagram"></i> Instagram</a></li>
-                        </ul>
-                    </div>
+                <p class="ab-leadership-sub">Family-owned and operated since 1982.</p>
+            </div>
+
+            <div class="ab-leader sr">
+                <div class="ab-leader-photo">
+                    <img src="cfo.jpg" alt="Wentao Guo — Board Member">
                 </div>
-                <div class="footer-column">
-                    <div class="legal-info">
-                        <h3 style="font-size: 16px; margin-bottom: 8px;">Legal Information</h3>
-                        <ul style="list-style-type: none; padding-left: 0;">
-                            <li style="margin-bottom: 4px;"><a href="privacy-policy.html" style="color: #000000; font-size: 13px;">Privacy Policy</a></li>
-                            <li style="margin-bottom: 4px;"><a href="terms-conditions.html" style="color: #000000; font-size: 13px;">Terms & Conditions</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="footer-column">
-                    <div class="quick-links">
-                        <h3 style="font-size: 16px; margin-bottom: 8px;">Quick Links</h3>
-                        <ul style="list-style-type: none; padding-left: 0;">
-                            <li style="margin-bottom: 4px;"><a href="index.html" style="color: #000000; font-size: 13px;">Home</a></li>
-                            <li style="margin-bottom: 4px;"><a href="about.html" style="color: #000000; font-size: 13px;">About Us</a></li>
-                            <li style="margin-bottom: 4px;"><a href="products.html" style="color: #000000; font-size: 13px;">Products & Services</a></li>
-                            <li style="margin-bottom: 4px;"><a href="applications.html" style="color: #000000; font-size: 13px;">Applications</a></li>
-                            <li style="margin-bottom: 4px;"><a href="contact.html" style="color: #000000; font-size: 13px;">Contact Us</a></li>   
-                        </ul>
+                <div class="ab-leader-info">
+                    <p class="ab-leader-position">Board Member</p>
+                    <h3 class="ab-leader-name">Wentao Guo</h3>
+                    <div class="ab-leader-bio">
+                        <p>Wentao Guo is one of the founding Board Members of Airocean Gases, LLC, the U.S.-based overseas subsidiary of Yichuan Hongyuan Gas Technology Co., Ltd. He came to the United States in 2016 to study Accounting at Iowa State University and later earned a Master's degree in Business Analytics from Northeastern University in Boston.</p>
+                        <p>With professional experience in accounting roles at two U.S. companies, Wentao brings strong expertise in finance, compliance, and operations. In 2024, he co-founded Airocean Gases, LLC to lead the family business's global expansion, leveraging his academic background and cross-cultural insight to drive sustainable growth in overseas markets.</p>
                     </div>
                 </div>
             </div>
+
+            <div class="ab-leader sr">
+                <div class="ab-leader-photo">
+                    <img src="ceo.jpg" alt="Wenhao Guo — Board Member">
+                </div>
+                <div class="ab-leader-info">
+                    <p class="ab-leader-position">Board Member</p>
+                    <h3 class="ab-leader-name">Wenhao Guo</h3>
+                    <div class="ab-leader-bio">
+                        <p>Wenhao Guo is one of the founding Board Members of Airocean Gases, LLC, dedicated to delivering high-quality industrial gases and innovative solutions to customers worldwide. He is also the second-generation leader of his family-owned industrial gas business.</p>
+                        <p>In 2022 and 2023, Wenhao earned his Bachelor's degree in Management Information Systems at the University of Delaware and his Master's degree in Business Analytics at the University of Maryland — College Park. In 2022, Wenhao began preparing the Airocean Gases launch plan while working as a Process &amp; Forecast Specialist at a manufacturing company in the supply chain sector.</p>
+                        <p>Building on this educational and professional background, he brings extensive expertise, global supply chain resources, and a customer-first philosophy to the U.S. market. Airocean Gases LLC specializes in safe, reliable, and efficient gas products for industrial, medical, semiconductor, and food industries.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ab-leader sr">
+                <div class="ab-leader-photo">
+                    <img src="cto.jpg" alt="Jiahao Guo — Board Member">
+                </div>
+                <div class="ab-leader-info">
+                    <p class="ab-leader-position">Board Member</p>
+                    <h3 class="ab-leader-name">Jiahao Guo</h3>
+                    <div class="ab-leader-bio">
+                        <p>Jiahao Guo is one of the founding Board Members of Airocean Gases, LLC, carrying forward his family's legacy in the industrial and specialty gases sector where the family has been deeply rooted for decades. Building on this heritage, Jiahao is committed to connecting global gas supply with the U.S. market through reliable sourcing, competitive pricing, and exceptional customer service.</p>
+                        <p>Jiahao holds a Bachelor's degree in Finance from Arizona State University, a Master's degree in Financial Analysis from King's College London, and a Master's degree in Management and Systems from New York University. He combines strong academic grounding with hands-on industry experience in data analysis, business management, and international market development.</p>
+                        <p>With Airocean Gases, Jiahao's mission is to deliver high-purity rare gases, industrial gases, and related equipment to semiconductor manufacturing, medical, and research sectors — building a trustworthy supply chain and fostering long-term partnerships worldwide.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ═══ CAREERS CTA ═══ -->
+    <section class="ab-careers">
+        <div class="ab-careers-inner sr">
+            <div class="ab-careers-photo">
+                <img src="about_page_2.jpg" alt="Airocean Gases team">
+            </div>
+            <div class="ab-careers-text">
+                <p class="ab-careers-label">Careers</p>
+                <h2 class="ab-careers-title">Join Our Team</h2>
+                <p class="ab-careers-desc">We are committed to building the future of the rare gas industry. If you are ready to work in a precision-driven field and contribute to a global supply chain built on trust — we want to hear from you.</p>
+                <a href="contact.html" class="ab-careers-btn">Get in Touch <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="logo.png" alt="Airocean Gases Logo" class="logo-img">
+                </div>
+                <div class="footer-column">
+                    <h3>Follow Us</h3>
+                    <ul>
+                        <li><a href="https://api.whatsapp.com/send/?phone=9174317883&text&type=phone_number&app_absent=0"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
+                        <li><a href="https://www.linkedin.com/company/hygas/?viewAsMember=true"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                        <li><a href="https://www.instagram.com/airoceangases/?hl=en"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-conditions.html">Terms &amp; Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="products.html">Products &amp; Services</a></li>
+                        <li><a href="applications.html">Applications</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
             <div class="copyright">
-                <p style="font-size: 12px; margin-top: 10px;">&copy; 2023 Airocean Gases. All rights reserved.</p>
+                <p>&copy; 2025 Airocean Gases. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
+    <button id="back-to-top" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script>
+        (function () {
+            var els = document.querySelectorAll('.sr');
+            if (!els.length) return;
+            var obs = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                    if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
+                });
+            }, { threshold: 0.1 });
+            els.forEach(function (el) { obs.observe(el); });
+        })();
+    </script>
     <script src="script.js"></script>
 </body>
-</html> 
-
+</html>

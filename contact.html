@@ -1,290 +1,872 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Airocean Gases | Professional Gas Solutions Consultation</title>
-    <meta name="description" content="Contact Airocean Gases for professional gas solutions. We provide consultation services for industrial gases, medical gases, and specialty gases. 
-    Phone: +1 302 561 2790">
-    <meta name="keywords" content="contact us, gas consultation, industrial gas supply, Hongyuan Gas contact, Airocean Gases">
+    <title>Contact Us - Airocean Gases | Professional Gas Solutions</title>
+    <meta name="description" content="Contact Airocean Gases for professional consultation on industrial, medical, and specialty gases. Phone: +1 302 561 2790. Email: Guo@airoceangases.com">
+    <meta name="keywords" content="contact Airocean Gases, gas consultation, industrial gas supply, rare gas supplier contact">
     <meta name="author" content="Airocean Gases">
     <meta property="og:title" content="Contact Us - Airocean Gases">
-    <meta property="og:description" content="Professional gas solutions consultation service, contact us for quotes and technical support">
+    <meta property="og:description" content="Professional gas solutions consultation — contact us for quotes and technical support.">
     <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <style>
-        .contact-card { position: relative; }
-        .contact-card .company-logo {
-            position: absolute;
-            right: 16px;
-            top: 16px;
-            width: 200px;
-            height: auto;
-            opacity: 0.9;
-            z-index: 10;
+        /* ── Design tokens ── */
+        :root {
+            --ink:   #0c0e10;
+            --ink-2: #3d4147;
+            --ink-3: #8a909a;
+            --bg:    #f8f7f4;
+            --bg-2:  #f0ede8;
+            --rule:  #d8d4ce;
+            --navy:  #080f1d;
         }
-        @media (max-width: 768px) {
-            .contact-card .company-logo {
-                width: 150px;
-                right: 12px;
-                top: 12px;
-            }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        .ct-page {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg);
+            color: var(--ink);
+        }
+
+        /* ── Hero ── */
+        .ct-hero {
+            background: var(--navy);
+            color: #fff;
+            padding: 140px 0 72px;
+            position: relative;
+            overflow: hidden;
+        }
+        .ct-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+            background-size: 48px 48px;
+            pointer-events: none;
+        }
+        .ct-hero-inner {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 32px;
+            display: grid;
+            grid-template-columns: 1fr 240px;
+            align-items: end;
+            gap: 48px;
+        }
+        .ct-hero-eyebrow {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.38);
+            margin-bottom: 22px;
+        }
+        .ct-hero h1 {
+            font-size: clamp(2.8rem, 5.5vw, 4.4rem);
+            font-weight: 700;
+            line-height: 1.05;
+            letter-spacing: -0.035em;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        .ct-hero-sub {
+            font-size: 0.97rem;
+            color: rgba(255,255,255,0.5);
+            max-width: 500px;
+            line-height: 1.75;
+            font-weight: 300;
+        }
+        .ct-hero-ghost {
+            text-align: right;
+            align-self: flex-end;
+            padding-bottom: 4px;
+        }
+        .ct-hero-ghost-text {
+            display: block;
+            font-size: clamp(5rem, 9vw, 8rem);
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: -0.06em;
+            color: rgba(255,255,255,0.05);
+            -webkit-text-stroke: 1px rgba(255,255,255,0.13);
+        }
+        .ct-hero-ghost-label {
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.28);
+        }
+
+        /* ── Quick channel strip ── */
+        .ct-strip {
+            background: #fff;
+            border-bottom: 1px solid var(--rule);
+        }
+        .ct-strip-inner {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 32px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+        }
+        .ct-channel {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 24px 32px;
+            border-right: 1px solid var(--rule);
+            text-decoration: none;
+            color: var(--ink);
+            transition: color 0.2s, background 0.2s;
+        }
+        .ct-channel:first-child { padding-left: 0; }
+        .ct-channel:last-child  { border-right: none; }
+        .ct-channel:hover { color: var(--navy); background: var(--bg); }
+        .ct-channel-icon {
+            width: 38px;
+            height: 38px;
+            border: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            color: var(--ink-2);
+            flex-shrink: 0;
+            transition: border-color 0.2s, color 0.2s;
+        }
+        .ct-channel:hover .ct-channel-icon {
+            border-color: var(--ink);
+            color: var(--ink);
+        }
+        .ct-channel-label {
+            font-size: 0.66rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--ink-3);
+            margin-bottom: 4px;
+        }
+        .ct-channel-value {
+            font-size: 0.92rem;
+            font-weight: 500;
+            color: var(--ink);
+        }
+
+        /* ── Main: info + form ── */
+        .ct-main { padding: 72px 0 100px; }
+        .ct-main-inner {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 32px;
+            display: grid;
+            grid-template-columns: 2fr 3fr;
+            gap: 72px;
+            align-items: start;
+        }
+
+        /* ── Left info ── */
+        .ct-info-eyebrow {
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--ink-3);
+            margin-bottom: 16px;
+        }
+        .ct-info-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+        .ct-info-desc {
+            font-size: 0.85rem;
+            color: var(--ink-2);
+            line-height: 1.75;
+            font-weight: 300;
+            margin-bottom: 36px;
+        }
+
+        /* Detail rows with 1px rules */
+        .ct-details { border-top: 1px solid var(--rule); margin-bottom: 36px; }
+        .ct-detail-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--rule);
+        }
+        .ct-detail-icon {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.78rem;
+            color: var(--ink-3);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .ct-detail-label {
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--ink-3);
+            margin-bottom: 3px;
+        }
+        .ct-detail-value {
+            font-size: 0.9rem;
+            color: var(--ink);
+            font-weight: 500;
+        }
+        .ct-detail-value a {
+            color: var(--ink);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .ct-detail-value a:hover { color: var(--ink-2); text-decoration: underline; }
+
+        /* Socials */
+        .ct-social-label {
+            font-size: 0.66rem;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--ink-3);
+            margin-bottom: 12px;
+        }
+        .ct-socials {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 36px;
+        }
+        .ct-social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 8px 14px;
+            border: 1px solid var(--rule);
+            text-decoration: none;
+            font-size: 0.77rem;
+            font-weight: 600;
+            color: var(--ink-2);
+            transition: border-color 0.2s, color 0.2s, background 0.2s;
+        }
+        .ct-social-link:hover {
+            border-color: var(--ink);
+            color: var(--ink);
+            background: var(--bg-2);
+        }
+
+        /* Action buttons */
+        .ct-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+        .ct-action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 22px;
+            text-decoration: none;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            transition: background 0.2s, color 0.2s, transform 0.15s;
+        }
+        .ct-action-btn.primary {
+            background: var(--navy);
+            color: #fff;
+        }
+        .ct-action-btn.primary:hover { background: #0f1e3a; transform: translateY(-1px); }
+        .ct-action-btn.secondary {
+            background: transparent;
+            color: var(--ink);
+            border: 1px solid var(--rule);
+        }
+        .ct-action-btn.secondary:hover {
+            border-color: var(--ink);
+            background: var(--bg-2);
+            transform: translateY(-1px);
+        }
+
+        /* ── Form panel ── */
+        .ct-form-panel {
+            background: #fff;
+            border: 1px solid var(--rule);
+            padding: 48px;
+        }
+        .ct-form-eyebrow {
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--ink-3);
+            margin-bottom: 8px;
+        }
+        .ct-form-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--ink);
+            margin-bottom: 28px;
+        }
+
+        #formMessage {
+            display: none;
+            padding: 13px 16px;
+            margin-bottom: 20px;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            border-radius: 2px;
+        }
+
+        .form-row-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .ct-fg {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 16px;
+        }
+        .ct-fg label {
+            font-size: 0.69rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--ink-3);
+        }
+        .ct-fg input,
+        .ct-fg textarea,
+        .ct-fg select {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.92rem;
+            font-weight: 400;
+            color: var(--ink);
+            background: var(--bg);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 11px 14px;
+            outline: none;
+            transition: border-color 0.2s, background 0.2s;
+            width: 100%;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        .ct-fg input:focus,
+        .ct-fg textarea:focus,
+        .ct-fg select:focus {
+            border-color: var(--ink);
+            background: #fff;
+        }
+        .ct-fg input::placeholder,
+        .ct-fg textarea::placeholder {
+            color: var(--ink-3);
+            font-weight: 300;
+        }
+        .ct-fg textarea { resize: vertical; min-height: 140px; }
+
+        /* Custom chevron for selects */
+        .ct-select-wrap { position: relative; }
+        .ct-select-wrap::after {
+            content: '';
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 10px;
+            height: 6px;
+            background: var(--ink-3);
+            clip-path: polygon(0 0, 100% 0, 50% 100%);
+            pointer-events: none;
+        }
+        .ct-fg select option { color: var(--ink); background: #fff; }
+
+        .ct-submit {
+            width: 100%;
+            padding: 14px 24px;
+            background: var(--navy);
+            color: #fff;
+            border: none;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            margin-top: 8px;
+            transition: background 0.2s, transform 0.15s;
+        }
+        .ct-submit:hover  { background: #0f1e3a; transform: translateY(-1px); }
+        .ct-submit:active { transform: scale(0.99); }
+        .ct-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+        /* ── Map ── */
+        .ct-map { border-top: 1px solid var(--rule); }
+        .ct-map-inner {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 56px 32px;
+        }
+        .ct-map-header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            margin-bottom: 24px;
+        }
+        .ct-map-label {
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--ink-3);
+            margin-bottom: 6px;
+        }
+        .ct-map-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: var(--ink);
+        }
+        .ct-map-address {
+            font-size: 0.82rem;
+            color: var(--ink-3);
+            font-weight: 300;
+            text-align: right;
+            line-height: 1.65;
+        }
+        .ct-map-embed {
+            width: 100%;
+            height: 420px;
+            border: 1px solid var(--rule);
+            overflow: hidden;
+        }
+        .ct-map-embed iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+        }
+
+        /* ── Scroll reveal ── */
+        .sr {
+            opacity: 0;
+            transform: translateY(22px);
+            transition: opacity 0.75s cubic-bezier(0.22,1,0.36,1),
+                        transform 0.75s cubic-bezier(0.22,1,0.36,1);
+        }
+        .sr.in { opacity: 1; transform: none; }
+
+        /* ── Responsive ── */
+        @media (max-width: 960px) {
+            .ct-hero-inner       { grid-template-columns: 1fr; }
+            .ct-hero-ghost       { display: none; }
+            .ct-strip-inner      { grid-template-columns: 1fr; }
+            .ct-channel          { border-right: none; border-bottom: 1px solid var(--rule); padding: 18px 0 !important; }
+            .ct-channel:last-child { border-bottom: none; }
+            .ct-main-inner       { grid-template-columns: 1fr; gap: 48px; }
+            .ct-form-panel       { padding: 32px; }
+        }
+        @media (max-width: 600px) {
+            .ct-hero             { padding: 120px 0 56px; }
+            .ct-hero-inner       { padding: 0 20px; }
+            .ct-strip-inner      { padding: 0 20px; }
+            .ct-main-inner       { padding: 0 20px; }
+            .ct-form-panel       { padding: 24px 20px; }
+            .form-row-2          { grid-template-columns: 1fr; }
+            .ct-map-inner        { padding: 40px 20px; }
+            .ct-map-header       { flex-direction: column; align-items: flex-start; gap: 10px; }
+            .ct-map-address      { text-align: left; }
+            .ct-map-embed        { height: 300px; }
+            .ct-actions          { flex-direction: column; }
+            .ct-action-btn       { justify-content: center; }
         }
     </style>
 </head>
-<body>
-    <header style="background: white;">
+<body class="ct-page">
+
+    <!-- ── Navigation ── -->
+    <header>
         <div class="container">
             <div class="header-content">
                 <div class="header-logo">
-                    <img src="logo.png" alt="宏源气体 Logo" style="width: 120px; height:auto;">
+                    <img src="logo.png" alt="Airocean Gases Logo" class="logo-img">
                 </div>
                 <nav>
-                    <ul style="list-style-type: none; padding-left: 0; display: flex; gap: 15px;">
-                        <li><a href="index.html" style="color: #000000;">Home</a></li>
-                        <li><a href="about.html" style="color: #000000;">About Us</a></li>
-                        <li><a href="products.html" style="color: #000000;">Products & Services</a></li>
-                        <li><a href="applications.html" style="color: #000000;">Applications</a></li>
-                        <li><a href="contact.html" style="color: #000000;">Contact Us</a></li>
+                    <ul class="nav-menu">
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li><a href="about.html" class="nav-link">About Us</a></li>
+                        <li><a href="products.html" class="nav-link">Products & Services</a></li>
+                        <li><a href="applications.html" class="nav-link">Applications</a></li>
+                        <li><a href="contact.html" class="nav-link active-link">Contact Us</a></li>
                     </ul>
+                    <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                        <span></span><span></span><span></span>
+                    </button>
                 </nav>
             </div>
         </div>
     </header>
 
-    <section class="contact-hero">
-        <div class="container">
-            <div class="eyebrow">CONTACT</div>
-            <h1 class="contact-title">Let's Connect, Together for the Future</h1>
-            <p class="contact-subtitle">Connecting You to Purity and Safety</p>
-            <p class="contact-description">We are committed to quality and sustainable development, providing stable supply chains, strict safety standards, and professional support to ensure your operations are efficient and worry-free. No matter your industry, we can provide the right gas of high purity and high performance.</p>
+    <!-- ── Hero ── -->
+    <section class="ct-hero">
+        <div class="ct-hero-inner">
+            <div>
+                <p class="ct-hero-eyebrow">Direct Communication</p>
+                <h1>Get in Touch</h1>
+                <p class="ct-hero-sub">Whether you need a quote, technical consultation, or supply chain discussion — our specialists respond within 24 hours on every inquiry.</p>
+            </div>
+            <div class="ct-hero-ghost">
+                <span class="ct-hero-ghost-text">AG</span>
+                <span class="ct-hero-ghost-label">Airocean Gases</span>
+            </div>
         </div>
     </section>
 
-    <section class="contact-main">
-        <div class="container contact-grid">
-            <div class="contact-left">
+    <!-- ── Quick channel strip ── -->
+    <div class="ct-strip">
+        <div class="ct-strip-inner">
+            <a class="ct-channel" href="tel:+13025612790">
+                <div class="ct-channel-icon"><i class="fas fa-phone"></i></div>
+                <div>
+                    <div class="ct-channel-label">Phone</div>
+                    <div class="ct-channel-value">+1 302 561 2790</div>
+                </div>
+            </a>
+            <a class="ct-channel" href="mailto:Info@airoceangases.com">
+                <div class="ct-channel-icon"><i class="fas fa-envelope"></i></div>
+                <div>
+                    <div class="ct-channel-label">Email</div>
+                    <div class="ct-channel-value">Info@airoceangases.com</div>
+                </div>
+            </a>
+            <div class="ct-channel">
+                <div class="ct-channel-icon"><i class="fas fa-clock"></i></div>
+                <div>
+                    <div class="ct-channel-label">Business Hours</div>
+                    <div class="ct-channel-value">Mon – Fri &nbsp; 09:00 – 18:00</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                <div class="contact-card">
-                    <h3 class="contact-card-title">Airocean Gases</h3>
-                    <ul class="contact-list">
-                        <li><i class="fa-solid fa-location-dot"></i>USA</li>
-                        <li><i class="fa-solid fa-phone"></i><a href="tel:+13025612790">+1 302 561 2790</a></li>
-                        <li><i class="fa-solid fa-envelope"></i><a href="mailto:Guo@airoceangases.com">Guo@airoceangases.com</a></li>
-                        <li><i class="fa-regular fa-clock"></i>Monday - Friday 9:00 - 18:00</li>
-                    </ul>
-                    <div class="contact-description-text">
-                        <p>We are committed to providing professional gas solutions and excellent customer service. Whether you need industrial gases, medical gases, or specialty gases, our team is ready to assist you with technical consultation and customized solutions.</p>
-                        <p>Feel free to reach out to us through email or phone during business hours. We typically respond within 24 hours and are happy to discuss your specific requirements.</p>
+    <!-- ── Main: info + form ── -->
+    <section class="ct-main sr">
+        <div class="ct-main-inner">
+
+            <!-- Left: contact info -->
+            <div class="ct-info">
+                <p class="ct-info-eyebrow">Airocean Gases</p>
+                <h2 class="ct-info-title">We're Here to Help</h2>
+                <p class="ct-info-desc">From initial consultation through delivery and ongoing support, our team provides tailored service for every gas application — industrial, medical, or specialty.</p>
+
+                <div class="ct-details">
+                    <div class="ct-detail-row">
+                        <div class="ct-detail-icon"><i class="fas fa-location-dot"></i></div>
+                        <div>
+                            <div class="ct-detail-label">Location</div>
+                            <div class="ct-detail-value">United States</div>
+                        </div>
                     </div>
-                    <div class="contact-actions">
-                        <a class="btn primary" href="mailto:guo@airoceangases.com"><i class="fa-solid fa-paper-plane"></i> Send Email</a>
-                        <a class="btn secondary" href="tel:+13025612790"><i class="fa-solid fa-phone"></i> Call Us</a>
+                    <div class="ct-detail-row">
+                        <div class="ct-detail-icon"><i class="fas fa-phone"></i></div>
+                        <div>
+                            <div class="ct-detail-label">Phone</div>
+                            <div class="ct-detail-value"><a href="tel:+13025612790">+1 302 561 2790</a></div>
+                        </div>
                     </div>
-                    <img class="company-logo" src="logo.png" alt="Airocean Gases 标志">
+                    <div class="ct-detail-row">
+                        <div class="ct-detail-icon"><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <div class="ct-detail-label">Email</div>
+                            <div class="ct-detail-value"><a href="mailto:Info@airoceangases.com">Info@airoceangases.com</a></div>
+                        </div>
+                    </div>
+                    <div class="ct-detail-row">
+                        <div class="ct-detail-icon"><i class="fas fa-clock"></i></div>
+                        <div>
+                            <div class="ct-detail-label">Business Hours</div>
+                            <div class="ct-detail-value">Monday – Friday &nbsp;9:00 – 18:00</div>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="ct-social-label">Follow Us</p>
+                <div class="ct-socials">
+                    <a class="ct-social-link" href="https://api.whatsapp.com/send/?phone=9174317883&text&type=phone_number&app_absent=0">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                    <a class="ct-social-link" href="https://www.linkedin.com/company/hygas/?viewAsMember=true">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
+                    <a class="ct-social-link" href="https://www.instagram.com/airoceangases/?hl=en">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                </div>
+
+                <div class="ct-actions">
+                    <a class="ct-action-btn primary" href="mailto:Info@airoceangases.com">
+                        <i class="fas fa-paper-plane" style="font-size:0.75rem"></i>
+                        Send Email
+                    </a>
+                    <a class="ct-action-btn secondary" href="tel:+13025612790">
+                        <i class="fas fa-phone" style="font-size:0.75rem"></i>
+                        Call Us
+                    </a>
                 </div>
             </div>
 
-            <div class="contact-right">
+            <!-- Right: quote form -->
+            <div class="ct-form-panel">
+                <p class="ct-form-eyebrow">Inquiries &amp; Quotes</p>
+                <h3 class="ct-form-title">Send Us a Message</h3>
+
                 <div id="formMessage"></div>
-                <form id="quoteForm">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="qName">Name</label>
-                                <input type="text" id="qName" name="Name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="qCompany">Company</label>
-                                <input type="text" id="qCompany" name="Company">
+
+                <form id="quoteForm" novalidate>
+                    <div class="form-row-2">
+                        <div class="ct-fg">
+                            <label for="qName">Name <span style="color:#b91c1c">*</span></label>
+                            <input type="text" id="qName" name="Name" placeholder="Your full name" required>
+                        </div>
+                        <div class="ct-fg">
+                            <label for="qCompany">Company</label>
+                            <input type="text" id="qCompany" name="Company" placeholder="Organization">
+                        </div>
+                    </div>
+                    <div class="form-row-2">
+                        <div class="ct-fg">
+                            <label for="qEmail">Email <span style="color:#b91c1c">*</span></label>
+                            <input type="email" id="qEmail" name="Email" placeholder="you@company.com" required>
+                        </div>
+                        <div class="ct-fg">
+                            <label for="qPhone">Phone</label>
+                            <input type="tel" id="qPhone" name="Phone" placeholder="+1 000 000 0000">
+                        </div>
+                    </div>
+                    <div class="form-row-2">
+                        <div class="ct-fg">
+                            <label for="qInquiry">Inquiry Type <span style="color:#b91c1c">*</span></label>
+                            <div class="ct-select-wrap">
+                                <select id="qInquiry" name="InquiryType" required>
+                                    <option value="" disabled selected>Select inquiry type</option>
+                                    <option value="Request a Quote">Request a Quote</option>
+                                    <option value="Technical Consultation">Technical Consultation</option>
+                                    <option value="Supply Chain Discussion">Supply Chain Discussion</option>
+                                    <option value="General Inquiry">General Inquiry</option>
+                                </select>
                             </div>
                         </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="qEmail">Email</label>
-                                <input type="email" id="qEmail" name="Email" required>
+                        <div class="ct-fg">
+                            <label for="qProduct">Gas of Interest</label>
+                            <div class="ct-select-wrap">
+                                <select id="qProduct" name="Product">
+                                    <option value="" disabled selected>Select a gas</option>
+                                    <option value="Krypton (Kr)">Krypton (Kr)</option>
+                                    <option value="Xenon (Xe)">Xenon (Xe)</option>
+                                    <option value="Neon (Ne)">Neon (Ne)</option>
+                                    <option value="Helium (He)">Helium (He)</option>
+                                    <option value="Sulfur Hexafluoride (SF₆)">Sulfur Hexafluoride (SF₆)</option>
+                                    <option value="Nitrous Oxide (N₂O)">Nitrous Oxide (N₂O)</option>
+                                    <option value="Tetrafluoromethane (CF₄)">Tetrafluoromethane (CF₄)</option>
+                                    <option value="Multiple / Mixed Gases">Multiple / Mixed Gases</option>
+                                    <option value="Other / Not Listed">Other / Not Listed</option>
+                                </select>
                             </div>
-                            <div class="form-group">
-                                <label for="qPhone">Phone</label>
-                                <input type="tel" id="qPhone" name="Phone">
-                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="qProduct">Product/Gas</label>
-                            <input type="text" id="qProduct" name="Product">
-                        </div>
-                        <div class="form-group">
-                            <label for="qMessage">Project Description / Other Requirements</label>
-                            <textarea id="qMessage" name="Message" rows="15" required></textarea>
-                        </div>
-                        <button type="submit" class="btn primary full">Submit Request</button>
+                    </div>
+                    <div class="ct-fg">
+                        <label for="qMessage">Project Description / Requirements <span style="color:#b91c1c">*</span></label>
+                        <textarea id="qMessage" name="Message" rows="6" placeholder="Describe your application, required volumes, purity grade, delivery location, or any other specifications..." required></textarea>
+                    </div>
+                    <button type="submit" class="ct-submit">
+                        <i class="fas fa-paper-plane" style="font-size:0.75rem"></i>
+                        Submit Request
+                    </button>
                 </form>
             </div>
         </div>
     </section>
 
-    <section class="map-section">
-        <div class="container">
-            <div class="map embed">
+    <!-- ── Map ── -->
+    <div class="ct-map sr">
+        <div class="ct-map-inner">
+            <div class="ct-map-header">
+                <div>
+                    <p class="ct-map-label">Production Facility</p>
+                    <h3 class="ct-map-title">Yichuan Hongyuan Gas Technology</h3>
+                </div>
+                <p class="ct-map-address">
+                    Northeast Gate, Yichuan County<br>
+                    Henan Province, China
+                </p>
+            </div>
+            <div class="ct-map-embed">
                 <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3291.36225542222!2d112.4930420770723!3d34.417552398350345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x367886e6b198b34f%3A0x452755c7eb08f737!2sYichuan%20Hongyuan%20Gas%20Technology%20Co.%2C%20Ltd.%20%EF%BC%88Northeast%20Gate%EF%BC%89!5e0!3m2!1sen!2sus!4v1741846766776!5m2!1sen!2sus"
-                    width="100%"
-                    height="450"
-                    style="border:0;"
                     allowfullscreen=""
-                    loading="lazy"></iframe>
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
             </div>
         </div>
-    </section>
+    </div>
 
-    <footer style="background: white; border-top: 1px solid #000000;">
+    <!-- ── Footer ── -->
+    <footer>
         <div class="container">
-            <div class="footer-content" style="display: flex; justify-content: space-between; align-items: center;">
+            <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="logo.png" alt="宏源气体 Logo" style="width: 120px; height:auto;">
+                    <img src="logo.png" alt="Airocean Gases Logo" class="logo-img">
                 </div>
                 <div class="footer-column">
-                    <div class="social-media">
-                        <h3 style="font-size: 16px; margin-bottom: 8px;">Follow Us</h3>
-                        <ul style="list-style-type: none; padding-left: 0;">
-                            <li style="margin-bottom: 4px;"><a href="https://api.whatsapp.com/send/?phone=9174317883&text&type=phone_number&app_absent=0" style="color: #000000; font-size: 13px;"><i class="fab fa-whatsapp"></i> Whatsapp</a></li>
-                            <li style="margin-bottom: 4px;"><a href="https://www.linkedin.com/company/hygas/?viewAsMember=true" style="color: #000000; font-size: 13px;"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
-                            <li style="margin-bottom: 4px;"><a href="https://www.instagram.com/airoceangases/?hl=en" style="color: #000000; font-size: 13px;"><i class="fab fa-instagram"></i> Instagram</a></li>
-                        </ul>
-                    </div>
+                    <h3>Follow Us</h3>
+                    <ul>
+                        <li><a href="https://api.whatsapp.com/send/?phone=9174317883&text&type=phone_number&app_absent=0"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
+                        <li><a href="https://www.linkedin.com/company/hygas/?viewAsMember=true"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                        <li><a href="https://www.instagram.com/airoceangases/?hl=en"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    </ul>
                 </div>
                 <div class="footer-column">
-                    <div class="legal-info">
-                        <h3 style="font-size: 16px; margin-bottom: 8px;">Legal Information</h3>
-                        <ul style="list-style-type: none; padding-left: 0;">
-                            <li style="margin-bottom: 4px;"><a href="privacy-policy.html" style="color: #000000; font-size: 13px;">Privacy Policy</a></li>
-                            <li style="margin-bottom: 4px;"><a href="terms-conditions.html" style="color: #000000; font-size: 13px;">Terms & Conditions</a></li>
-                        </ul>
-                    </div>
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-conditions.html">Terms & Conditions</a></li>
+                    </ul>
                 </div>
                 <div class="footer-column">
-                    <div class="quick-links">
-                        <h3 style="font-size: 16px; margin-bottom: 8px;">Quick Links</h3>
-                        <ul style="list-style-type: none; padding-left: 0;">
-                            <li style="margin-bottom: 4px;"><a href="index.html" style="color: #000000; font-size: 13px;">Home</a></li>
-                            <li style="margin-bottom: 4px;"><a href="about.html" style="color: #000000; font-size: 13px;">About Us</a></li>
-                            <li style="margin-bottom: 4px;"><a href="products.html" style="color: #000000; font-size: 13px;">Products & Services</a></li>
-                            <li style="margin-bottom: 4px;"><a href="applications.html" style="color: #000000; font-size: 13px;">Applications</a></li>
-                            <li style="margin-bottom: 4px;"><a href="contact.html" style="color: #000000; font-size: 13px;">Contact Us</a></li>   
-                        </ul>
-                    </div>
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="products.html">Products & Services</a></li>
+                        <li><a href="applications.html">Applications</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
                 </div>
             </div>
             <div class="copyright">
-                <p style="font-size: 12px; margin-top: 10px;">&copy; 2023 Airocean Gases. All rights reserved.</p>
+                <p>&copy; 2025 Airocean Gases. All rights reserved.</p>
             </div>
         </div>
     </footer>
-    
-    
+
+    <button id="back-to-top" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
     <script src="script.js"></script>
+
+    <!-- Scroll reveal -->
+    <script>
+        const srEls = document.querySelectorAll('.sr');
+        if ('IntersectionObserver' in window) {
+            const obs = new IntersectionObserver(entries => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
+                });
+            }, { threshold: 0.08 });
+            srEls.forEach(el => obs.observe(el));
+        } else {
+            srEls.forEach(el => el.classList.add('in'));
+        }
+    </script>
+
+    <!-- EmailJS form submission — logic preserved exactly -->
     <script type="text/javascript">
-        // 等待页面和EmailJS库加载完成
         document.addEventListener('DOMContentLoaded', function() {
-            // 检查EmailJS是否加载
             if (typeof emailjs === 'undefined') {
                 console.error('EmailJS library not loaded');
                 return;
             }
-            
-            // 初始化EmailJS
-            emailjs.init("TvpBmzayCfUho8Rzj");
-            console.log('EmailJS initialized');
 
-            // 表单提交处理
+            emailjs.init("TvpBmzayCfUho8Rzj");
+
             const quoteForm = document.getElementById('quoteForm');
-            if (!quoteForm) {
-                console.error('Form not found');
-                return;
-            }
+            if (!quoteForm) return;
 
             quoteForm.addEventListener('submit', function(event) {
                 event.preventDefault();
-                
-                const formMessage = document.getElementById('formMessage');
+
+                const formMessage  = document.getElementById('formMessage');
                 const submitButton = this.querySelector('button[type="submit"]');
-                const originalButtonText = submitButton.innerHTML;
-                
-                // 显示加载状态
-                submitButton.disabled = true;
-                submitButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+                const originalHTML = submitButton.innerHTML;
+
+                submitButton.disabled   = true;
+                submitButton.innerHTML  = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
                 formMessage.style.display = 'none';
-                
-                // 收集表单数据
+
                 const formData = {
-                    from_name: document.getElementById('qName').value.trim(),
-                    from_email: document.getElementById('qEmail').value.trim(),
-                    company: document.getElementById('qCompany').value.trim(),
-                    phone: document.getElementById('qPhone').value.trim(),
-                    product: document.getElementById('qProduct').value.trim(),
-                    message: document.getElementById('qMessage').value.trim(),
-                    to_email: 'guo@airoceangases.com'
+                    from_name:    document.getElementById('qName').value.trim(),
+                    from_email:   document.getElementById('qEmail').value.trim(),
+                    company:      document.getElementById('qCompany').value.trim(),
+                    phone:        document.getElementById('qPhone').value.trim(),
+                    inquiry_type: document.getElementById('qInquiry').value,
+                    product:      document.getElementById('qProduct').value,
+                    message:      document.getElementById('qMessage').value.trim(),
+                    to_email:     'guo@airoceangases.com'
                 };
-                
-                // 验证必填字段
-                if (!formData.from_name || !formData.from_email || !formData.message) {
-                    formMessage.style.display = 'block';
-                    formMessage.style.backgroundColor = '#f8d7da';
-                    formMessage.style.color = '#721c24';
-                    formMessage.style.border = '1px solid #f5c6cb';
-                    formMessage.innerHTML = '<i class="fa-solid fa-exclamation-circle"></i> Please fill in all required fields (Name, Email, and Message).';
-                    submitButton.disabled = false;
-                    submitButton.innerHTML = originalButtonText;
+
+                if (!formData.from_name || !formData.from_email || !formData.inquiry_type || !formData.message) {
+                    formMessage.style.display         = 'block';
+                    formMessage.style.backgroundColor = '#fef2f2';
+                    formMessage.style.color           = '#7f1d1d';
+                    formMessage.style.border          = '1px solid #fca5a5';
+                    formMessage.style.padding         = '13px 16px';
+                    formMessage.innerHTML = '<i class="fa-solid fa-exclamation-circle"></i> Please fill in all required fields (Name, Email, Inquiry Type, and Message).';
+                    submitButton.disabled  = false;
+                    submitButton.innerHTML = originalHTML;
                     return;
                 }
-                
-                console.log('Sending email with data:', formData);
-                
-                // 发送邮件
+
                 emailjs.send('service_feex15j', 'template_qa78uco', formData)
-                    .then(function(response) {
-                        console.log('Email sent successfully!', response.status, response.text);
-                        
-                        // 成功
-                        formMessage.style.display = 'block';
-                        formMessage.style.backgroundColor = '#d4edda';
-                        formMessage.style.color = '#155724';
-                        formMessage.style.border = '1px solid #c3e6cb';
-                        formMessage.innerHTML = '<i class="fa-solid fa-check-circle"></i> Thank you! Your message has been sent successfully. We will respond to you within 24 hours.';
-                        
-                        // 重置表单
+                    .then(function() {
+                        formMessage.style.display         = 'block';
+                        formMessage.style.backgroundColor = '#f0fdf4';
+                        formMessage.style.color           = '#14532d';
+                        formMessage.style.border          = '1px solid #86efac';
+                        formMessage.style.padding         = '13px 16px';
+                        formMessage.innerHTML = '<i class="fa-solid fa-check-circle"></i> Thank you — your message has been sent. We will respond within 24 hours.';
                         quoteForm.reset();
-                        
-                        // 恢复按钮
-                        submitButton.disabled = false;
-                        submitButton.innerHTML = originalButtonText;
+                        submitButton.disabled  = false;
+                        submitButton.innerHTML = originalHTML;
                     }, function(error) {
-                        console.error('EmailJS error:', error);
-                        
-                        // 失败 - 显示详细错误信息
-                        let errorMessage = 'Sorry, there was an error sending your message. ';
-                        
-                        if (error.text) {
-                            errorMessage += 'Error: ' + error.text;
-                        } else if (error.status) {
-                            errorMessage += 'Error code: ' + error.status;
-                        } else {
-                            errorMessage += 'Please try again or contact us directly at guo@airoceangases.com';
-                        }
-                        
-                        formMessage.style.display = 'block';
-                        formMessage.style.backgroundColor = '#f8d7da';
-                        formMessage.style.color = '#721c24';
-                        formMessage.style.border = '1px solid #f5c6cb';
-                        formMessage.innerHTML = '<i class="fa-solid fa-exclamation-circle"></i> ' + errorMessage;
-                        
-                        // 恢复按钮
-                        submitButton.disabled = false;
-                        submitButton.innerHTML = originalButtonText;
+                        let msg = 'Sorry, there was an error sending your message. ';
+                        if (error.text)        msg += 'Error: ' + error.text;
+                        else if (error.status) msg += 'Error code: ' + error.status;
+                        else                   msg += 'Please try again or email us directly at guo@airoceangases.com';
+
+                        formMessage.style.display         = 'block';
+                        formMessage.style.backgroundColor = '#fef2f2';
+                        formMessage.style.color           = '#7f1d1d';
+                        formMessage.style.border          = '1px solid #fca5a5';
+                        formMessage.style.padding         = '13px 16px';
+                        formMessage.innerHTML = '<i class="fa-solid fa-exclamation-circle"></i> ' + msg;
+                        submitButton.disabled  = false;
+                        submitButton.innerHTML = originalHTML;
                     });
             });
         });
     </script>
 </body>
-</html> 
+</html>

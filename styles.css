@@ -7,7 +7,6 @@ body {
     color: #333;
     background: white;
     min-height: 100vh;
-    padding-top: 80px; /* 为固定导航栏留出空间，避免内容被遮挡 */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -30,29 +29,32 @@ body {
     margin: 0 auto;
 }
 
-/* 顶部导航栏 */
+/* 顶部导航栏 — 默认透明，浮于深色 hero 之上 */
 header {
-    background: rgba(255, 255, 255, 0.95); /* 半透明白色背景 */
-    color: #333;
-    padding: 10px 0; /* 减少上下padding */
+    background: transparent;
+    color: #fff;
+    padding: 10px 0;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
-    border-bottom: 1px solid #e0e0e0; /* 初始状态显示水平线 */
-    box-shadow: none; /* 初始无阴影 */
-    transition: all 0.3s ease, transform 0.3s ease; /* 添加transform过渡效果 */
-    transform: translateY(0) !important; /* 强制显示，避免任何隐藏 */
-    opacity: 1 !important; /* 强制显示，避免任何透明度变化 */
-    visibility: visible !important; /* 强制显示，避免任何隐藏 */
+    border-bottom: 1px solid transparent;
+    box-shadow: none;
+    transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
 }
 
-/* 当滚动时导航栏样式 */
+/* 滚动后：深色半透明背景 */
 header.scrolled {
-    background: rgba(255, 255, 255, 0.98);
-    border-bottom: none; /* 滚动时隐藏水平线 */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* 滚动时显示灰色阴影 */
+    background: rgba(8, 15, 29, 0.94);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
+}
+
+/* 辅助页面（无深色 hero）用此 class 让 header 始终有底色 */
+header.header-solid {
+    background: rgba(8, 15, 29, 0.97);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
 }
 
 /* 导航栏内容布局 */
@@ -75,11 +77,16 @@ nav ul {
 }
 
 nav a {
-    color: white;
+    color: rgba(255, 255, 255, 0.85);
     text-decoration: none;
-    font-size: 14px; /* 减小字体大小 */
-    padding: 5px 8px; /* 添加一些内边距 */
-    transition: color 0.3s ease;
+    font-size: 14px;
+    padding: 5px 8px;
+    transition: color 0.25s ease;
+}
+
+nav a:hover,
+nav a.active-link {
+    color: #ffffff;
 }
 
 /* 英雄区域容器 - 已废弃，使用 hero-slider-container 替代 */
@@ -114,7 +121,7 @@ nav a {
     color: white;
     padding: 20px;
     position: relative;
-    padding-top: 120px; /* 为导航栏留出空间 */
+    padding-top: 0;
 }
 
 /* 轮播图内容 */
@@ -3650,3 +3657,268 @@ html {
         font-size: 0.9rem;
     }
 }
+
+/* ============================================
+   ENHANCEMENTS: Nav, Animations, Mobile Menu,
+   Scroll-to-top, Visual Polish
+   ============================================ */
+
+/* --- Logo --- */
+.logo-img {
+    width: 120px;
+    height: auto;
+}
+
+/* --- Nav links --- */
+.nav-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.nav-link {
+    color: rgba(255, 255, 255, 0.82);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 6px 10px;
+    border-radius: 6px;
+    position: relative;
+    transition: color 0.25s ease, background 0.25s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    right: 10px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.55);
+    transform: scaleX(0);
+    transition: transform 0.25s ease;
+    border-radius: 2px;
+}
+
+.nav-link:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.nav-link:hover::after,
+.nav-link.active-link::after {
+    transform: scaleX(1);
+}
+
+.nav-link.active-link {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* --- Hamburger button --- */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 6px;
+    transition: background 0.2s ease;
+}
+
+.hamburger:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* --- Mobile menu --- */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    nav {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(8, 15, 29, 0.97);
+        flex-direction: column;
+        gap: 0;
+        padding: 12px 0;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.28);
+        border-top: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .nav-menu.open {
+        display: flex;
+    }
+
+    .nav-menu li {
+        width: 100%;
+    }
+
+    .nav-link {
+        display: block;
+        padding: 12px 24px;
+        border-radius: 0;
+        font-size: 15px;
+        color: rgba(255, 255, 255, 0.78);
+    }
+
+    .nav-link:hover {
+        color: #fff;
+        background: rgba(255, 255, 255, 0.06);
+    }
+
+    .nav-link.active-link {
+        color: #fff;
+    }
+
+    .nav-link::after {
+        display: none;
+    }
+
+    .logo-img {
+        width: 100px;
+    }
+}
+
+/* --- Scroll reveal --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Back to top button --- */
+#back-to-top {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 44px;
+    height: 44px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, background 0.2s ease;
+    z-index: 999;
+    box-shadow: 0 4px 16px rgba(0,123,255,0.35);
+}
+
+#back-to-top.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+#back-to-top:hover {
+    background: #0056b3;
+}
+
+/* --- Popular product card hover enhancement --- */
+.popular-product-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.popular-product-card:hover {
+    transform: translateY(-6px) !important;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.12) !important;
+}
+
+/* --- Service item hover --- */
+.service-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.service-item:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.10) !important;
+}
+
+/* --- Featured card subtle lift --- */
+.featured-card {
+    transition: transform 0.35s ease !important;
+}
+
+.featured-card:hover {
+    transform: scale(1.025) !important;
+}
+
+/* --- CTA button shine effect --- */
+.cta-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+    transition: left 0.5s ease;
+}
+
+.cta-btn:hover::after {
+    left: 140%;
+}
+
+/* --- Footer clean-up --- */
+footer {
+    padding: 32px 0 20px !important;
+}
+
+.footer-content {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.copyright p {
+    font-size: 12px;
+    color: #888 !important;
+    margin: 16px 0 0;
+    text-align: center;
+}
+

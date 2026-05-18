@@ -1,777 +1,357 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xe - 氙气产品详情 - 宏源气体</title>
+    <title>Xenon (Xe) — Airocean Gases</title>
+    <meta name="description" content="High-purity Xenon gas (Grade 5.0 &amp; 6.0) for aerospace propulsion, semiconductor, medical, and laser applications. CAS 7440-63-3. Airocean Gases.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        .product-detail-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 60px 20px;
-        }
-        
-        .product-header {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            margin-bottom: 50px;
-            margin-top: 40px;
-        }
-        
-        .chemical-symbol {
-            width: 120px;
-            height: 120px;
-            background: linear-gradient(135deg, #1443c5 0%, #6f58f0 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px;
-            font-size: 3rem;
-            font-weight: bold;
-            color: #000;
-        }
-        
-        .product-info {
-            flex: 1;
-        }
-        
-        .product-name {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: #333;
-        }
-        
-        .product-description {
-            font-size: 1.1rem;
-            color: #666;
-            line-height: 1.5;
-        }
-        
-        .info-tables {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 50px;
-        }
-        
-        .info-table {
-            background: #f8f9fa;
-            padding: 25px;
-            border-radius: 8px;
-            border: 1px solid #e9ecef;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .info-table::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,107,53,0.1), transparent);
-            transition: left 0.5s ease;
-        }
-        
-        .info-table:hover::before {
-            left: 100%;
-        }
-        
-        .info-table:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
-        
-        .table-title {
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: #333;
-            position: relative;
-            animation: slideInFromLeft 0.6s ease;
-        }
-        
-        .table-title::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background: #ff6b35;
-            transition: width 0.3s ease;
-        }
-        
-        .info-table:hover .table-title::after {
-            width: 50px;
-        }
-        
-        .table-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 12px 0;
-            border-bottom: 1px solid #dee2e6;
-            transition: all 0.3s ease;
-            animation: fadeInUp 0.6s ease;
-            animation-fill-mode: both;
-        }
-        
-        .table-row:nth-child(2) { animation-delay: 0.1s; }
-        .table-row:nth-child(3) { animation-delay: 0.2s; }
-        .table-row:nth-child(4) { animation-delay: 0.3s; }
-        .table-row:nth-child(5) { animation-delay: 0.4s; }
-        .table-row:nth-child(6) { animation-delay: 0.5s; }
-        .table-row:nth-child(7) { animation-delay: 0.6s; }
-        
-        .table-row:hover {
-            background: rgba(255,107,53,0.05);
-            transform: translateX(5px);
-            border-radius: 5px;
-            padding-left: 10px;
-            padding-right: 10px;
-        }
-        
-        .table-row:last-child {
-            border-bottom: none;
-        }
-        
-        .table-label {
-            font-weight: bold;
-            color: #333;
-            transition: color 0.3s ease;
-        }
-        
-        .table-row:hover .table-label {
-            color: #ff6b35;
-        }
-        
-        .table-value {
-            color: #666;
-            transition: all 0.3s ease;
-        }
-        
-        .table-row:hover .table-value {
-            color: #333;
-            font-weight: 600;
-        }
-        
-        .about-section {
-            margin-bottom: 50px;
-        }
-        
-        .section-title {
-            font-size: 1.8rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: #333;
-        }
-        
-        .about-content {
-            font-size: 1rem;
-            line-height: 1.7;
-            color: #555;
-            margin-bottom: 30px;
-        }
-        
-        .download-buttons {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .btn-sds {
-            background: #ff6b35;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 6px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        
-        .btn-sds:hover {
-            background: #e55a2b;
-        }
-        
-        .btn-pdf {
-            background: white;
-            color: #333;
-            border: 2px solid #333;
-            padding: 12px 24px;
-            border-radius: 6px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .btn-pdf:hover {
-            background: #333;
-            color: white;
-        }
-        
-        .product-grade-section {
-            margin-bottom: 50px;
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .product-grade-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,107,53,0.1), transparent);
-            transition: left 0.5s ease;
-        }
-        
-        .product-grade-section:hover::before {
-            left: 100%;
-        }
-        
-        .product-grade-section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
-        
-        .grade-tabs {
-            display: flex;
-            gap: 2px;
-            margin-bottom: 30px;
-            border-bottom: 2px solid #e9ecef;
-            background: #f8f9fa;
-            border-radius: 8px 8px 0 0;
-            padding: 5px 5px 0 5px;
-        }
-        
-        .grade-tab {
-            padding: 15px 20px;
-            background: #f8f9fa;
-            border: none;
-            cursor: pointer;
-            font-weight: 600;
-            color: #6c757d;
-            transition: all 0.3s ease;
-            border-radius: 6px 6px 0 0;
-            flex: 1;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .grade-tab::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,107,53,0.2), transparent);
-            transition: left 0.3s ease;
-        }
-        
-        .grade-tab:hover::before {
-            left: 100%;
-        }
-        
-        .grade-tab.active {
-            background: white;
-            color: #333;
-            border-bottom: 3px solid #ff6b35;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-            animation: tabActivate 0.3s ease;
-        }
-        
-        .grade-tab:hover {
-            background: #e9ecef;
-            color: #333;
-            transform: translateY(-2px);
-        }
-        
-        .grade-specs {
-            background: white;
-            padding: 30px;
-            border-radius: 0 0 8px 8px;
-            border: 1px solid #e9ecef;
-            border-top: none;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .grade-specs::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,107,53,0.1), transparent);
-            transition: left 0.5s ease;
-        }
-        
-        .grade-specs:hover::before {
-            left: 100%;
-        }
-        
-        .grade-specs:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-        }
-        
-        .spec-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 15px 0;
-            border-bottom: 1px solid #e9ecef;
-            transition: all 0.3s ease;
-            animation: fadeInUp 0.6s ease;
-            animation-fill-mode: both;
-        }
-        
-        .spec-row:nth-child(1) { animation-delay: 0.1s; }
-        .spec-row:nth-child(2) { animation-delay: 0.2s; }
-        .spec-row:nth-child(3) { animation-delay: 0.3s; }
-        .spec-row:nth-child(4) { animation-delay: 0.4s; }
-        
-        .spec-row:hover {
-            background: rgba(255,107,53,0.05);
-            transform: translateX(5px);
-            border-radius: 6px;
-            padding-left: 10px;
-            padding-right: 10px;
-        }
-        
-        .spec-row:last-child {
-            border-bottom: none;
-        }
-        
-        .spec-label {
-            font-weight: 600;
-            color: #495057;
-            transition: color 0.3s ease;
-        }
-        
-        .spec-row:hover .spec-label {
-            color: #ff6b35;
-        }
-        
-        .spec-value {
-            color: #6c757d;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        
-        .spec-row:hover .spec-value {
-            color: #333;
-            font-weight: 600;
-        }
-        
-        .spec-value.highlight {
-            color: #ff6b35;
-            font-weight: bold;
-            background: rgba(255,107,53,0.1);
-            padding: 4px 8px;
-            border-radius: 4px;
-            animation: pulse 2s infinite;
-        }
-
-        /* Package tabs/specs (供货方式与包装规格) */
-        .package-tabs { display: flex; gap: 2px; margin-bottom: 30px; border-bottom: 2px solid #e9ecef; background: #f8f9fa; border-radius: 8px 8px 0 0; padding: 5px 5px 0 5px; }
-        .package-tab { padding: 15px 20px; background: #f8f9fa; border: none; cursor: pointer; font-weight: 600; color: #6c757d; transition: all 0.3s ease; border-radius: 6px 6px 0 0; flex: 1; text-align: center; position: relative; overflow: hidden; }
-        .package-tab::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,107,53,0.2), transparent); transition: left 0.3s ease; }
-        .package-tab:hover::before { left: 100%; }
-        .package-tab:hover { background: #e9ecef; color: #333; transform: translateY(-2px); }
-        .package-tab.active { background: #ffffff; color: #333; border-bottom: 3px solid #ff6b35; box-shadow: 0 -2px 10px rgba(0,0,0,0.1); animation: tabActivate 0.3s ease; }
-        .package-specs { background: #ffffff; padding: 30px; border-radius: 0 0 8px 8px; border: 1px solid #e9ecef; border-top: none; }
-        .package-row { display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid #e9ecef; transition: all 0.3s ease; animation: fadeInUp 0.6s ease; animation-fill-mode: both; }
-        .package-row:hover { background: rgba(255,107,53,0.05); transform: translateX(5px); border-radius: 6px; padding-left: 10px; padding-right: 10px; }
-        .package-row:last-child { border-bottom: none; }
-        
-        .footnote {
-            font-size: 0.9rem;
-            color: #6c757d;
-            margin-top: 20px;
-            padding-top: 15px;
-            border-top: 1px solid #e9ecef;
-            font-style: italic;
-            animation: fadeInUp 0.8s ease;
-            animation-delay: 0.5s;
-            animation-fill-mode: both;
-        }
-        
-        .back-btn {
-            position: fixed;
-            top: 100px;
-            left: 30px;
-            background: none;
-            color: #2a5298;
-            border: none;
-            padding: 15px 25px;
-            cursor: pointer;
-            font-size: 1.1rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-        
-        .back-btn:hover {
-            color: #1e3f6b;
-            transform: translateX(-5px);
-        }
-        
-        @keyframes slideInFromLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes tabActivate {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
-        
-        @keyframes pulse {
-            0%, 100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.8;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .product-header {
-                flex-direction: column;
-                gap: 20px;
-            }
-            
-            .info-tables {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            
-            .download-buttons {
-                flex-direction: column;
-            }
-            
-            .grade-tabs {
-                flex-wrap: wrap;
-            }
-            
-            .back-btn {
-                top: 80px;
-                left: 15px;
-                padding: 12px 20px;
-                font-size: 1rem;
-            }
-            .package-row { flex-direction: column; gap: 6px; align-items: flex-start; }
-        }
+        :root { --ink:#0c0e10; --ink-2:#3d4147; --ink-3:#8a909a; --bg:#f8f7f4; --bg-2:#f0ede8; --rule:#d8d4ce; --navy:#080f1d; --accent:#1d4ed8; }
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+        body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;}
+        .sr{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;} .sr.in{opacity:1;transform:none;}
+        .pd-hero{position:relative;background:var(--navy);min-height:100dvh;display:flex;align-items:flex-end;padding-bottom:80px;overflow:hidden;}
+        .pd-hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;}
+        .pd-hero::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);}
+        .pd-ghost{position:absolute;right:-2vw;bottom:-0.1em;font-family:'Outfit',sans-serif;font-size:clamp(18rem,32vw,38rem);font-weight:900;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.06);user-select:none;pointer-events:none;}
+        .pd-hero-inner{position:relative;z-index:2;width:90%;max-width:1400px;margin:0 auto;}
+        .pd-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:28px;}
+        .pd-eyebrow-line{width:32px;height:1px;background:var(--accent);}
+        .pd-eyebrow-text{font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.5);}
+        .pd-atomic{font-size:clamp(1rem,2vw,1.25rem);font-weight:300;color:rgba(255,255,255,.35);letter-spacing:.04em;margin-bottom:8px;}
+        .pd-symbol{font-size:clamp(4.5rem,10vw,9rem);font-weight:800;line-height:.9;color:#fff;letter-spacing:-.03em;margin-bottom:16px;}
+        .pd-name-en{font-size:clamp(1.4rem,3vw,2.2rem);font-weight:300;color:rgba(255,255,255,.55);letter-spacing:.06em;margin-bottom:36px;}
+        .pd-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);max-width:720px;}
+        .pd-stat{background:rgba(8,15,29,.6);padding:18px 20px;}
+        .pd-stat-label{font-size:.62rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:6px;}
+        .pd-stat-value{font-size:1rem;font-weight:600;color:#fff;}
+        .pd-info-section{background:var(--bg);}
+        .pd-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);}
+        .pd-info-col{background:var(--bg);padding:56px 5%;}
+        .pd-section-label{font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:28px;}
+        .pd-data-row{display:flex;justify-content:space-between;align-items:baseline;padding:12px 0;border-bottom:1px solid var(--rule);gap:16px;}
+        .pd-data-row:last-child{border-bottom:none;}
+        .pd-data-key{font-size:.78rem;font-weight:500;color:var(--ink-3);flex-shrink:0;}
+        .pd-data-val{font-size:.88rem;font-weight:600;color:var(--ink);text-align:right;}
+        .pd-about{padding:96px 0;background:var(--bg-2);}
+        .pd-about-inner{width:90%;max-width:1400px;margin:0 auto;display:grid;grid-template-columns:38% 1fr;gap:110px;align-items:start;}
+        .pd-about-aside{position:sticky;top:100px;}
+        .pd-about-h2{font-size:clamp(2.4rem,5vw,4.2rem);font-weight:800;line-height:1.05;letter-spacing:-.03em;color:var(--ink);}
+        .pd-about-h2 span{color:var(--accent);}
+        .pd-about-body p{font-size:1rem;font-weight:400;line-height:1.8;color:var(--ink-2);margin-bottom:24px;max-width:65ch;}
+        .pd-about-body p:last-child{margin-bottom:0;}
+        .pd-grade-section{background:var(--navy);padding:80px 0;position:relative;overflow:hidden;}
+        .pd-grade-section::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;}
+        .pd-grade-inner{position:relative;z-index:2;width:90%;max-width:1400px;margin:0 auto;}
+        .pd-grade-header{margin-bottom:48px;}
+        .pd-grade-title{font-size:clamp(1.8rem,4vw,3rem);font-weight:800;color:#fff;letter-spacing:-.02em;}
+        .pd-tabs{display:flex;gap:0;border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:0;flex-wrap:wrap;}
+        .pd-tab{padding:12px 24px;font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);cursor:pointer;border:none;background:transparent;border-bottom:2px solid transparent;margin-bottom:-1px;font-family:'Outfit',sans-serif;transition:color .2s,border-color .2s;}
+        .pd-tab.active{color:#fff;border-bottom-color:var(--accent);}
+        .pd-tab:hover:not(.active){color:rgba(255,255,255,.7);}
+        .pd-grade-content{padding-top:40px;} .pd-grade-panel{display:none;} .pd-grade-panel.active{display:block;}
+        .pd-grade-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);}
+        .pd-grade-cell{background:rgba(8,15,29,.7);padding:20px 24px;}
+        .pd-grade-cell-label{font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:8px;}
+        .pd-grade-cell-value{font-size:.95rem;font-weight:600;color:#fff;}
+        .pd-pkg-section{background:var(--bg);padding:80px 0;}
+        .pd-pkg-inner{width:90%;max-width:1400px;margin:0 auto;}
+        .pd-pkg-title{font-size:clamp(1.8rem,4vw,3rem);font-weight:800;color:var(--ink);letter-spacing:-.02em;margin-bottom:48px;}
+        .pd-pkg-tabs{display:flex;gap:0;border-bottom:1px solid var(--rule);margin-bottom:0;flex-wrap:wrap;}
+        .pd-pkg-tab{padding:12px 24px;font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);cursor:pointer;border:none;background:transparent;border-bottom:2px solid transparent;margin-bottom:-1px;font-family:'Outfit',sans-serif;transition:color .2s,border-color .2s;}
+        .pd-pkg-tab.active{color:var(--accent);border-bottom-color:var(--accent);}
+        .pd-pkg-tab:hover:not(.active){color:var(--ink);}
+        .pd-pkg-content{padding-top:40px;} .pd-pkg-panel{display:none;} .pd-pkg-panel.active{display:block;}
+        .pd-pkg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);}
+        .pd-pkg-cell{background:var(--bg);padding:24px 28px;}
+        .pd-pkg-cell-label{font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);margin-bottom:8px;}
+        .pd-pkg-cell-value{font-size:.95rem;font-weight:600;color:var(--ink);}
+        .pd-pkg-note{margin-top:24px;font-size:.78rem;color:var(--ink-3);line-height:1.6;}
+        .pd-cta{background:var(--navy);padding:80px 0;position:relative;overflow:hidden;}
+        .pd-cta::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--accent);}
+        .pd-cta-inner{width:90%;max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:40px;}
+        .pd-cta-text h2{font-size:clamp(1.8rem,4vw,3rem);font-weight:800;color:#fff;letter-spacing:-.02em;margin-bottom:12px;}
+        .pd-cta-text p{font-size:1rem;color:rgba(255,255,255,.5);max-width:50ch;}
+        .pd-cta-btns{display:flex;gap:16px;flex-shrink:0;}
+        .pd-btn-primary{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--accent);color:#fff;font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:opacity .2s;}
+        .pd-btn-primary:hover{opacity:.85;}
+        .pd-btn-ghost{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.7);font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:border-color .2s,color .2s;}
+        .pd-btn-ghost:hover{border-color:rgba(255,255,255,.5);color:#fff;}
+        @media(max-width:900px){.pd-stats{grid-template-columns:repeat(2,1fr);}.pd-info-grid{grid-template-columns:1fr;}.pd-about-inner{grid-template-columns:1fr;gap:40px;}.pd-about-aside{position:static;}.pd-grade-row{grid-template-columns:repeat(2,1fr);}.pd-pkg-grid{grid-template-columns:1fr 1fr;}.pd-cta-inner{flex-direction:column;align-items:flex-start;}}
+        @media(max-width:600px){.pd-stats{grid-template-columns:1fr 1fr;}.pd-grade-row{grid-template-columns:1fr;}.pd-pkg-grid{grid-template-columns:1fr;}.pd-cta-btns{flex-direction:column;}}
+        /* ── Product nav (prev / next) ── */
+        .pd-pgnav { background: var(--bg-2); border-top: 1px solid var(--rule); }
+        .pd-pgnav__inner { max-width: 1200px; margin: 0 auto; padding: 0 clamp(1.5rem,5vw,5rem); display: grid; grid-template-columns: 1fr auto 1fr; align-items: stretch; }
+        .pd-pgnav__item { display: flex; align-items: center; gap: 1rem; padding: 1.6rem 0; text-decoration: none; color: var(--ink-2); transition: color 0.2s; }
+        .pd-pgnav__item:hover { color: var(--ink); }
+        .pd-pgnav__item:hover .pd-pgnav__arrow { background: var(--accent); color: #fff; border-color: var(--accent); }
+        .pd-pgnav__item--next { justify-content: flex-end; }
+        .pd-pgnav__arrow { width: 40px; height: 40px; border: 1px solid var(--rule); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 0.2s, color 0.2s, border-color 0.2s; }
+        .pd-pgnav__text { display: flex; flex-direction: column; gap: 2px; }
+        .pd-pgnav__dir { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); }
+        .pd-pgnav__gas { font-size: 1rem; font-weight: 600; color: var(--ink); }
+        .pd-pgnav__gas em { font-style: normal; color: var(--accent); }
+        .pd-pgnav__all { display: flex; align-items: center; padding: 0 2rem; border-left: 1px solid var(--rule); border-right: 1px solid var(--rule); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); text-decoration: none; transition: color 0.2s; white-space: nowrap; }
+        .pd-pgnav__all:hover { color: var(--accent); }
+        @media (max-width: 640px) { .pd-pgnav__inner { grid-template-columns: 1fr 1fr; } .pd-pgnav__all { display: none; } }
     </style>
 </head>
 <body>
-    <header style="background: white;">
-        <div class="container">
-            <div class="header-content">
-                <div class="header-logo">
-                    <img src="logo.png" alt="宏源气体 Logo" style="width: 120px; height:auto;">
-                </div>
-                <nav>
-                    <ul style="list-style-type: none; padding-left: 0; display: flex; gap: 15px;">
-                        <li><a href="index.html" style="color: #000000;">Home</a></li>
-                        <li><a href="about.html" style="color: #000000;">About Us</a></li>
-                        <li><a href="products.html" style="color: #000000;">Products & Services</a></li>
-                        <li><a href="applications.html" style="color: #000000;">Applications</a></li>
-                        <li><a href="contact.html" style="color: #000000;">Contact Us</a></li>
-                    </ul>
-                </nav>
+
+<header id="site-header">
+    <div class="container">
+        <div class="header-content">
+            <div class="header-logo">
+                <img src="logo.png" alt="Airocean Gases Logo" class="logo-img">
             </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About Us</a></li>
+                    <li><a href="products.html" class="nav-link active-link">Products &amp; Services</a></li>
+                    <li><a href="applications.html" class="nav-link">Applications</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact Us</a></li>
+                </ul>
+                <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </nav>
         </div>
-    </header>
+    </div>
+</header>
 
-    <button class="back-btn" onclick="window.history.back()">
-        <i class="fas fa-arrow-left"></i> Back
-    </button>
+<section class="pd-hero">
+    <div class="pd-ghost">Xe</div>
+    <div class="pd-hero-inner">
+        <div class="pd-eyebrow">
+            <span class="pd-eyebrow-line"></span>
+            <span class="pd-eyebrow-text">Noble Gas &nbsp;·&nbsp; CAS 7440-63-3 &nbsp;·&nbsp; Atomic No. 54</span>
+        </div>
+        <p class="pd-atomic">Molecular Weight — 131.29</p>
+        <h1 class="pd-symbol">Xe</h1>
+        <p class="pd-name-en">Xenon</p>
+        <div class="pd-stats">
+            <div class="pd-stat"><p class="pd-stat-label">Mol. Weight</p><p class="pd-stat-value">131.29</p></div>
+            <div class="pd-stat"><p class="pd-stat-label">Max Purity</p><p class="pd-stat-value">99.9999%</p></div>
+            <div class="pd-stat"><p class="pd-stat-label">Specific Vol.</p><p class="pd-stat-value">2.94 ft³/lb</p></div>
+            <div class="pd-stat"><p class="pd-stat-label">UN Number</p><p class="pd-stat-value">UN2036</p></div>
+        </div>
+    </div>
+</section>
 
-    <main>
-        <div class="product-detail-container">
-            <div class="product-header">
-                <div class="chemical-symbol">Xe</div>
-                <div class="product-info">
-                    <h1 class="product-name">氙气 (Xe)</h1>
-                    <p class="product-description">Colorless, odorless, non-flammable inert gas</p>
+<section class="pd-info-section">
+    <div class="pd-info-grid">
+        <div class="pd-info-col sr">
+            <p class="pd-section-label">Shipping Information</p>
+            <div class="pd-data-row"><span class="pd-data-key">UN Number</span><span class="pd-data-val">UN2036</span></div>
+            <div class="pd-data-row"><span class="pd-data-key">Hazard Class</span><span class="pd-data-val">Class 2.2</span></div>
+            <div class="pd-data-row"><span class="pd-data-key">Subsidiary Risk</span><span class="pd-data-val">None</span></div>
+            <div class="pd-data-row"><span class="pd-data-key">Hazard Label</span><span class="pd-data-val">Non-Flammable Gas</span></div>
+            <div class="pd-data-row"><span class="pd-data-key">Appearance</span><span class="pd-data-val">Colorless, Odorless Gas</span></div>
+        </div>
+        <div class="pd-info-col sr">
+            <p class="pd-section-label">Technical Data</p>
+            <div class="pd-data-row"><span class="pd-data-key">CAS Number</span><span class="pd-data-val">7440-63-3</span></div>
+            <div class="pd-data-row"><span class="pd-data-key">Molecular Weight</span><span class="pd-data-val">131.29 g/mol</span></div>
+            <div class="pd-data-row"><span class="pd-data-key">Boiling Point</span><span class="pd-data-val">−108.1 °C (−162.6 °F)</span></div>
+            <div class="pd-data-row"><span class="pd-data-key">Specific Volume</span><span class="pd-data-val">2.94 ft³/lb</span></div>
+            <div class="pd-data-row"><span class="pd-data-key">Phase</span><span class="pd-data-val">Compressed Gas</span></div>
+        </div>
+    </div>
+</section>
+
+<section class="pd-about">
+    <div class="pd-about-inner">
+        <div class="pd-about-aside sr">
+            <p class="pd-section-label">About This Gas</p>
+            <h2 class="pd-about-h2">Xe<span>non</span></h2>
+        </div>
+        <div class="pd-about-body sr">
+            <p>Xenon is one of the rarest stable elements in Earth's atmosphere, present at only 87 parts per billion by volume — earning it the designation "the golden gas" among rare gas specialists. Discovered in 1898 by Ramsay and Travers, its name derives from the Greek word for "stranger." Its exceptional density, high atomic cross-section, and chemical inertness make it uniquely valuable across some of the most demanding technological applications on earth and beyond.</p>
+            <p>In aerospace, xenon is the propellant of choice for ion propulsion systems (Hall-effect and gridded ion thrusters), powering attitude control and station-keeping for commercial satellites and deep-space probes. Its superior specific impulse — compared to conventional chemical propellants — translates directly into payload mass savings and extended mission life. Xenon has been selected for major space programs including NASA's Dawn and ESA's SMART-1 missions.</p>
+            <p>In semiconductor manufacturing, high-purity xenon is employed in excimer laser systems for deep-ultraviolet photolithography and as a process gas in plasma etch chambers. In medicine, xenon serves as an inhaled anesthetic with a favorable safety profile: it requires no hepatic metabolism, produces rapid emergence, and offers neuroprotective properties under investigation for cardiac and neurological applications. Airocean Gases supplies Grade 5.0 (99.999%) and Grade 6.0 (99.9999%) xenon to meet the strictest industry requirements.</p>
+        </div>
+    </div>
+</section>
+
+<section class="pd-grade-section">
+    <div class="pd-grade-inner">
+        <div class="pd-grade-header">
+            <p class="pd-section-label" style="color:rgba(255,255,255,.35);">Available Grades</p>
+            <h2 class="pd-grade-title">Product Specifications</h2>
+        </div>
+        <div class="pd-tabs">
+            <button class="pd-tab active" data-grade="50">Grade 5.0</button>
+            <button class="pd-tab" data-grade="60">Grade 6.0</button>
+        </div>
+        <div class="pd-grade-content">
+            <div class="pd-grade-panel active" id="grade-50">
+                <div class="pd-grade-row">
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Grade</p><p class="pd-grade-cell-value">Grade 5.0</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Purity</p><p class="pd-grade-cell-value">99.999% min.</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Application Type</p><p class="pd-grade-cell-value">Research (RES)</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Product Code Prefix</p><p class="pd-grade-cell-value">SG XERES-</p></div>
                 </div>
             </div>
-
-            <div class="info-tables">
-                <div class="info-table">
-                    <h3 class="table-title">Transportation Information</h3>
-                    <div class="table-row">
-                        <span class="table-label">D.O.T. Transportation Name</span>
-                        <span class="table-value">Xenon, Compressed</span>
-                    </div>
-                    <div class="table-row">
-                        <span class="table-label">ID Number</span>
-                        <span class="table-value">UN2036</span>
-                    </div>
-                    <div class="table-row">
-                        <span class="table-label">Hazard Class</span>
-                        <span class="table-value">2.2</span>
-                    </div>
-                    <div class="table-row">
-                        <span class="table-label">Transportation Label</span>
-                        <span class="table-value">Non-flammable gas</span>
-                    </div>
-                </div>
-
-                <div class="info-table">
-                    <h3 class="table-title">Technical Information</h3>
-                    <div class="table-row">
-                        <span class="table-label">Molecular Weight</span>
-                        <span class="table-value">131.3</span>
-                    </div>
-                    <div class="table-row">
-                        <span class="table-label">Specific Volume</span>
-                        <span class="table-value">2.9 ft³/lb</span>
-                    </div>
-                    <div class="table-row">
-                        <span class="table-label">CAS Registration Number</span>
-                        <span class="table-value">7440-63-3</span>
-                    </div>
-                    <div class="table-row">
-                        <span class="table-label">SDS Reference</span>
-                        <span class="table-value">Xenon</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="about-section">
-                <h2 class="section-title">About</h2>
-                <div class="about-content">
-                    <p>Xenon is a rare and remarkable inert gas discovered by Ramsay and Travers in 1898. It accounts for about one in a million in the Earth's atmosphere.</p>
-                    <p>Like other rare gases, Xenon has a full outer electron shell and is chemically inert at room temperature and pressure (can generate a few compounds under extreme conditions).</p>
-                    <p>Xenon is highly valuable in modern applications: it emits a strong blue-white light when energized, widely used in high-performance flashlights and special laser systems; it can be used as an anesthetic in medicine, with advantages such as low toxicity and rapid recovery; in the automotive industry, Xenon is used for high-intensity discharge headlights (HID), providing better lighting. Although it is expensive due to its rarity, Xenon is still indispensable in these specialized scenarios.</p>
-                </div>
-                <div class="download-buttons">
-                    <button class="btn-sds">Download SDS</button>
-                    <button class="btn-pdf">Download PDF</button>
-                </div>
-            </div>
-
-            <div class="product-grade-section">
-                <h2 class="section-title">Product Grade</h2>
-                <div class="grade-tabs" id="gradeTabs">
-                    <button class="grade-tab active" data-grade="5.0">Grade 5.0</button>
-                    <button class="grade-tab" data-grade="6.0">Grade 6.0</button>
-                </div>
-                <div class="grade-specs" id="gradeSpecs">
-                    <div class="spec-row">
-                        <span class="spec-label">Grade</span>
-                        <span class="spec-value" data-field="grade">5.0</span>
-                    </div>
-                    <div class="spec-row">
-                        <span class="spec-label">Lowest Purity</span>
-                        <span class="spec-value highlight" data-field="purity">99.999%</span>
-                    </div>
-                    <div class="spec-row">
-                        <span class="spec-label">Grade Code</span>
-                        <span class="spec-value" data-field="code">RES</span>
-                    </div>
-                    <div class="spec-row">
-                        <span class="spec-label">Catalog Number¹</span>
-                        <span class="spec-value" data-field="catalog">SG XERES-（fill in the code based on the bottle size below）</span>
-                    </div>
-                    <div class="footnote" data-field="footnote">
-                        Maximum Total Impurities &lt; 10 ppm (by volume)<br>
-                        ¹ Please fill in the catalog number based on the bottle size code below. Replace "SG" with "DSP" for disposable bottles. <br>
-                        ² The specifications are typical values and may change without notice.
-                    </div>
-                </div>
-            </div>
-
-            <div class="product-grade-section">
-                <h2 class="section-title">Supply Method and Packaging Specifications</h2>
-                <div class="about-content" style="margin-bottom: 10px;">
-                    Supply Method: High-pressure carbon steel bottles (size codes: T / K / Q), valve interface: CGA 580.
-                </div>
-                <div class="package-tabs" id="packageTabs">
-                    <button class="package-tab active" data-package="T">300 Type (T)</button>
-                    <button class="package-tab" data-package="K">200 Type (K)</button>
-                    <button class="package-tab" data-package="Q">80 Type (Q)</button>
-                </div>
-                <div class="package-specs" id="packageSpecs">
-                    <div class="package-row"><span class="spec-label">Pressure</span><span class="spec-value" data-field="pressure">970 psig</span></div>
-                    <div class="package-row"><span class="spec-label">Valve Interface</span><span class="spec-value" data-field="valve">CGA 580</span></div>
-                    <div class="package-row"><span class="spec-label">Dimensions</span><span class="spec-value" data-field="dimensions">9 × 55 inches / 23 × 140 cm</span></div>
-                    <div class="package-row"><span class="spec-label">Tare</span><span class="spec-value" data-field="tare">137 lbs / 62.0 kg</span></div>
-                    <div class="package-row"><span class="spec-label">Product Code</span><span class="spec-value" data-field="code">SG XERES-T</span></div>
+            <div class="pd-grade-panel" id="grade-60">
+                <div class="pd-grade-row">
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Grade</p><p class="pd-grade-cell-value">Grade 6.0</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Purity</p><p class="pd-grade-cell-value">99.9999% min.</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Application Type</p><p class="pd-grade-cell-value">Ultra-High Purity (UHP)</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Product Code Prefix</p><p class="pd-grade-cell-value">SG XEUHP-</p></div>
                 </div>
             </div>
         </div>
-    </main>
+    </div>
+</section>
 
-    <footer style="background: white; border-top: 1px solid #000000;">
-        <div class="container">
-            <div class="footer-content" style="display: flex; justify-content: space-between; align-items: center;">
-                <div class="footer-logo">
-                    <img src="logo.png" alt="宏源气体 Logo" style="width: 120px; height:auto;">
-                </div>
-                <div class="footer-column">
-                    <div class="social-media">
-                        <h3 style="font-size: 16px; margin-bottom: 8px;">Follow Us</h3>
-                        <ul style="list-style-type: none; padding-left: 0;">
-                            <li style="margin-bottom: 4px;"><a href="https://api.whatsapp.com/send/?phone=9174317883&text&type=phone_number&app_absent=0" style="color: #000000; font-size: 13px;"><i class="fab fa-whatsapp"></i> Whatsapp</a></li>
-                            <li style="margin-bottom: 4px;"><a href="https://www.linkedin.com/company/hygas/?viewAsMember=true" style="color: #000000; font-size: 13px;"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
-                            <li style="margin-bottom: 4px;"><a href="https://www.instagram.com/airoceangases/?hl=en" style="color: #000000; font-size: 13px;"><i class="fab fa-instagram"></i> Instagram</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="footer-column">
-                    <div class="legal-info">
-                        <h3 style="font-size: 16px; margin-bottom: 8px;">Legal Information</h3>
-                        <ul style="list-style-type: none; padding-left: 0;">
-                            <li style="margin-bottom: 4px;"><a href="privacy-policy.html" style="color: #000000; font-size: 13px;">Privacy Policy</a></li>
-                            <li style="margin-bottom: 4px;"><a href="terms-conditions.html" style="color: #000000; font-size: 13px;">Terms & Conditions</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="footer-column">
-                    <div class="quick-links">
-                        <h3 style="font-size: 16px; margin-bottom: 8px;">Quick Links</h3>
-                        <ul style="list-style-type: none; padding-left: 0;">
-                            <li style="margin-bottom: 4px;"><a href="index.html" style="color: #000000; font-size: 13px;">Home</a></li>
-                            <li style="margin-bottom: 4px;"><a href="about.html" style="color: #000000; font-size: 13px;">About Us</a></li>
-                            <li style="margin-bottom: 4px;"><a href="products.html" style="color: #000000; font-size: 13px;">Products & Services</a></li>
-                            <li style="margin-bottom: 4px;"><a href="applications.html" style="color: #000000; font-size: 13px;">Applications</a></li>
-                            <li style="margin-bottom: 4px;"><a href="contact.html" style="color: #000000; font-size: 13px;">Contact Us</a></li>   
-                        </ul>
-                    </div>
+<section class="pd-pkg-section">
+    <div class="pd-pkg-inner">
+        <h2 class="pd-pkg-title sr">Cylinder &amp; Packaging Options</h2>
+        <div class="pd-pkg-tabs">
+            <button class="pd-pkg-tab active" data-pkg="T">T Cylinder</button>
+            <button class="pd-pkg-tab" data-pkg="K">K Cylinder</button>
+            <button class="pd-pkg-tab" data-pkg="Q">Q Cylinder</button>
+        </div>
+        <div class="pd-pkg-content sr">
+            <div class="pd-pkg-panel active" id="pkg-T">
+                <div class="pd-pkg-grid">
+                    <div class="pd-pkg-cell"><p class="pd-pkg-cell-label">Type</p><p class="pd-pkg-cell-value">T High-Pressure Cylinder</p></div>
+                    <div class="pd-pkg-cell"><p class="pd-pkg-cell-label">Water Capacity</p><p class="pd-pkg-cell-value">~49 L</p></div>
+                    <div class="pd-pkg-cell"><p class="pd-pkg-cell-label">Fill Pressure</p><p class="pd-pkg-cell-value">85 bar (1,233 psi)</p></div>
+                    <div class="pd-pkg-cell"><p class="pd-pkg-cell-label">Valve Outlet</p><p class="pd-pkg-cell-value">CGA 877</p></div>
+                    <div class="pd-pkg-cell"><p class="pd-pkg-cell-label">Net Gas Weight</p><p class="pd-pkg-cell-value">~13.7 kg (~30.2 lb)</p></div>
+                    <div class="pd-pkg-cell"><p class="pd-pkg-cell-label">SKU Suffix</p><p class="pd-pkg-cell-value">-T</p></div>
                 </div>
             </div>
-            <div class="copyright">
-                <p style="font-size: 12px; margin-top: 10px;">&copy; 2023 Airocean Gases. All rights reserved.</p>
+            <div class="pd-pkg-panel" id="pkg-K">
+                <div class="pd-pkg-grid">
+                    <div class="pd-pkg-cell"><p class="pd-pkg-cell-label">Type</p><p class="pd-pkg-cell-value">K High-Pressure Cylinder</p></div>
+                    <div class="pd-pkg-cell"><p class="pd-pkg-cell-label">Water Capacity</p><p class="pd-pkg-cell-value">~49 L</p></div>
+                    <div class="pd-pkg-cell"><p class="pd-pkg-cell-label">Fill Pressure</p><p class="pd-pkg-cell-value">130 bar (1,885 psi)</p></div>
+                    <div class="pd-pkg-cell"><p class="pd-pkg-cell-label">Valve Outlet</p><p class="pd-pkg-cell-value">CGA 877</p></div>
+                    <div class="pd-pkg-cell"><p class="pd-pkg-cell-label">Net Gas Weight</p><p class="pd-pkg-cell-value">~21 kg (~46.3 lb)</p></div>
+                    <div class="pd-pkg-cell"><p class="pd-pkg-cell-label">SKU Suffix</p><p class="pd-pkg-cell-value">-K</p></div>
+                </div>
+            </div>
+            <div class="pd-pkg-panel" id="pkg-Q">
+                <div class="pd-pkg-grid">
+                    <div class="pd-pkg-cell"><p class="pd-pkg-cell-label">Type</p><p class="pd-pkg-cell-value">Q High-Pressure Cylinder</p></div>
+                    <div class="pd-pkg-cell"><p class="pd-pkg-cell-label">Water Capacity</p><p class="pd-pkg-cell-value">~49 L</p></div>
+                    <div class="pd-pkg-cell"><p class="pd-pkg-cell-label">Fill Pressure</p><p class="pd-pkg-cell-value">175 bar (2,538 psi)</p></div>
+                    <div class="pd-pkg-cell"><p class="pd-pkg-cell-label">Valve Outlet</p><p class="pd-pkg-cell-value">CGA 877</p></div>
+                    <div class="pd-pkg-cell"><p class="pd-pkg-cell-label">Net Gas Weight</p><p class="pd-pkg-cell-value">~28 kg (~61.7 lb)</p></div>
+                    <div class="pd-pkg-cell"><p class="pd-pkg-cell-label">SKU Suffix</p><p class="pd-pkg-cell-value">-Q</p></div>
+                </div>
+            </div>
+            <p class="pd-pkg-note">* Xenon is a high-density gas; fill quantities are measured by weight. Liquid xenon and custom bulk supply programs are available. Contact our technical sales team for volume pricing.</p>
+        </div>
+    </div>
+</section>
+
+<section class="pd-cta">
+    <div class="pd-cta-inner">
+        <div class="pd-cta-text sr">
+            <h2>Request a Quote</h2>
+            <p>Our technical sales team is ready to provide pricing, SDS documents, and supply solutions for xenon.</p>
+        </div>
+        <div class="pd-cta-btns sr">
+            <a href="contact.html" class="pd-btn-primary">Get a Quote</a>
+            <a href="#" class="pd-btn-ghost">Download SDS</a>
+        </div>
+    </div>
+</section>
+
+<!-- ══ PRODUCT NAVIGATION ══ -->
+<nav class="pd-pgnav" aria-label="Product navigation">
+    <div class="pd-pgnav__inner">
+        <a href="product-detail-kr.html" class="pd-pgnav__item pd-pgnav__item--prev">
+            <div class="pd-pgnav__arrow">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="pd-pgnav__text">
+                <span class="pd-pgnav__dir">Previous</span>
+                <span class="pd-pgnav__gas">Krypton <em>Kr</em></span>
+            </div>
+        </a>
+        <a href="products.html" class="pd-pgnav__all">All Products</a>
+        <a href="product-detail-ne.html" class="pd-pgnav__item pd-pgnav__item--next">
+            <div class="pd-pgnav__text">
+                <span class="pd-pgnav__dir">Next</span>
+                <span class="pd-pgnav__gas">Neon <em>Ne</em></span>
+            </div>
+            <div class="pd-pgnav__arrow">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+        </a>
+    </div>
+</nav>
+
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="logo.png" alt="Airocean Gases Logo" class="logo-img">
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="https://api.whatsapp.com/send/?phone=9174317883&text&type=phone_number&app_absent=0"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
+                    <li><a href="https://www.linkedin.com/company/hygas/?viewAsMember=true"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                    <li><a href="https://www.instagram.com/airoceangases/?hl=en"><i class="fab fa-instagram"></i> Instagram</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="terms-conditions.html">Terms & Conditions</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="products.html">Products & Services</a></li>
+                    <li><a href="applications.html">Applications</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
             </div>
         </div>
-    </footer>
-    <script src="script.js"></script>
-    <script>
-       // 页面交互脚本
-        document.addEventListener('DOMContentLoaded', function() {
-            // 产品等级 Tab 交互
-            const gradeTabs = document.querySelectorAll('.grade-tab');
-            const gradeSpecs = document.getElementById('gradeSpecs');
-            const gradeData = {
-                '5.0': {
-                    grade: '5.0',
-                    purity: '99.999%',
-                    code: 'RES',
-                    catalog: 'SG XERES-（fill in the code based on the bottle size below）',
-                    footnote: 'Maximum Total Impurities &lt; 10 ppm (by volume)<br>¹ Please fill in the catalog number based on the bottle size code below. Replace "SG" with "DSP" for disposable bottles. <br>² The specifications are typical values and may change without notice.'
-                },
-                '6.0': {
-                    grade: '6.0',
-                    purity: '99.9999%',
-                    code: 'UHP',
-                    catalog: 'SG XEUHP-（fill in the code based on the bottle size below）',
-                    footnote: 'Maximum Total Impurities &lt; 1 ppm (by volume)<br>¹ Please fill in the catalog number based on the bottle size code below. Replace "SG" with "DSP" for disposable bottles. <br>² The specifications are typical values and may change without notice.'
-                }
-            };
+        <div class="copyright">
+            <p>&copy; 2025 Airocean Gases. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
 
-            gradeTabs.forEach(tab => {
-                tab.addEventListener('click', function() {
-                    gradeTabs.forEach(t => t.classList.remove('active'));
-                    this.classList.add('active');
-                    const key = this.getAttribute('data-grade');
-                    const data = gradeData[key];
-                    if (!data) return;
-                    gradeSpecs.querySelector('[data-field="grade"]').textContent = data.grade;
-                    gradeSpecs.querySelector('[data-field="purity"]').textContent = data.purity;
-                    gradeSpecs.querySelector('[data-field="code"]').textContent = data.code;
-                    gradeSpecs.querySelector('[data-field="catalog"]').textContent = data.catalog;
-                    gradeSpecs.querySelector('[data-field="footnote"]').innerHTML = data.footnote;
-                });
-            });
-
-            // 包装规格 Tab 交互（与 Kr 页面一致）
-            const packageTabs = document.querySelectorAll('.package-tab');
-            const packageSpecs = document.getElementById('packageSpecs');
-            const packageData = {
-                T: {
-                    pressure: '970 psig',
-                    valve: 'CGA 580',
-                    dimensions: '9 × 55 inches / 23 × 140 cm',
-                    tare: '137 lbs / 62.0 kg',
-                    code: 'SG XERES-T'
-                },
-                K: {
-                    pressure: '1250 psig',
-                    valve: 'CGA 580',
-                    dimensions: '9 × 51 inches / 23 × 130 cm',
-                    tare: '119 lbs / 54.0 kg',
-                    code: 'SG XERES-K'
-                },
-                Q: {
-                    pressure: '1000 psig',
-                    valve: 'CGA 580',
-                    dimensions: '7 × 33 inches / 18 × 84 cm',
-                    tare: '57 lbs / 26.0 kg',
-                    code: 'SG XERES-Q'
-                }
-            };
-
-            packageTabs.forEach(tab => {
-                tab.addEventListener('click', function() {
-                    packageTabs.forEach(t => t.classList.remove('active'));
-                    this.classList.add('active');
-                    const key = this.getAttribute('data-package');
-                    const data = packageData[key];
-                    if (!data) return;
-                    packageSpecs.querySelector('[data-field="pressure"]').textContent = data.pressure;
-                    packageSpecs.querySelector('[data-field="valve"]').textContent = data.valve;
-                    packageSpecs.querySelector('[data-field="dimensions"]').textContent = data.dimensions;
-                    packageSpecs.querySelector('[data-field="tare"]').textContent = data.tare;
-                    packageSpecs.querySelector('[data-field="code"]').textContent = data.code;
-                });
-            });
+<script src="script.js"></script>
+<script>
+    document.querySelectorAll('.pd-tab').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.pd-tab').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.pd-grade-panel').forEach(p => p.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('grade-' + btn.dataset.grade).classList.add('active');
         });
-    </script>
+    });
+    document.querySelectorAll('.pd-pkg-tab').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.pd-pkg-tab').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.pd-pkg-panel').forEach(p => p.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('pkg-' + btn.dataset.pkg).classList.add('active');
+        });
+    });
+    const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }});
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.sr').forEach(el => obs.observe(el));
+</script>
 </body>
-</html> 
+</html>

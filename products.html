@@ -1,126 +1,952 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products & Services - Airocean Gases | Industrial, Medical, and Specialty Gas Supplier</title>
-    <meta name="description" content="Airocean Gases offers a comprehensive range of gas products and services: rare gases, electronic gases, standard high-purity gases, gas equipment, and more. 
-    We meet the needs of various industries including semiconductors, medical, and industrial.">
-    <meta name="keywords" content="industrial gas, medical gas, specialty gas, rare gas, electronic gas, gas equipment, nitrogen, oxygen, argon, helium">
-    <meta name="author" content="Airocean Gases">
-    <meta property="og:title" content="Products & Services - Airocean Gases">
-    <meta property="og:description" content="Comprehensive gas products and services, meeting professional needs for various industries">
-    <meta property="og:type" content="website">
-    <link rel="stylesheet" href="products-styles.css">
-    <!-- 引入Font Awesome图标库的CSS文件，用于显示社交媒体图标 -->
+    <title>Products — Airocean Gases</title>
+    <meta name="description" content="Ultra-high-purity Krypton, Xenon, Neon, and Helium. Sourced at the molecular boundary of purity for semiconductor, aerospace, and medical applications.">
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink:     #0c0e12;
+            --ink-2:   #52555c;
+            --ink-3:   #9fa3ab;
+            --bg:      #f7f7f5;
+            --bg-2:    #ffffff;
+            --rule:    #e3e3dc;
+            --navy:    #080f1d;
+            --navy-2:  #0e1a30;
+
+            --kr: #6d28d9;
+            --xe: #1d4ed8;
+            --ne: #b91c1c;
+            --he: #047857;
+            --sf6:#0e7490;
+            --n2o:#b45309;
+            --cf4:#be185d;
+
+            --f: 'Outfit', system-ui, sans-serif;
+            --ease: cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: var(--f);
+            background: var(--bg);
+            color: var(--ink);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ─── HERO ─────────────────────────────────── */
+        .ph {
+            min-height: 100dvh;
+            background: var(--navy);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            padding: 140px 80px 100px;
+            gap: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* subtle engineering grid */
+        .ph::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+            background-size: 64px 64px;
+            pointer-events: none;
+        }
+
+        /* corner accent line */
+        .ph::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 1px; height: 40%;
+            background: linear-gradient(to bottom, #fff1, transparent);
+        }
+
+        .ph-text { position: relative; z-index: 1; }
+
+        .ph-eyebrow {
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.35);
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .ph-eyebrow::before {
+            content: '';
+            display: block;
+            width: 28px; height: 1px;
+            background: rgba(255,255,255,0.25);
+        }
+
+        .ph h1 {
+            font-size: clamp(3rem, 5.5vw, 5rem);
+            font-weight: 800;
+            color: #fff;
+            line-height: 1.02;
+            letter-spacing: -3px;
+            margin-bottom: 28px;
+        }
+
+        .ph-sub {
+            font-size: 0.97rem;
+            color: rgba(255,255,255,0.45);
+            line-height: 1.8;
+            max-width: 380px;
+            font-weight: 400;
+        }
+
+        /* Periodic table tiles */
+        .ph-elements {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            max-width: 420px;
+            margin-left: auto;
+            margin-right: 40px;
+        }
+
+        .ph-el {
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 3px;
+            padding: 16px 14px 18px;
+            background: rgba(255,255,255,0.03);
+            transition: border-color 0.4s var(--ease), background 0.4s var(--ease), transform 0.4s var(--ease);
+            cursor: default;
+            aspect-ratio: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .ph-el:hover {
+            border-color: rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.06);
+            transform: translateY(-4px);
+        }
+
+        .ph-el-num {
+            font-size: 0.65rem;
+            color: rgba(255,255,255,0.3);
+            font-weight: 500;
+            display: block;
+            margin-bottom: 8px;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .ph-el-sym {
+            font-size: 2.2rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 8px;
+            display: block;
+            letter-spacing: -1px;
+        }
+
+        .ph-el-name {
+            font-size: 0.6rem;
+            color: rgba(255,255,255,0.35);
+            font-weight: 500;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .ph-el.ne  .ph-el-sym { color: #fca5a5; }
+        .ph-el.kr  .ph-el-sym { color: #c4b5fd; }
+        .ph-el.xe  .ph-el-sym { color: #93c5fd; }
+        .ph-el.he  .ph-el-sym { color: #6ee7b7; }
+        .ph-el.sf6 .ph-el-sym { color: #5eead4; }
+        .ph-el.n2o .ph-el-sym { color: #fcd34d; }
+        .ph-el.cf4 .ph-el-sym { color: #f9a8d4; }
+
+        /* ─── GAS SECTIONS ─────────────────────────── */
+        .gs {
+            padding: 110px 0;
+            border-bottom: 1px solid var(--rule);
+            position: relative;
+        }
+
+        .gs:nth-child(even) { background: var(--bg-2); }
+
+        .gs-inner {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 80px;
+            display: grid;
+            grid-template-columns: 5fr 7fr;
+            gap: 100px;
+            align-items: start;
+        }
+
+        .gs-inner.rev { grid-template-columns: 7fr 5fr; }
+        .gs-inner.rev .gs-ident { order: 2; }
+        .gs-inner.rev .gs-body  { order: 1; }
+
+        /* ident column */
+        .gs-ghost {
+            font-size: clamp(7rem, 14vw, 12rem);
+            font-weight: 900;
+            line-height: 0.85;
+            letter-spacing: -8px;
+            color: transparent;
+            -webkit-text-stroke: 1px var(--rule);
+            user-select: none;
+            margin-bottom: -16px;
+        }
+
+        .gs:nth-child(even) .gs-ghost {
+            -webkit-text-stroke-color: #e8e8e0;
+        }
+
+        .gs-sym {
+            font-size: clamp(4.5rem, 9vw, 7.5rem);
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: -4px;
+            margin-bottom: 12px;
+        }
+
+        .gs-sym.kr  { color: var(--kr); }
+        .gs-sym.xe  { color: var(--xe); }
+        .gs-sym.ne  { color: var(--ne); }
+        .gs-sym.he  { color: var(--he); }
+        .gs-sym.sf6 { color: var(--sf6); }
+        .gs-sym.n2o { color: var(--n2o); }
+        .gs-sym.cf4 { color: var(--cf4); }
+
+        .gs-name {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--ink-3);
+        }
+
+        /* body column */
+        .gs-rule {
+            width: 36px; height: 1px;
+            background: var(--ink);
+            margin-bottom: 28px;
+        }
+
+        .gs-body h2 {
+            font-size: clamp(1.8rem, 2.8vw, 2.6rem);
+            font-weight: 700;
+            letter-spacing: -1.5px;
+            margin-bottom: 6px;
+            color: var(--ink);
+        }
+
+        .gs-meta {
+            font-size: 0.72rem;
+            color: var(--ink-3);
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-bottom: 28px;
+        }
+
+        .gs-desc {
+            font-size: 0.97rem;
+            color: var(--ink-2);
+            line-height: 1.82;
+            margin-bottom: 36px;
+        }
+
+        /* spec table */
+        .gs-specs { border-top: 1px solid var(--rule); margin-bottom: 28px; }
+
+        .gs-spec {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-bottom: 1px solid var(--rule);
+            padding: 11px 0;
+        }
+
+        .gs-spec-k {
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: var(--ink-3);
+        }
+
+        .gs-spec-v {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--ink);
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* app tags */
+        .gs-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 36px;
+        }
+
+        .gs-tag {
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            padding: 5px 12px;
+            border: 1px solid var(--rule);
+            border-radius: 2px;
+            color: var(--ink-2);
+        }
+
+        /* link */
+        .gs-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--ink);
+            text-decoration: none;
+            padding-bottom: 3px;
+            border-bottom: 1.5px solid var(--ink);
+            transition: opacity 0.25s ease, gap 0.25s ease;
+        }
+
+        .gs-link:hover { opacity: 0.5; gap: 16px; }
+
+        /* ─── STATS ─────────────────────────────────── */
+        .p-stats {
+            background: var(--navy);
+            padding: 0 80px;
+        }
+
+        .p-stats-inner {
+            max-width: 1240px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border-left: 1px solid rgba(255,255,255,0.07);
+        }
+
+        .p-stat {
+            padding: 60px 48px;
+            border-right: 1px solid rgba(255,255,255,0.07);
+        }
+
+        .p-stat-n {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1;
+            letter-spacing: -2px;
+            margin-bottom: 10px;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .p-stat-l {
+            font-size: 0.72rem;
+            color: rgba(255,255,255,0.35);
+            font-weight: 400;
+            line-height: 1.6;
+            letter-spacing: 0.5px;
+        }
+
+        /* ─── CTA ───────────────────────────────────── */
+        .p-cta-wrap {
+            background: var(--bg);
+            padding: 0 80px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .p-cta {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 110px 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .p-cta h2 {
+            font-size: clamp(2rem, 3.5vw, 3.2rem);
+            font-weight: 700;
+            letter-spacing: -2px;
+            line-height: 1.08;
+            color: var(--ink);
+        }
+
+        .p-cta-right p {
+            font-size: 0.97rem;
+            color: var(--ink-2);
+            line-height: 1.8;
+            margin-bottom: 32px;
+        }
+
+        .p-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 28px;
+            background: var(--ink);
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-radius: 2px;
+            transition: opacity 0.25s ease, transform 0.25s ease;
+        }
+
+        .p-cta-btn:hover { opacity: 0.75; transform: translateX(4px); }
+
+        /* ─── SCROLL REVEAL ─────────────────────────── */
+        .sr {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.75s var(--ease), transform 0.75s var(--ease);
+        }
+
+        .sr.in { opacity: 1; transform: translateY(0); }
+        .sr-d1 { transition-delay: 0.08s; }
+        .sr-d2 { transition-delay: 0.16s; }
+        .sr-d3 { transition-delay: 0.24s; }
+
+        /* ─── RESPONSIVE ────────────────────────────── */
+        @media (max-width: 960px) {
+            .ph {
+                grid-template-columns: 1fr;
+                padding: 110px 24px 64px;
+                gap: 48px;
+                min-height: auto;
+            }
+            .ph-elements { margin: 0; max-width: 100%; }
+
+            .gs-inner,
+            .gs-inner.rev {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                padding: 0 24px;
+            }
+            .gs-inner.rev .gs-ident,
+            .gs-inner.rev .gs-body { order: unset; }
+            .gs { padding: 72px 0; }
+
+            .p-stats { padding: 0 24px; }
+            .p-stats-inner { grid-template-columns: 1fr 1fr; border: none; }
+            .p-stat { padding: 40px 0; border: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
+
+            .p-cta-wrap { padding: 0 24px; }
+            .p-cta { grid-template-columns: 1fr; gap: 32px; padding: 72px 0; }
+        }
+    </style>
 </head>
 <body>
-    <header style="background: white;">
+
+    <header>
         <div class="container">
             <div class="header-content">
                 <div class="header-logo">
-                    <img src="logo.png" alt="宏源气体 Logo" style="width: 120px; height:auto;">
+                    <img src="logo.png" alt="Airocean Gases Logo" class="logo-img">
                 </div>
                 <nav>
-                    <ul style="list-style-type: none; padding-left: 0; display: flex; gap: 15px;">
-                        <li><a href="index.html" style="color: #000000;">Home</a></li>
-                        <li><a href="about.html" style="color: #000000;">About Us</a></li>
-                        <li><a href="products.html" style="color: #000000;">Products & Services</a></li>
-                        <li><a href="applications.html" style="color: #000000;">Applications</a></li>
-                        <li><a href="contact.html" style="color: #000000;">Contact Us</a></li>
+                    <ul class="nav-menu">
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li><a href="about.html" class="nav-link">About Us</a></li>
+                        <li><a href="products.html" class="nav-link active-link">Products & Services</a></li>
+                        <li><a href="applications.html" class="nav-link">Applications</a></li>
+                        <li><a href="contact.html" class="nav-link">Contact Us</a></li>
                     </ul>
+                    <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                        <span></span><span></span><span></span>
+                    </button>
                 </nav>
             </div>
         </div>
     </header>
 
-    <!-- 英雄区域轮播图 -->
-    <section class="hero-carousel">
-        <div class="carousel-container">
-            <!-- 轮播图 1 -->
-            <div class="carousel-item">
-                <img src="product1.jpg" alt="工业气体">
-                <h2 class="carousel-title">Rare Gases</h2>
-                <div class="carousel-content">
-                    <p>High-purity neon, krypton, and xenon, widely used in lighting, research, and aerospace industries.</p>
-                    <a href="product-industrial-gases.html" class="cta-btn">Learn More</a>
-                </div>
+    <!-- ─── HERO ─────────────────────────────────── -->
+    <section class="ph">
+        <div class="ph-text">
+            <p class="ph-eyebrow">Airocean Gases · Product Portfolio</p>
+            <h1>Noble &amp;<br>Specialty<br>Gases</h1>
+            <p class="ph-sub">Seven gases. Sourced at the molecular boundary of purity — enabling the processes that build microchips, insulate power grids, propel spacecraft, and image the human body.</p>
+        </div>
+
+        <div class="ph-elements">
+            <div class="ph-el ne">
+                <span class="ph-el-num">10</span>
+                <span class="ph-el-sym">Ne</span>
+                <span class="ph-el-name">Neon</span>
             </div>
-            <!-- 轮播图 2 -->
-            <div class="carousel-item">
-                <img src="product2.jpg" alt="医疗气体">
-                <h2 class="carousel-title">Electronic Gases</h2>
-                <div class="carousel-content">
-                    <p>Ultra-high-purity gas solutions specifically designed for semiconductor, photovoltaic, and display panel manufacturing.</p>
-                    <a href="product-medical-gases.html" class="cta-btn">Learn More</a>
-                </div>
+            <div class="ph-el kr">
+                <span class="ph-el-num">36</span>
+                <span class="ph-el-sym">Kr</span>
+                <span class="ph-el-name">Krypton</span>
             </div>
-            <!-- 轮播图 3 -->
-            <div class="carousel-item">
-                <img src="product3.jpg" alt="特种气体">
-                <h2 class="carousel-title">Standard and High-Purity Gases</h2>
-                <div class="carousel-content">
-                    <p>Provides traceable standard gases and ultra-high-purity gases to meet analytical detection and research needs.</p>
-                    <a href="product-special-gases.html" class="cta-btn">Learn More</a>
-                </div>
+            <div class="ph-el xe">
+                <span class="ph-el-num">54</span>
+                <span class="ph-el-sym">Xe</span>
+                <span class="ph-el-name">Xenon</span>
             </div>
-            <!-- 轮播图 4 -->
-            <div class="carousel-item">
-                <img src="product4.jpg" alt="气体设备">
-                <h2 class="carousel-title">Gas Equipment, Valves, and Bottles</h2>
-                <div class="carousel-content">
-                    <p>Provides various steel bottles, valves, and related equipment to meet various gas application needs.</p>
-                    <a href="product-gas-equipment.html" class="cta-btn">Learn More</a>
-                </div>
+            <div class="ph-el he">
+                <span class="ph-el-num">2</span>
+                <span class="ph-el-sym">He</span>
+                <span class="ph-el-name">Helium</span>
+            </div>
+            <div class="ph-el sf6">
+                <span class="ph-el-num">Dielectric</span>
+                <span class="ph-el-sym">SF&#x2086;</span>
+                <span class="ph-el-name">Sulf. Hexafluoride</span>
+            </div>
+            <div class="ph-el n2o">
+                <span class="ph-el-num">Medical</span>
+                <span class="ph-el-sym">N&#x2082;O</span>
+                <span class="ph-el-name">Nitrous Oxide</span>
+            </div>
+            <div class="ph-el cf4">
+                <span class="ph-el-num">Etchant</span>
+                <span class="ph-el-sym">CF&#x2084;</span>
+                <span class="ph-el-name">Tetrafluoromethane</span>
             </div>
         </div>
     </section>
 
-    <footer style="background: white; border-top: 1px solid #000000;">
+    <!-- ─── KRYPTON ──────────────────────────────── -->
+    <section class="gs">
+        <div class="gs-inner sr">
+            <div class="gs-ident">
+                <div class="gs-ghost">36</div>
+                <div class="gs-sym kr">Kr</div>
+                <div class="gs-name">Krypton</div>
+            </div>
+            <div class="gs-body">
+                <div class="gs-rule"></div>
+                <h2>Krypton</h2>
+                <p class="gs-meta">Noble Gas &nbsp;·&nbsp; Element 36 &nbsp;·&nbsp; Group 18</p>
+                <p class="gs-desc">A colorless, odorless noble gas with exceptional light-emission properties. Critical to KrF excimer laser systems operating at 248 nm — the wavelength that defines a generation of semiconductor photolithography. Also used in high-efficiency lighting and thin-film photovoltaic deposition processes.</p>
+                <div class="gs-specs">
+                    <div class="gs-spec">
+                        <span class="gs-spec-k">Max Purity</span>
+                        <span class="gs-spec-v">99.999% (5N)</span>
+                    </div>
+                    <div class="gs-spec">
+                        <span class="gs-spec-k">Boiling Point</span>
+                        <span class="gs-spec-v">−153.4 °C</span>
+                    </div>
+                    <div class="gs-spec">
+                        <span class="gs-spec-k">Atomic Weight</span>
+                        <span class="gs-spec-v">83.798 u</span>
+                    </div>
+                    <div class="gs-spec">
+                        <span class="gs-spec-k">Supply Form</span>
+                        <span class="gs-spec-v">Cylinder / Bulk</span>
+                    </div>
+                    <div class="gs-spec">
+                        <span class="gs-spec-k">CAS No.</span>
+                        <span class="gs-spec-v">7439-90-9</span>
+                    </div>
+                </div>
+                <div class="gs-tags">
+                    <span class="gs-tag">KrF Excimer Lasers</span>
+                    <span class="gs-tag">Photolithography</span>
+                    <span class="gs-tag">Lighting</span>
+                    <span class="gs-tag">Photovoltaics</span>
+                    <span class="gs-tag">IC Packaging</span>
+                </div>
+                <a href="product-detail-kr.html" class="gs-link">Full Specifications <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── XENON ────────────────────────────────── -->
+    <section class="gs">
+        <div class="gs-inner rev sr">
+            <div class="gs-ident">
+                <div class="gs-ghost">54</div>
+                <div class="gs-sym xe">Xe</div>
+                <div class="gs-name">Xenon</div>
+            </div>
+            <div class="gs-body">
+                <div class="gs-rule"></div>
+                <h2>Xenon</h2>
+                <p class="gs-meta">Noble Gas &nbsp;·&nbsp; Element 54 &nbsp;·&nbsp; Group 18</p>
+                <p class="gs-desc">The heaviest of the stable noble gases, xenon occupies a unique position across industries. Its brilliant white arc drives cinema projection and automotive headlamps. Its density and ionization properties make it the preferred propellant for ion thrusters in deep-space missions. In medicine, hyperpolarized Xe-129 serves as an MRI contrast agent for lung imaging; pure xenon also functions as a hemodynamically stable anesthetic.</p>
+                <div class="gs-specs">
+                    <div class="gs-spec">
+                        <span class="gs-spec-k">Max Purity</span>
+                        <span class="gs-spec-v">99.9999% (6N)</span>
+                    </div>
+                    <div class="gs-spec">
+                        <span class="gs-spec-k">Boiling Point</span>
+                        <span class="gs-spec-v">−108.1 °C</span>
+                    </div>
+                    <div class="gs-spec">
+                        <span class="gs-spec-k">Atomic Weight</span>
+                        <span class="gs-spec-v">131.293 u</span>
+                    </div>
+                    <div class="gs-spec">
+                        <span class="gs-spec-k">Supply Form</span>
+                        <span class="gs-spec-v">Cylinder / Liquid</span>
+                    </div>
+                    <div class="gs-spec">
+                        <span class="gs-spec-k">CAS No.</span>
+                        <span class="gs-spec-v">7440-63-3</span>
+                    </div>
+                </div>
+                <div class="gs-tags">
+                    <span class="gs-tag">Ion Propulsion</span>
+                    <span class="gs-tag">Medical Anesthesia</span>
+                    <span class="gs-tag">MRI Contrast</span>
+                    <span class="gs-tag">XeCl Lasers</span>
+                    <span class="gs-tag">Arc Lighting</span>
+                </div>
+                <a href="product-detail-xe.html" class="gs-link">Full Specifications <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── NEON ─────────────────────────────────── -->
+    <section class="gs">
+        <div class="gs-inner sr">
+            <div class="gs-ident">
+                <div class="gs-ghost">10</div>
+                <div class="gs-sym ne">Ne</div>
+                <div class="gs-name">Neon</div>
+            </div>
+            <div class="gs-body">
+                <div class="gs-rule"></div>
+                <h2>Neon</h2>
+                <p class="gs-meta">Noble Gas &nbsp;·&nbsp; Element 10 &nbsp;·&nbsp; Group 18</p>
+                <p class="gs-desc">The rarest atmospheric noble gas by extraction volume, neon is simultaneously one of the most strategically critical materials in semiconductor manufacturing. ArF and KrF excimer lasers — the workhorses of advanced node lithography — consume neon as a primary lasing medium. Beyond the fab, neon's signature 632.8 nm red-orange discharge defined twentieth-century visual culture and remains central to scientific metrology and display technology.</p>
+                <div class="gs-specs">
+                    <div class="gs-spec">
+                        <span class="gs-spec-k">Max Purity</span>
+                        <span class="gs-spec-v">99.999% (5N)</span>
+                    </div>
+                    <div class="gs-spec">
+                        <span class="gs-spec-k">Boiling Point</span>
+                        <span class="gs-spec-v">−246.1 °C</span>
+                    </div>
+                    <div class="gs-spec">
+                        <span class="gs-spec-k">Atomic Weight</span>
+                        <span class="gs-spec-v">20.180 u</span>
+                    </div>
+                    <div class="gs-spec">
+                        <span class="gs-spec-k">Supply Form</span>
+                        <span class="gs-spec-v">Cylinder / Bulk</span>
+                    </div>
+                    <div class="gs-spec">
+                        <span class="gs-spec-k">CAS No.</span>
+                        <span class="gs-spec-v">7440-01-9</span>
+                    </div>
+                </div>
+                <div class="gs-tags">
+                    <span class="gs-tag">ArF / KrF Lasers</span>
+                    <span class="gs-tag">Photolithography</span>
+                    <span class="gs-tag">Discharge Lighting</span>
+                    <span class="gs-tag">Environmental Tracing</span>
+                    <span class="gs-tag">Photovoltaics</span>
+                </div>
+                <a href="product-detail-ne.html" class="gs-link">Full Specifications <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── HELIUM ───────────────────────────────── -->
+    <section class="gs">
+        <div class="gs-inner rev sr">
+            <div class="gs-ident">
+                <div class="gs-ghost">2</div>
+                <div class="gs-sym he">He</div>
+                <div class="gs-name">Helium</div>
+            </div>
+            <div class="gs-body">
+                <div class="gs-rule"></div>
+                <h2>Helium</h2>
+                <p class="gs-meta">Noble Gas &nbsp;·&nbsp; Element 2 &nbsp;·&nbsp; Group 18</p>
+                <p class="gs-desc">The coldest boiling point of any element at −268.9 °C places helium in a category of its own. Liquid helium is the sole coolant capable of maintaining the superconducting state in MRI and NMR magnets. In semiconductor manufacturing, helium purges process chambers, cools wafer stages, and serves as the gold-standard carrier gas for GC and GC-MS analytical instruments. Its molecular diameter makes it the universal standard for pressurized leak detection across aerospace and industrial applications.</p>
+                <div class="gs-specs">
+                    <div class="gs-spec">
+                        <span class="gs-spec-k">Max Purity</span>
+                        <span class="gs-spec-v">99.9999% (6N)</span>
+                    </div>
+                    <div class="gs-spec">
+                        <span class="gs-spec-k">Boiling Point</span>
+                        <span class="gs-spec-v">−268.9 °C</span>
+                    </div>
+                    <div class="gs-spec">
+                        <span class="gs-spec-k">Atomic Weight</span>
+                        <span class="gs-spec-v">4.0026 u</span>
+                    </div>
+                    <div class="gs-spec">
+                        <span class="gs-spec-k">Supply Form</span>
+                        <span class="gs-spec-v">Cylinder / Dewar / Bulk</span>
+                    </div>
+                    <div class="gs-spec">
+                        <span class="gs-spec-k">CAS No.</span>
+                        <span class="gs-spec-v">7440-59-7</span>
+                    </div>
+                </div>
+                <div class="gs-tags">
+                    <span class="gs-tag">MRI / NMR Cooling</span>
+                    <span class="gs-tag">Leak Detection</span>
+                    <span class="gs-tag">Gas Chromatography</span>
+                    <span class="gs-tag">Fiber Optics</span>
+                    <span class="gs-tag">Lifting</span>
+                </div>
+                <a href="product-detail-he.html" class="gs-link">Full Specifications <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── SULFUR HEXAFLUORIDE ─────────────────── -->
+    <section class="gs">
+        <div class="gs-inner sr">
+            <div class="gs-ident">
+                <div class="gs-ghost" style="font-size:clamp(4rem,8vw,7rem);letter-spacing:-4px;">SF&#x2086;</div>
+                <div class="gs-sym sf6">SF&#x2086;</div>
+                <div class="gs-name">Sulfur Hexafluoride</div>
+            </div>
+            <div class="gs-body">
+                <div class="gs-rule" style="background:var(--sf6);"></div>
+                <h2>Sulfur Hexafluoride</h2>
+                <p class="gs-meta">Specialty Gas &nbsp;·&nbsp; CAS 2551-62-4 &nbsp;·&nbsp; UN1080</p>
+                <p class="gs-desc">One of the most powerful dielectric gases known — SF₆ is the standard insulating and arc-quenching medium in high-voltage gas-insulated switchgear (GIS), circuit breakers, and transmission substations. In semiconductor fabrication, it serves as a primary plasma etchant for silicon and silicon nitride, and as a CVD chamber-clean agent at 99.9999% electronic grade.</p>
+                <div class="gs-specs">
+                    <div class="gs-spec">
+                        <span class="gs-spec-k">Max Purity</span>
+                        <span class="gs-spec-v">99.9999% (6N)</span>
+                    </div>
+                    <div class="gs-spec">
+                        <span class="gs-spec-k">Sublimation Pt.</span>
+                        <span class="gs-spec-v">−63.8 °C at 1 atm</span>
+                    </div>
+                    <div class="gs-spec">
+                        <span class="gs-spec-k">Molecular Weight</span>
+                        <span class="gs-spec-v">146.05 g/mol</span>
+                    </div>
+                    <div class="gs-spec">
+                        <span class="gs-spec-k">Supply Form</span>
+                        <span class="gs-spec-v">Cylinder (Liquefied)</span>
+                    </div>
+                    <div class="gs-spec">
+                        <span class="gs-spec-k">CAS No.</span>
+                        <span class="gs-spec-v">2551-62-4</span>
+                    </div>
+                </div>
+                <div class="gs-tags">
+                    <span class="gs-tag">GIS / Switchgear</span>
+                    <span class="gs-tag">Plasma Etching</span>
+                    <span class="gs-tag">CVD Chamber Clean</span>
+                    <span class="gs-tag">Medical Ultrasound</span>
+                    <span class="gs-tag">Leak Detection</span>
+                </div>
+                <a href="product-detail-sf6.html" class="gs-link" style="border-color:var(--sf6);color:var(--sf6);">Full Specifications <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── NITROUS OXIDE ─────────────────────── -->
+    <section class="gs">
+        <div class="gs-inner rev sr">
+            <div class="gs-ident">
+                <div class="gs-ghost" style="font-size:clamp(4rem,8vw,7rem);letter-spacing:-4px;">N&#x2082;O</div>
+                <div class="gs-sym n2o">N&#x2082;O</div>
+                <div class="gs-name">Nitrous Oxide</div>
+            </div>
+            <div class="gs-body">
+                <div class="gs-rule" style="background:var(--n2o);"></div>
+                <h2>Nitrous Oxide</h2>
+                <p class="gs-meta">Specialty Gas &nbsp;·&nbsp; CAS 10024-97-2 &nbsp;·&nbsp; UN1070</p>
+                <p class="gs-desc">A colorless oxidizing gas with the broadest application range in our specialty portfolio. In healthcare, N₂O is an established analgesic and anesthetic adjunct used from dental offices to surgical suites. In semiconductor CVD, it is the primary oxidant source for silicon dioxide and silicon oxynitride gate dielectric films — available up to 99.9995% electronic grade for advanced node processes.</p>
+                <div class="gs-specs">
+                    <div class="gs-spec">
+                        <span class="gs-spec-k">Max Purity</span>
+                        <span class="gs-spec-v">99.9995% (EL)</span>
+                    </div>
+                    <div class="gs-spec">
+                        <span class="gs-spec-k">Boiling Point</span>
+                        <span class="gs-spec-v">−88.5 °C</span>
+                    </div>
+                    <div class="gs-spec">
+                        <span class="gs-spec-k">Molecular Weight</span>
+                        <span class="gs-spec-v">44.013 g/mol</span>
+                    </div>
+                    <div class="gs-spec">
+                        <span class="gs-spec-k">Supply Form</span>
+                        <span class="gs-spec-v">Cylinder (Liquefied)</span>
+                    </div>
+                    <div class="gs-spec">
+                        <span class="gs-spec-k">CAS No.</span>
+                        <span class="gs-spec-v">10024-97-2</span>
+                    </div>
+                </div>
+                <div class="gs-tags">
+                    <span class="gs-tag">Medical Anesthesia</span>
+                    <span class="gs-tag">Semiconductor CVD</span>
+                    <span class="gs-tag">Gate Dielectrics</span>
+                    <span class="gs-tag">Food Processing</span>
+                    <span class="gs-tag">Analytical</span>
+                </div>
+                <a href="product-detail-n2o.html" class="gs-link" style="border-color:var(--n2o);color:var(--n2o);">Full Specifications <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── TETRAFLUOROMETHANE ────────────────── -->
+    <section class="gs">
+        <div class="gs-inner sr">
+            <div class="gs-ident">
+                <div class="gs-ghost" style="font-size:clamp(4rem,8vw,7rem);letter-spacing:-4px;">CF&#x2084;</div>
+                <div class="gs-sym cf4">CF&#x2084;</div>
+                <div class="gs-name">Tetrafluoromethane</div>
+            </div>
+            <div class="gs-body">
+                <div class="gs-rule" style="background:var(--cf4);"></div>
+                <h2>Tetrafluoromethane</h2>
+                <p class="gs-meta">Specialty Gas &nbsp;·&nbsp; CAS 75-73-0 &nbsp;·&nbsp; UN1982</p>
+                <p class="gs-desc">A thermally and chemically inert perfluorocarbon gas that generates highly reactive fluorine radicals under plasma conditions. CF₄ is a mainstay etchant for silicon, polysilicon, SiO₂, and Si₃N₄ patterning across DRAM, NAND, and advanced logic nodes, and a proven PECVD chamber-clean agent. Supplied at semiconductor grade 5.0 (99.999% min.) with moisture and oxygen controlled below 1 ppmv.</p>
+                <div class="gs-specs">
+                    <div class="gs-spec">
+                        <span class="gs-spec-k">Max Purity</span>
+                        <span class="gs-spec-v">99.999% (5N)</span>
+                    </div>
+                    <div class="gs-spec">
+                        <span class="gs-spec-k">Boiling Point</span>
+                        <span class="gs-spec-v">−127.8 °C</span>
+                    </div>
+                    <div class="gs-spec">
+                        <span class="gs-spec-k">Molecular Weight</span>
+                        <span class="gs-spec-v">88.01 g/mol</span>
+                    </div>
+                    <div class="gs-spec">
+                        <span class="gs-spec-k">Supply Form</span>
+                        <span class="gs-spec-v">Cylinder / Bulk</span>
+                    </div>
+                    <div class="gs-spec">
+                        <span class="gs-spec-k">CAS No.</span>
+                        <span class="gs-spec-v">75-73-0</span>
+                    </div>
+                </div>
+                <div class="gs-tags">
+                    <span class="gs-tag">Plasma Etching</span>
+                    <span class="gs-tag">Chamber Cleaning</span>
+                    <span class="gs-tag">DRAM / NAND</span>
+                    <span class="gs-tag">Excimer Lasers</span>
+                    <span class="gs-tag">Cryogenic Research</span>
+                </div>
+                <a href="product-detail-cf4.html" class="gs-link" style="border-color:var(--cf4);color:var(--cf4);">Full Specifications <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── STATS ────────────────────────────────── -->
+    <div class="p-stats">
+        <div class="p-stats-inner">
+            <div class="p-stat sr">
+                <div class="p-stat-n">6N</div>
+                <div class="p-stat-l">Maximum purity grade<br>available (99.9999%)</div>
+            </div>
+            <div class="p-stat sr sr-d1">
+                <div class="p-stat-n">7</div>
+                <div class="p-stat-l">High-purity gases<br>in portfolio</div>
+            </div>
+            <div class="p-stat sr sr-d2">
+                <div class="p-stat-n">99%</div>
+                <div class="p-stat-l">Supply chain<br>on-time reliability</div>
+            </div>
+            <div class="p-stat sr sr-d3">
+                <div class="p-stat-n">500+</div>
+                <div class="p-stat-l">Satisfied clients<br>worldwide</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── CTA ──────────────────────────────────── -->
+    <div class="p-cta-wrap">
+        <div class="p-cta">
+            <h2 class="sr">Need a<br>Custom<br>Quotation?</h2>
+            <div class="p-cta-right sr sr-d1">
+                <p>Tell us your required purity grade, cylinder pressure, volume, and delivery location. Our team responds within one business day.</p>
+                <a href="contact.html" class="p-cta-btn">Request a Quote <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
         <div class="container">
-            <div class="footer-content" style="display: flex; justify-content: space-between; align-items: center;">
+            <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="logo.png" alt="宏源气体 Logo" style="width: 120px; height:auto;">
+                    <img src="logo.png" alt="Airocean Gases Logo" class="logo-img">
                 </div>
                 <div class="footer-column">
-                    <div class="social-media">
-                        <h3 style="font-size: 16px; margin-bottom: 8px;">Follow Us</h3>
-                        <ul style="list-style-type: none; padding-left: 0;">
-                            <li style="margin-bottom: 4px;"><a href="https://api.whatsapp.com/send/?phone=9174317883&text&type=phone_number&app_absent=0" style="color: #000000; font-size: 13px;"><i class="fab fa-whatsapp"></i> Whatsapp</a></li>
-                            <li style="margin-bottom: 4px;"><a href="https://www.linkedin.com/company/hygas/?viewAsMember=true" style="color: #000000; font-size: 13px;"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
-                            <li style="margin-bottom: 4px;"><a href="https://www.instagram.com/airoceangases/?hl=en" style="color: #000000; font-size: 13px;"><i class="fab fa-instagram"></i> Instagram</a></li>
-                        </ul>
-                    </div>
+                    <h3>Follow Us</h3>
+                    <ul>
+                        <li><a href="https://api.whatsapp.com/send/?phone=9174317883&text&type=phone_number&app_absent=0"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
+                        <li><a href="https://www.linkedin.com/company/hygas/?viewAsMember=true"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                        <li><a href="https://www.instagram.com/airoceangases/?hl=en"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    </ul>
                 </div>
                 <div class="footer-column">
-                    <div class="legal-info">
-                        <h3 style="font-size: 16px; margin-bottom: 8px;">Legal Information</h3>
-                        <ul style="list-style-type: none; padding-left: 0;">
-                            <li style="margin-bottom: 4px;"><a href="privacy-policy.html" style="color: #000000; font-size: 13px;">Privacy Policy</a></li>
-                            <li style="margin-bottom: 4px;"><a href="terms-conditions.html" style="color: #000000; font-size: 13px;">Terms & Conditions</a></li>
-                        </ul>
-                    </div>
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-conditions.html">Terms & Conditions</a></li>
+                    </ul>
                 </div>
                 <div class="footer-column">
-                    <div class="quick-links">
-                        <h3 style="font-size: 16px; margin-bottom: 8px;">Quick Links</h3>
-                        <ul style="list-style-type: none; padding-left: 0;">
-                            <li style="margin-bottom: 4px;"><a href="index.html" style="color: #000000; font-size: 13px;">Home</a></li>
-                            <li style="margin-bottom: 4px;"><a href="about.html" style="color: #000000; font-size: 13px;">About Us</a></li>
-                            <li style="margin-bottom: 4px;"><a href="products.html" style="color: #000000; font-size: 13px;">Products & Services</a></li>
-                            <li style="margin-bottom: 4px;"><a href="applications.html" style="color: #000000; font-size: 13px;">Applications</a></li>
-                            <li style="margin-bottom: 4px;"><a href="contact.html" style="color: #000000; font-size: 13px;">Contact Us</a></li>   
-                        </ul>
-                    </div>
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="products.html">Products & Services</a></li>
+                        <li><a href="applications.html">Applications</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
                 </div>
             </div>
             <div class="copyright">
-                <p style="font-size: 12px; margin-top: 10px;">&copy; 2023 Airocean Gases. All rights reserved.</p>
+                <p>&copy; 2025 Airocean Gases. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
+    <button id="back-to-top" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
     <script src="script.js"></script>
+    <script>
+        // Scroll reveal
+        const srEls = document.querySelectorAll('.sr');
+        const srObs = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) { e.target.classList.add('in'); srObs.unobserve(e.target); }
+            });
+        }, { threshold: 0.1 });
+        srEls.forEach(el => srObs.observe(el));
+    </script>
 </body>
-</html> 
+</html>

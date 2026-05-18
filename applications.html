@@ -1,197 +1,1174 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Applications - Airocean Gases | Industrial, Medical, and Specialty Gas Applications</title>
-    <meta name="description" content="Learn about the applications of Airocean Gases gases in various industries: welding, cutting, semiconductor manufacturing, medical breathing, food preservation, and more. 
-    We offer 100+ professional gas application solutions for various industries.">
-    <meta name="keywords" content="gas application, industrial application, medical application, welding, cutting, semiconductor, breathing treatment, food preservation, gas solution">
-    <meta name="author" content="Airocean Gases">
-    <meta property="og:title" content="Applications - Airocean Gases">
-    <meta property="og:description" content="100+ professional gas application solutions for various industries">
-    <meta property="og:type" content="website">
+    <title>Applications - Airocean Gases | Krypton, Xenon, Neon & Helium</title>
+    <meta name="description" content="Explore how Krypton, Xenon, Neon, and Helium power critical processes across semiconductor fabrication, medical imaging, aerospace propulsion, and precision science.">
+    <meta name="keywords" content="krypton applications, xenon applications, neon applications, helium applications, rare gas, semiconductor, medical imaging, laser, fiber optics, ion propulsion">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <!-- 引入Font Awesome图标库的CSS文件，用于显示社交媒体图标 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* ── Design tokens ── */
+        :root {
+            --ink:   #0c0e10;
+            --ink-2: #3d4147;
+            --ink-3: #8a909a;
+            --bg:    #f8f7f4;
+            --bg-2:  #f0ede8;
+            --rule:  #d8d4ce;
+            --navy:  #080f1d;
+            --kr:    #6d28d9;
+            --xe:    #1d4ed8;
+            --ne:    #b91c1c;
+            --he:    #047857;
+            --sf6:   #0e7490;
+            --n2o:   #b45309;
+            --cf4:   #be185d;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        .ap-page {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg);
+            color: var(--ink);
+        }
+
+        /* ── Hero ── */
+        .ap-hero {
+            background: var(--navy);
+            color: #fff;
+            padding: 140px 0 72px;
+            position: relative;
+            overflow: hidden;
+        }
+        .ap-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+            background-size: 48px 48px;
+            pointer-events: none;
+        }
+        .ap-hero-inner {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 32px;
+            display: grid;
+            grid-template-columns: 1fr 260px;
+            align-items: end;
+            gap: 48px;
+        }
+        .ap-hero-eyebrow {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.38);
+            margin-bottom: 22px;
+        }
+        .ap-hero h1 {
+            font-size: clamp(2.8rem, 5.5vw, 4.4rem);
+            font-weight: 700;
+            line-height: 1.05;
+            letter-spacing: -0.035em;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        .ap-hero-sub {
+            font-size: 0.97rem;
+            color: rgba(255,255,255,0.5);
+            max-width: 500px;
+            line-height: 1.75;
+            font-weight: 300;
+        }
+        .ap-hero-gases {
+            display: flex;
+            gap: 8px;
+            margin-top: 36px;
+            flex-wrap: wrap;
+        }
+        .ap-hero-gas {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            padding: 6px 13px;
+            border: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.74rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.55);
+        }
+        .ap-hero-gas-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .ap-hero-count {
+            text-align: right;
+            align-self: flex-end;
+            padding-bottom: 4px;
+        }
+        .ap-hero-count-num {
+            display: block;
+            font-size: clamp(5rem, 9vw, 8rem);
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: -0.06em;
+            color: rgba(255,255,255,0.06);
+            -webkit-text-stroke: 1px rgba(255,255,255,0.15);
+        }
+        .ap-hero-count-label {
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.3);
+        }
+
+        /* ── Filter bar ── */
+        .ap-filters {
+            background: #fff;
+            border-bottom: 1px solid var(--rule);
+            position: sticky;
+            top: 72px;
+            z-index: 200;
+        }
+        .ap-filters-inner {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 32px;
+            display: flex;
+            align-items: center;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        .af-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 22px;
+            border: none;
+            background: transparent;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            color: var(--ink-3);
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -1px;
+            transition: color 0.2s ease, border-color 0.2s ease;
+            white-space: nowrap;
+        }
+        .af-btn:hover { color: var(--ink); }
+        .af-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .af-btn.active                   { color: var(--ink);  border-bottom-color: var(--ink); }
+        .af-btn[data-filter="kr"].active  { color: var(--kr);  border-bottom-color: var(--kr); }
+        .af-btn[data-filter="xe"].active  { color: var(--xe);  border-bottom-color: var(--xe); }
+        .af-btn[data-filter="ne"].active  { color: var(--ne);  border-bottom-color: var(--ne); }
+        .af-btn[data-filter="he"].active  { color: var(--he);  border-bottom-color: var(--he); }
+        .af-btn[data-filter="sf6"].active { color: var(--sf6); border-bottom-color: var(--sf6); }
+        .af-btn[data-filter="n2o"].active { color: var(--n2o); border-bottom-color: var(--n2o); }
+        .af-btn[data-filter="cf4"].active { color: var(--cf4); border-bottom-color: var(--cf4); }
+
+        /* ── Result bar ── */
+        .ap-result-bar {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 32px 32px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .ap-result-count {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--ink-3);
+        }
+
+        /* ── Applications section ── */
+        .ap-section { padding: 20px 0 100px; }
+
+        /* ── Grid wrapper ── */
+        .ap-grid-wrap {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* ── Grid: tight gap with rule-color background = visible 1px separator lines ── */
+        .ap-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--rule);
+            margin-top: 24px;
+        }
+
+        /* ── Application card ── */
+        .ac {
+            background: var(--bg);
+            position: relative;
+            transition: background 0.3s ease;
+        }
+        .ac:hover { background: #fff; }
+        .ac.hidden { display: none; }
+
+        .ac-img-wrap {
+            overflow: hidden;
+            position: relative;
+            aspect-ratio: 16 / 10;
+        }
+        .ac-img {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.6s cubic-bezier(0.22,1,0.36,1);
+        }
+        .ac:hover .ac-img { transform: scale(1.05); }
+
+        .ac-img-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to top,
+                rgba(5,10,22,0.62) 0%,
+                rgba(5,10,22,0.15) 50%,
+                transparent 100%
+            );
+        }
+        .ac-index {
+            position: absolute;
+            bottom: 8px;
+            left: 14px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 3.8rem;
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: -0.04em;
+            color: rgba(255,255,255,0.1);
+            -webkit-text-stroke: 1px rgba(255,255,255,0.2);
+            pointer-events: none;
+            user-select: none;
+        }
+
+        /* Gas accent rule */
+        .ac-rule {
+            height: 2px;
+            background: var(--gas-color, var(--rule));
+        }
+
+        /* Card body */
+        .ac-body {
+            padding: 18px 22px 26px;
+        }
+        .ac-gases {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 11px;
+            flex-wrap: wrap;
+        }
+        .ac-gas-tag {
+            font-size: 0.66rem;
+            font-weight: 700;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+            padding: 2px 7px;
+            border: 1px solid currentColor;
+            border-radius: 2px;
+        }
+        .ac-gas-tag.kr  { color: var(--kr); }
+        .ac-gas-tag.xe  { color: var(--xe); }
+        .ac-gas-tag.ne  { color: var(--ne); }
+        .ac-gas-tag.he  { color: var(--he); }
+        .ac-gas-tag.sf6 { color: var(--sf6); }
+        .ac-gas-tag.n2o { color: var(--n2o); }
+        .ac-gas-tag.cf4 { color: var(--cf4); }
+
+        .ac-title {
+            font-size: 1.02rem;
+            font-weight: 600;
+            color: var(--ink);
+            line-height: 1.3;
+            letter-spacing: -0.01em;
+            margin-bottom: 9px;
+        }
+        .ac-desc {
+            font-size: 0.81rem;
+            color: var(--ink-2);
+            line-height: 1.68;
+            font-weight: 300;
+        }
+
+        /* No results */
+        .no-res {
+            grid-column: 1 / -1;
+            padding: 72px 32px;
+            text-align: center;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            color: var(--ink-3);
+            background: var(--bg);
+            display: none;
+        }
+        .no-res.visible { display: block; }
+
+        /* ── Stats strip ── */
+        .ap-stats {
+            background: var(--navy);
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+        .ap-stats-inner {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 32px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+        }
+        .ap-stat {
+            padding: 40px 0;
+            border-right: 1px solid rgba(255,255,255,0.07);
+            padding-left: 32px;
+        }
+        .ap-stat:first-child { padding-left: 0; }
+        .ap-stat:last-child { border-right: none; }
+        .ap-stat-num {
+            font-size: 2.6rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: #fff;
+            line-height: 1;
+            margin-bottom: 6px;
+            font-variant-numeric: tabular-nums;
+        }
+        .ap-stat-label {
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.35);
+        }
+
+        /* ── CTA ── */
+        .ap-cta {
+            background: var(--navy);
+            color: #fff;
+            padding: 80px 32px;
+            border-top: 1px solid rgba(255,255,255,0.07);
+        }
+        .ap-cta-inner {
+            max-width: 1140px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            gap: 60px;
+        }
+        .ap-cta-eyebrow {
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.35);
+            margin-bottom: 14px;
+        }
+        .ap-cta h2 {
+            font-size: clamp(1.6rem, 3vw, 2.3rem);
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            line-height: 1.2;
+            margin-bottom: 12px;
+        }
+        .ap-cta p {
+            font-size: 0.88rem;
+            color: rgba(255,255,255,0.5);
+            line-height: 1.75;
+            font-weight: 300;
+            max-width: 440px;
+        }
+        .ap-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 30px;
+            background: #fff;
+            color: var(--navy);
+            text-decoration: none;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            white-space: nowrap;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+        .ap-cta-btn:hover { background: var(--bg-2); transform: translateY(-1px); }
+
+        /* ── Filter row labels (2-axis) ── */
+        .ap-filters-row {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 32px;
+            display: flex;
+            align-items: center;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            border-bottom: 1px solid var(--rule);
+        }
+        .ap-filters-row:last-child { border-bottom: none; }
+        .af-label {
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--ink-3);
+            width: 80px;
+            flex-shrink: 0;
+            padding-right: 14px;
+            border-right: 1px solid var(--rule);
+            margin-right: 2px;
+            white-space: nowrap;
+            align-self: stretch;
+            display: flex;
+            align-items: center;
+        }
+        .af-btn[data-industry].active { color: var(--ink); border-bottom-color: var(--ink); }
+
+        /* ── Scroll reveal ── */
+        .sr {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.75s cubic-bezier(0.22,1,0.36,1),
+                        transform 0.75s cubic-bezier(0.22,1,0.36,1);
+        }
+        .sr.in { opacity: 1; transform: none; }
+
+        /* ── Responsive ── */
+        @media (max-width: 960px) {
+            .ap-grid { grid-template-columns: repeat(2, 1fr); }
+            .ap-hero-inner { grid-template-columns: 1fr; }
+            .ap-hero-count { display: none; }
+            .ap-cta-inner { grid-template-columns: 1fr; }
+            .ap-stats-inner { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .ap-grid { grid-template-columns: 1fr; }
+            .ap-hero { padding: 120px 0 56px; }
+            .ap-hero-inner { padding: 0 20px; }
+            .ap-filters-row { padding: 0 16px; }
+            .ap-result-bar { padding: 20px 20px 0; }
+            .ap-grid-wrap { padding: 0 20px; }
+            .ap-stats-inner { grid-template-columns: 1fr; padding: 0 20px; }
+            .ap-stat { padding: 28px 0; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
+            .ap-stat:last-child { border-bottom: none; }
+            .ap-cta { padding: 56px 20px; }
+        }
+    </style>
 </head>
-<body>
-    <header style="background: white;">
+<body class="ap-page">
+
+    <!-- ── Navigation ── -->
+    <header>
         <div class="container">
             <div class="header-content">
                 <div class="header-logo">
-                    <img src="logo.png" alt="宏源气体 Logo" style="width: 120px; height:auto;">
+                    <img src="logo.png" alt="Airocean Gases Logo" class="logo-img">
                 </div>
                 <nav>
-                    <ul style="list-style-type: none; padding-left: 0; display: flex; gap: 15px;">
-                        <li><a href="index.html" style="color: #000000;">Home</a></li>
-                        <li><a href="about.html" style="color: #000000;">About Us</a></li>
-                        <li><a href="products.html" style="color: #000000;">Products & Services</a></li>
-                        <li><a href="applications.html" style="color: #000000;">Applications</a></li>
-                        <li><a href="contact.html" style="color: #000000;">Contact Us</a></li>
+                    <ul class="nav-menu">
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li><a href="about.html" class="nav-link">About Us</a></li>
+                        <li><a href="products.html" class="nav-link">Products & Services</a></li>
+                        <li><a href="applications.html" class="nav-link active-link">Applications</a></li>
+                        <li><a href="contact.html" class="nav-link">Contact Us</a></li>
                     </ul>
+                    <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                        <span></span><span></span><span></span>
+                    </button>
                 </nav>
             </div>
         </div>
     </header>
 
-    <section class="applications-section" style="padding-top: 120px;">
-        <div class="container">
-            <h2>Industrial, Medical, and Specialty Gas Applications</h2>
-            <p class="subtitle">How our gases can be served in various applications</p>
-            <div class="applications-search">
-                <input id="applicationsSearch" type="text" placeholder="Search Applications... (e.g. welding, oxygen, refrigeration)" aria-label="Search Applications">
+    <!-- ── Hero ── -->
+    <section class="ap-hero">
+        <div class="ap-hero-inner">
+            <div>
+                <p class="ap-hero-eyebrow">Noble & Specialty Gases · Critical Industries</p>
+                <h1>Gas<br>Applications</h1>
+                <p class="ap-hero-sub">24 applications spanning semiconductor fabrication, medical imaging, electrical insulation, aerospace propulsion, and precision analytical science — powered by seven high-purity gases.</p>
+                <div class="ap-hero-gases">
+                    <div class="ap-hero-gas">
+                        <span class="ap-hero-gas-dot" style="background:var(--kr)"></span>
+                        Krypton
+                    </div>
+                    <div class="ap-hero-gas">
+                        <span class="ap-hero-gas-dot" style="background:var(--xe)"></span>
+                        Xenon
+                    </div>
+                    <div class="ap-hero-gas">
+                        <span class="ap-hero-gas-dot" style="background:var(--ne)"></span>
+                        Neon
+                    </div>
+                    <div class="ap-hero-gas">
+                        <span class="ap-hero-gas-dot" style="background:var(--he)"></span>
+                        Helium
+                    </div>
+                    <div class="ap-hero-gas">
+                        <span class="ap-hero-gas-dot" style="background:var(--sf6)"></span>
+                        SF&#x2086;
+                    </div>
+                    <div class="ap-hero-gas">
+                        <span class="ap-hero-gas-dot" style="background:var(--n2o)"></span>
+                        N&#x2082;O
+                    </div>
+                    <div class="ap-hero-gas">
+                        <span class="ap-hero-gas-dot" style="background:var(--cf4)"></span>
+                        CF&#x2084;
+                    </div>
+                </div>
             </div>
-            <div class="applications-grid">
-                <div class="app-card" data-bg-index="1"><div class="app-title">Aeration for Wastewater</div></div>
-                <div class="app-card" data-bg-index="2"><div class="app-title">Analytical Chromatography</div></div>
-                <div class="app-card" data-bg-index="3"><div class="app-title">Anesthesia</div></div>
-                <div class="app-card" data-bg-index="4"><div class="app-title">Atmosphere Control</div></div>
-                <div class="app-card" data-bg-index="5"><div class="app-title">Atomic Absorption Spectroscopy</div></div>
-                <div class="app-card" data-bg-index="6"><div class="app-title">Autoclave Inerting</div></div>
-                <div class="app-card" data-bg-index="7"><div class="app-title">Bioreactors</div></div>
-                <div class="app-card" data-bg-index="8"><div class="app-title">Bottling and Canning</div></div>
-                <div class="app-card" data-bg-index="9"><div class="app-title">Brazing</div></div>
-                <div class="app-card" data-bg-index="10"><div class="app-title">Bubbling for Glass</div></div>
-                <div class="app-card" data-bg-index="11"><div class="app-title">Carbon Fiber Manufacturing</div></div>
-                <div class="app-card" data-bg-index="12"><div class="app-title">Carbonation of Soda, Water, Beer</div></div>
-                <div class="app-card" data-bg-index="13"><div class="app-title">Catalyst Regeneration</div></div>
-                <div class="app-card" data-bg-index="14"><div class="app-title">Cold Spraying</div></div>
-                <div class="app-card" data-bg-index="15"><div class="app-title">Concrete Pouring and Setting</div></div>
-                <div class="app-card" data-bg-index="16"><div class="app-title">Controlled Atmosphere Storage Solutions</div></div>
-                <div class="app-card" data-bg-index="17"><div class="app-title">Controlled Atmosphere Stunning (CAS)</div></div>
-                <div class="app-card" data-bg-index="18"><div class="app-title">Cooling</div></div>
-                <div class="app-card" data-bg-index="19"><div class="app-title">Cooling for Additive Manufacturing</div></div>
-                <div class="app-card" data-bg-index="20"><div class="app-title">Cryogenic Chilling</div></div>
-                <div class="app-card" data-bg-index="21"><div class="app-title">Cryopreservation</div></div>
-                <div class="app-card" data-bg-index="22"><div class="app-title">Cryosurgery</div></div>
-                <div class="app-card" data-bg-index="23"><div class="app-title">Cryotherapy</div></div>
-                <div class="app-card" data-bg-index="24"><div class="app-title">Cryotreating for Metals/Materials Processing</div></div>
-                <div class="app-card" data-bg-index="25"><div class="app-title">Cutting</div></div>
-                <div class="app-card" data-bg-index="26"><div class="app-title">Enhanced Oil Recovery</div></div>
-                <div class="app-card" data-bg-index="27"><div class="app-title">Environmental Testing</div></div>
-                <div class="app-card" data-bg-index="28"><div class="app-title">Extrusion for Metals</div></div>
-                <div class="app-card" data-bg-index="29"><div class="app-title">Fermentation and Oxygen Enrichment</div></div>
-                <div class="app-card" data-bg-index="30"><div class="app-title">Fiber Optics</div></div>
-                <div class="app-card" data-bg-index="31"><div class="app-title">Fire Suppression</div></div>
-                <div class="app-card" data-bg-index="32"><div class="app-title">Fracturing for Unconventional Oil and Gas</div></div>
-                <div class="app-card" data-bg-index="33"><div class="app-title">Gas Chromatography</div></div>
-                <div class="app-card" data-bg-index="34"><div class="app-title">Gas Chromatography–Mass Spectrometry (GC-MS)</div></div>
-                <div class="app-card" data-bg-index="35"><div class="app-title">Gouging</div></div>
-                <div class="app-card" data-bg-index="36"><div class="app-title">Greenhouse CO2 Enrichment</div></div>
-                <div class="app-card" data-bg-index="37"><div class="app-title">Growth Control in Microbial Cultures</div></div>
-                <div class="app-card" data-bg-index="38"><div class="app-title">Hardening or Crust Freezing Solutions for Food Industry</div></div>
-                <div class="app-card" data-bg-index="39"><div class="app-title">Heat Transfer</div></div>
-                <div class="app-card" data-bg-index="40"><div class="app-title">Heat Treating</div></div>
-                <div class="app-card" data-bg-index="41"><div class="app-title">Heating and Forming for Glass</div></div>
-                <div class="app-card" data-bg-index="42"><div class="app-title">Heating for Iron and Steel</div></div>
-                <div class="app-card" data-bg-index="43"><div class="app-title">Heating for Non-Ferrous Metals Production</div></div>
-                <div class="app-card" data-bg-index="44"><div class="app-title">Hydrogen Fueling</div></div>
-                <div class="app-card" data-bg-index="45"><div class="app-title">Hydrogen Recovery</div></div>
-                <div class="app-card" data-bg-index="46"><div class="app-title">Hydrogenation Applications</div></div>
-                <div class="app-card" data-bg-index="47"><div class="app-title">Inerting</div></div>
-                <div class="app-card" data-bg-index="48"><div class="app-title">Inerting and Blanketing</div></div>
-                <div class="app-card" data-bg-index="49"><div class="app-title">Inerting for Additive Manufacturing</div></div>
-                <div class="app-card" data-bg-index="50"><div class="app-title">Inerting, Sparging, Pressurizing and Purging</div></div>
-                <div class="app-card" data-bg-index="51"><div class="app-title">Inerting, Stirring and Refining for Iron and Steel</div></div>
-                <div class="app-card" data-bg-index="52"><div class="app-title">Injection or Blow Molding</div></div>
-                <div class="app-card" data-bg-index="53"><div class="app-title">Integrated Circuit Packaging, Assembly and Test</div></div>
-                <div class="app-card" data-bg-index="54"><div class="app-title">Laser Processing</div></div>
-                <div class="app-card" data-bg-index="55"><div class="app-title">Leak Detection</div></div>
-                <div class="app-card" data-bg-index="56"><div class="app-title">LEDs</div></div>
-                <div class="app-card" data-bg-index="57"><div class="app-title">Lifting</div></div>
-                <div class="app-card" data-bg-index="58"><div class="app-title">Line and Vessel Drying</div></div>
-                <div class="app-card" data-bg-index="59"><div class="app-title">Liquid Chromatography–Tandem Mass Spectrometry</div></div>
-                <div class="app-card" data-bg-index="60"><div class="app-title">Lyophilization / Freeze Drying</div></div>
-                <div class="app-card" data-bg-index="61"><div class="app-title">Melting and Refining for Iron and Steel</div></div>
-                <div class="app-card" data-bg-index="62"><div class="app-title">Melting Applications</div></div>
-                <div class="app-card" data-bg-index="63"><div class="app-title">Metal Injection Molding</div></div>
-                <div class="app-card" data-bg-index="64"><div class="app-title">Mineral Wool/Rockwool Production</div></div>
-                <div class="app-card" data-bg-index="65"><div class="app-title">Modified Atmosphere Packaging</div></div>
-                <div class="app-card" data-bg-index="66"><div class="app-title">Nuclear Magnetic Resonance Spectroscopy Cooling</div></div>
-                <div class="app-card" data-bg-index="67"><div class="app-title">Oxygen Enrichment</div></div>
-                <div class="app-card" data-bg-index="68"><div class="app-title">Oxygenation for Water</div></div>
-                <div class="app-card" data-bg-index="69"><div class="app-title">Ozone for Drinking Water</div></div>
-                <div class="app-card" data-bg-index="70"><div class="app-title">Ozone for Waste and Wastewater</div></div>
-                <div class="app-card" data-bg-index="71"><div class="app-title">Packaging, Inerting and Blanketing</div></div>
-                <div class="app-card" data-bg-index="72"><div class="app-title">Particle Size Reduction for Pharmaceuticals</div></div>
-                <div class="app-card" data-bg-index="73"><div class="app-title">Particle Size Reduction Solutions for the Food Industry</div></div>
-                <div class="app-card" data-bg-index="74"><div class="app-title">Pest Control With CO₂</div></div>
-                <div class="app-card" data-bg-index="75"><div class="app-title">pH Control and Neutralization</div></div>
-                <div class="app-card" data-bg-index="76"><div class="app-title">Photovoltaics</div></div>
-                <div class="app-card" data-bg-index="77"><div class="app-title">Pipeline Services</div></div>
-                <div class="app-card" data-bg-index="78"><div class="app-title">Plasma Cutting</div></div>
-                <div class="app-card" data-bg-index="79"><div class="app-title">Plasma Spraying</div></div>
-                <div class="app-card" data-bg-index="80"><div class="app-title">Polymer Processing</div></div>
-                <div class="app-card" data-bg-index="81"><div class="app-title">Pressurization</div></div>
-                <div class="app-card" data-bg-index="82"><div class="app-title">Printed Circuit Board (PCB) Assembly and Test</div></div>
-                <div class="app-card" data-bg-index="83"><div class="app-title">Process Cooling</div></div>
-                <div class="app-card" data-bg-index="84"><div class="app-title">Purging</div></div>
-                <div class="app-card" data-bg-index="85"><div class="app-title">Quenching</div></div>
-                <div class="app-card" data-bg-index="86"><div class="app-title">Refrigeration</div></div>
-                <div class="app-card" data-bg-index="87"><div class="app-title">Respiratory Oxygen</div></div>
-                <div class="app-card" data-bg-index="88"><div class="app-title">Respiratory Therapy</div></div>
-                <div class="app-card" data-bg-index="89"><div class="app-title">Rocket Propellent</div></div>
-                <div class="app-card" data-bg-index="90"><div class="app-title">Semiconductors</div></div>
-                <div class="app-card" data-bg-index="91"><div class="app-title">Sparging and Stripping</div></div>
-                <div class="app-card" data-bg-index="92"><div class="app-title">Supercritical CO2 Extraction</div></div>
-                <div class="app-card" data-bg-index="93"><div class="app-title">Syngas Solutions</div></div>
-                <div class="app-card" data-bg-index="94"><div class="app-title">Temperature Control in Food Production</div></div>
-                <div class="app-card" data-bg-index="95"><div class="app-title">Thermal Spray</div></div>
-                <div class="app-card" data-bg-index="96"><div class="app-title">Tire Curing</div></div>
-                <div class="app-card" data-bg-index="97"><div class="app-title">Turbine Generator Cooling</div></div>
-                <div class="app-card" data-bg-index="98"><div class="app-title">Welding</div></div>
-                <div class="app-card" data-bg-index="99"><div class="app-title">Well Completions for Oil and Gas</div></div>
-                <div class="app-card" data-bg-index="100"><div class="app-title">Whipping and Aeration of Food Preparations</div></div>
-                <div class="app-card" data-bg-index="101"><div class="app-title">Wine Production Solutions</div></div>
+            <div class="ap-hero-count">
+                <span class="ap-hero-count-num">24</span>
+                <span class="ap-hero-count-label">Applications</span>
             </div>
         </div>
     </section>
 
-    <footer style="background: white; border-top: 1px solid #000000;">
+    <!-- ── Filter bar ── -->
+    <div class="ap-filters">
+        <div class="ap-filters-row">
+            <span class="af-label">Gas</span>
+            <button class="af-btn active" data-filter="all">All</button>
+            <button class="af-btn" data-filter="kr">
+                <span class="af-dot" style="background:var(--kr)"></span>
+                Krypton
+            </button>
+            <button class="af-btn" data-filter="xe">
+                <span class="af-dot" style="background:var(--xe)"></span>
+                Xenon
+            </button>
+            <button class="af-btn" data-filter="ne">
+                <span class="af-dot" style="background:var(--ne)"></span>
+                Neon
+            </button>
+            <button class="af-btn" data-filter="he">
+                <span class="af-dot" style="background:var(--he)"></span>
+                Helium
+            </button>
+            <button class="af-btn" data-filter="sf6">
+                <span class="af-dot" style="background:var(--sf6)"></span>
+                SF&#x2086;
+            </button>
+            <button class="af-btn" data-filter="n2o">
+                <span class="af-dot" style="background:var(--n2o)"></span>
+                N&#x2082;O
+            </button>
+            <button class="af-btn" data-filter="cf4">
+                <span class="af-dot" style="background:var(--cf4)"></span>
+                CF&#x2084;
+            </button>
+        </div>
+        <div class="ap-filters-row">
+            <span class="af-label">Industry</span>
+            <button class="af-btn active" data-industry="all">All Industries</button>
+            <button class="af-btn" data-industry="semiconductor">Semiconductor</button>
+            <button class="af-btn" data-industry="medical">Medical</button>
+            <button class="af-btn" data-industry="aerospace">Aerospace</button>
+            <button class="af-btn" data-industry="scientific">Scientific</button>
+            <button class="af-btn" data-industry="electrical">Electrical</button>
+            <button class="af-btn" data-industry="industrial">Industrial</button>
+        </div>
+    </div>
+
+    <!-- ── Applications grid ── -->
+    <section class="ap-section">
+        <div class="ap-result-bar">
+            <span class="ap-result-count" id="apCount">18 Applications</span>
+        </div>
+        <div class="ap-grid-wrap">
+            <div class="ap-grid sr" id="apGrid">
+
+                <!-- 01 Semiconductors -->
+                <div class="ac" data-gases="kr ne xe he" data-industry="semiconductor" style="--gas-color:var(--kr)">
+                    <div class="ac-img-wrap">
+                        <div class="ac-img" style="background-image:url('applications_page_90.jpg')"></div>
+                        <div class="ac-img-overlay"></div>
+                        <span class="ac-index">01</span>
+                    </div>
+                    <div class="ac-rule"></div>
+                    <div class="ac-body">
+                        <div class="ac-gases">
+                            <span class="ac-gas-tag kr">Kr</span>
+                            <span class="ac-gas-tag ne">Ne</span>
+                            <span class="ac-gas-tag xe">Xe</span>
+                            <span class="ac-gas-tag he">He</span>
+                        </div>
+                        <h3 class="ac-title">Semiconductors</h3>
+                        <p class="ac-desc">Kr and Ne power excimer lasers for photolithography; Xe aids plasma etching; He provides process cooling and purging throughout chip fabrication.</p>
+                    </div>
+                </div>
+
+                <!-- 02 Laser Processing -->
+                <div class="ac" data-gases="kr ne xe" data-industry="semiconductor" style="--gas-color:var(--kr)">
+                    <div class="ac-img-wrap">
+                        <div class="ac-img" style="background-image:url('applications_page_54.jpg')"></div>
+                        <div class="ac-img-overlay"></div>
+                        <span class="ac-index">02</span>
+                    </div>
+                    <div class="ac-rule"></div>
+                    <div class="ac-body">
+                        <div class="ac-gases">
+                            <span class="ac-gas-tag kr">Kr</span>
+                            <span class="ac-gas-tag ne">Ne</span>
+                            <span class="ac-gas-tag xe">Xe</span>
+                        </div>
+                        <h3 class="ac-title">Laser Processing</h3>
+                        <p class="ac-desc">Krypton fluoride (KrF) and xenon chloride (XeCl) excimer lasers enable precision micromachining, annealing, and surface treatment at nanometer scale.</p>
+                    </div>
+                </div>
+
+                <!-- 03 IC Packaging -->
+                <div class="ac" data-gases="kr ne he" data-industry="semiconductor" style="--gas-color:var(--kr)">
+                    <div class="ac-img-wrap">
+                        <div class="ac-img" style="background-image:url('applications_page_53.jpg')"></div>
+                        <div class="ac-img-overlay"></div>
+                        <span class="ac-index">03</span>
+                    </div>
+                    <div class="ac-rule"></div>
+                    <div class="ac-body">
+                        <div class="ac-gases">
+                            <span class="ac-gas-tag kr">Kr</span>
+                            <span class="ac-gas-tag ne">Ne</span>
+                            <span class="ac-gas-tag he">He</span>
+                        </div>
+                        <h3 class="ac-title">IC Packaging, Assembly & Test</h3>
+                        <p class="ac-desc">Noble gases maintain inert atmospheres during IC packaging and assembly, preventing oxidation and ensuring electrical integrity of sensitive components.</p>
+                    </div>
+                </div>
+
+                <!-- 04 Leak Detection -->
+                <div class="ac" data-gases="he" data-industry="industrial" style="--gas-color:var(--he)">
+                    <div class="ac-img-wrap">
+                        <div class="ac-img" style="background-image:url('applications_page_55.jpg')"></div>
+                        <div class="ac-img-overlay"></div>
+                        <span class="ac-index">04</span>
+                    </div>
+                    <div class="ac-rule"></div>
+                    <div class="ac-body">
+                        <div class="ac-gases">
+                            <span class="ac-gas-tag he">He</span>
+                        </div>
+                        <h3 class="ac-title">Leak Detection</h3>
+                        <p class="ac-desc">Helium's small molecular size, inertness, and low atmospheric concentration make it the universal tracer gas for detecting leaks in pressurized systems.</p>
+                    </div>
+                </div>
+
+                <!-- 05 Fiber Optics -->
+                <div class="ac" data-gases="he" data-industry="industrial" style="--gas-color:var(--he)">
+                    <div class="ac-img-wrap">
+                        <div class="ac-img" style="background-image:url('applications_page_30.jpg')"></div>
+                        <div class="ac-img-overlay"></div>
+                        <span class="ac-index">05</span>
+                    </div>
+                    <div class="ac-rule"></div>
+                    <div class="ac-body">
+                        <div class="ac-gases">
+                            <span class="ac-gas-tag he">He</span>
+                        </div>
+                        <h3 class="ac-title">Fiber Optics</h3>
+                        <p class="ac-desc">Helium provides the inert cooling atmosphere during optical fiber drawing, controlling draw tension and ensuring purity of the glass structure.</p>
+                    </div>
+                </div>
+
+                <!-- 06 MRI & NMR -->
+                <div class="ac" data-gases="he xe" data-industry="medical" style="--gas-color:var(--he)">
+                    <div class="ac-img-wrap">
+                        <div class="ac-img" style="background-image:url('applications_page_66.jpg')"></div>
+                        <div class="ac-img-overlay"></div>
+                        <span class="ac-index">06</span>
+                    </div>
+                    <div class="ac-rule"></div>
+                    <div class="ac-body">
+                        <div class="ac-gases">
+                            <span class="ac-gas-tag he">He</span>
+                            <span class="ac-gas-tag xe">Xe</span>
+                        </div>
+                        <h3 class="ac-title">MRI & NMR Cooling</h3>
+                        <p class="ac-desc">Liquid helium maintains superconducting magnet temperatures in MRI and NMR systems. Hyperpolarized xenon serves as an MRI contrast agent for lung imaging.</p>
+                    </div>
+                </div>
+
+                <!-- 07 Anesthesia -->
+                <div class="ac" data-gases="xe" data-industry="medical" style="--gas-color:var(--xe)">
+                    <div class="ac-img-wrap">
+                        <div class="ac-img" style="background-image:url('applications_page_3.jpg')"></div>
+                        <div class="ac-img-overlay"></div>
+                        <span class="ac-index">07</span>
+                    </div>
+                    <div class="ac-rule"></div>
+                    <div class="ac-body">
+                        <div class="ac-gases">
+                            <span class="ac-gas-tag xe">Xe</span>
+                        </div>
+                        <h3 class="ac-title">Anesthesia</h3>
+                        <p class="ac-desc">Xenon is used as a medical anesthetic for its rapid onset, hemodynamic stability, and neuroprotective properties — with no greenhouse gas impact.</p>
+                    </div>
+                </div>
+
+                <!-- 08 Ion Propulsion -->
+                <div class="ac" data-gases="xe" data-industry="aerospace" style="--gas-color:var(--xe)">
+                    <div class="ac-img-wrap">
+                        <div class="ac-img" style="background-image:url('applications_page_89.jpg')"></div>
+                        <div class="ac-img-overlay"></div>
+                        <span class="ac-index">08</span>
+                    </div>
+                    <div class="ac-rule"></div>
+                    <div class="ac-body">
+                        <div class="ac-gases">
+                            <span class="ac-gas-tag xe">Xe</span>
+                        </div>
+                        <h3 class="ac-title">Ion Propulsion</h3>
+                        <p class="ac-desc">Xenon is the propellant of choice for ion thrusters in spacecraft, providing high specific impulse and operational lifetime for deep-space missions.</p>
+                    </div>
+                </div>
+
+                <!-- 09 Lighting & Displays -->
+                <div class="ac" data-gases="ne kr" data-industry="industrial" style="--gas-color:var(--ne)">
+                    <div class="ac-img-wrap">
+                        <div class="ac-img" style="background-image:url('applications_page_56.jpg')"></div>
+                        <div class="ac-img-overlay"></div>
+                        <span class="ac-index">09</span>
+                    </div>
+                    <div class="ac-rule"></div>
+                    <div class="ac-body">
+                        <div class="ac-gases">
+                            <span class="ac-gas-tag ne">Ne</span>
+                            <span class="ac-gas-tag kr">Kr</span>
+                        </div>
+                        <h3 class="ac-title">Lighting & Displays</h3>
+                        <p class="ac-desc">Neon produces its signature red-orange glow in discharge lamps; krypton provides the fill gas for high-efficiency incandescent and fluorescent lighting.</p>
+                    </div>
+                </div>
+
+                <!-- 10 Photovoltaics -->
+                <div class="ac" data-gases="kr ne" data-industry="industrial" style="--gas-color:var(--kr)">
+                    <div class="ac-img-wrap">
+                        <div class="ac-img" style="background-image:url('applications_page_76.jpg')"></div>
+                        <div class="ac-img-overlay"></div>
+                        <span class="ac-index">10</span>
+                    </div>
+                    <div class="ac-rule"></div>
+                    <div class="ac-body">
+                        <div class="ac-gases">
+                            <span class="ac-gas-tag kr">Kr</span>
+                            <span class="ac-gas-tag ne">Ne</span>
+                        </div>
+                        <h3 class="ac-title">Photovoltaics</h3>
+                        <p class="ac-desc">Krypton and neon are used in plasma-enhanced deposition and sputtering processes for manufacturing thin-film solar cells and photovoltaic panels.</p>
+                    </div>
+                </div>
+
+                <!-- 11 Gas Chromatography -->
+                <div class="ac" data-gases="he" data-industry="scientific" style="--gas-color:var(--he)">
+                    <div class="ac-img-wrap">
+                        <div class="ac-img" style="background-image:url('applications_page_33.jpg')"></div>
+                        <div class="ac-img-overlay"></div>
+                        <span class="ac-index">11</span>
+                    </div>
+                    <div class="ac-rule"></div>
+                    <div class="ac-body">
+                        <div class="ac-gases">
+                            <span class="ac-gas-tag he">He</span>
+                        </div>
+                        <h3 class="ac-title">Gas Chromatography</h3>
+                        <p class="ac-desc">Helium is the preferred carrier gas for GC, offering low viscosity, compatibility with all detectors, and excellent separation efficiency.</p>
+                    </div>
+                </div>
+
+                <!-- 12 GC-MS Analysis -->
+                <div class="ac" data-gases="he" data-industry="scientific" style="--gas-color:var(--he)">
+                    <div class="ac-img-wrap">
+                        <div class="ac-img" style="background-image:url('applications_page_34.jpg')"></div>
+                        <div class="ac-img-overlay"></div>
+                        <span class="ac-index">12</span>
+                    </div>
+                    <div class="ac-rule"></div>
+                    <div class="ac-body">
+                        <div class="ac-gases">
+                            <span class="ac-gas-tag he">He</span>
+                        </div>
+                        <h3 class="ac-title">GC-MS Analysis</h3>
+                        <p class="ac-desc">Helium carrier gas enables gas chromatography–mass spectrometry, the gold standard for trace compound identification in analytical laboratories.</p>
+                    </div>
+                </div>
+
+                <!-- 13 Analytical Chromatography -->
+                <div class="ac" data-gases="he" data-industry="scientific" style="--gas-color:var(--he)">
+                    <div class="ac-img-wrap">
+                        <div class="ac-img" style="background-image:url('applications_page_2.jpg')"></div>
+                        <div class="ac-img-overlay"></div>
+                        <span class="ac-index">13</span>
+                    </div>
+                    <div class="ac-rule"></div>
+                    <div class="ac-body">
+                        <div class="ac-gases">
+                            <span class="ac-gas-tag he">He</span>
+                        </div>
+                        <h3 class="ac-title">Analytical Chromatography</h3>
+                        <p class="ac-desc">Helium serves as the inert carrier gas across HPLC, GPC, and other chromatographic techniques requiring high purity and consistent flow rates.</p>
+                    </div>
+                </div>
+
+                <!-- 14 LC-MS/MS -->
+                <div class="ac" data-gases="he" data-industry="scientific" style="--gas-color:var(--he)">
+                    <div class="ac-img-wrap">
+                        <div class="ac-img" style="background-image:url('applications_page_59.jpg')"></div>
+                        <div class="ac-img-overlay"></div>
+                        <span class="ac-index">14</span>
+                    </div>
+                    <div class="ac-rule"></div>
+                    <div class="ac-body">
+                        <div class="ac-gases">
+                            <span class="ac-gas-tag he">He</span>
+                        </div>
+                        <h3 class="ac-title">LC-MS/MS</h3>
+                        <p class="ac-desc">Helium degases mobile phases and serves as nebulizing gas in liquid chromatography–mass spectrometry for high-sensitivity pharmaceutical analysis.</p>
+                    </div>
+                </div>
+
+                <!-- 15 Heat Transfer & Cooling -->
+                <div class="ac" data-gases="he" data-industry="scientific" style="--gas-color:var(--he)">
+                    <div class="ac-img-wrap">
+                        <div class="ac-img" style="background-image:url('applications_page_39.jpg')"></div>
+                        <div class="ac-img-overlay"></div>
+                        <span class="ac-index">15</span>
+                    </div>
+                    <div class="ac-rule"></div>
+                    <div class="ac-body">
+                        <div class="ac-gases">
+                            <span class="ac-gas-tag he">He</span>
+                        </div>
+                        <h3 class="ac-title">Heat Transfer & Cooling</h3>
+                        <p class="ac-desc">Helium's exceptionally high thermal conductivity makes it the preferred medium for cooling superconducting magnets, nuclear reactors, and precision instruments.</p>
+                    </div>
+                </div>
+
+                <!-- 16 Lifting & Buoyancy -->
+                <div class="ac" data-gases="he" data-industry="industrial" style="--gas-color:var(--he)">
+                    <div class="ac-img-wrap">
+                        <div class="ac-img" style="background-image:url('applications_page_57.jpg')"></div>
+                        <div class="ac-img-overlay"></div>
+                        <span class="ac-index">16</span>
+                    </div>
+                    <div class="ac-rule"></div>
+                    <div class="ac-body">
+                        <div class="ac-gases">
+                            <span class="ac-gas-tag he">He</span>
+                        </div>
+                        <h3 class="ac-title">Lifting & Buoyancy</h3>
+                        <p class="ac-desc">Helium's low density and non-flammability make it the safe standard for weather balloons, airships, blimps, and scientific high-altitude applications.</p>
+                    </div>
+                </div>
+
+                <!-- 17 Atomic Absorption Spectroscopy -->
+                <div class="ac" data-gases="he" data-industry="scientific" style="--gas-color:var(--he)">
+                    <div class="ac-img-wrap">
+                        <div class="ac-img" style="background-image:url('applications_page_5.jpg')"></div>
+                        <div class="ac-img-overlay"></div>
+                        <span class="ac-index">17</span>
+                    </div>
+                    <div class="ac-rule"></div>
+                    <div class="ac-body">
+                        <div class="ac-gases">
+                            <span class="ac-gas-tag he">He</span>
+                        </div>
+                        <h3 class="ac-title">Atomic Absorption Spectroscopy</h3>
+                        <p class="ac-desc">Helium purge gas eliminates spectral interferences in AAS instruments, improving detection sensitivity for trace metal analysis.</p>
+                    </div>
+                </div>
+
+                <!-- 18 Environmental Testing -->
+                <div class="ac" data-gases="he ne" data-industry="scientific" style="--gas-color:var(--he)">
+                    <div class="ac-img-wrap">
+                        <div class="ac-img" style="background-image:url('applications_page_27.jpg')"></div>
+                        <div class="ac-img-overlay"></div>
+                        <span class="ac-index">18</span>
+                    </div>
+                    <div class="ac-rule"></div>
+                    <div class="ac-body">
+                        <div class="ac-gases">
+                            <span class="ac-gas-tag he">He</span>
+                            <span class="ac-gas-tag ne">Ne</span>
+                        </div>
+                        <h3 class="ac-title">Environmental Testing</h3>
+                        <p class="ac-desc">Helium and neon act as conservative tracer gases in environmental studies, characterizing subsurface flow paths and detecting infrastructure leaks.</p>
+                    </div>
+                </div>
+
+                <!-- 19 SF6 Electrical Insulation -->
+                <div class="ac" data-gases="sf6" data-industry="electrical" style="--gas-color:var(--sf6)">
+                    <div class="ac-img-wrap">
+                        <div class="ac-img" style="background-image:url('https://picsum.photos/seed/sf6-gis/800/500')"></div>
+                        <div class="ac-img-overlay"></div>
+                        <span class="ac-index">19</span>
+                    </div>
+                    <div class="ac-rule"></div>
+                    <div class="ac-body">
+                        <div class="ac-gases">
+                            <span class="ac-gas-tag sf6">SF&#x2086;</span>
+                        </div>
+                        <h3 class="ac-title">Electrical Insulation & GIS</h3>
+                        <p class="ac-desc">SF&#x2086; is the industry-standard dielectric medium in gas-insulated switchgear (GIS) and high-voltage circuit breakers, enabling compact substations with superior arc-quenching performance.</p>
+                    </div>
+                </div>
+
+                <!-- 20 SF6 Semiconductor Etching -->
+                <div class="ac" data-gases="sf6" data-industry="semiconductor" style="--gas-color:var(--sf6)">
+                    <div class="ac-img-wrap">
+                        <div class="ac-img" style="background-image:url('https://picsum.photos/seed/sf6-etch/800/500')"></div>
+                        <div class="ac-img-overlay"></div>
+                        <span class="ac-index">20</span>
+                    </div>
+                    <div class="ac-rule"></div>
+                    <div class="ac-body">
+                        <div class="ac-gases">
+                            <span class="ac-gas-tag sf6">SF&#x2086;</span>
+                        </div>
+                        <h3 class="ac-title">Semiconductor Plasma Etching</h3>
+                        <p class="ac-desc">SF&#x2086; plasma provides highly selective, anisotropic etching of silicon and silicon dioxide in advanced logic and memory device manufacturing, enabling sub-nanometer feature definition.</p>
+                    </div>
+                </div>
+
+                <!-- 21 N2O Medical Anesthesia -->
+                <div class="ac" data-gases="n2o" data-industry="medical" style="--gas-color:var(--n2o)">
+                    <div class="ac-img-wrap">
+                        <div class="ac-img" style="background-image:url('https://picsum.photos/seed/n2o-medical/800/500')"></div>
+                        <div class="ac-img-overlay"></div>
+                        <span class="ac-index">21</span>
+                    </div>
+                    <div class="ac-rule"></div>
+                    <div class="ac-body">
+                        <div class="ac-gases">
+                            <span class="ac-gas-tag n2o">N&#x2082;O</span>
+                        </div>
+                        <h3 class="ac-title">Medical Anesthesia & Sedation</h3>
+                        <p class="ac-desc">Nitrous oxide has been a cornerstone of clinical anesthesia for over a century — used alongside volatile agents for inhalation induction, procedural sedation, and analgesic support in operating rooms and dental practices.</p>
+                    </div>
+                </div>
+
+                <!-- 22 N2O Semiconductor CVD -->
+                <div class="ac" data-gases="n2o" data-industry="semiconductor" style="--gas-color:var(--n2o)">
+                    <div class="ac-img-wrap">
+                        <div class="ac-img" style="background-image:url('https://picsum.photos/seed/n2o-cvd/800/500')"></div>
+                        <div class="ac-img-overlay"></div>
+                        <span class="ac-index">22</span>
+                    </div>
+                    <div class="ac-rule"></div>
+                    <div class="ac-body">
+                        <div class="ac-gases">
+                            <span class="ac-gas-tag n2o">N&#x2082;O</span>
+                        </div>
+                        <h3 class="ac-title">Semiconductor CVD Gate Dielectrics</h3>
+                        <p class="ac-desc">N&#x2082;O serves as the oxidant source in PECVD and thermal CVD processes for growing high-quality silicon oxynitride and silicon dioxide gate dielectric films in advanced CMOS fabrication.</p>
+                    </div>
+                </div>
+
+                <!-- 23 CF4 Plasma Etching -->
+                <div class="ac" data-gases="cf4" data-industry="semiconductor" style="--gas-color:var(--cf4)">
+                    <div class="ac-img-wrap">
+                        <div class="ac-img" style="background-image:url('https://picsum.photos/seed/cf4-etch/800/500')"></div>
+                        <div class="ac-img-overlay"></div>
+                        <span class="ac-index">23</span>
+                    </div>
+                    <div class="ac-rule"></div>
+                    <div class="ac-body">
+                        <div class="ac-gases">
+                            <span class="ac-gas-tag cf4">CF&#x2084;</span>
+                        </div>
+                        <h3 class="ac-title">Plasma Etching Si / SiO&#x2082;</h3>
+                        <p class="ac-desc">CF&#x2084; generates fluorine radicals in RF plasma that etch silicon, silicon dioxide, and silicon nitride with high selectivity, enabling precise patterning of transistor structures and interconnect layers in leading-edge fabs.</p>
+                    </div>
+                </div>
+
+                <!-- 24 CF4 Chamber Cleaning -->
+                <div class="ac" data-gases="cf4" data-industry="semiconductor" style="--gas-color:var(--cf4)">
+                    <div class="ac-img-wrap">
+                        <div class="ac-img" style="background-image:url('https://picsum.photos/seed/cf4-clean/800/500')"></div>
+                        <div class="ac-img-overlay"></div>
+                        <span class="ac-index">24</span>
+                    </div>
+                    <div class="ac-rule"></div>
+                    <div class="ac-body">
+                        <div class="ac-gases">
+                            <span class="ac-gas-tag cf4">CF&#x2084;</span>
+                        </div>
+                        <h3 class="ac-title">PECVD Chamber Cleaning</h3>
+                        <p class="ac-desc">CF&#x2084; plasma cleans residual silicon and oxide deposits from PECVD chamber walls between deposition cycles, maintaining process consistency and extending equipment uptime in high-volume production environments.</p>
+                    </div>
+                </div>
+
+                <div class="no-res" id="noRes">No applications found for this filter.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Stats strip ── -->
+    <div class="ap-stats sr">
+        <div class="ap-stats-inner">
+            <div class="ap-stat">
+                <div class="ap-stat-num">24</div>
+                <div class="ap-stat-label">Application Areas</div>
+            </div>
+            <div class="ap-stat">
+                <div class="ap-stat-num">7</div>
+                <div class="ap-stat-label">High-Purity Gases</div>
+            </div>
+            <div class="ap-stat">
+                <div class="ap-stat-num">99.999%</div>
+                <div class="ap-stat-label">Purity Available</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── CTA ── -->
+    <section class="ap-cta sr">
+        <div class="ap-cta-inner">
+            <div>
+                <p class="ap-cta-eyebrow">Precision Supply · Expert Consultation</p>
+                <h2>Looking for a Specific Application?</h2>
+                <p>Our team can advise on the right gas grade, specification, and supply format for your exact process requirements.</p>
+            </div>
+            <a href="contact.html" class="ap-cta-btn">
+                Contact Specialists
+                <i class="fas fa-arrow-right" style="font-size:0.75rem"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- ── Footer ── -->
+    <footer>
         <div class="container">
-            <div class="footer-content" style="display: flex; justify-content: space-between; align-items: center;">
+            <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="logo.png" alt="宏源气体 Logo" style="width: 120px; height:auto;">
+                    <img src="logo.png" alt="Airocean Gases Logo" class="logo-img">
                 </div>
                 <div class="footer-column">
-                    <div class="social-media">
-                        <h3 style="font-size: 16px; margin-bottom: 8px;">Follow Us</h3>
-                        <ul style="list-style-type: none; padding-left: 0;">
-                            <li style="margin-bottom: 4px;"><a href="https://api.whatsapp.com/send/?phone=9174317883&text&type=phone_number&app_absent=0" style="color: #000000; font-size: 13px;"><i class="fab fa-whatsapp"></i> Whatsapp</a></li>
-                            <li style="margin-bottom: 4px;"><a href="https://www.linkedin.com/company/hygas/?viewAsMember=true" style="color: #000000; font-size: 13px;"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
-                            <li style="margin-bottom: 4px;"><a href="https://www.instagram.com/airoceangases/?hl=en" style="color: #000000; font-size: 13px;"><i class="fab fa-instagram"></i> Instagram</a></li>
-                        </ul>
-                    </div>
+                    <h3>Follow Us</h3>
+                    <ul>
+                        <li><a href="https://api.whatsapp.com/send/?phone=9174317883&text&type=phone_number&app_absent=0"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
+                        <li><a href="https://www.linkedin.com/company/hygas/?viewAsMember=true"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                        <li><a href="https://www.instagram.com/airoceangases/?hl=en"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    </ul>
                 </div>
                 <div class="footer-column">
-                    <div class="legal-info">
-                        <h3 style="font-size: 16px; margin-bottom: 8px;">Legal Information</h3>
-                        <ul style="list-style-type: none; padding-left: 0;">
-                            <li style="margin-bottom: 4px;"><a href="privacy-policy.html" style="color: #000000; font-size: 13px;">Privacy Policy</a></li>
-                            <li style="margin-bottom: 4px;"><a href="terms-conditions.html" style="color: #000000; font-size: 13px;">Terms & Conditions</a></li>
-                        </ul>
-                    </div>
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-conditions.html">Terms & Conditions</a></li>
+                    </ul>
                 </div>
                 <div class="footer-column">
-                    <div class="quick-links">
-                        <h3 style="font-size: 16px; margin-bottom: 8px;">Quick Links</h3>
-                        <ul style="list-style-type: none; padding-left: 0;">
-                            <li style="margin-bottom: 4px;"><a href="index.html" style="color: #000000; font-size: 13px;">Home</a></li>
-                            <li style="margin-bottom: 4px;"><a href="about.html" style="color: #000000; font-size: 13px;">About Us</a></li>
-                            <li style="margin-bottom: 4px;"><a href="products.html" style="color: #000000; font-size: 13px;">Products & Services</a></li>
-                            <li style="margin-bottom: 4px;"><a href="applications.html" style="color: #000000; font-size: 13px;">Applications</a></li>
-                            <li style="margin-bottom: 4px;"><a href="contact.html" style="color: #000000; font-size: 13px;">Contact Us</a></li>   
-                        </ul>
-                    </div>
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="products.html">Products & Services</a></li>
+                        <li><a href="applications.html">Applications</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
                 </div>
             </div>
             <div class="copyright">
-                <p style="font-size: 12px; margin-top: 10px;">&copy; 2023 Airocean Gases. All rights reserved.</p>
+                <p>&copy; 2025 Airocean Gases. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
+    <button id="back-to-top" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
     <script src="script.js"></script>
+    <script>
+        // ── 2-axis filter logic (gas × industry) ──
+        const gasBtns  = document.querySelectorAll('.af-btn[data-filter]');
+        const indBtns  = document.querySelectorAll('.af-btn[data-industry]');
+        const appCards = document.querySelectorAll('.ac');
+        const noRes    = document.getElementById('noRes');
+        const apCount  = document.getElementById('apCount');
+        const total    = appCards.length;
+
+        let activeGas = 'all';
+        let activeInd = 'all';
+
+        function applyFilters() {
+            let visible = 0;
+            appCards.forEach(card => {
+                const gases  = card.getAttribute('data-gases').split(' ');
+                const ind    = card.getAttribute('data-industry');
+                const gasOk  = activeGas === 'all' || gases.includes(activeGas);
+                const indOk  = activeInd === 'all' || ind === activeInd;
+                const show   = gasOk && indOk;
+                card.classList.toggle('hidden', !show);
+                if (show) visible++;
+            });
+            noRes.classList.toggle('visible', visible === 0);
+            apCount.textContent = visible === total
+                ? `${total} Applications`
+                : `${visible} of ${total} Applications`;
+        }
+
+        gasBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                gasBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                activeGas = btn.getAttribute('data-filter');
+                applyFilters();
+            });
+        });
+
+        indBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                indBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                activeInd = btn.getAttribute('data-industry');
+                applyFilters();
+            });
+        });
+
+        // ── Scroll reveal ──
+        const srEls = document.querySelectorAll('.sr');
+        if ('IntersectionObserver' in window) {
+            const obs = new IntersectionObserver(entries => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('in');
+                        obs.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.08 });
+            srEls.forEach(el => obs.observe(el));
+        } else {
+            srEls.forEach(el => el.classList.add('in'));
+        }
+    </script>
 </body>
-</html> 
+</html>

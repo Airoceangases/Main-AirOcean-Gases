@@ -1,82 +1,842 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Airocean Gases - High-quality industrial gas supplier</title>
-    <meta name="description" content="Airocean Gases specializes in providing high-quality industrial gases, medical gases, and specialty gases. 
-    We are committed to providing safe and reliable gas products and solutions for the industrial, medical, electronics, and food industries.">
-    <meta name="keywords" content="industrial gas, medical gas, specialty gas, nitrogen, oxygen, argon, helium, gas supplier, Airocean Gases">
+    <title>Airocean Gases — Noble & Specialty Gas Supplier · Kr · Xe · Ne · He · SF₆ · N₂O · CF₄</title>
+    <meta name="description" content="Airocean Gases supplies high-purity Krypton, Xenon, Neon, Helium, SF6, N2O, and CF4 for semiconductor, medical, electrical, and analytical applications. Reliable gas supply worldwide.">
+    <meta name="keywords" content="krypton, xenon, neon, helium, rare gas, specialty gas, semiconductor gas, industrial gas, Airocean Gases">
     <meta name="author" content="Airocean Gases">
-    <meta property="og:title" content="Airocean Gases - High-quality industrial gas supplier">
-    <meta property="og:description" content="Airocean Gases specializes in providing high-quality industrial gases, medical gases, and specialty gases. 
-    We are committed to providing safe and reliable gas products and solutions for the industrial, medical, electronics, and food industries.">
+    <meta property="og:title" content="Airocean Gases — High-Purity Rare Gas Supplier">
+    <meta property="og:description" content="Kr · Xe · Ne · He — rare noble gases for semiconductor fabrication, medical imaging, aerospace propulsion, and precision science.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.airoceangases.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* ── Design tokens ── */
+        :root {
+            --ink:   #0c0e10;
+            --ink-2: #3d4147;
+            --ink-3: #8a909a;
+            --bg:    #f8f7f4;
+            --bg-2:  #f0ede8;
+            --rule:  #d8d4ce;
+            --navy:  #080f1d;
+            --kr:    #6d28d9;
+            --xe:    #1d4ed8;
+            --ne:    #b91c1c;
+            --he:    #047857;
+            --sf6:   #0e7490;
+            --n2o:   #b45309;
+            --cf4:   #be185d;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        .hm-page {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg);
+            color: var(--ink);
+        }
+
+        /* ══════════════════════════════
+           HERO SLIDER
+        ══════════════════════════════ */
+        .hm-hero-wrap {
+            min-height: 100dvh;
+            position: relative;
+            overflow: hidden;
+        }
+        .hm-hero-wrap .hero-slider {
+            height: 100dvh;
+            min-height: 620px;
+        }
+        .hm-hero-wrap .hero-slide {
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .hm-slide-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                108deg,
+                rgba(8,15,29,0.88) 0%,
+                rgba(8,15,29,0.60) 48%,
+                rgba(8,15,29,0.32) 100%
+            );
+            pointer-events: none;
+        }
+        .hm-slide-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+            background-size: 48px 48px;
+            pointer-events: none;
+        }
+        .hm-slide-body {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            padding: 80px 60px;
+            z-index: 2;
+        }
+        .hm-slide-text { max-width: 580px; }
+        .hm-slide-eyebrow {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.42);
+            margin-bottom: 20px;
+        }
+        .hm-slide-title {
+            font-size: clamp(2.6rem, 5.5vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1.06;
+            letter-spacing: -0.035em;
+            color: #fff;
+            margin-bottom: 18px;
+        }
+        .hm-slide-sub {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.55);
+            line-height: 1.72;
+            font-weight: 300;
+            margin-bottom: 36px;
+            max-width: 460px;
+        }
+        .hm-slide-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 13px 26px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.28);
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            transition: background 0.25s, border-color 0.25s;
+            backdrop-filter: blur(4px);
+        }
+        .hm-slide-btn:hover {
+            background: rgba(255,255,255,0.18);
+            border-color: rgba(255,255,255,0.5);
+        }
+        .hm-slide-ghost {
+            align-self: flex-end;
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(7rem, 16vw, 15rem);
+            font-weight: 900;
+            line-height: 0.85;
+            letter-spacing: -0.06em;
+            color: rgba(255,255,255,0.04);
+            -webkit-text-stroke: 1px rgba(255,255,255,0.1);
+            pointer-events: none;
+            user-select: none;
+            transform: translateY(10%);
+            flex-shrink: 0;
+        }
+
+        /* Slider nav overrides */
+        .hm-hero-wrap .slider-nav {
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: rgba(255,255,255,0.7);
+            border-radius: 0;
+            width: 46px;
+            height: 46px;
+            font-size: 0.8rem;
+            transition: background 0.2s, border-color 0.2s;
+        }
+        .hm-hero-wrap .slider-nav:hover {
+            background: rgba(255,255,255,0.15);
+            border-color: rgba(255,255,255,0.35);
+        }
+        /* Dots as horizontal tick marks */
+        .hm-hero-wrap .slider-dots {
+            bottom: 32px;
+            left: 60px;
+            transform: none;
+            display: flex;
+            gap: 8px;
+        }
+        .hm-hero-wrap .dot {
+            width: 24px;
+            height: 2px;
+            border-radius: 0;
+            background: rgba(255,255,255,0.3);
+            transition: width 0.35s ease, background 0.35s ease;
+            cursor: pointer;
+        }
+        .hm-hero-wrap .dot.active {
+            width: 48px;
+            background: #fff;
+        }
+
+        /* ══════════════════════════════
+           SHARED UTILITIES
+        ══════════════════════════════ */
+        .hm-inner {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+        .hm-eyebrow {
+            font-size: 0.69rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--ink-3);
+            margin-bottom: 14px;
+        }
+        .hm-section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 14px;
+        }
+        .hm-section-sub {
+            font-size: 0.92rem;
+            color: var(--ink-2);
+            line-height: 1.75;
+            font-weight: 300;
+            max-width: 520px;
+        }
+        .hm-section-header { margin-bottom: 52px; }
+        .hm-section-header.split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: end;
+        }
+
+        .hm-outline-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 13px 26px;
+            border: 1px solid var(--rule);
+            text-decoration: none;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            color: var(--ink);
+            transition: border-color 0.2s, background 0.2s;
+        }
+        .hm-outline-btn:hover { border-color: var(--ink); background: var(--bg-2); }
+
+        .hm-solid-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            background: #fff;
+            color: var(--navy);
+            text-decoration: none;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            white-space: nowrap;
+            transition: background 0.2s, transform 0.15s;
+        }
+        .hm-solid-btn:hover { background: var(--bg-2); transform: translateY(-1px); }
+
+        /* ══════════════════════════════
+           POPULAR GASES
+        ══════════════════════════════ */
+        .hm-gases {
+            background: var(--bg);
+            padding: 96px 0;
+            border-top: 1px solid var(--rule);
+        }
+        .hm-gases-carousel { margin-top: 48px; position: relative; }
+        .hm-gases-viewport { overflow: hidden; }
+        .hm-gases-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 25%);
+            grid-template-rows: auto auto auto 1fr auto;
+            column-gap: 0;
+            row-gap: 0;
+            background: var(--bg);
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform;
+        }
+        .hm-gases-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 28px;
+        }
+        .hm-gnav-btn {
+            width: 40px; height: 40px;
+            border: 1px solid var(--rule);
+            border-radius: 50%;
+            background: var(--bg);
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--ink);
+            font-size: 0.75rem;
+            transition: background 0.2s, border-color 0.2s;
+            flex-shrink: 0;
+        }
+        .hm-gnav-btn:hover { background: #fff; border-color: var(--ink-3); }
+        .hm-gnav-btn:disabled { opacity: 0.25; cursor: default; }
+        .hm-gdots {
+            display: flex; gap: 8px; align-items: center;
+        }
+        .hm-gdot {
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: var(--rule);
+            transition: background 0.25s, transform 0.25s;
+            cursor: pointer;
+        }
+        .hm-gdot.active { background: var(--ink); transform: scale(1.4); }
+        .hm-gas-tile {
+            grid-row: 1 / 6;
+            display: grid;
+            grid-template-rows: subgrid;
+            background: var(--bg);
+            text-decoration: none;
+            color: var(--ink);
+            border-top: 3px solid var(--gc, var(--rule));
+            border-right: 1px solid var(--rule);
+            transition: background 0.25s;
+        }
+        .hm-gas-tile:last-child { border-right: none; }
+        .hm-gas-tile:hover { background: #fff; }
+        .hm-gas-atnum {
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            color: var(--ink-3);
+            font-variant-numeric: tabular-nums;
+            padding: 36px 24px 8px;
+            align-self: start;
+        }
+        .hm-gas-sym {
+            font-size: 4.2rem;
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: -0.04em;
+            color: transparent;
+            -webkit-text-stroke: 2px var(--gc, var(--rule));
+            transition: color 0.25s;
+            padding: 0 24px 10px;
+            align-self: start;
+        }
+        .hm-gas-tile:hover .hm-gas-sym { color: var(--gc, var(--rule)); }
+        .hm-gas-name {
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            padding: 0 24px 10px;
+            align-self: start;
+        }
+        .hm-gas-desc {
+            font-size: 0.82rem;
+            color: var(--ink-2);
+            line-height: 1.68;
+            font-weight: 300;
+            padding: 0 24px 24px;
+            align-self: start;
+        }
+        .hm-gas-link {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--gc, var(--ink));
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 0 24px 32px;
+            align-self: end;
+        }
+        .hm-gases-cta {
+            text-align: center;
+            margin-top: 44px;
+        }
+
+        /* ══════════════════════════════
+           SERVICES
+        ══════════════════════════════ */
+        .hm-services {
+            background: #fff;
+            padding: 96px 0;
+            border-top: 1px solid var(--rule);
+        }
+        .hm-gawda-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 5px 13px 5px 10px;
+            border: 1px solid var(--rule);
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--ink-3);
+            margin-top: 18px;
+        }
+        .hm-gawda-badge i { font-size: 0.75rem; color: var(--n2o); }
+        .hm-svc-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-top: 1px solid var(--rule);
+        }
+        .hm-svc-item {
+            padding: 36px 40px 40px 20px;
+            border-bottom: 1px solid var(--rule);
+            border-right: 1px solid var(--rule);
+            transition: background 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .hm-svc-item:hover {
+            background: var(--bg);
+            box-shadow: inset 3px 0 0 0 var(--svc-accent, var(--rule));
+        }
+        .hm-svc-item:nth-child(even) {
+            padding: 36px 0 40px 60px;
+            border-right: none;
+        }
+        .hm-svc-item:nth-child(even):hover {
+            box-shadow: inset -3px 0 0 0 var(--svc-accent, var(--rule));
+        }
+        .hm-svc-item:nth-last-child(1),
+        .hm-svc-item:nth-last-child(2) { border-bottom: none; }
+        .hm-svc-num { display: none; }
+        .hm-svc-title {
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .hm-svc-icon { font-size: 0.88rem; color: var(--svc-accent, var(--ink-3)); }
+        .hm-svc-text {
+            font-size: 0.83rem;
+            color: var(--ink-2);
+            line-height: 1.72;
+            font-weight: 300;
+        }
+
+        /* ══════════════════════════════
+           INDUSTRIES WE SERVE
+        ══════════════════════════════ */
+        .hm-industries {
+            background: var(--bg);
+            padding: 96px 0 0;
+            border-top: 1px solid var(--rule);
+        }
+        .hm-ind-bento {
+            margin-top: 52px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: 390px 268px;
+            gap: 1px;
+            background: var(--rule);
+        }
+        .hm-ind-card {
+            position: relative;
+            overflow: hidden;
+            background: var(--navy);
+            display: block;
+            text-decoration: none;
+            color: #fff;
+        }
+        .hm-ind-large { grid-column: span 2; }
+        .hm-ind-bg {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.58) saturate(0.88);
+            transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), filter 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .hm-ind-card:hover .hm-ind-bg {
+            transform: scale(1.06);
+            filter: brightness(0.36) saturate(0.62);
+        }
+        .hm-ind-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(5,10,22,0.93) 0%, rgba(5,10,22,0.18) 52%, transparent 100%);
+        }
+        .hm-ind-ghost {
+            position: absolute;
+            bottom: -0.08em;
+            right: -0.03em;
+            font-size: clamp(4.5rem, 9vw, 8.5rem);
+            font-weight: 900;
+            letter-spacing: -0.06em;
+            line-height: 1;
+            color: rgba(255,255,255,0.04);
+            -webkit-text-stroke: 1px rgba(255,255,255,0.08);
+            pointer-events: none;
+            user-select: none;
+            transition: color 0.45s cubic-bezier(0.22,1,0.36,1), -webkit-text-stroke 0.45s cubic-bezier(0.22,1,0.36,1);
+        }
+        .hm-ind-card:hover .hm-ind-ghost {
+            color: rgba(255,255,255,0.07);
+            -webkit-text-stroke: 1px rgba(255,255,255,0.14);
+        }
+        .hm-ind-body {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 22px 26px;
+            z-index: 2;
+        }
+        .hm-ind-tags {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 9px;
+            flex-wrap: wrap;
+        }
+        .hm-ind-tag {
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            opacity: 0.9;
+        }
+        .hm-ind-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            line-height: 1.22;
+            letter-spacing: -0.02em;
+            color: #fff;
+            margin-bottom: 7px;
+        }
+        .hm-ind-large .hm-ind-title { font-size: 1.45rem; margin-bottom: 10px; }
+        .hm-ind-desc {
+            font-size: 0.79rem;
+            color: rgba(255,255,255,0.5);
+            line-height: 1.62;
+            font-weight: 300;
+            margin-bottom: 14px;
+        }
+        .hm-ind-large .hm-ind-desc { max-width: 420px; }
+        .hm-ind-cta {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.45);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            opacity: 0;
+            transform: translateY(7px);
+            transition: opacity 0.32s cubic-bezier(0.22,1,0.36,1), transform 0.32s cubic-bezier(0.22,1,0.36,1), color 0.25s;
+        }
+        .hm-ind-card:hover .hm-ind-cta {
+            opacity: 1;
+            transform: translateY(0);
+            color: rgba(255,255,255,0.85);
+        }
+
+        /* ══════════════════════════════
+           OUR GUARANTEE
+        ══════════════════════════════ */
+        .hm-guarantee {
+            background: var(--bg);
+            padding: 96px 0 0;
+            border-top: 1px solid var(--rule);
+        }
+        .hm-guarantee .hm-inner { padding-bottom: 80px; }
+        .hm-gtee-eyebrow {
+            font-size: 0.69rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--ink-3);
+            margin-bottom: 14px;
+        }
+        .hm-gtee-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            color: var(--ink);
+            margin-bottom: 14px;
+        }
+        .hm-gtee-sub {
+            font-size: 0.92rem;
+            color: var(--ink-2);
+            line-height: 1.75;
+            font-weight: 300;
+            max-width: 520px;
+        }
+        .hm-gtee-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 52px;
+        }
+        .hm-gtee-card {
+            background: #fff;
+            padding: 36px 32px;
+            border-top: 3px solid var(--gtee-accent, var(--rule));
+            transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .hm-gtee-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 36px rgba(8,15,29,0.08);
+        }
+        .hm-gtee-icon {
+            font-size: 1.1rem;
+            color: var(--gtee-accent, var(--ink-3));
+            margin-bottom: 20px;
+        }
+        .hm-gtee-card-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--ink);
+            letter-spacing: -0.01em;
+            margin-bottom: 9px;
+        }
+        .hm-gtee-card-text {
+            font-size: 0.8rem;
+            color: var(--ink-2);
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        /* Stats strip */
+        .hm-stats { background: var(--navy); }
+        .hm-stats-inner {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 32px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+        .hm-stat {
+            padding: 44px 32px;
+            border-right: 1px solid rgba(255,255,255,0.07);
+        }
+        .hm-stat:first-child { padding-left: 0; }
+        .hm-stat:last-child  { border-right: none; }
+        .hm-stat-num {
+            font-size: 2.4rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: #fff;
+            line-height: 1;
+            margin-bottom: 8px;
+            font-variant-numeric: tabular-nums;
+        }
+        .hm-stat-label {
+            font-size: 0.68rem;
+            font-weight: 500;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.33);
+            line-height: 1.5;
+        }
+
+        /* ══════════════════════════════
+           CTA BAND
+        ══════════════════════════════ */
+        .hm-cta {
+            background: var(--navy);
+            border-top: 1px solid rgba(255,255,255,0.07);
+            padding: 80px 0;
+        }
+        .hm-cta-inner {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 32px;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            gap: 60px;
+        }
+        .hm-cta-eyebrow {
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.35);
+            margin-bottom: 14px;
+        }
+        .hm-cta-title {
+            font-size: clamp(1.6rem, 3vw, 2.3rem);
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            line-height: 1.2;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+        .hm-cta-sub {
+            font-size: 0.88rem;
+            color: rgba(255,255,255,0.5);
+            line-height: 1.75;
+            font-weight: 300;
+            max-width: 440px;
+        }
+
+        /* ══════════════════════════════
+           RESPONSIVE
+        ══════════════════════════════ */
+        @media (max-width: 1024px) {
+            .hm-slide-body { padding: 60px 40px; }
+            .hm-hero-wrap .slider-dots { left: 40px; }
+        }
+        @media (max-width: 960px) {
+            .hm-section-header.split { grid-template-columns: 1fr; gap: 16px; }
+            .hm-gases-grid { /* flex scroll — no grid override needed */ }
+            .hm-ind-bento { grid-template-columns: repeat(2, 1fr); grid-template-rows: 340px 260px 260px; }
+            .hm-ind-large { grid-column: span 2; }
+            .hm-stats-inner { grid-template-columns: repeat(2, 1fr); }
+            .hm-stat { border-bottom: 1px solid rgba(255,255,255,0.07); }
+            .hm-stat:nth-child(2) { border-right: none; }
+            .hm-stat:nth-child(3) { border-right: 1px solid rgba(255,255,255,0.07); }
+            .hm-stat:nth-child(3),
+            .hm-stat:nth-child(4) { border-bottom: none; }
+            .hm-stat:nth-child(4) { border-right: none; }
+            .hm-cta-inner { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 700px) {
+            .hm-slide-body { padding: 48px 24px; flex-direction: column; justify-content: flex-end; align-items: flex-start; }
+            .hm-slide-ghost { display: none; }
+            .hm-hero-wrap .slider-dots { left: 24px; bottom: 24px; }
+            .hm-inner { padding: 0 20px; }
+            .hm-gases { padding: 64px 0; }
+            .hm-services { padding: 64px 0; }
+            .hm-svc-grid { grid-template-columns: 1fr; }
+            .hm-svc-item,
+            .hm-svc-item:nth-child(even) { border-right: none !important; padding: 28px 0 !important; }
+            .hm-svc-item:last-child { border-bottom: none; }
+            .hm-industries { padding: 64px 0 0; }
+            .hm-ind-bento { grid-template-columns: 1fr; grid-template-rows: none; }
+            .hm-ind-large { grid-column: span 1; }
+            .hm-ind-card { min-height: 240px; }
+            .hm-guarantee { padding: 64px 0 0; }
+            .hm-gtee-grid { grid-template-columns: 1fr; }
+            .hm-stats-inner { grid-template-columns: 1fr 1fr; padding: 0 20px; }
+            .hm-stat { padding: 32px 20px; }
+            .hm-stat:first-child { padding-left: 20px; }
+            .hm-cta { padding: 56px 0; }
+            .hm-cta-inner { padding: 0 20px; }
+        }
+        @media (max-width: 440px) {
+            .hm-stats-inner { grid-template-columns: 1fr; }
+            .hm-stat { border-right: none !important; }
+        }
+    </style>
 </head>
-<body>
-    <!-- 顶部导航栏 -->
-    <header style="background: white;">
+<body class="hm-page">
+
+    <!-- ── Navigation ── -->
+    <header>
         <div class="container">
             <div class="header-content">
                 <div class="header-logo">
-                    <img src="logo.png" alt="宏源气体 Logo" style="width: 120px; height:auto;">
+                    <img src="logo.png" alt="Airocean Gases Logo" class="logo-img">
                 </div>
                 <nav>
-                    <ul style="list-style-type: none; padding-left: 0; display: flex; gap: 15px;">
-                        <li><a href="index.html" style="color: #000000;">Home</a></li>
-                        <li><a href="about.html" style="color: #000000;">About Us</a></li>
-                        <li><a href="products.html" style="color: #000000;">Products & Services</a></li>
-                        <li><a href="applications.html" style="color: #000000;">Applications</a></li>
-                        <li><a href="contact.html" style="color: #000000;">Contact Us</a></li>
+                    <ul class="nav-menu">
+                        <li><a href="index.html" class="nav-link active-link">Home</a></li>
+                        <li><a href="about.html" class="nav-link">About Us</a></li>
+                        <li><a href="products.html" class="nav-link">Products & Services</a></li>
+                        <li><a href="applications.html" class="nav-link">Applications</a></li>
+                        <li><a href="contact.html" class="nav-link">Contact Us</a></li>
                     </ul>
+                    <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                        <span></span><span></span><span></span>
+                    </button>
                 </nav>
             </div>
         </div>
     </header>
 
-    <!-- 英雄区域容器 -->
-    <section class="hero-slider-container">
+    <!-- ══════════════════════════════════
+         HERO SLIDER
+    ══════════════════════════════════ -->
+    <section class="hero-slider-container hm-hero-wrap">
         <div class="hero-slider">
-            <!-- 第一个英雄区域 -->
+
+            <!-- Slide 1 -->
             <div class="hero-slide" style="background-image: url('hero-bg1.jpg');">
-                <div class="container">
-                    <h2>Welcome to Airocean Gases</h2>
-                    <p>We are committed to driving industry progress through innovation and service excellence.</p>
-                    <a href="about.html" class="cta-btn">Learn More</a>
+                <div class="hm-slide-overlay"></div>
+                <div class="hm-slide-grid"></div>
+                <div class="hm-slide-body">
+                    <div class="hm-slide-text">
+                        <p class="hm-slide-eyebrow">Rare Gas · Precision Supply</p>
+                        <h2 class="hm-slide-title">Welcome to<br>Airocean Gases</h2>
+                        <p class="hm-slide-sub">Driving industry progress through innovation, purity, and service excellence — serving semiconductor, medical, and aerospace sectors worldwide.</p>
+                        <a href="about.html" class="hm-slide-btn">
+                            Learn More <i class="fas fa-arrow-right" style="font-size:0.72rem"></i>
+                        </a>
+                    </div>
+                    <span class="hm-slide-ghost" aria-hidden="true">01</span>
                 </div>
             </div>
 
-            <!-- 第二个英雄区域 -->
+            <!-- Slide 2 -->
             <div class="hero-slide" style="background-image: url('hero-bg2.jpg');">
-                <div class="container">
-                    <h2>High-Quality Industrial Gases</h2>
-                    <p>We offer a wide range of industrial gas solutions to meet your needs.</p>
-                    <a href="products.html" class="cta-btn">View Products</a>
+                <div class="hm-slide-overlay"></div>
+                <div class="hm-slide-grid"></div>
+                <div class="hm-slide-body">
+                    <div class="hm-slide-text">
+                        <p class="hm-slide-eyebrow">Kr · Xe · Ne · He · SF&#x2086; · N&#x2082;O · CF&#x2084;</p>
+                        <h2 class="hm-slide-title">High-Purity<br>Noble & Specialty Gases</h2>
+                        <p class="hm-slide-sub">Seven high-purity gases — noble rarities and precision specialty compounds — powering the world's most demanding industrial and scientific processes.</p>
+                        <a href="products.html" class="hm-slide-btn">
+                            View Products <i class="fas fa-arrow-right" style="font-size:0.72rem"></i>
+                        </a>
+                    </div>
+                    <span class="hm-slide-ghost" aria-hidden="true">02</span>
                 </div>
             </div>
 
-            <!-- 第三个英雄区域 -->
+            <!-- Slide 3 -->
             <div class="hero-slide" style="background-image: url('hero-bg3.jpg');">
-                <div class="container">
-                    <h2>Industrial, Medical and Specialty Gas Applications</h2>
-                    <p>Stay informed and be knowledgeable about gases applications.</p>
-                    <a href="applications.html" class="cta-btn">Read Applications</a>
+                <div class="hm-slide-overlay"></div>
+                <div class="hm-slide-grid"></div>
+                <div class="hm-slide-body">
+                    <div class="hm-slide-text">
+                        <p class="hm-slide-eyebrow">Semiconductor · Medical · Aerospace</p>
+                        <h2 class="hm-slide-title">Where Rare Gases<br>Meet Critical Industry</h2>
+                        <p class="hm-slide-sub">From photolithography excimer lasers to ion thrusters and MRI cooling — explore how our gases power the technologies of tomorrow.</p>
+                        <a href="applications.html" class="hm-slide-btn">
+                            Explore Applications <i class="fas fa-arrow-right" style="font-size:0.72rem"></i>
+                        </a>
+                    </div>
+                    <span class="hm-slide-ghost" aria-hidden="true">03</span>
                 </div>
             </div>
+
         </div>
-        
-        <!-- 导航箭头 -->
-        <button class="slider-nav prev-btn" aria-label="上一张">
+
+        <button class="slider-nav prev-btn" aria-label="Previous slide">
             <i class="fas fa-chevron-left"></i>
         </button>
-        <button class="slider-nav next-btn" aria-label="下一张">
+        <button class="slider-nav next-btn" aria-label="Next slide">
             <i class="fas fa-chevron-right"></i>
         </button>
-        
-        <!-- 指示点 -->
         <div class="slider-dots">
             <span class="dot active" data-slide="0"></span>
             <span class="dot" data-slide="1"></span>
@@ -84,232 +844,438 @@
         </div>
     </section>
 
-    <!-- Popular Products 区域 -->
-    <section class="popular-products-section">
-        <div class="popular-products-content">
-            <h2>Popular Gases</h2>
-            <p class="subtitle">Discover our most sought-after industrial gases and solutions, trusted by leading companies worldwide for their quality and reliability.</p>
-            
-            <div class="popular-products-grid">
-                <a href="product-detail-kr.html" class="popular-product-card">
-                    <div class="product-icon kr-icon">
-                        Kr
-                    </div>
-                    <h3>Krypton (Kr)</h3>
-                    <p>High-purity krypton gas for lighting, laser applications, and semiconductor manufacturing.</p>
-                </a>
-                
-                <a href="product-detail-xe.html" class="popular-product-card">
-                    <div class="product-icon xe-icon">
-                        Xe
-                    </div>
-                    <h3>Xenon (Xe)</h3>
-                    <p>Ultra-pure xenon for medical imaging, ion propulsion, and specialized lighting applications.</p>
-                </a>
-                
-                <a href="product-detail-ne.html" class="popular-product-card">
-                    <div class="product-icon ne-icon">
-                        Ne
-                    </div>
-                    <h3>Neon (Ne)</h3>
-                    <p>High-quality neon gas for signage, displays, and specialized electronic applications.</p>
-                </a>
-                
-                <a href="product-detail-ar.html" class="popular-product-card">
-                    <div class="product-icon ar-icon">
-                        Ar
-                    </div>
-                    <h3>Argon (Ar)</h3>
-                    <p>Premium argon for welding, metal fabrication, and laboratory applications.</p>
-                </a>
-                
-                <a href="product-detail-he.html" class="popular-product-card">
-                    <div class="product-icon he-icon">
-                        He
-                    </div>
-                    <h3>Helium (He)</h3>
-                    <p>Ultra-pure helium for cryogenic applications, balloon filling, and leak detection.</p>
-                </a>
-                
-                <a href="product-detail-nh3.html" class="popular-product-card">
-                    <div class="product-icon nh3-icon">
-                        NH₃
-                    </div>
-                    <h3>Ammonia (NH₃)</h3>
-                    <p>Industrial-grade ammonia for refrigeration, fertilizer production, and chemical synthesis.</p>
-                </a>
+    <!-- ══════════════════════════════════
+         POPULAR GASES
+    ══════════════════════════════════ -->
+    <section class="hm-gases reveal">
+        <div class="hm-inner">
+            <div class="hm-section-header split">
+                <div>
+                    <p class="hm-eyebrow">Noble & Specialty Gases</p>
+                    <h2 class="hm-section-title">Our Gas Portfolio</h2>
+                </div>
+                <p class="hm-section-sub">Seven high-purity gases — from rare noble elements to precision specialty compounds — serving semiconductor fabrication, medical, electrical, and analytical industries.</p>
             </div>
-            
-            <div class="popular-products-cta">
-                <a href="products.html" class="popular-products-btn">View All Products</a>
+
+            <div class="hm-gases-carousel">
+                <div class="hm-gases-viewport">
+                    <div class="hm-gases-grid" id="gasesGrid">
+                        <a href="product-detail-kr.html" class="hm-gas-tile" style="--gc:var(--kr)">
+                            <div class="hm-gas-atnum">36 · Atomic Number</div>
+                            <div class="hm-gas-sym">Kr</div>
+                            <div class="hm-gas-name">Krypton</div>
+                            <p class="hm-gas-desc">High-purity krypton for excimer laser photolithography, semiconductor manufacturing, and high-efficiency lighting systems.</p>
+                            <div class="hm-gas-link">View Product <i class="fas fa-arrow-right" style="font-size:0.65rem"></i></div>
+                        </a>
+                        <a href="product-detail-xe.html" class="hm-gas-tile" style="--gc:var(--xe)">
+                            <div class="hm-gas-atnum">54 · Atomic Number</div>
+                            <div class="hm-gas-sym">Xe</div>
+                            <div class="hm-gas-name">Xenon</div>
+                            <p class="hm-gas-desc">Ultra-pure xenon for ion propulsion, medical imaging, anesthesia, and specialized plasma etching applications.</p>
+                            <div class="hm-gas-link">View Product <i class="fas fa-arrow-right" style="font-size:0.65rem"></i></div>
+                        </a>
+                        <a href="product-detail-ne.html" class="hm-gas-tile" style="--gc:var(--ne)">
+                            <div class="hm-gas-atnum">10 · Atomic Number</div>
+                            <div class="hm-gas-sym">Ne</div>
+                            <div class="hm-gas-name">Neon</div>
+                            <p class="hm-gas-desc">High-quality neon for excimer laser media, photolithography, display lighting, and plasma deposition processes.</p>
+                            <div class="hm-gas-link">View Product <i class="fas fa-arrow-right" style="font-size:0.65rem"></i></div>
+                        </a>
+                        <a href="product-detail-he.html" class="hm-gas-tile" style="--gc:var(--he)">
+                            <div class="hm-gas-atnum">2 · Atomic Number</div>
+                            <div class="hm-gas-sym">He</div>
+                            <div class="hm-gas-name">Helium</div>
+                            <p class="hm-gas-desc">Ultra-pure helium for cryogenic MRI cooling, fiber optic drawing, leak detection, and gas chromatography carrier gas.</p>
+                            <div class="hm-gas-link">View Product <i class="fas fa-arrow-right" style="font-size:0.65rem"></i></div>
+                        </a>
+                        <a href="product-detail-sf6.html" class="hm-gas-tile" style="--gc:var(--sf6)">
+                            <div class="hm-gas-atnum">Dielectric · Etchant</div>
+                            <div class="hm-gas-sym">SF&#x2086;</div>
+                            <div class="hm-gas-name">Sulfur<br>Hexafluoride</div>
+                            <p class="hm-gas-desc">Industry-standard dielectric for high-voltage switchgear and key plasma etchant for silicon in advanced semiconductor fabs.</p>
+                            <div class="hm-gas-link">View Product <i class="fas fa-arrow-right" style="font-size:0.65rem"></i></div>
+                        </a>
+                        <a href="product-detail-n2o.html" class="hm-gas-tile" style="--gc:var(--n2o)">
+                            <div class="hm-gas-atnum">Medical · CVD Oxidant</div>
+                            <div class="hm-gas-sym">N&#x2082;O</div>
+                            <div class="hm-gas-name">Nitrous Oxide</div>
+                            <p class="hm-gas-desc">Century-proven clinical anesthetic and essential oxidant source for PECVD gate dielectric growth in advanced CMOS fabrication.</p>
+                            <div class="hm-gas-link">View Product <i class="fas fa-arrow-right" style="font-size:0.65rem"></i></div>
+                        </a>
+                        <a href="product-detail-cf4.html" class="hm-gas-tile" style="--gc:var(--cf4)">
+                            <div class="hm-gas-atnum">Etchant · Chamber Clean</div>
+                            <div class="hm-gas-sym">CF&#x2084;</div>
+                            <div class="hm-gas-name">Tetrafluoro-<br>methane</div>
+                            <p class="hm-gas-desc">High-selectivity fluorine plasma source for Si/SiO&#x2082; etching and PECVD chamber cleaning in high-volume wafer production.</p>
+                            <div class="hm-gas-link">View Product <i class="fas fa-arrow-right" style="font-size:0.65rem"></i></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="hm-gases-nav">
+                    <button class="hm-gnav-btn" id="gasesPrev" aria-label="Previous" disabled>
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="hm-gdots" id="gasesDots"></div>
+                    <button class="hm-gnav-btn" id="gasesNext" aria-label="Next">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="hm-gases-cta">
+                <a href="products.html" class="hm-outline-btn">
+                    View All Products <i class="fas fa-arrow-right" style="font-size:0.7rem"></i>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- 服务特色区域 -->
-    <section class="service-section">
-        <div class="service-content">
-            <h2>Commitment to Excellence in Every Service</h2>
-            <p class="subtitle">Comprehensive global ocean and air freight solutions ensuring secure, fully visible, and on-time delivery.</p>
-            
-            <div class="service-grid">
-                <div class="service-item">
-                    <h3><i class="fas fa-user-tie"></i> Dedicated Account Management</h3>
-                    <p>From initial consultation through delivery and ongoing support, our account managers provide a single point of contact to ensure responsive, tailored service.</p>
+    <!-- ══════════════════════════════════
+         SERVICES
+    ══════════════════════════════════ -->
+    <section class="hm-services reveal">
+        <div class="hm-inner">
+            <div class="hm-section-header split">
+                <div>
+                    <p class="hm-eyebrow">Our Capabilities</p>
+                    <h2 class="hm-section-title">Commitment to<br>Excellence</h2>
+                    <div class="hm-gawda-badge">
+                        <i class="fas fa-certificate"></i> GAWDA Member
+                    </div>
                 </div>
-                
-                <div class="service-item">
-                    <h3><i class="fas fa-cogs"></i> Custom Installation & System Integration</h3>
-                    <p>Our engineering team designs and implements gas systems that meet stringent safety standards while maximizing operational efficiency.</p>
-                </div>
-                
-                <div class="service-item">
-                    <h3><i class="fas fa-flask"></i> State-of-the-Art Laboratory & Packaging Solutions</h3>
-                    <p>Equipped with advanced technology, our laboratories and packaging facilities handle all volumes and gas types with precision, purity, and compliance.</p>
-                </div>
-                
-                <div class="service-item">
-                    <h3><i class="fas fa-truck"></i> Dependable and Safe Delivery Operations</h3>
-                    <p>Our trained drivers uphold the highest standards of transportation safety, ensuring timely, secure deliveries to even the most challenging sites.</p>
-                </div>
-                
-                <div class="service-item">
-                    <h3><i class="fas fa-chart-line"></i> Intelligent Cylinder Tracking & Telemetry</h3>
-                    <p>Reduce rental costs and optimize inventory management through real-time monitoring, automated alerts, and detailed usage reporting.</p>
-                </div>
-                
-                <div class="service-item">
-                    <h3><i class="fas fa-laptop"></i> Streamlined Digital Ordering & Account Access</h3>
-                    <p>Securely manage orders, invoices, and account details online, enabling fast reorders and simplified account administration.</p>
-                </div>
+                <p class="hm-section-sub">As a GAWDA-member supplier, we deliver comprehensive specialty gas solutions — backed by certified documentation, deep application expertise, and a supply chain built for demanding industries.</p>
             </div>
-        </div>
-    </section>
 
-    <!-- 特色产品和服务区域 -->
-    <section class="featured-section">
-        <div class="featured-content">
-            <h2>Featured Products & Services</h2>
-            <p class="subtitle">We provide comprehensive industrial gas solutions, from basic services to advanced technologies, to meet your diverse needs.</p>
-            
-            <div class="featured-grid">
-                <div class="featured-card">
-                    <div class="card-background" style="background-image: url('westair1.jpg');"></div>
-                    <div class="card-overlay">
-                        <div class="card-category">Nitrogen Services</div>
-                        <div class="card-title">Purge, Pressurize, and Cover</div>
-                        <div class="card-arrow">
-                            <i class="fas fa-arrow-right"></i>
-                        </div>
-                    </div>
+            <div class="hm-svc-grid">
+                <div class="hm-svc-item" style="--svc-accent:var(--kr)">
+                    <div class="hm-svc-num">01</div>
+                    <h3 class="hm-svc-title">
+                        <i class="fas fa-atom hm-svc-icon"></i>
+                        Ultra-High Purity Manufacturing
+                    </h3>
+                    <p class="hm-svc-text">Our gases are produced and verified to 4N–6N purity grades (99.99%–99.9999%), meeting the stringent specifications required by semiconductor fabrication, medical imaging, and aerospace propulsion systems.</p>
                 </div>
-                
-                <div class="featured-card">
-                    <div class="card-background" style="background-image: url('westair2.jpg');"></div>
-                    <div class="card-overlay">
-                        <div class="card-category">Cylinder Tracking</div>
-                        <div class="card-title">Precise Cylinder Management</div>
-                        <div class="card-arrow">
-                            <i class="fas fa-arrow-right"></i>
-                        </div>
-                    </div>
+
+                <div class="hm-svc-item" style="--svc-accent:var(--he)">
+                    <div class="hm-svc-num">02</div>
+                    <h3 class="hm-svc-title">
+                        <i class="fas fa-file-alt hm-svc-icon"></i>
+                        CoA & SDS on Every Shipment
+                    </h3>
+                    <p class="hm-svc-text">Every cylinder ships with a Certificate of Analysis documenting measured impurity levels and a Safety Data Sheet — giving your team full traceability and compliance documentation from day one.</p>
                 </div>
-                
-                <div class="featured-card">
-                    <div class="card-background" style="background-image: url('westair3.jpg');"></div>
-                    <div class="card-overlay">
-                        <div class="card-category">Process Piping Design & Installation</div>
-                        <div class="card-title">Optimize Your Gas Process</div>
-                        <div class="card-arrow">
-                            <i class="fas fa-arrow-right"></i>
-                        </div>
-                    </div>
+
+                <div class="hm-svc-item" style="--svc-accent:var(--xe)">
+                    <div class="hm-svc-num">03</div>
+                    <h3 class="hm-svc-title">
+                        <i class="fas fa-microchip hm-svc-icon"></i>
+                        Application-Specific Expertise
+                    </h3>
+                    <p class="hm-svc-text">Deep technical knowledge across semiconductor, medical, and aerospace applications — we help you select the right gas grade and purity specification for your exact process requirements, not just the closest available option.</p>
                 </div>
-                
-                <div class="featured-card">
-                    <div class="card-background" style="background-image: url('westair4.jpg');"></div>  
-                    <div class="card-overlay">
-                        <div class="card-category">Telemetry Technology</div>
-                        <div class="card-title">Tank Management at Your Fingertips</div>
-                        <div class="card-arrow">
-                            <i class="fas fa-arrow-right"></i>
-                        </div>
-                    </div>
+
+                <div class="hm-svc-item" style="--svc-accent:var(--n2o)">
+                    <div class="hm-svc-num">04</div>
+                    <h3 class="hm-svc-title">
+                        <i class="fas fa-globe hm-svc-icon"></i>
+                        Reliable Global Supply Chain
+                    </h3>
+                    <p class="hm-svc-text">99% supply chain reliability and 95% on-time delivery rate across international freight routes — with consistent sourcing for rare noble gases that many suppliers cannot reliably stock.</p>
                 </div>
-                
-                <div class="featured-card">
-                    <div class="card-background" style="background-image: url('westair5.jpg');"></div>
-                    <div class="card-overlay">
-                        <div class="card-category">Hydrogen Services</div>
-                        <div class="card-title">Next-Generation Mobility</div>
-                        <div class="card-arrow">
-                            <i class="fas fa-arrow-right"></i>
-                        </div>
-                    </div>
+
+                <div class="hm-svc-item" style="--svc-accent:var(--sf6)">
+                    <div class="hm-svc-num">05</div>
+                    <h3 class="hm-svc-title">
+                        <i class="fas fa-shield-alt hm-svc-icon"></i>
+                        Safe Handling & Certified Packaging
+                    </h3>
+                    <p class="hm-svc-text">Specialty and cryogenic gases require more than standard logistics. Our packaging and transport protocols meet international hazardous materials regulations, ensuring safe arrival and integrity of every cylinder.</p>
                 </div>
-                
-                <div class="featured-card">
-                    <div class="card-background" style="background-image: url('westair6.jpg');"></div>
-                    <div class="card-overlay">
-                        <div class="card-category">Propane Services</div>
-                        <div class="card-title">Unique Propane Services</div>
-                        <div class="card-arrow">
-                            <i class="fas fa-arrow-right"></i>
-                        </div>
-                    </div>
+
+                <div class="hm-svc-item" style="--svc-accent:var(--cf4)">
+                    <div class="hm-svc-num">06</div>
+                    <h3 class="hm-svc-title">
+                        <i class="fas fa-headset hm-svc-icon"></i>
+                        Technical Consultation & Custom Sourcing
+                    </h3>
+                    <p class="hm-svc-text">From initial inquiry to long-term supply agreements — our team provides hands-on consultation, custom volume sourcing, and responsive support for procurement teams and process engineers alike.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Our Clients 区域 -->
-  
+    <!-- ══════════════════════════════════
+         INDUSTRIES WE SERVE
+    ══════════════════════════════════ -->
+    <section class="hm-industries reveal">
+        <div class="hm-inner">
+            <div class="hm-section-header split">
+                <div>
+                    <p class="hm-eyebrow">Industries We Serve</p>
+                    <h2 class="hm-section-title">Where Our Gases<br>Power the World</h2>
+                </div>
+                <p class="hm-section-sub">From chip fabrication clean rooms to deep-space ion thrusters — our seven high-purity gases serve the industries defining tomorrow's technology.</p>
+            </div>
+        </div>
 
-    <!-- 底部信息 -->
-    <footer style="background: white; border-top: 1px solid #000000;">
+        <div class="hm-ind-bento">
+
+            <!-- Semiconductor & Microelectronics — large hero card -->
+            <a href="applications.html" class="hm-ind-card hm-ind-large">
+                <div class="hm-ind-bg" style="background-image:url('applications_page_90.jpg')"></div>
+                <div class="hm-ind-overlay"></div>
+                <div class="hm-ind-ghost" aria-hidden="true">Semi</div>
+                <div class="hm-ind-body">
+                    <div class="hm-ind-tags">
+                        <span class="hm-ind-tag" style="color:var(--kr)">Kr</span>
+                        <span class="hm-ind-tag" style="color:var(--ne)">Ne</span>
+                        <span class="hm-ind-tag" style="color:var(--sf6)">SF&#x2086;</span>
+                        <span class="hm-ind-tag" style="color:var(--cf4)">CF&#x2084;</span>
+                        <span class="hm-ind-tag" style="color:var(--n2o)">N&#x2082;O</span>
+                    </div>
+                    <h3 class="hm-ind-title">Semiconductor &<br>Microelectronics</h3>
+                    <p class="hm-ind-desc">Excimer laser photolithography, plasma etching, and CVD dielectric growth — our gases power chip fabrication at every critical stage, from front-end lithography to final packaging.</p>
+                    <div class="hm-ind-cta">Explore Applications <i class="fas fa-arrow-right" style="font-size:0.62rem"></i></div>
+                </div>
+            </a>
+
+            <!-- Medical & Healthcare -->
+            <a href="applications.html" class="hm-ind-card">
+                <div class="hm-ind-bg" style="background-image:url('applications_page_66.jpg')"></div>
+                <div class="hm-ind-overlay"></div>
+                <div class="hm-ind-ghost" aria-hidden="true">Med</div>
+                <div class="hm-ind-body">
+                    <div class="hm-ind-tags">
+                        <span class="hm-ind-tag" style="color:var(--he)">He</span>
+                        <span class="hm-ind-tag" style="color:var(--xe)">Xe</span>
+                        <span class="hm-ind-tag" style="color:var(--n2o)">N&#x2082;O</span>
+                    </div>
+                    <h3 class="hm-ind-title">Medical &<br>Healthcare</h3>
+                    <p class="hm-ind-desc">MRI superconducting magnet cooling, xenon anesthesia, and clinical sedation with N₂O.</p>
+                    <div class="hm-ind-cta">Explore <i class="fas fa-arrow-right" style="font-size:0.62rem"></i></div>
+                </div>
+            </a>
+
+            <!-- Aerospace & Defense -->
+            <a href="applications.html" class="hm-ind-card">
+                <div class="hm-ind-bg" style="background-image:url('applications_page_89.jpg')"></div>
+                <div class="hm-ind-overlay"></div>
+                <div class="hm-ind-ghost" aria-hidden="true">Aero</div>
+                <div class="hm-ind-body">
+                    <div class="hm-ind-tags">
+                        <span class="hm-ind-tag" style="color:var(--xe)">Xe</span>
+                        <span class="hm-ind-tag" style="color:var(--kr)">Kr</span>
+                    </div>
+                    <h3 class="hm-ind-title">Aerospace &<br>Defense</h3>
+                    <p class="hm-ind-desc">Xenon ion thruster propellant for deep-space missions and satellite station-keeping.</p>
+                    <div class="hm-ind-cta">Explore <i class="fas fa-arrow-right" style="font-size:0.62rem"></i></div>
+                </div>
+            </a>
+
+            <!-- Electrical & Energy -->
+            <a href="applications.html" class="hm-ind-card">
+                <div class="hm-ind-bg" style="background-image:url('applications_page_39.jpg')"></div>
+                <div class="hm-ind-overlay"></div>
+                <div class="hm-ind-ghost" aria-hidden="true">Power</div>
+                <div class="hm-ind-body">
+                    <div class="hm-ind-tags">
+                        <span class="hm-ind-tag" style="color:var(--sf6)">SF&#x2086;</span>
+                        <span class="hm-ind-tag" style="color:var(--he)">He</span>
+                    </div>
+                    <h3 class="hm-ind-title">Electrical &<br>Energy</h3>
+                    <p class="hm-ind-desc">SF₆ for high-voltage switchgear insulation and helium for precision industrial cooling.</p>
+                    <div class="hm-ind-cta">Explore <i class="fas fa-arrow-right" style="font-size:0.62rem"></i></div>
+                </div>
+            </a>
+
+            <!-- Scientific Research & Analytics -->
+            <a href="applications.html" class="hm-ind-card">
+                <div class="hm-ind-bg" style="background-image:url('applications_page_33.jpg')"></div>
+                <div class="hm-ind-overlay"></div>
+                <div class="hm-ind-ghost" aria-hidden="true">Lab</div>
+                <div class="hm-ind-body">
+                    <div class="hm-ind-tags">
+                        <span class="hm-ind-tag" style="color:var(--he)">He</span>
+                        <span class="hm-ind-tag" style="color:var(--ne)">Ne</span>
+                        <span class="hm-ind-tag" style="color:var(--xe)">Xe</span>
+                    </div>
+                    <h3 class="hm-ind-title">Scientific Research<br>& Analytics</h3>
+                    <p class="hm-ind-desc">Gas chromatography, GC-MS, spectroscopy, and environmental tracer applications.</p>
+                    <div class="hm-ind-cta">Explore <i class="fas fa-arrow-right" style="font-size:0.62rem"></i></div>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         OUR GUARANTEE
+    ══════════════════════════════════ -->
+    <section class="hm-guarantee reveal">
+        <div class="hm-inner">
+            <div class="hm-section-header split">
+                <div>
+                    <p class="hm-gtee-eyebrow">Our Guarantee</p>
+                    <h2 class="hm-gtee-title">Built on<br>Accountability</h2>
+                </div>
+                <p class="hm-gtee-sub">Every order is backed by documentation, traceability, and a commitment to purity that holds up to the most demanding quality audits.</p>
+            </div>
+
+            <div class="hm-gtee-grid">
+                <div class="hm-gtee-card" style="--gtee-accent:var(--kr)">
+                    <div class="hm-gtee-icon"><i class="fas fa-atom"></i></div>
+                    <div class="hm-gtee-card-title">Purity Verified, Every Batch</div>
+                    <p class="hm-gtee-card-text">Each production lot is analytically tested to confirm purity grade — from 4N to 6N — before leaving our facility.</p>
+                </div>
+                <div class="hm-gtee-card" style="--gtee-accent:var(--he)">
+                    <div class="hm-gtee-icon"><i class="fas fa-file-alt"></i></div>
+                    <div class="hm-gtee-card-title">Certificate of Analysis</div>
+                    <p class="hm-gtee-card-text">Every cylinder ships with a CoA documenting actual measured impurity levels — not just nominal specifications.</p>
+                </div>
+                <div class="hm-gtee-card" style="--gtee-accent:var(--xe)">
+                    <div class="hm-gtee-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div class="hm-gtee-card-title">SDS Compliant</div>
+                    <p class="hm-gtee-card-text">Safety Data Sheets meeting OSHA HazCom and North American regulatory requirements included with every order.</p>
+                </div>
+                <div class="hm-gtee-card" style="--gtee-accent:var(--n2o)">
+                    <div class="hm-gtee-icon"><i class="fas fa-certificate"></i></div>
+                    <div class="hm-gtee-card-title">GAWDA Member</div>
+                    <p class="hm-gtee-card-text">As a Gases and Welding Distributors Association member, we operate under North America's recognized industry standards and accountability framework.</p>
+                </div>
+                <div class="hm-gtee-card" style="--gtee-accent:var(--sf6)">
+                    <div class="hm-gtee-icon"><i class="fas fa-search"></i></div>
+                    <div class="hm-gtee-card-title">Full Lot Traceability</div>
+                    <p class="hm-gtee-card-text">Every cylinder is traceable from production source to your facility — enabling root-cause analysis if your quality audit ever requires it.</p>
+                </div>
+                <div class="hm-gtee-card" style="--gtee-accent:var(--cf4)">
+                    <div class="hm-gtee-icon"><i class="fas fa-headset"></i></div>
+                    <div class="hm-gtee-card-title">24-Hour Response Commitment</div>
+                    <p class="hm-gtee-card-text">Technical and procurement questions answered within 24 hours — from first inquiry through long-term supply.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="hm-stats">
+            <div class="hm-stats-inner">
+                <div class="hm-stat">
+                    <div class="hm-stat-num">500+</div>
+                    <div class="hm-stat-label">Satisfied Clients</div>
+                </div>
+                <div class="hm-stat">
+                    <div class="hm-stat-num">99%</div>
+                    <div class="hm-stat-label">Supply Chain Reliability</div>
+                </div>
+                <div class="hm-stat">
+                    <div class="hm-stat-num">~75</div>
+                    <div class="hm-stat-label">Days Global Lead Time · Sea Freight</div>
+                </div>
+                <div class="hm-stat">
+                    <div class="hm-stat-num">95%</div>
+                    <div class="hm-stat-label">On-Time Delivery Rate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         CTA BAND
+    ══════════════════════════════════ -->
+    <section class="hm-cta reveal">
+        <div class="hm-cta-inner">
+            <div>
+                <p class="hm-cta-eyebrow">Precision Supply Chain</p>
+                <h2 class="hm-cta-title">Ready to Source Rare Gases?</h2>
+                <p class="hm-cta-sub">Contact our specialists for quotes, technical consultation, and customized supply solutions — we respond within 24 hours.</p>
+            </div>
+            <a href="contact.html" class="hm-solid-btn">
+                Contact Our Team <i class="fas fa-arrow-right" style="font-size:0.72rem"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- ── Footer ── -->
+    <footer>
         <div class="container">
-            <div class="footer-content" style="display: flex; justify-content: space-between; align-items: center;">
+            <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="logo.png" alt="宏源气体 Logo" style="width: 120px; height:auto;">
+                    <img src="logo.png" alt="Airocean Gases Logo" class="logo-img">
                 </div>
                 <div class="footer-column">
-                    <div class="social-media">
-                        <h3 style="font-size: 16px; margin-bottom: 8px;">Follow Us</h3>
-                        <ul style="list-style-type: none; padding-left: 0;">
-                            <li style="margin-bottom: 4px;"><a href="https://api.whatsapp.com/send/?phone=9174317883&text&type=phone_number&app_absent=0" style="color: #000000; font-size: 13px;"><i class="fab fa-whatsapp"></i> Whatsapp</a></li>
-                            <li style="margin-bottom: 4px;"><a href="https://www.linkedin.com/company/hygas/?viewAsMember=true" style="color: #000000; font-size: 13px;"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
-                            <li style="margin-bottom: 4px;"><a href="https://www.instagram.com/airoceangases/?hl=en" style="color: #000000; font-size: 13px;"><i class="fab fa-instagram"></i> Instagram</a></li>
-                        </ul>
-                    </div>
+                    <h3>Follow Us</h3>
+                    <ul>
+                        <li><a href="https://api.whatsapp.com/send/?phone=9174317883&text&type=phone_number&app_absent=0"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
+                        <li><a href="https://www.linkedin.com/company/hygas/?viewAsMember=true"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                        <li><a href="https://www.instagram.com/airoceangases/?hl=en"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    </ul>
                 </div>
                 <div class="footer-column">
-                    <div class="legal-info">
-                        <h3 style="font-size: 16px; margin-bottom: 8px;">Legal Information</h3>
-                        <ul style="list-style-type: none; padding-left: 0;">
-                            <li style="margin-bottom: 4px;"><a href="privacy-policy.html" style="color: #000000; font-size: 13px;">Privacy Policy</a></li>
-                            <li style="margin-bottom: 4px;"><a href="terms-conditions.html" style="color: #000000; font-size: 13px;">Terms & Conditions</a></li>
-                        </ul>
-                    </div>
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-conditions.html">Terms & Conditions</a></li>
+                    </ul>
                 </div>
                 <div class="footer-column">
-                    <div class="quick-links">
-                        <h3 style="font-size: 16px; margin-bottom: 8px;">Quick Links</h3>
-                        <ul style="list-style-type: none; padding-left: 0;">
-                            <li style="margin-bottom: 4px;"><a href="index.html" style="color: #000000; font-size: 13px;">Home</a></li>
-                            <li style="margin-bottom: 4px;"><a href="about.html" style="color: #000000; font-size: 13px;">About Us</a></li>
-                            <li style="margin-bottom: 4px;"><a href="products.html" style="color: #000000; font-size: 13px;">Products & Services</a></li>
-                            <li style="margin-bottom: 4px;"><a href="applications.html" style="color: #000000; font-size: 13px;">Applications</a></li>
-                            <li style="margin-bottom: 4px;"><a href="contact.html" style="color: #000000; font-size: 13px;">Contact Us</a></li>   
-                        </ul>
-                    </div>
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="products.html">Products & Services</a></li>
+                        <li><a href="applications.html">Applications</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
                 </div>
             </div>
             <div class="copyright">
-                <p style="font-size: 12px; margin-top: 10px;">&copy; 2023 Airocean Gases. All rights reserved.</p>
+                <p>&copy; 2025 Airocean Gases. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
+    <button id="back-to-top" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
     <script src="script.js"></script>
+    <script>
+    (function() {
+        const VISIBLE = 4;
+        const grid   = document.getElementById('gasesGrid');
+        const prev   = document.getElementById('gasesPrev');
+        const next   = document.getElementById('gasesNext');
+        const dotsWrap = document.getElementById('gasesDots');
+        const tiles  = grid.querySelectorAll('.hm-gas-tile');
+        const total  = tiles.length;                   // 7
+        const steps  = total - VISIBLE;                // 3
+        let idx = 0;
+
+        /* build dots */
+        const dots = Array.from({ length: steps + 1 }, (_, i) => {
+            const d = document.createElement('span');
+            d.className = 'hm-gdot' + (i === 0 ? ' active' : '');
+            d.addEventListener('click', () => goTo(i));
+            dotsWrap.appendChild(d);
+            return d;
+        });
+
+        function tileWidth() {
+            return tiles[0].offsetWidth;
+        }
+
+        function goTo(i) {
+            idx = Math.max(0, Math.min(i, steps));
+            grid.style.transform = `translateX(-${idx * tileWidth()}px)`;
+            prev.disabled = idx === 0;
+            next.disabled = idx === steps;
+            dots.forEach((d, j) => d.classList.toggle('active', j === idx));
+        }
+
+        prev.addEventListener('click', () => goTo(idx - 1));
+        next.addEventListener('click', () => goTo(idx + 1));
+
+        /* recalculate on resize */
+        window.addEventListener('resize', () => goTo(idx));
+    })();
+    </script>
 </body>
-</html> 
+</html>

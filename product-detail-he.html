@@ -1,875 +1,534 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>He - 氦气产品详情 - 宏源气体</title>
+    <title>Helium (He) — Airocean Gases</title>
+    <meta name="description" content="High-purity Helium gas (Grades 4.5–6.0) for MRI cooling, semiconductor, aerospace, and leak detection. CAS 7440-59-7. Airocean Gases.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        .product-detail-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 60px 20px;
+        :root {
+            --ink:   #0c0e10;
+            --ink-2: #3d4147;
+            --ink-3: #8a909a;
+            --bg:    #f8f7f4;
+            --bg-2:  #f0ede8;
+            --rule:  #d8d4ce;
+            --navy:  #080f1d;
+            --accent:#047857;
         }
-        
-        .product-header {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            margin-bottom: 50px;
-            margin-top: 40px;
-        }
-        
-        .chemical-symbol {
-            width: 120px;
-            height: 120px;
-            background: linear-gradient(135deg, #1443c5 0%, #6f58f0 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px;
-            font-size: 3rem;
-            font-weight: bold;
-            color: #000;
-        }
-        
-        .product-info {
-            flex: 1;
-        }
-        
-        .product-name {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: #333;
-        }
-        
-        .product-description {
-            font-size: 1.1rem;
-            color: #666;
-            line-height: 1.5;
-        }
-        
-        .info-tables {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 50px;
-        }
-        
-        .info-table {
-            background: #f8f9fa;
-            padding: 25px;
-            border-radius: 8px;
-            border: 1px solid #e9ecef;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .info-table::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,107,53,0.1), transparent);
-            transition: left 0.5s ease;
-        }
-        
-        .info-table:hover::before {
-            left: 100%;
-        }
-        
-        .info-table:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
-        
-        .table-title {
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: #333;
-            position: relative;
-            animation: slideInFromLeft 0.6s ease;
-        }
-        
-        .table-title::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background: #ff6b35;
-            transition: width 0.3s ease;
-        }
-        
-        .info-table:hover .table-title::after {
-            width: 50px;
-        }
-        
-        .table-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 12px 0;
-            border-bottom: 1px solid #dee2e6;
-            transition: all 0.3s ease;
-            animation: fadeInUp 0.6s ease;
-            animation-fill-mode: both;
-        }
-        
-        .table-row:nth-child(2) { animation-delay: 0.1s; }
-        .table-row:nth-child(3) { animation-delay: 0.2s; }
-        .table-row:nth-child(4) { animation-delay: 0.3s; }
-        .table-row:nth-child(5) { animation-delay: 0.4s; }
-        .table-row:nth-child(6) { animation-delay: 0.5s; }
-        .table-row:nth-child(7) { animation-delay: 0.6s; }
-        
-        .table-row:hover {
-            background: rgba(255,107,53,0.05);
-            transform: translateX(5px);
-            border-radius: 5px;
-            padding-left: 10px;
-            padding-right: 10px;
-        }
-        
-        .table-row:last-child {
-            border-bottom: none;
-        }
-        
-        .table-label {
-            font-weight: bold;
-            color: #333;
-            transition: color 0.3s ease;
-        }
-        
-        .table-row:hover .table-label {
-            color: #ff6b35;
-        }
-        
-        .table-value {
-            color: #666;
-            transition: all 0.3s ease;
-        }
-        
-        .table-row:hover .table-value {
-            color: #333;
-            font-weight: 600;
-        }
-        
-        .about-section {
-            margin-bottom: 50px;
-        }
-        
-        .section-title {
-            font-size: 1.8rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: #333;
-        }
-        
-        .about-content {
-            font-size: 1rem;
-            line-height: 1.7;
-            color: #555;
-            margin-bottom: 30px;
-        }
-        
-        .download-buttons {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .btn-sds {
-            background: #ff6b35;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 6px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        
-        .btn-sds:hover {
-            background: #e55a2b;
-        }
-        
-        .btn-pdf {
-            background: white;
-            color: #333;
-            border: 2px solid #333;
-            padding: 12px 24px;
-            border-radius: 6px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .btn-pdf:hover {
-            background: #333;
-            color: white;
-        }
-        
-        .product-grade-section {
-            margin-bottom: 50px;
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .product-grade-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,107,53,0.1), transparent);
-            transition: left 0.5s ease;
-        }
-        
-        .product-grade-section:hover::before {
-            left: 100%;
-        }
-        
-        .product-grade-section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
-        
-        .grade-tabs {
-            display: flex;
-            gap: 2px;
-            margin-bottom: 30px;
-            border-bottom: 2px solid #e9ecef;
-            background: #f8f9fa;
-            border-radius: 8px 8px 0 0;
-            padding: 5px 5px 0 5px;
-        }
-        
-        .grade-tab {
-            padding: 15px 20px;
-            background: #f8f9fa;
-            border: none;
-            cursor: pointer;
-            font-weight: 600;
-            color: #6c757d;
-            transition: all 0.3s ease;
-            border-radius: 6px 6px 0 0;
-            flex: 1;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .grade-tab::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,107,53,0.2), transparent);
-            transition: left 0.3s ease;
-        }
-        
-        .grade-tab:hover::before {
-            left: 100%;
-        }
-        
-        .grade-tab.active {
-            background: white;
-            color: #333;
-            border-bottom: 3px solid #ff6b35;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-            animation: tabActivate 0.3s ease;
-        }
-        
-        .grade-tab:hover {
-            background: #e9ecef;
-            color: #333;
-            transform: translateY(-2px);
-        }
-        
-        .grade-specs {
-            background: white;
-            padding: 30px;
-            border-radius: 0 0 8px 8px;
-            border: 1px solid #e9ecef;
-            border-top: none;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .grade-specs::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,107,53,0.1), transparent);
-            transition: left 0.5s ease;
-        }
-        
-        .grade-specs:hover::before {
-            left: 100%;
-        }
-        
-        .grade-specs:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-        }
-        
-        .spec-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 15px 0;
-            border-bottom: 1px solid #e9ecef;
-            transition: all 0.3s ease;
-            animation: fadeInUp 0.6s ease;
-            animation-fill-mode: both;
-        }
-        
-        .spec-row:nth-child(1) { animation-delay: 0.1s; }
-        .spec-row:nth-child(2) { animation-delay: 0.2s; }
-        .spec-row:nth-child(3) { animation-delay: 0.3s; }
-        .spec-row:nth-child(4) { animation-delay: 0.4s; }
-        
-        .spec-row:hover {
-            background: rgba(255,107,53,0.05);
-            transform: translateX(5px);
-            border-radius: 6px;
-            padding-left: 10px;
-            padding-right: 10px;
-        }
-        
-        .spec-row:last-child {
-            border-bottom: none;
-        }
-        
-        .spec-label {
-            font-weight: 600;
-            color: #495057;
-            transition: color 0.3s ease;
-        }
-        
-        .spec-row:hover .spec-label {
-            color: #ff6b35;
-        }
-        
-        .spec-value {
-            color: #6c757d;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        
-        .spec-row:hover .spec-value {
-            color: #333;
-            font-weight: 600;
-        }
-        
-        .spec-value.highlight {
-            color: #ff6b35;
-            font-weight: bold;
-            background: rgba(255,107,53,0.1);
-            padding: 4px 8px;
-            border-radius: 4px;
-            animation: pulse 2s infinite;
-        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--ink); -webkit-font-smoothing: antialiased; }
+        .sr { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .sr.in { opacity: 1; transform: none; }
 
-        /* Package tabs/specs (供货方式与包装规格) */
-        .package-tabs { display: flex; gap: 2px; margin-bottom: 30px; border-bottom: 2px solid #e9ecef; background: #f8f9fa; border-radius: 8px 8px 0 0; padding: 5px 5px 0 5px; }
-        .package-tab { padding: 15px 20px; background: #f8f9fa; border: none; cursor: pointer; font-weight: 600; color: #6c757d; transition: all 0.3s ease; border-radius: 6px 6px 0 0; flex: 1; text-align: center; position: relative; overflow: hidden; }
-        .package-tab::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,107,53,0.2), transparent); transition: left 0.3s ease; }
-        .package-tab:hover::before { left: 100%; }
-        .package-tab:hover { background: #e9ecef; color: #333; transform: translateY(-2px); }
-        .package-tab.active { background: #ffffff; color: #333; border-bottom: 3px solid #ff6b35; box-shadow: 0 -2px 10px rgba(0,0,0,0.1); animation: tabActivate 0.3s ease; }
-        .package-specs { background: #ffffff; padding: 30px; border-radius: 0 0 8px 8px; border: 1px solid #e9ecef; border-top: none; }
-        .package-row { display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid #e9ecef; transition: all 0.3s ease; animation: fadeInUp 0.6s ease; animation-fill-mode: both; }
-        .package-row:hover { background: rgba(255,107,53,0.05); transform: translateX(5px); border-radius: 6px; padding-left: 10px; padding-right: 10px; }
-        .package-row:last-child { border-bottom: none; }
-        
-        .footnote {
-            font-size: 0.9rem;
-            color: #6c757d;
-            margin-top: 20px;
-            padding-top: 15px;
-            border-top: 1px solid #e9ecef;
-            font-style: italic;
-            animation: fadeInUp 0.8s ease;
-            animation-delay: 0.5s;
-            animation-fill-mode: both;
+        /* HERO */
+        .pd-hero { position: relative; background: var(--navy); min-height: 100dvh; display: flex; align-items: flex-end; padding-bottom: 80px; overflow: hidden; }
+        .pd-hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px); background-size: 48px 48px; pointer-events: none; }
+        .pd-hero::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--accent); }
+        .pd-ghost { position: absolute; right: -2vw; bottom: -0.1em; font-family: 'Outfit', sans-serif; font-size: clamp(18rem, 32vw, 38rem); font-weight: 900; line-height: 1; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.06); user-select: none; pointer-events: none; }
+        .pd-hero-inner { position: relative; z-index: 2; width: 90%; max-width: 1400px; margin: 0 auto; }
+        .pd-eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
+        .pd-eyebrow-line { width: 32px; height: 1px; background: var(--accent); }
+        .pd-eyebrow-text { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+        .pd-atomic { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 300; color: rgba(255,255,255,0.35); letter-spacing: 0.04em; margin-bottom: 8px; }
+        .pd-symbol { font-size: clamp(4.5rem, 10vw, 9rem); font-weight: 800; line-height: 0.9; color: #fff; letter-spacing: -0.03em; margin-bottom: 16px; }
+        .pd-name-en { font-size: clamp(1.4rem, 3vw, 2.2rem); font-weight: 300; color: rgba(255,255,255,0.55); letter-spacing: 0.06em; margin-bottom: 36px; }
+        .pd-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.08); max-width: 720px; }
+        .pd-stat { background: rgba(8,15,29,0.6); padding: 18px 20px; }
+        .pd-stat-label { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 6px; }
+        .pd-stat-value { font-size: 1rem; font-weight: 600; color: #fff; }
+
+        /* INFO GRID */
+        .pd-info-section { background: var(--bg); }
+        .pd-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+        .pd-info-col { background: var(--bg); padding: 56px 5%; }
+        .pd-section-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 28px; }
+        .pd-data-row { display: flex; justify-content: space-between; align-items: baseline; padding: 12px 0; border-bottom: 1px solid var(--rule); gap: 16px; }
+        .pd-data-row:last-child { border-bottom: none; }
+        .pd-data-key { font-size: 0.78rem; font-weight: 500; color: var(--ink-3); flex-shrink: 0; }
+        .pd-data-val { font-size: 0.88rem; font-weight: 600; color: var(--ink); text-align: right; }
+
+        /* ABOUT */
+        .pd-about { padding: 96px 0; background: var(--bg-2); }
+        .pd-about-inner { width: 90%; max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 38% 1fr; gap: 110px; align-items: start; }
+        .pd-about-aside { position: sticky; top: 100px; }
+        .pd-about-h2 { font-size: clamp(2.4rem, 5vw, 4.2rem); font-weight: 800; line-height: 1.05; letter-spacing: -0.03em; color: var(--ink); }
+        .pd-about-h2 span { color: var(--accent); }
+        .pd-about-body p { font-size: 1rem; font-weight: 400; line-height: 1.8; color: var(--ink-2); margin-bottom: 24px; max-width: 65ch; }
+        .pd-about-body p:last-child { margin-bottom: 0; }
+
+        /* GRADE */
+        .pd-grade-section { background: var(--navy); padding: 80px 0; position: relative; overflow: hidden; }
+        .pd-grade-section::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px); background-size: 48px 48px; pointer-events: none; }
+        .pd-grade-inner { position: relative; z-index: 2; width: 90%; max-width: 1400px; margin: 0 auto; }
+        .pd-grade-header { margin-bottom: 48px; }
+        .pd-grade-title { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 800; color: #fff; letter-spacing: -0.02em; }
+        .pd-tabs { display: flex; gap: 0; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 0; flex-wrap: wrap; }
+        .pd-tab { padding: 12px 24px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); cursor: pointer; border: none; background: transparent; border-bottom: 2px solid transparent; margin-bottom: -1px; font-family: 'Outfit', sans-serif; transition: color 0.2s, border-color 0.2s; }
+        .pd-tab.active { color: #fff; border-bottom-color: var(--accent); }
+        .pd-tab:hover:not(.active) { color: rgba(255,255,255,0.7); }
+        .pd-grade-content { padding-top: 40px; }
+        .pd-grade-panel { display: none; }
+        .pd-grade-panel.active { display: block; }
+        .pd-grade-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.08); margin-bottom: 1px; }
+        .pd-grade-row:last-child { margin-bottom: 0; }
+        .pd-grade-cell { background: rgba(8,15,29,0.7); padding: 20px 24px; }
+        .pd-grade-cell-label { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 8px; }
+        .pd-grade-cell-value { font-size: 0.95rem; font-weight: 600; color: #fff; }
+
+        /* PACKAGING */
+        .pd-pkg-section { background: var(--bg); padding: 80px 0; }
+        .pd-pkg-inner { width: 90%; max-width: 1400px; margin: 0 auto; }
+        .pd-pkg-title { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 800; color: var(--ink); letter-spacing: -0.02em; margin-bottom: 48px; }
+        .pd-pkg-tabs { display: flex; gap: 0; border-bottom: 1px solid var(--rule); margin-bottom: 0; flex-wrap: wrap; }
+        .pd-pkg-tab { padding: 12px 24px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); cursor: pointer; border: none; background: transparent; border-bottom: 2px solid transparent; margin-bottom: -1px; font-family: 'Outfit', sans-serif; transition: color 0.2s, border-color 0.2s; }
+        .pd-pkg-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+        .pd-pkg-tab:hover:not(.active) { color: var(--ink); }
+        .pd-pkg-content { padding-top: 40px; }
+        .pd-pkg-panel { display: none; }
+        .pd-pkg-panel.active { display: block; }
+        .pd-pkg-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+        .pd-pkg-cell { background: var(--bg); padding: 24px 28px; }
+        .pd-pkg-cell-label { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 8px; }
+        .pd-pkg-cell-value { font-size: 0.95rem; font-weight: 600; color: var(--ink); }
+        .pd-pkg-note { margin-top: 24px; font-size: 0.78rem; color: var(--ink-3); line-height: 1.6; }
+
+        /* CTA */
+        .pd-cta { background: var(--navy); padding: 80px 0; position: relative; overflow: hidden; }
+        .pd-cta::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--accent); }
+        .pd-cta-inner { width: 90%; max-width: 1400px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+        .pd-cta-text h2 { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 800; color: #fff; letter-spacing: -0.02em; margin-bottom: 12px; }
+        .pd-cta-text p { font-size: 1rem; color: rgba(255,255,255,0.5); max-width: 50ch; }
+        .pd-cta-btns { display: flex; gap: 16px; flex-shrink: 0; }
+        .pd-btn-primary { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; background: var(--accent); color: #fff; font-family: 'Outfit', sans-serif; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; transition: opacity 0.2s; }
+        .pd-btn-primary:hover { opacity: 0.85; }
+        .pd-btn-ghost { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.7); font-family: 'Outfit', sans-serif; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; transition: border-color 0.2s, color 0.2s; }
+        .pd-btn-ghost:hover { border-color: rgba(255,255,255,0.5); color: #fff; }
+
+        @media (max-width: 900px) {
+            .pd-stats { grid-template-columns: repeat(2, 1fr); }
+            .pd-info-grid { grid-template-columns: 1fr; }
+            .pd-about-inner { grid-template-columns: 1fr; gap: 40px; }
+            .pd-about-aside { position: static; }
+            .pd-grade-row { grid-template-columns: repeat(2, 1fr); }
+            .pd-pkg-grid { grid-template-columns: 1fr 1fr; }
+            .pd-cta-inner { flex-direction: column; align-items: flex-start; }
         }
-        
-        .back-btn {
-            position: fixed;
-            top: 100px;
-            left: 30px;
-            background: none;
-            color: #2a5298;
-            border: none;
-            padding: 15px 25px;
-            cursor: pointer;
-            font-size: 1.1rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            z-index: 1000;
-            transition: all 0.3s ease;
+        @media (max-width: 600px) {
+            .pd-stats { grid-template-columns: 1fr 1fr; }
+            .pd-grade-row { grid-template-columns: 1fr; }
+            .pd-pkg-grid { grid-template-columns: 1fr; }
+            .pd-cta-btns { flex-direction: column; }
         }
-        
-        .back-btn:hover {
-            color: #1e3f6b;
-            transform: translateX(-5px);
-        }
-        
-        @keyframes slideInFromLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes tabActivate {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
-        
-        @keyframes pulse {
-            0%, 100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.8;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .product-header {
-                flex-direction: column;
-                gap: 20px;
-            }
-            
-            .info-tables {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            
-            .download-buttons {
-                flex-direction: column;
-            }
-            
-            .grade-tabs {
-                flex-wrap: wrap;
-            }
-            
-            .back-btn {
-                top: 80px;
-                left: 15px;
-                padding: 12px 20px;
-                font-size: 1rem;
-            }
-            .package-row { flex-direction: column; gap: 6px; align-items: flex-start; }
-        }
+        /* ── Product nav (prev / next) ── */
+        .pd-pgnav { background: var(--bg-2); border-top: 1px solid var(--rule); }
+        .pd-pgnav__inner { max-width: 1200px; margin: 0 auto; padding: 0 clamp(1.5rem,5vw,5rem); display: grid; grid-template-columns: 1fr auto 1fr; align-items: stretch; }
+        .pd-pgnav__item { display: flex; align-items: center; gap: 1rem; padding: 1.6rem 0; text-decoration: none; color: var(--ink-2); transition: color 0.2s; }
+        .pd-pgnav__item:hover { color: var(--ink); }
+        .pd-pgnav__item:hover .pd-pgnav__arrow { background: var(--accent); color: #fff; border-color: var(--accent); }
+        .pd-pgnav__item--next { justify-content: flex-end; }
+        .pd-pgnav__arrow { width: 40px; height: 40px; border: 1px solid var(--rule); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 0.2s, color 0.2s, border-color 0.2s; }
+        .pd-pgnav__text { display: flex; flex-direction: column; gap: 2px; }
+        .pd-pgnav__dir { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); }
+        .pd-pgnav__gas { font-size: 1rem; font-weight: 600; color: var(--ink); }
+        .pd-pgnav__gas em { font-style: normal; color: var(--accent); }
+        .pd-pgnav__all { display: flex; align-items: center; padding: 0 2rem; border-left: 1px solid var(--rule); border-right: 1px solid var(--rule); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); text-decoration: none; transition: color 0.2s; white-space: nowrap; }
+        .pd-pgnav__all:hover { color: var(--accent); }
+        @media (max-width: 640px) { .pd-pgnav__inner { grid-template-columns: 1fr 1fr; } .pd-pgnav__all { display: none; } }
     </style>
 </head>
 <body>
-    <header style="background: white;">
-        <div class="container">
-            <div class="header-content">
-                <div class="header-logo">
-                    <img src="logo.png" alt="宏源气体 Logo" style="width: 120px; height:auto;">
+
+<!-- HEADER -->
+<header id="site-header">
+    <div class="container">
+        <div class="header-content">
+            <div class="header-logo">
+                <img src="logo.png" alt="Airocean Gases Logo" class="logo-img">
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About Us</a></li>
+                    <li><a href="products.html" class="nav-link active-link">Products &amp; Services</a></li>
+                    <li><a href="applications.html" class="nav-link">Applications</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact Us</a></li>
+                </ul>
+                <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="pd-hero">
+    <div class="pd-ghost">He</div>
+    <div class="pd-hero-inner">
+        <div class="pd-eyebrow">
+            <span class="pd-eyebrow-line"></span>
+            <span class="pd-eyebrow-text">Noble Gas &nbsp;·&nbsp; CAS 7440-59-7 &nbsp;·&nbsp; Atomic No. 2</span>
+        </div>
+        <p class="pd-atomic">Molecular Weight — 4.003</p>
+        <h1 class="pd-symbol">He</h1>
+        <p class="pd-name-en">Helium</p>
+        <div class="pd-stats">
+            <div class="pd-stat"><p class="pd-stat-label">Mol. Weight</p><p class="pd-stat-value">4.003</p></div>
+            <div class="pd-stat"><p class="pd-stat-label">Max Purity</p><p class="pd-stat-value">99.9999%</p></div>
+            <div class="pd-stat"><p class="pd-stat-label">Boiling Point</p><p class="pd-stat-value">−268.9 °C</p></div>
+            <div class="pd-stat"><p class="pd-stat-label">UN Number</p><p class="pd-stat-value">UN1046</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- INFO GRID -->
+<section class="pd-info-section">
+    <div class="pd-info-grid">
+        <div class="pd-info-col sr">
+            <p class="pd-section-label">Shipping Information</p>
+            <div class="pd-data-row"><span class="pd-data-key">UN Number (Gas)</span><span class="pd-data-val">UN1046</span></div>
+            <div class="pd-data-row"><span class="pd-data-key">UN Number (Liquid)</span><span class="pd-data-val">UN1963</span></div>
+            <div class="pd-data-row"><span class="pd-data-key">Hazard Class</span><span class="pd-data-val">Class 2.2</span></div>
+            <div class="pd-data-row"><span class="pd-data-key">Subsidiary Risk</span><span class="pd-data-val">None</span></div>
+            <div class="pd-data-row"><span class="pd-data-key">Hazard Label</span><span class="pd-data-val">Non-Flammable Gas</span></div>
+            <div class="pd-data-row"><span class="pd-data-key">Appearance</span><span class="pd-data-val">Colorless, Odorless Gas</span></div>
+        </div>
+        <div class="pd-info-col sr">
+            <p class="pd-section-label">Technical Data</p>
+            <div class="pd-data-row"><span class="pd-data-key">CAS Number</span><span class="pd-data-val">7440-59-7</span></div>
+            <div class="pd-data-row"><span class="pd-data-key">Molecular Weight</span><span class="pd-data-val">4.003 g/mol</span></div>
+            <div class="pd-data-row"><span class="pd-data-key">Boiling Point</span><span class="pd-data-val">−268.9 °C (−452.1 °F)</span></div>
+            <div class="pd-data-row"><span class="pd-data-key">Density (gas, 20 °C)</span><span class="pd-data-val">0.164 kg/m³</span></div>
+            <div class="pd-data-row"><span class="pd-data-key">Thermal Conductivity</span><span class="pd-data-val">0.152 W/m·K</span></div>
+            <div class="pd-data-row"><span class="pd-data-key">Phase</span><span class="pd-data-val">Compressed Gas / Liquid</span></div>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section class="pd-about">
+    <div class="pd-about-inner">
+        <div class="pd-about-aside sr">
+            <p class="pd-section-label">About This Gas</p>
+            <h2 class="pd-about-h2">Heli<span>um</span></h2>
+        </div>
+        <div class="pd-about-body sr">
+            <p>Helium is the second most abundant element in the universe and the lightest noble gas. Its exceptionally low boiling point of −268.9 °C — just 4.2 K above absolute zero — makes it the only substance capable of maintaining the superconducting state in MRI magnets and particle accelerators. Airocean supplies high-purity helium across eight grades, from industrial 4.5 through ultra-low-impurity 6.0 LC, ensuring the right specification for every downstream application.</p>
+            <p>In semiconductor manufacturing, helium serves as a carrier and cooling medium in CVD/PECVD chambers, and as a primary purge gas for quartz-tube diffusion furnaces. Its extraordinary thermal conductivity and inertness allow precise temperature control without chemical interaction with process wafers. High-purity 6.0-grade helium is mandatory for EUV lithography equipment purging to suppress UV absorption by residual oxygen and water vapor.</p>
+            <p>Aerospace and defense programs rely on helium to pressure-feed liquid-propellant rocket engines, purge cryogenic tanks, and pre-cool hydrogen fuel systems. Its low density and chemical neutrality make it the gas of choice for helium mass spectrometer leak detection — a technique capable of locating leaks smaller than 10⁻¹⁰ mbar·L/s in vacuum systems, spacecraft structures, and industrial process vessels.</p>
+            <p>Fiber optic cable manufacturing employs a continuous helium atmosphere inside the drawing furnace to control thermal gradients and reduce microcracking in the silica preform. Helium's low viscosity enables efficient heat extraction, resulting in fibers with tighter diameter tolerances and improved tensile strength.</p>
+        </div>
+    </div>
+</section>
+
+<!-- GRADE -->
+<section class="pd-grade-section">
+    <div class="pd-grade-inner">
+        <div class="pd-grade-header">
+            <p class="pd-section-label" style="color:rgba(255,255,255,0.35);">Available Grades</p>
+            <h2 class="pd-grade-title">Product Specifications</h2>
+        </div>
+        <div class="pd-tabs">
+            <button class="pd-tab active" data-grade="45">Grade 4.5</button>
+            <button class="pd-tab" data-grade="50">Grade 5.0</button>
+            <button class="pd-tab" data-grade="50pc">Grade 5.0 PC</button>
+            <button class="pd-tab" data-grade="50lc">Grade 5.0 LC</button>
+            <button class="pd-tab" data-grade="55">Grade 5.5</button>
+            <button class="pd-tab" data-grade="60">Grade 6.0</button>
+            <button class="pd-tab" data-grade="60pc">Grade 6.0 PC</button>
+            <button class="pd-tab" data-grade="60lc">Grade 6.0 LC</button>
+        </div>
+        <div class="pd-grade-content">
+
+            <!-- Grade 4.5 -->
+            <div class="pd-grade-panel active" id="grade-45">
+                <div class="pd-grade-row">
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Grade</p><p class="pd-grade-cell-value">Grade 4.5 — Industrial</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Minimum Purity</p><p class="pd-grade-cell-value">99.995%</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Application Type</p><p class="pd-grade-cell-value">Industrial (IND)</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Product Code Prefix</p><p class="pd-grade-cell-value">SG HEIND-</p></div>
                 </div>
-                <nav>
-                    <ul style="list-style-type: none; padding-left: 0; display: flex; gap: 15px;">
-                        <li><a href="index.html" style="color: #000000;">Home</a></li>
-                        <li><a href="about.html" style="color: #000000;">About Us</a></li>
-                        <li><a href="products.html" style="color: #000000;">Products & Services</a></li>
-                        <li><a href="applications.html" style="color: #000000;">Applications</a></li>
-                        <li><a href="contact.html" style="color: #000000;">Contact Us</a></li>
-                    </ul>
-                </nav>
+                <div class="pd-grade-row">
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">O₂ Maximum</p><p class="pd-grade-cell-value">10 ppm</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Moisture Maximum</p><p class="pd-grade-cell-value">5 ppm</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">THC Maximum</p><p class="pd-grade-cell-value">1 ppm</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Typical Use</p><p class="pd-grade-cell-value">General purging, welding shield gas</p></div>
+                </div>
+            </div>
+
+            <!-- Grade 5.0 -->
+            <div class="pd-grade-panel" id="grade-50">
+                <div class="pd-grade-row">
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Grade</p><p class="pd-grade-cell-value">Grade 5.0 — Research</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Minimum Purity</p><p class="pd-grade-cell-value">99.999%</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Application Type</p><p class="pd-grade-cell-value">Research (RES)</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Product Code Prefix</p><p class="pd-grade-cell-value">SG HERES-</p></div>
+                </div>
+                <div class="pd-grade-row">
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">O₂ Maximum</p><p class="pd-grade-cell-value">2 ppm</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Moisture Maximum</p><p class="pd-grade-cell-value">3 ppm</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">THC Maximum</p><p class="pd-grade-cell-value">0.5 ppm</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Typical Use</p><p class="pd-grade-cell-value">GC carrier gas, lab research, PECVD</p></div>
+                </div>
+            </div>
+
+            <!-- Grade 5.0 PC -->
+            <div class="pd-grade-panel" id="grade-50pc">
+                <div class="pd-grade-row">
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Grade</p><p class="pd-grade-cell-value">Grade 5.0 PC</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Minimum Purity</p><p class="pd-grade-cell-value">99.999%</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Application Type</p><p class="pd-grade-cell-value">Point-of-Use Purified</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Product Code Prefix</p><p class="pd-grade-cell-value">SG HEPC5-</p></div>
+                </div>
+                <div class="pd-grade-row">
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">O₂ Maximum</p><p class="pd-grade-cell-value">&lt;1 ppm</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Moisture Maximum</p><p class="pd-grade-cell-value">&lt;1 ppm</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Particle Filter</p><p class="pd-grade-cell-value">0.003 µm inline</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Typical Use</p><p class="pd-grade-cell-value">Fab tool purging, ion implantation</p></div>
+                </div>
+            </div>
+
+            <!-- Grade 5.0 LC -->
+            <div class="pd-grade-panel" id="grade-50lc">
+                <div class="pd-grade-row">
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Grade</p><p class="pd-grade-cell-value">Grade 5.0 LC</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Minimum Purity</p><p class="pd-grade-cell-value">99.999%</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Application Type</p><p class="pd-grade-cell-value">Liquid Cylinder</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Product Code Prefix</p><p class="pd-grade-cell-value">SG HELC5-</p></div>
+                </div>
+                <div class="pd-grade-row">
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">O₂ Maximum</p><p class="pd-grade-cell-value">2 ppm</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Moisture Maximum</p><p class="pd-grade-cell-value">3 ppm</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Form</p><p class="pd-grade-cell-value">Liquid Dewar</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Typical Use</p><p class="pd-grade-cell-value">NMR cooling, cryostat fill</p></div>
+                </div>
+            </div>
+
+            <!-- Grade 5.5 -->
+            <div class="pd-grade-panel" id="grade-55">
+                <div class="pd-grade-row">
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Grade</p><p class="pd-grade-cell-value">Grade 5.5 — UHP</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Minimum Purity</p><p class="pd-grade-cell-value">99.9995%</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Application Type</p><p class="pd-grade-cell-value">Ultra High Purity</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Product Code Prefix</p><p class="pd-grade-cell-value">SG HEUHP-</p></div>
+                </div>
+                <div class="pd-grade-row">
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">O₂ Maximum</p><p class="pd-grade-cell-value">0.5 ppm</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Moisture Maximum</p><p class="pd-grade-cell-value">0.5 ppm</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">N₂ Maximum</p><p class="pd-grade-cell-value">1 ppm</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Typical Use</p><p class="pd-grade-cell-value">Semiconductor fab, fiber optic drawing</p></div>
+                </div>
+            </div>
+
+            <!-- Grade 6.0 -->
+            <div class="pd-grade-panel" id="grade-60">
+                <div class="pd-grade-row">
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Grade</p><p class="pd-grade-cell-value">Grade 6.0 — Ultra Pure</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Minimum Purity</p><p class="pd-grade-cell-value">99.9999%</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Application Type</p><p class="pd-grade-cell-value">Ultra Pure</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Product Code Prefix</p><p class="pd-grade-cell-value">SG HE6-</p></div>
+                </div>
+                <div class="pd-grade-row">
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">O₂ Maximum</p><p class="pd-grade-cell-value">0.1 ppm</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Moisture Maximum</p><p class="pd-grade-cell-value">0.1 ppm</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">N₂ Maximum</p><p class="pd-grade-cell-value">0.2 ppm</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Typical Use</p><p class="pd-grade-cell-value">EUV purging, particle physics</p></div>
+                </div>
+            </div>
+
+            <!-- Grade 6.0 PC -->
+            <div class="pd-grade-panel" id="grade-60pc">
+                <div class="pd-grade-row">
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Grade</p><p class="pd-grade-cell-value">Grade 6.0 PC</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Minimum Purity</p><p class="pd-grade-cell-value">99.9999%</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Application Type</p><p class="pd-grade-cell-value">Point-of-Use Purified</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Product Code Prefix</p><p class="pd-grade-cell-value">SG HEPC6-</p></div>
+                </div>
+                <div class="pd-grade-row">
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">O₂ Maximum</p><p class="pd-grade-cell-value">&lt;0.05 ppm</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Moisture Maximum</p><p class="pd-grade-cell-value">&lt;0.05 ppm</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Particle Filter</p><p class="pd-grade-cell-value">0.003 µm inline</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Typical Use</p><p class="pd-grade-cell-value">EUVL scanner purge, advanced CVD</p></div>
+                </div>
+            </div>
+
+            <!-- Grade 6.0 LC -->
+            <div class="pd-grade-panel" id="grade-60lc">
+                <div class="pd-grade-row">
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Grade</p><p class="pd-grade-cell-value">Grade 6.0 LC</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Minimum Purity</p><p class="pd-grade-cell-value">99.9999%</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Application Type</p><p class="pd-grade-cell-value">Liquid Cylinder</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Product Code Prefix</p><p class="pd-grade-cell-value">SG HELC6-</p></div>
+                </div>
+                <div class="pd-grade-row">
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">O₂ Maximum</p><p class="pd-grade-cell-value">0.1 ppm</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Moisture Maximum</p><p class="pd-grade-cell-value">0.1 ppm</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Form</p><p class="pd-grade-cell-value">Liquid Dewar</p></div>
+                    <div class="pd-grade-cell"><p class="pd-grade-cell-label">Typical Use</p><p class="pd-grade-cell-value">Superconducting magnet cooling</p></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- PACKAGING -->
+<section class="pd-pkg-section">
+    <div class="pd-pkg-inner">
+        <h2 class="pd-pkg-title sr">Cylinder &amp; Packaging Options</h2>
+        <div class="pd-pkg-tabs">
+            <button class="pd-pkg-tab active" data-pkg="al">Aluminum Cylinders (AL)</button>
+            <button class="pd-pkg-tab" data-pkg="cs">Steel Cylinders (CS)</button>
+            <button class="pd-pkg-tab" data-pkg="pk">Liquid Dewar (PK)</button>
+        </div>
+        <div class="pd-pkg-content sr">
+
+            <!-- Aluminum Cylinders -->
+            <div class="pd-pkg-panel active" id="pkg-al">
+                <div class="pd-pkg-grid">
+                    <div class="pd-pkg-cell"><p class="pd-pkg-cell-label">Type</p><p class="pd-pkg-cell-value">Aluminum Cylinder (AL)</p></div>
+                    <div class="pd-pkg-cell"><p class="pd-pkg-cell-label">Available Sizes</p><p class="pd-pkg-cell-value">9 L / 22 L / 44 L</p></div>
+                    <div class="pd-pkg-cell"><p class="pd-pkg-cell-label">Fill Pressure</p><p class="pd-pkg-cell-value">200 bar (2,900 psi)</p></div>
+                    <div class="pd-pkg-cell"><p class="pd-pkg-cell-label">Valve Outlet</p><p class="pd-pkg-cell-value">CGA 580</p></div>
+                    <div class="pd-pkg-cell"><p class="pd-pkg-cell-label">Compatible Grades</p><p class="pd-pkg-cell-value">Grade 4.5, 5.0, 5.5</p></div>
+                    <div class="pd-pkg-cell"><p class="pd-pkg-cell-label">Notes</p><p class="pd-pkg-cell-value">Preferred for MRI site deliveries</p></div>
+                </div>
+            </div>
+
+            <!-- Steel Cylinders -->
+            <div class="pd-pkg-panel" id="pkg-cs">
+                <div class="pd-pkg-grid">
+                    <div class="pd-pkg-cell"><p class="pd-pkg-cell-label">Type</p><p class="pd-pkg-cell-value">Steel Cylinder (CS)</p></div>
+                    <div class="pd-pkg-cell"><p class="pd-pkg-cell-label">Available Sizes</p><p class="pd-pkg-cell-value">T / K / Q Cylinder (49 L)</p></div>
+                    <div class="pd-pkg-cell"><p class="pd-pkg-cell-label">Fill Pressure</p><p class="pd-pkg-cell-value">T: 150 bar / K: 204 bar / Q: 300 bar</p></div>
+                    <div class="pd-pkg-cell"><p class="pd-pkg-cell-label">Valve Outlet</p><p class="pd-pkg-cell-value">CGA 580</p></div>
+                    <div class="pd-pkg-cell"><p class="pd-pkg-cell-label">Compatible Grades</p><p class="pd-pkg-cell-value">All grades 4.5 through 6.0 LC</p></div>
+                    <div class="pd-pkg-cell"><p class="pd-pkg-cell-label">Notes</p><p class="pd-pkg-cell-value">Electropolished interior for 6.0 grades</p></div>
+                </div>
+            </div>
+
+            <!-- Liquid Dewar -->
+            <div class="pd-pkg-panel" id="pkg-pk">
+                <div class="pd-pkg-grid">
+                    <div class="pd-pkg-cell"><p class="pd-pkg-cell-label">Type</p><p class="pd-pkg-cell-value">Liquid Dewar (PK)</p></div>
+                    <div class="pd-pkg-cell"><p class="pd-pkg-cell-label">Available Sizes</p><p class="pd-pkg-cell-value">30 L / 60 L / 100 L / 250 L</p></div>
+                    <div class="pd-pkg-cell"><p class="pd-pkg-cell-label">Liquid Density</p><p class="pd-pkg-cell-value">0.125 kg/L (at 4.2 K)</p></div>
+                    <div class="pd-pkg-cell"><p class="pd-pkg-cell-label">Evaporation Rate</p><p class="pd-pkg-cell-value">&lt;1.3%/day (250 L vessel)</p></div>
+                    <div class="pd-pkg-cell"><p class="pd-pkg-cell-label">Compatible Grades</p><p class="pd-pkg-cell-value">Grade 5.0 LC, 6.0 LC</p></div>
+                    <div class="pd-pkg-cell"><p class="pd-pkg-cell-label">Notes</p><p class="pd-pkg-cell-value">Loaner vessel — deposit &amp; exchange program</p></div>
+                </div>
+            </div>
+
+            <p class="pd-pkg-note">* Specifications are nominal. Actual fill quantities may vary. Contact our technical sales team for bulk supply, tube trailer delivery, or on-site liquid helium programs.</p>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="pd-cta">
+    <div class="pd-cta-inner">
+        <div class="pd-cta-text sr">
+            <h2>Request a Quote</h2>
+            <p>Our technical sales team is ready to provide pricing, SDS documents, and supply solutions for helium across all eight purity grades.</p>
+        </div>
+        <div class="pd-cta-btns sr">
+            <a href="contact.html" class="pd-btn-primary">Get a Quote</a>
+            <a href="#" class="pd-btn-ghost">Download SDS</a>
+        </div>
+    </div>
+</section>
+
+<!-- PRODUCT NAVIGATION -->
+<nav class="pd-pgnav" aria-label="Product navigation">
+    <div class="pd-pgnav__inner">
+        <a href="product-detail-ne.html" class="pd-pgnav__item pd-pgnav__item--prev">
+            <div class="pd-pgnav__arrow">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="pd-pgnav__text">
+                <span class="pd-pgnav__dir">Previous</span>
+                <span class="pd-pgnav__gas">Neon <em>Ne</em></span>
+            </div>
+        </a>
+        <a href="products.html" class="pd-pgnav__all">All Products</a>
+        <a href="product-detail-sf6.html" class="pd-pgnav__item pd-pgnav__item--next">
+            <div class="pd-pgnav__text">
+                <span class="pd-pgnav__dir">Next</span>
+                <span class="pd-pgnav__gas">Sulfur Hexafluoride <em>SF&#x2086;</em></span>
+            </div>
+            <div class="pd-pgnav__arrow">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+        </a>
+    </div>
+</nav>
+
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="logo.png" alt="Airocean Gases Logo" class="logo-img">
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="https://api.whatsapp.com/send/?phone=9174317883&text&type=phone_number&app_absent=0"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
+                    <li><a href="https://www.linkedin.com/company/hygas/?viewAsMember=true"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                    <li><a href="https://www.instagram.com/airoceangases/?hl=en"><i class="fab fa-instagram"></i> Instagram</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="terms-conditions.html">Terms & Conditions</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="products.html">Products & Services</a></li>
+                    <li><a href="applications.html">Applications</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
             </div>
         </div>
-    </header>
-
-    <button class="back-btn" onclick="window.history.back()">
-        <i class="fas fa-arrow-left"></i> Back
-    </button>
-
-    <main>
-        <div class="product-detail-container">
-            <div class="product-header">
-                <div class="chemical-symbol">He</div>
-                <div class="product-info">
-                    <h1 class="product-name">氦气 (Helium)</h1>
-                    <p class="product-description">Colorless, odorless, non-flammable inert gas</p>
-                </div>
-            </div>
-
-            <div class="info-tables">
-                <div class="info-table">
-                    <h3 class="table-title">Transportation Information</h3>
-                    <div class="table-row">
-                        <span class="table-label">D.O.T. Transportation Name</span>
-                        <span class="table-value">Helium, Compressed</span>
-                    </div>
-                    <div class="table-row">
-                        <span class="table-label">ID Number</span>
-                        <span class="table-value">UN1046</span>
-                    </div>
-                    <div class="table-row">
-                        <span class="table-label">Hazard Class</span>
-                        <span class="table-value">2.2</span>
-                    </div>
-                    <div class="table-row">
-                        <span class="table-label">Transportation Label</span>
-                        <span class="table-value">Non-flammable gas</span>
-                    </div>
-                </div>
-
-                <div class="info-table">
-                    <h3 class="table-title">Technical Information</h3>
-                    <div class="table-row">
-                        <span class="table-label">Molecular Weight</span>
-                        <span class="table-value">4.00</span>
-                    </div>
-                    <div class="table-row">
-                        <span class="table-label">Specific Volume</span>
-                        <span class="table-value">96.7 ft³/lb</span>
-                    </div>
-                    <div class="table-row">
-                        <span class="table-label">CAS Registration Number</span>
-                        <span class="table-value">7440-59-7</span>
-                    </div>
-                    <div class="table-row">
-                        <span class="table-label">SDS Reference</span>
-                        <span class="table-value">Helium</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="about-section">
-                <h2 class="section-title">About</h2>
-                <div class="about-content">
-                    <p>Helium is the second lightest element and the lightest noble gas, with a full outer electron shell. It is extremely inert at room temperature and pressure. It accounts for approximately 5 ppm in the Earth's atmosphere but is extremely abundant in the universe.</p>
-                    <p>With its extremely low boiling point, helium is widely used in MRI superconducting magnet cooling, deep-sea mixed gas, protective gas for precision welding, and inert carrier gas in scientific research.</p>
-                </div>
-                <div class="download-buttons">
-                    <button class="btn-sds">Download SDS</button>
-                    <button class="btn-pdf">Download PDF</button>
-                </div>
-            </div>
-
-            <div class="product-grade-section">
-                <h2 class="section-title">Product Grade</h2>
-                <div class="grade-tabs">
-                    <button class="grade-tab active" data-grade="industrial">Industrial</button>
-                    <button class="grade-tab" data-grade="balloon">Balloon</button>
-                    <button class="grade-tab" data-grade="high-purity">High Purity</button>
-                    <button class="grade-tab" data-grade="laser">Laser</button>
-                    <button class="grade-tab" data-grade="ultra-high">Ultra High Purity</button>
-                    <button class="grade-tab" data-grade="lab-spec">Lab & Spec</button>
-                    <button class="grade-tab" data-grade="ultra-carrier">Ultra Carrier</button>
-                    <button class="grade-tab" data-grade="research">Research</button>
-                </div>
-                <div class="grade-specs" id="gradeSpecs">
-                    <div class="spec-row">
-                        <span class="spec-label">Grade</span>
-                        <span class="spec-value" data-spec="grade">3.5</span>
-                    </div>
-                    <div class="spec-row">
-                        <span class="spec-label">Minimum Purity</span>
-                        <span class="spec-value highlight" data-spec="minPurity">99.95%</span>
-                    </div>
-                    <div class="spec-row">
-                        <span class="spec-label">Grade Code</span>
-                        <span class="spec-value" data-spec="gradeCode">-</span>
-                    </div>
-                    <div class="spec-row">
-                        <span class="spec-label">Catalog Number¹</span>
-                        <span class="spec-value" data-spec="catalog">HE-（Fill in the catalog number based on the bottle size code below.）</span>
-                    </div>
-                    <div class="footnote">
-                        Maximum impurity specifications are related to the selected grade // Typical values²<br>
-                        ¹ Please select the cylinder size code below to complete the catalog number. "SG" will be replaced with "DSP" for disposable cylinders.<br>
-                        ² Specifications are typical values and may change without notice.
-                    </div>
-                </div>
-            </div>
-
-            <div class="product-grade-section">
-                <h2 class="section-title">Supply Method & Packaging</h2>
-                <div class="about-content" style="margin-bottom: 10px;">
-                    The supply method and packaging specifications may vary depending on the product grade selected. First select the supply method, then select the size to view the detailed specifications.
-                </div>
-                <!-- Mode tabs for Helium -->
-                <div class="package-tabs" id="modeTabs">
-                    <button class="package-tab active" data-mode="AL">High Pressure Aluminum</button>
-                    <button class="package-tab" data-mode="CS">High Pressure Carbon Steel</button>
-                    <button class="package-tab" data-mode="PK">Packs</button>
-                </div>
-                <!-- Size tabs (populated per mode) -->
-                <div class="package-tabs" id="sizeTabs"></div>
-                <div class="package-specs" id="packageSpecs">
-                    <div class="package-row"><span class="spec-label" data-label="volumeLabel">Gas Volume (Ft³)</span><span class="spec-value" data-field="volume">-</span></div>
-                    <div class="package-row"><span class="spec-label">Pressure</span><span class="spec-value" data-field="pressure">-</span></div>
-                    <div class="package-row"><span class="spec-label">Valve Interface</span><span class="spec-value" data-field="valve">-</span></div>
-                    <div class="package-row"><span class="spec-label">Dimensions</span><span class="spec-value" data-field="dimensions">-</span></div>
-                    <div class="package-row"><span class="spec-label">Tare</span><span class="spec-value" data-field="tare">-</span></div>
-                    <div class="package-row"><span class="spec-label">Product Code</span><span class="spec-value" data-field="code">-</span></div>
-                </div>
-            </div>
+        <div class="copyright">
+            <p>&copy; 2025 Airocean Gases. All rights reserved.</p>
         </div>
-    </main>
+    </div>
+</footer>
 
-    <footer style="background: white; border-top: 1px solid #000000;">
-        <div class="container">
-            <div class="footer-content" style="display: flex; justify-content: space-between; align-items: center;">
-                <div class="footer-logo">
-                    <img src="logo.png" alt="宏源气体 Logo" style="width: 120px; height:auto;">
-                </div>
-                <div class="footer-column">
-                    <div class="social-media">
-                        <h3 style="font-size: 16px; margin-bottom: 8px;">Follow Us</h3>
-                        <ul style="list-style-type: none; padding-left: 0;">
-                            <li style="margin-bottom: 4px;"><a href="https://api.whatsapp.com/send/?phone=9174317883&text&type=phone_number&app_absent=0" style="color: #000000; font-size: 13px;"><i class="fab fa-whatsapp"></i> Whatsapp</a></li>
-                            <li style="margin-bottom: 4px;"><a href="https://www.linkedin.com/company/hygas/?viewAsMember=true" style="color: #000000; font-size: 13px;"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
-                            <li style="margin-bottom: 4px;"><a href="https://www.instagram.com/airoceangases/?hl=en" style="color: #000000; font-size: 13px;"><i class="fab fa-instagram"></i> Instagram</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="footer-column">
-                    <div class="legal-info">
-                        <h3 style="font-size: 16px; margin-bottom: 8px;">Legal Information</h3>
-                        <ul style="list-style-type: none; padding-left: 0;">
-                            <li style="margin-bottom: 4px;"><a href="privacy-policy.html" style="color: #000000; font-size: 13px;">Privacy Policy</a></li>
-                            <li style="margin-bottom: 4px;"><a href="terms-conditions.html" style="color: #000000; font-size: 13px;">Terms & Conditions</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="footer-column">
-                    <div class="quick-links">
-                        <h3 style="font-size: 16px; margin-bottom: 8px;">Quick Links</h3>
-                        <ul style="list-style-type: none; padding-left: 0;">
-                            <li style="margin-bottom: 4px;"><a href="index.html" style="color: #000000; font-size: 13px;">Home</a></li>
-                            <li style="margin-bottom: 4px;"><a href="about.html" style="color: #000000; font-size: 13px;">About Us</a></li>
-                            <li style="margin-bottom: 4px;"><a href="products.html" style="color: #000000; font-size: 13px;">Products & Services</a></li>
-                            <li style="margin-bottom: 4px;"><a href="applications.html" style="color: #000000; font-size: 13px;">Applications</a></li>
-                            <li style="margin-bottom: 4px;"><a href="contact.html" style="color: #000000; font-size: 13px;">Contact Us</a></li>   
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="copyright">
-                <p style="font-size: 12px; margin-top: 10px;">&copy; 2023 Airocean Gases. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-    <script src="script.js"></script>
-    <script>
-        // 页面交互脚本：He 等级 + 供货方式/尺寸（对齐 WestAir Helium 页面）
-        document.addEventListener('DOMContentLoaded', function() {
-            // ---------- Grade tabs/specs ----------
-            const gradeTabs = document.querySelectorAll('.grade-tab');
-            const gradeSpecs = document.getElementById('gradeSpecs');
-            const gradeData = {
-                industrial:     { display: '3.5', minPurity: '99.95%',   gradeCode: '-',     catalogPrefix: 'HE-' },
-                balloon:        { display: '3.5', minPurity: '99.95%',   gradeCode: 'BAL',   catalogPrefix: 'HEBAL-' },
-                'high-purity':  { display: '4.5', minPurity: '99.995%',  gradeCode: 'HP',    catalogPrefix: 'SG HEHP-' },
-                laser:          { display: '4.7', minPurity: '99.997%',  gradeCode: 'LASER', catalogPrefix: 'SG HELAS-' },
-                'ultra-high':   { display: '5.0', minPurity: '99.999%', gradeCode: 'UHP',   catalogPrefix: 'SG HEUHP-' },
-                'lab-spec':     { display: '5.5', minPurity: '99.9995%', gradeCode: 'LAB',   catalogPrefix: 'SG HELAB-' },
-                'ultra-carrier':{ display: '5.5', minPurity: '99.9995%', gradeCode: 'UC',    catalogPrefix: 'SG HEUC-' },
-                research:       { display: '6.0', minPurity: '99.9999%', gradeCode: 'RES',   catalogPrefix: 'SG HERES-' }
-            };
-
-            let currentGradeKey = 'industrial';
-
-            function updateGradeSpecs(key) {
-                const data = gradeData[key];
-                if (!data) return;
-                gradeSpecs.querySelector('[data-spec="grade"]').textContent = data.display;
-                const purityEl = gradeSpecs.querySelector('[data-spec="minPurity"]');
-                purityEl.textContent = data.minPurity;
-                purityEl.className = 'spec-value highlight';
-                gradeSpecs.querySelector('[data-spec="gradeCode"]').textContent = data.gradeCode;
-                gradeSpecs.querySelector('[data-spec="catalog"]').textContent = data.catalogPrefix + '（Fill in the catalog number based on the bottle size code below.）';
-                applyGradeModes();
-            }
-
-            gradeTabs.forEach(tab => {
-                tab.addEventListener('click', function() {
-                    gradeTabs.forEach(t => t.classList.remove('active'));
-                    this.classList.add('active');
-                    currentGradeKey = this.getAttribute('data-grade') || 'industrial';
-                    updateGradeSpecs(currentGradeKey);
-                });
-            });
-
-            // ---------- Modes / Sizes / Package specs ----------
-            const modeTabs = document.querySelectorAll('#modeTabs .package-tab');
-            const sizeTabsContainer = document.getElementById('sizeTabs');
-            const packageSpecs = document.getElementById('packageSpecs');
-
-            // Data from WestAir Helium reference (https://westairgases.com/products/consumables/gas/helium/)
-            const catalog = {
-                AL: {
-                    sizes: {
-                        TA:   { volume: '302 Ft³', pressure: '2015 psig', valve: 'CGA 580', dimensions: '10 × 55 in / 25 × 132 cm', tare: '90 lbs / 41.0 kg' },
-                        DA:   { volume: '135 Ft³', pressure: '2015 psig', valve: 'CGA 580', dimensions: '8 × 48 in / 20 × 122 cm', tare: '48 lbs / 22 kg' },
-                        QA:   { volume: '78 Ft³',  pressure: '2015 psig', valve: 'CGA 580', dimensions: '7 × 33 in / 18 × 84 cm',  tare: '32 lbs / 15.0 kg' },
-                        '55A':{ volume: '40 Ft³',  pressure: '2015 psig', valve: 'CGA 580', dimensions: '7 × 16 in / 18 × 41 cm',  tare: '15 lbs / 7.0 kg' },
-                        '5A': { volume: '22 Ft³',  pressure: '2015 psig', valve: 'CGA 580', dimensions: '4.5 × 15 in / 10 × 26 cm', tare: '9 lbs / 4.4 kg' }
-                    }
-                },
-                CS: {
-                    sizes: {
-                        '6K': { volume: '496 Ft³', pressure: '6000 psig', valve: 'CGA 677', dimensions: '10 × 51 in / 25 × 130 cm', tare: '300 lbs / 136.0 kg' },
-                        '3K': { volume: '327 Ft³', pressure: '3500 psig', valve: 'CGA 680', dimensions: '9 × 51 in / 23 × 130 cm', tare: '187 lbs / 85.0 kg' },
-                        T:    { volume: '264 Ft³', pressure: '2400 psig', valve: 'CGA 580', dimensions: '9 × 55 in / 23 × 140 cm', tare: '137 lbs / 62.0 kg' },
-                        K:    { volume: '199 Ft³', pressure: '2015 psig', valve: 'CGA 580', dimensions: '9 × 51 in / 23 × 130 cm', tare: '119 lbs / 54.0 kg' },
-                        D:    { volume: '100 Ft³', pressure: '2400 psig', valve: 'CGA 580', dimensions: '7 × 43 in / 18 × 109 cm', tare: '62 lbs / 28.0 kg' },
-                        Q:    { volume: '68 Ft³',  pressure: '2015 psig', valve: 'CGA 580', dimensions: '7 × 33 in / 18 × 84 cm',  tare: '57 lbs / 26.0 kg' },
-                        '55': { volume: '40 Ft³',  pressure: '2400 psig', valve: 'CGA 580', dimensions: '7 × 19 in / 18 × 48 cm',  tare: '26 lbs / 12.0 kg' },
-                        R:    { volume: '14 Ft³',  pressure: '2400 psig', valve: 'CGA 580', dimensions: '5.3 × 13.8 in / 13.5 × 35 cm', tare: '11 lbs / 4.8 kg' }
-                    }
-                },
-                PK: {
-                    sizes: {
-                        '6PK':  { volume: '1200 Ft³', pressure: '2400 psig', valve: 'CGA 580', dimensions: '—', tare: '—' },
-                        '15PK': { volume: '2985 Ft³', pressure: '2015 psig', valve: 'CGA 580', dimensions: '—', tare: '—' }
-                    }
-                }
-            };
-
-            function updatePackageCode(sizeCode) {
-                const codeEl = packageSpecs.querySelector('[data-field="code"]');
-                const prefix = gradeData[currentGradeKey]?.catalogPrefix || gradeData.industrial.catalogPrefix;
-                codeEl.textContent = prefix + (sizeCode || '');
-            }
-
-            function renderSizeTabs(modeKey) {
-                sizeTabsContainer.innerHTML = '';
-                const sizes = catalog[modeKey]?.sizes || {};
-                const sizeKeys = Object.keys(sizes);
-                sizeKeys.forEach((code, idx) => {
-                    const btn = document.createElement('button');
-                    btn.className = 'package-tab' + (idx === 0 ? ' active' : '');
-                    btn.setAttribute('data-size', code);
-                    btn.textContent = code;
-                    sizeTabsContainer.appendChild(btn);
-                });
-
-                const sizeTabs = sizeTabsContainer.querySelectorAll('.package-tab');
-                sizeTabs.forEach(tab => {
-                    tab.addEventListener('click', function() {
-                        sizeTabs.forEach(t => t.classList.remove('active'));
-                        this.classList.add('active');
-                        const sizeCode = this.getAttribute('data-size');
-                        applyPackageSpec(modeKey, sizeCode);
-                    });
-                });
-
-                if (sizeKeys.length > 0) {
-                    applyPackageSpec(modeKey, sizeKeys[0]);
-                } else {
-                    clearPackageSpec();
-                }
-            }
-
-            function applyPackageSpec(modeKey, sizeCode) {
-                const spec = catalog[modeKey]?.sizes?.[sizeCode];
-                if (!spec) return;
-                packageSpecs.querySelector('[data-field="volume"]').textContent = spec.volume;
-                packageSpecs.querySelector('[data-field="pressure"]').textContent = spec.pressure;
-                packageSpecs.querySelector('[data-field="valve"]').textContent = spec.valve;
-                packageSpecs.querySelector('[data-field="dimensions"]').textContent = spec.dimensions;
-                packageSpecs.querySelector('[data-field="tare"]').textContent = spec.tare;
-                updatePackageCode(sizeCode);
-
-                const volumeLabel = packageSpecs.querySelector('[data-label="volumeLabel"]');
-                volumeLabel.textContent = 'Gas Volume (Ft³)';
-            }
-
-            function clearPackageSpec() {
-                ['volume','pressure','valve','dimensions','tare','code'].forEach(f => {
-                    packageSpecs.querySelector(`[data-field="${f}"]`).textContent = '-';
-                });
-            }
-
-            function applyGradeModes() {
-                // He 页面：所有供货方式均保持可点击
-                const modeTabsList = document.querySelectorAll('#modeTabs .package-tab');
-                modeTabsList.forEach(mt => {
-                    mt.disabled = false;
-                    mt.style.opacity = '1';
-                    mt.style.pointerEvents = 'auto';
-                });
-
-                // 保留当前激活模式，否则选第一个
-                let active = Array.from(modeTabsList).find(el => el.classList.contains('active'));
-                if (!active && modeTabsList.length > 0) {
-                    active = modeTabsList[0];
-                    modeTabsList.forEach(t => t.classList.remove('active'));
-                    active.classList.add('active');
-                }
-
-                if (active) {
-                    renderSizeTabs(active.getAttribute('data-mode'));
-                } else {
-                    sizeTabsContainer.innerHTML = '';
-                    clearPackageSpec();
-                }
-            }
-
-            // 绑定模式切换
-            document.querySelectorAll('#modeTabs .package-tab').forEach(tab => {
-                tab.addEventListener('click', function() {
-                    if (this.disabled) return;
-                    document.querySelectorAll('#modeTabs .package-tab').forEach(t => t.classList.remove('active'));
-                    this.classList.add('active');
-                    renderSizeTabs(this.getAttribute('data-mode'));
-                });
-            });
-
-            // 初始化
-            updateGradeSpecs(currentGradeKey);
+<script src="script.js"></script>
+<script>
+    document.querySelectorAll('.pd-tab').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.pd-tab').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.pd-grade-panel').forEach(p => p.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('grade-' + btn.dataset.grade).classList.add('active');
         });
-    </script>
+    });
+    document.querySelectorAll('.pd-pkg-tab').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.pd-pkg-tab').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.pd-pkg-panel').forEach(p => p.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('pkg-' + btn.dataset.pkg).classList.add('active');
+        });
+    });
+    const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.sr').forEach(el => obs.observe(el));
+</script>
 </body>
-</html> 
+</html>
