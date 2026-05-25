@@ -426,6 +426,71 @@
         .ab-leader-bio p + p { margin-top: 16px; }
 
         /* ══════════════════════════════
+           LEADERSHIP ENHANCEMENTS
+        ══════════════════════════════ */
+        .ab-leader-role {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--ink-3);
+            margin-bottom: 8px;
+        }
+        .ab-leader-creds {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 24px;
+        }
+        .ab-cred {
+            font-size: 0.69rem;
+            font-weight: 500;
+            color: var(--ink-2);
+            background: var(--bg-2);
+            border: 1px solid var(--rule);
+            padding: 3px 10px;
+        }
+        .ab-bio-extra { margin-top: 16px; }
+        .ab-bio-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 14px;
+            background: none;
+            border: none;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--ink-3);
+            cursor: pointer;
+            padding: 0;
+            transition: color 0.2s;
+        }
+        .ab-bio-toggle:hover { color: var(--ink); }
+        .ab-bio-toggle i {
+            font-size: 0.62rem;
+            transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .ab-bio-toggle.open i { transform: rotate(180deg); }
+        .ab-leader-linkedin {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            margin-top: 22px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+            color: var(--ink-3);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .ab-leader-linkedin:hover { color: #0a66c2; }
+        .ab-leader-linkedin i { font-size: 0.95rem; }
+
+        /* ══════════════════════════════
            CAREERS CTA
         ══════════════════════════════ */
         .ab-careers { background: var(--navy); }
@@ -734,45 +799,79 @@
 
             <div class="ab-leader sr">
                 <div class="ab-leader-photo">
-                    <img src="cfo.jpg" alt="Wentao Guo — Board Member">
+                    <img src="cfo.jpg" alt="Wentao Guo">
                 </div>
                 <div class="ab-leader-info">
                     <p class="ab-leader-position">Board Member</p>
+                    <p class="ab-leader-role">Finance &amp; Operations</p>
                     <h3 class="ab-leader-name">Wentao Guo</h3>
-                    <div class="ab-leader-bio">
-                        <p>Wentao Guo is one of the founding Board Members of Airocean Gases, LLC, the U.S.-based overseas subsidiary of Yichuan Hongyuan Gas Technology Co., Ltd. He came to the United States in 2016 to study Accounting at Iowa State University and later earned a Master's degree in Business Analytics from Northeastern University in Boston.</p>
-                        <p>With professional experience in accounting roles at two U.S. companies, Wentao brings strong expertise in finance, compliance, and operations. In 2024, he co-founded Airocean Gases, LLC to lead the family business's global expansion, leveraging his academic background and cross-cultural insight to drive sustainable growth in overseas markets.</p>
+                    <div class="ab-leader-creds">
+                        <span class="ab-cred">Iowa State · Accounting</span>
+                        <span class="ab-cred">Northeastern · Business Analytics</span>
                     </div>
+                    <div class="ab-leader-bio">
+                        <p class="ab-bio-preview">Wentao Guo is one of the founding Board Members of Airocean Gases, LLC, the U.S.-based overseas subsidiary of Yichuan Hongyuan Gas Technology Co., Ltd. He came to the United States in 2016 to study Accounting at Iowa State University and later earned a Master's degree in Business Analytics from Northeastern University in Boston.</p>
+                        <div class="ab-bio-extra" hidden>
+                            <p>With professional experience in accounting roles at two U.S. companies, Wentao brings strong expertise in finance, compliance, and operations. In 2024, he co-founded Airocean Gases, LLC to lead the family business's global expansion, leveraging his academic background and cross-cultural insight to drive sustainable growth in overseas markets.</p>
+                        </div>
+                        <button class="ab-bio-toggle"><span>Read more</span> <i class="fas fa-chevron-down"></i></button>
+                    </div>
+                    <a href="https://www.linkedin.com/company/hygas/" target="_blank" rel="noopener" class="ab-leader-linkedin">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
                 </div>
             </div>
 
             <div class="ab-leader sr">
                 <div class="ab-leader-photo">
-                    <img src="ceo.jpg" alt="Wenhao Guo — Board Member">
+                    <img src="ceo.jpg" alt="Wenhao Guo">
                 </div>
                 <div class="ab-leader-info">
                     <p class="ab-leader-position">Board Member</p>
+                    <p class="ab-leader-role">Strategy &amp; Supply Chain</p>
                     <h3 class="ab-leader-name">Wenhao Guo</h3>
-                    <div class="ab-leader-bio">
-                        <p>Wenhao Guo is one of the founding Board Members of Airocean Gases, LLC, dedicated to delivering high-quality industrial gases and innovative solutions to customers worldwide. He is also the second-generation leader of his family-owned industrial gas business.</p>
-                        <p>In 2022 and 2023, Wenhao earned his Bachelor's degree in Management Information Systems at the University of Delaware and his Master's degree in Business Analytics at the University of Maryland — College Park. In 2022, Wenhao began preparing the Airocean Gases launch plan while working as a Process &amp; Forecast Specialist at a manufacturing company in the supply chain sector.</p>
-                        <p>Building on this educational and professional background, he brings extensive expertise, global supply chain resources, and a customer-first philosophy to the U.S. market. Airocean Gases LLC specializes in safe, reliable, and efficient gas products for industrial, medical, semiconductor, and food industries.</p>
+                    <div class="ab-leader-creds">
+                        <span class="ab-cred">Univ. of Delaware · MIS</span>
+                        <span class="ab-cred">Univ. of Maryland, College Park · Business Analytics</span>
                     </div>
+                    <div class="ab-leader-bio">
+                        <p class="ab-bio-preview">Wenhao Guo is one of the founding Board Members of Airocean Gases, LLC, dedicated to delivering high-quality industrial gases and innovative solutions to customers worldwide. He is also the second-generation leader of his family-owned industrial gas business.</p>
+                        <div class="ab-bio-extra" hidden>
+                            <p>In 2022 and 2023, Wenhao earned his Bachelor's degree in Management Information Systems at the University of Delaware and his Master's degree in Business Analytics at the University of Maryland — College Park. In 2022, Wenhao began preparing the Airocean Gases launch plan while working as a Process &amp; Forecast Specialist at a manufacturing company in the supply chain sector.</p>
+                            <p>Building on this educational and professional background, he brings extensive expertise, global supply chain resources, and a customer-first philosophy to the U.S. market. Airocean Gases LLC specializes in safe, reliable, and efficient gas products for industrial, medical, semiconductor, and food industries.</p>
+                        </div>
+                        <button class="ab-bio-toggle"><span>Read more</span> <i class="fas fa-chevron-down"></i></button>
+                    </div>
+                    <a href="https://www.linkedin.com/company/hygas/" target="_blank" rel="noopener" class="ab-leader-linkedin">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
                 </div>
             </div>
 
             <div class="ab-leader sr">
                 <div class="ab-leader-photo">
-                    <img src="cto.jpg" alt="Jiahao Guo — Board Member">
+                    <img src="cto.jpg" alt="Jiahao Guo">
                 </div>
                 <div class="ab-leader-info">
                     <p class="ab-leader-position">Board Member</p>
+                    <p class="ab-leader-role">Finance &amp; Market Development</p>
                     <h3 class="ab-leader-name">Jiahao Guo</h3>
-                    <div class="ab-leader-bio">
-                        <p>Jiahao Guo is one of the founding Board Members of Airocean Gases, LLC, carrying forward his family's legacy in the industrial and specialty gases sector where the family has been deeply rooted for decades. Building on this heritage, Jiahao is committed to connecting global gas supply with the U.S. market through reliable sourcing, competitive pricing, and exceptional customer service.</p>
-                        <p>Jiahao holds a Bachelor's degree in Finance from Arizona State University, a Master's degree in Financial Analysis from King's College London, and a Master's degree in Management and Systems from New York University. He combines strong academic grounding with hands-on industry experience in data analysis, business management, and international market development.</p>
-                        <p>With Airocean Gases, Jiahao's mission is to deliver high-purity rare gases, industrial gases, and related equipment to semiconductor manufacturing, medical, and research sectors — building a trustworthy supply chain and fostering long-term partnerships worldwide.</p>
+                    <div class="ab-leader-creds">
+                        <span class="ab-cred">Arizona State · Finance</span>
+                        <span class="ab-cred">King's College London · Financial Analysis</span>
+                        <span class="ab-cred">NYU · Management &amp; Systems</span>
                     </div>
+                    <div class="ab-leader-bio">
+                        <p class="ab-bio-preview">Jiahao Guo is one of the founding Board Members of Airocean Gases, LLC, carrying forward his family's legacy in the industrial and specialty gases sector where the family has been deeply rooted for decades. Building on this heritage, Jiahao is committed to connecting global gas supply with the U.S. market through reliable sourcing, competitive pricing, and exceptional customer service.</p>
+                        <div class="ab-bio-extra" hidden>
+                            <p>Jiahao holds a Bachelor's degree in Finance from Arizona State University, a Master's degree in Financial Analysis from King's College London, and a Master's degree in Management and Systems from New York University. He combines strong academic grounding with hands-on industry experience in data analysis, business management, and international market development.</p>
+                            <p>With Airocean Gases, Jiahao's mission is to deliver high-purity rare gases, industrial gases, and related equipment to semiconductor manufacturing, medical, and research sectors — building a trustworthy supply chain and fostering long-term partnerships worldwide.</p>
+                        </div>
+                        <button class="ab-bio-toggle"><span>Read more</span> <i class="fas fa-chevron-down"></i></button>
+                    </div>
+                    <a href="https://www.linkedin.com/company/hygas/" target="_blank" rel="noopener" class="ab-leader-linkedin">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
                 </div>
             </div>
 
@@ -848,6 +947,32 @@
             els.forEach(function (el) { obs.observe(el); });
         })();
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="script.js"></script>
+    <script>
+    document.querySelectorAll('.ab-bio-toggle').forEach(btn => {
+        const extra = btn.previousElementSibling;
+        btn.addEventListener('click', () => {
+            const isOpen = btn.classList.toggle('open');
+            btn.querySelector('span').textContent = isOpen ? 'Read less' : 'Read more';
+            if (isOpen) {
+                extra.hidden = false;
+                gsap.fromTo(extra,
+                    { opacity: 0, y: -8 },
+                    { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out' }
+                );
+            } else {
+                gsap.to(extra, {
+                    opacity: 0, y: -8,
+                    duration: 0.2, ease: 'power2.in',
+                    onComplete() {
+                        extra.hidden = true;
+                        gsap.set(extra, { clearProps: 'all' });
+                    }
+                });
+            }
+        });
+    });
+    </script>
 </body>
 </html>

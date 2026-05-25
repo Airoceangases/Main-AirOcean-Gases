@@ -108,15 +108,51 @@ document.addEventListener('DOMContentLoaded', function () {
     // ─── Timeline (about page) ────────────────────────────────────────────────
     const timelineBtns    = document.querySelectorAll('.timeline-btn');
     const historySections = document.querySelectorAll('.history-section');
+    let   histAnimating   = false;
 
     timelineBtns.forEach(btn => {
         btn.addEventListener('click', function () {
-            const year = this.getAttribute('data-year');
+            if (histAnimating) return;
+            const year    = this.getAttribute('data-year');
+            const current = document.querySelector('.history-section.active');
+            const target  = document.querySelector(`.history-section[data-year="${year}"]`);
+
+            if (!target || target === current) return;
+
             timelineBtns.forEach(b => b.classList.remove('active'));
             this.classList.add('active');
-            historySections.forEach(s => s.classList.remove('active'));
-            const target = document.querySelector(`.history-section[data-year="${year}"]`);
-            if (target) target.classList.add('active');
+
+            if (typeof gsap === 'undefined') {
+                current.classList.remove('active');
+                target.classList.add('active');
+                return;
+            }
+
+            histAnimating = true;
+
+            gsap.to(current, {
+                opacity: 0, y: 10,
+                duration: 0.22, ease: 'power2.in',
+                onComplete() {
+                    gsap.set(current, { clearProps: 'all' });
+                    current.classList.remove('active');
+                    target.classList.add('active');
+
+                    const els = [
+                        ...target.querySelectorAll('.ab-history-year, .ab-history-title, .ab-history-desc'),
+                        ...target.querySelectorAll('.ab-history-img'),
+                    ];
+                    gsap.fromTo(els,
+                        { opacity: 0, y: 20 },
+                        {
+                            opacity: 1, y: 0,
+                            duration: 0.5, ease: 'power3.out',
+                            stagger: 0.08,
+                            onComplete() { histAnimating = false; }
+                        }
+                    );
+                }
+            });
         });
     });
 
