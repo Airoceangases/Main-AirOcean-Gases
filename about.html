@@ -202,83 +202,117 @@
         }
 
         /* ══════════════════════════════
-           HISTORY TIMELINE
+           HISTORY TIMELINE — vertical scroll
         ══════════════════════════════ */
         .ab-history { padding: 80px 60px; }
         .ab-history-inner { max-width: 1300px; margin: 0 auto; }
 
-        .ab-timeline-nav {
-            display: flex;
-            gap: 0;
-            margin-top: 40px;
-            border-bottom: 1px solid var(--rule);
-            overflow-x: auto;
+        /* Spine */
+        .ab-vt {
+            position: relative;
+            margin-top: 64px;
+            padding-bottom: 20px;
         }
-        /* timeline-btn: class used by script.js — style only */
-        .timeline-btn {
-            background: none;
-            border: none;
-            border-bottom: 2px solid transparent;
-            margin-bottom: -1px;
-            padding: 14px 28px;
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.82rem;
-            font-weight: 500;
-            letter-spacing: 0.06em;
-            color: var(--ink-3);
-            cursor: pointer;
-            transition: color 0.2s, border-color 0.2s;
-            white-space: nowrap;
+        .ab-vt-spine-track {
+            position: absolute;
+            left: 50%;
+            top: 0; bottom: 0;
+            transform: translateX(-50%);
+            width: 1px;
+            background: rgba(0,0,0,0.06);
+            pointer-events: none;
         }
-        .timeline-btn.active { color: var(--ink); border-bottom-color: var(--ink); }
-        .timeline-btn:hover { color: var(--ink); }
+        .ab-vt-spine-fill {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 0%;
+            background: linear-gradient(180deg, #c8a96e 0%, rgba(200,169,110,0.25) 100%);
+            pointer-events: none;
+        }
 
-        /* history-section: class used by script.js — style only */
-        .history-section {
-            display: none;
-            padding: 52px 0 0;
-        }
-        .history-section.active { display: block; }
-
-        .ab-history-grid {
+        /* Items */
+        .ab-vt-item {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            grid-template-columns: 1fr 64px 1fr;
+            grid-template-areas: "text center img";
+            gap: 0 36px;
             align-items: center;
+            margin-bottom: 96px;
         }
-        .ab-history-year {
-            font-size: 0.68rem;
+        .ab-vt-item:last-child { margin-bottom: 20px; }
+        .ab-vt-item--flip { grid-template-areas: "img center text"; }
+
+        .ab-vt-text    { grid-area: text; }
+        .ab-vt-dot-col { grid-area: center; display: flex; flex-direction: column; align-items: center; position: relative; z-index: 2; }
+        .ab-vt-img-wrap { grid-area: img; }
+
+        .ab-vt-dot {
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background: #fff;
+            border: 2px solid #c8a96e;
+            box-shadow: 0 0 0 5px rgba(200,169,110,0.10);
+            flex-shrink: 0;
+        }
+        .ab-vt-year {
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #c8a96e;
+            margin-top: 10px;
+            text-align: center;
+            line-height: 1.5;
+        }
+        .ab-vt-era {
+            font-size: 0.66rem;
             font-weight: 600;
-            letter-spacing: 0.22em;
+            letter-spacing: 0.2em;
             text-transform: uppercase;
             color: var(--ink-3);
-            margin-bottom: 18px;
+            margin-bottom: 14px;
         }
-        .ab-history-title {
-            font-size: 1.9rem;
+        .ab-vt-title {
+            font-size: 1.8rem;
             font-weight: 700;
             letter-spacing: -0.03em;
             color: var(--ink);
-            margin-bottom: 20px;
+            margin-bottom: 18px;
             line-height: 1.2;
         }
-        .ab-history-desc {
-            font-size: 1rem;
+        .ab-vt-desc {
+            font-size: 0.97rem;
             color: var(--ink-2);
-            line-height: 1.8;
+            line-height: 1.82;
             font-weight: 300;
         }
-        .ab-history-img {
+        .ab-vt-img-wrap {
             aspect-ratio: 4/3;
             overflow: hidden;
             background: var(--bg-2);
             border: 1px solid var(--rule);
         }
-        .ab-history-img img {
+        .ab-vt-img-wrap img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
+        }
+
+        @media (max-width: 900px) {
+            .ab-vt-item,
+            .ab-vt-item--flip {
+                grid-template-columns: 1fr;
+                grid-template-areas: "center" "text" "img";
+                gap: 20px 0;
+                margin-bottom: 60px;
+            }
+            .ab-vt-spine-track { display: none; }
+            .ab-vt-dot-col { flex-direction: row; gap: 12px; align-items: center; }
+            .ab-vt-year { margin-top: 0; }
+            .ab-history { padding: 60px 24px; }
         }
 
         /* ══════════════════════════════
@@ -707,99 +741,111 @@
     </section>
 
     <!-- ═══ HISTORY TIMELINE ═══ -->
-    <section class="ab-history sr">
+    <section class="ab-history">
         <div class="ab-history-inner">
             <div class="ab-section-hd">
                 <p class="ab-section-label">Company History</p>
                 <h2 class="ab-section-title">Four Decades of Progress</h2>
             </div>
 
-            <div class="ab-timeline-nav">
-                <button class="timeline-btn active" data-year="1982">1982</button>
-                <button class="timeline-btn" data-year="1990s">1990s</button>
-                <button class="timeline-btn" data-year="2005">2005</button>
-                <button class="timeline-btn" data-year="2015–2020">2015–2020</button>
-                <button class="timeline-btn" data-year="2024">2024</button>
-                <button class="timeline-btn" data-year="2025">2025</button>
-            </div>
+            <div class="ab-vt">
+                <div class="ab-vt-spine-track">
+                    <div class="ab-vt-spine-fill"></div>
+                </div>
 
-            <div class="history-content">
-
-                <div class="history-section active" data-year="1982">
-                    <div class="ab-history-grid">
-                        <div class="ab-history-text">
-                            <p class="ab-history-year">1982 · Founding</p>
-                            <h3 class="ab-history-title">Founding of Hongyuan Gas</h3>
-                            <p class="ab-history-desc">Hongyuan Gas Technology Co., Ltd. is established in Luoyang, Henan Province, China, with a mission to supply high-quality industrial gases to local manufacturing and medical sectors. A family commitment to precision and reliability is built into the company from day one.</p>
-                        </div>
-                        <div class="ab-history-img">
-                            <img src="gas-equipment.jpg" alt="Founding era equipment">
-                        </div>
+                <!-- 1 · 1982 -->
+                <div class="ab-vt-item">
+                    <div class="ab-vt-text">
+                        <p class="ab-vt-era">Founding</p>
+                        <h3 class="ab-vt-title">Founding of Hongyuan Gas</h3>
+                        <p class="ab-vt-desc">Hongyuan Gas Technology Co., Ltd. is established in Luoyang, Henan Province, China, with a mission to supply high-quality industrial gases to local manufacturing and medical sectors. A family commitment to precision and reliability is built into the company from day one.</p>
+                    </div>
+                    <div class="ab-vt-dot-col">
+                        <div class="ab-vt-dot"></div>
+                        <span class="ab-vt-year">1982</span>
+                    </div>
+                    <div class="ab-vt-img-wrap">
+                        <img src="gas-equipment.jpg" alt="Founding era equipment">
                     </div>
                 </div>
 
-                <div class="history-section" data-year="1990s">
-                    <div class="ab-history-grid">
-                        <div class="ab-history-text">
-                            <p class="ab-history-year">1990s · Expansion</p>
-                            <h3 class="ab-history-title">Expanding Capabilities</h3>
-                            <p class="ab-history-desc">Hongyuan invests in advanced cryogenic separation units, dramatically increasing production capacity for oxygen, nitrogen, and argon to meet China's rapidly growing industrial demand. Infrastructure and safety protocols are scaled to match.</p>
-                        </div>
-                        <div class="ab-history-img">
-                            <img src="iso9001.jpg" alt="Cryogenic expansion">
-                        </div>
+                <!-- 2 · 1990s -->
+                <div class="ab-vt-item ab-vt-item--flip">
+                    <div class="ab-vt-text">
+                        <p class="ab-vt-era">Expansion</p>
+                        <h3 class="ab-vt-title">Expanding Capabilities</h3>
+                        <p class="ab-vt-desc">Hongyuan invests in advanced cryogenic separation units, dramatically increasing production capacity for oxygen, nitrogen, and argon to meet China's rapidly growing industrial demand. Infrastructure and safety protocols are scaled to match.</p>
+                    </div>
+                    <div class="ab-vt-dot-col">
+                        <div class="ab-vt-dot"></div>
+                        <span class="ab-vt-year">1990s</span>
+                    </div>
+                    <div class="ab-vt-img-wrap">
+                        <img src="iso9001.jpg" alt="Cryogenic expansion">
                     </div>
                 </div>
 
-                <div class="history-section" data-year="2005">
-                    <div class="ab-history-grid">
-                        <div class="ab-history-text">
-                            <p class="ab-history-year">2005 · Specialty Gases</p>
-                            <h3 class="ab-history-title">Entering Specialty Gases</h3>
-                            <p class="ab-history-desc">Introduction of high-purity Helium, Neon, Krypton, and Xenon production lines — supplying China's rapidly advancing electronics, semiconductor, and research sectors. This marks the beginning of Hongyuan's rare gas specialization.</p>
-                        </div>
-                        <div class="ab-history-img">
-                            <img src="medical-cert.jpg" alt="Specialty gas production">
-                        </div>
+                <!-- 3 · 2005 -->
+                <div class="ab-vt-item">
+                    <div class="ab-vt-text">
+                        <p class="ab-vt-era">Specialty Gases</p>
+                        <h3 class="ab-vt-title">Entering Specialty Gases</h3>
+                        <p class="ab-vt-desc">Introduction of high-purity Helium, Neon, Krypton, and Xenon production lines — supplying China's rapidly advancing electronics, semiconductor, and research sectors. This marks the beginning of Hongyuan's rare gas specialization.</p>
+                    </div>
+                    <div class="ab-vt-dot-col">
+                        <div class="ab-vt-dot"></div>
+                        <span class="ab-vt-year">2005</span>
+                    </div>
+                    <div class="ab-vt-img-wrap">
+                        <img src="medical-cert.jpg" alt="Specialty gas production">
                     </div>
                 </div>
 
-                <div class="history-section" data-year="2015–2020">
-                    <div class="ab-history-grid">
-                        <div class="ab-history-text">
-                            <p class="ab-history-year">2015–2020 · Certification</p>
-                            <h3 class="ab-history-title">Technology &amp; Certification Milestones</h3>
-                            <p class="ab-history-desc">Facilities upgraded with automated filling lines. GMP certification obtained and a full ISO Quality Management System implemented — ensuring global-standard quality, traceability, and safety across every product batch.</p>
-                        </div>
-                        <div class="ab-history-img">
-                            <img src="industrial-gases.jpg" alt="ISO certification milestone">
-                        </div>
+                <!-- 4 · 2015–2020 -->
+                <div class="ab-vt-item ab-vt-item--flip">
+                    <div class="ab-vt-text">
+                        <p class="ab-vt-era">Certification</p>
+                        <h3 class="ab-vt-title">Technology &amp; Certification Milestones</h3>
+                        <p class="ab-vt-desc">Facilities upgraded with automated filling lines. GMP certification obtained and a full ISO Quality Management System implemented — ensuring global-standard quality, traceability, and safety across every product batch.</p>
+                    </div>
+                    <div class="ab-vt-dot-col">
+                        <div class="ab-vt-dot"></div>
+                        <span class="ab-vt-year">2015–2020</span>
+                    </div>
+                    <div class="ab-vt-img-wrap">
+                        <img src="industrial-gases.jpg" alt="ISO certification milestone">
                     </div>
                 </div>
 
-                <div class="history-section" data-year="2024">
-                    <div class="ab-history-grid">
-                        <div class="ab-history-text">
-                            <p class="ab-history-year">2024 · North America</p>
-                            <h3 class="ab-history-title">Airocean Gases Launch</h3>
-                            <p class="ab-history-desc">Airocean Gases, LLC is established in the United States to serve the North American market — bringing Hongyuan's 40+ years of rare gas expertise overseas. Headquartered in Delaware, we bridge proven production capability with U.S. customers' exacting standards.</p>
-                        </div>
-                        <div class="ab-history-img">
-                            <img src="special-gases.jpg" alt="Airocean Gases launch">
-                        </div>
+                <!-- 5 · 2024 -->
+                <div class="ab-vt-item">
+                    <div class="ab-vt-text">
+                        <p class="ab-vt-era">North America</p>
+                        <h3 class="ab-vt-title">Airocean Gases Launch</h3>
+                        <p class="ab-vt-desc">Airocean Gases, LLC is established in the United States to serve the North American market — bringing Hongyuan's 40+ years of rare gas expertise overseas. Headquartered in Delaware, we bridge proven production capability with U.S. customers' exacting standards.</p>
+                    </div>
+                    <div class="ab-vt-dot-col">
+                        <div class="ab-vt-dot"></div>
+                        <span class="ab-vt-year">2024</span>
+                    </div>
+                    <div class="ab-vt-img-wrap">
+                        <img src="special-gases.jpg" alt="Airocean Gases launch">
                     </div>
                 </div>
 
-                <div class="history-section" data-year="2025">
-                    <div class="ab-history-grid">
-                        <div class="ab-history-text">
-                            <p class="ab-history-year">2025 · Industry Recognition</p>
-                            <h3 class="ab-history-title">GAWDA Membership</h3>
-                            <p class="ab-history-desc">Airocean Gases becomes an official member of the Gases and Welding Distributors Association (GAWDA) — joining a network of the most trusted gas distributors in North America. This milestone affirms our commitment to industry standards, safety, and long-term customer partnerships.</p>
-                        </div>
-                        <div class="ab-history-img">
-                            <img src="gawda.png" alt="GAWDA membership">
-                        </div>
+                <!-- 6 · 2025 -->
+                <div class="ab-vt-item ab-vt-item--flip">
+                    <div class="ab-vt-text">
+                        <p class="ab-vt-era">Industry Recognition</p>
+                        <h3 class="ab-vt-title">GAWDA Membership</h3>
+                        <p class="ab-vt-desc">Airocean Gases becomes an official member of the Gases and Welding Distributors Association (GAWDA) — joining a network of the most trusted gas distributors in North America. This milestone affirms our commitment to industry standards, safety, and long-term customer partnerships.</p>
+                    </div>
+                    <div class="ab-vt-dot-col">
+                        <div class="ab-vt-dot"></div>
+                        <span class="ab-vt-year">2025</span>
+                    </div>
+                    <div class="ab-vt-img-wrap">
+                        <img src="gawda.png" alt="GAWDA membership">
                     </div>
                 </div>
 
@@ -1097,6 +1143,69 @@
                       { scale: 1, opacity: 1, stagger: 0.1,
                         ease: 'back.out(1.7)', duration: 0.45 },
                       '<');
+            }
+        );
+    })();
+    </script>
+
+    <script>
+    /* ── Company History vertical timeline ──────────────────────────────────── */
+    (function () {
+        if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+        if (!document.querySelector('.ab-vt')) return;
+
+        const mm = gsap.matchMedia();
+        mm.add(
+            {
+                full:    '(prefers-reduced-motion: no-preference)',
+                reduced: '(prefers-reduced-motion: reduce)'
+            },
+            (ctx) => {
+                if (ctx.conditions.reduced) return;
+
+                /* Gold spine draws as you scroll through the container */
+                gsap.to('.ab-vt-spine-fill', {
+                    height: '100%',
+                    ease: 'none',
+                    scrollTrigger: {
+                        trigger: '.ab-vt',
+                        start: 'top center',
+                        end: 'bottom center',
+                        scrub: 0.8
+                    }
+                });
+
+                /* Per-item choreography */
+                document.querySelectorAll('.ab-vt-item').forEach((item) => {
+                    const isFlip = item.classList.contains('ab-vt-item--flip');
+                    const dot    = item.querySelector('.ab-vt-dot');
+                    const year   = item.querySelector('.ab-vt-year');
+                    const era    = item.querySelector('.ab-vt-era');
+                    const title  = item.querySelector('.ab-vt-title');
+                    const desc   = item.querySelector('.ab-vt-desc');
+                    const img    = item.querySelector('.ab-vt-img-wrap');
+
+                    gsap.set(dot,  { scale: 0, opacity: 0 });
+                    gsap.set(year, { opacity: 0, y: 10 });
+                    gsap.set([era, title, desc], { opacity: 0, y: 18 });
+                    /* Image reveals from the spine outward */
+                    gsap.set(img,  { clipPath: isFlip ? 'inset(0 0 0 100%)' : 'inset(0 100% 0 0)' });
+
+                    gsap.timeline({
+                        scrollTrigger: {
+                            trigger: item,
+                            start: 'top 76%',
+                            once: true
+                        },
+                        defaults: { ease: 'power3.out' }
+                    })
+                    .to(dot,   { scale: 1, opacity: 1, ease: 'back.out(1.7)', duration: 0.45 })
+                    .to(year,  { opacity: 1, y: 0, duration: 0.4 },            '<0.08')
+                    .to(era,   { opacity: 1, y: 0, duration: 0.45 },           '<0.1')
+                    .to(title, { opacity: 1, y: 0, duration: 0.6 },            '<0.12')
+                    .to(desc,  { opacity: 1, y: 0, duration: 0.65 },           '<0.1')
+                    .to(img,   { clipPath: 'inset(0 0% 0 0%)', duration: 0.9, ease: 'power3.inOut' }, '<0.15');
+                });
             }
         );
     })();
