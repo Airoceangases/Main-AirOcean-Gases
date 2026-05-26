@@ -655,6 +655,20 @@
             color: rgba(255,255,255,0.33);
             line-height: 1.5;
         }
+        .hm-stat-bar {
+            width: 0;
+            height: 2px;
+            margin-top: 18px;
+            border-radius: 2px;
+            background: linear-gradient(90deg, #c8a96e 0%, rgba(200,169,110,0.3) 100%);
+            transform-origin: left center;
+        }
+        .hm-stat-num {
+            transition: text-shadow 0.5s ease;
+        }
+        .hm-stat-num.counted {
+            text-shadow: 0 0 28px rgba(200, 169, 110, 0.22);
+        }
 
         /* ══════════════════════════════
            CTA BAND
@@ -1158,20 +1172,24 @@
         <div class="hm-stats">
             <div class="hm-stats-inner">
                 <div class="hm-stat">
-                    <div class="hm-stat-num">500+</div>
+                    <div class="hm-stat-num" data-count="500" data-suffix="+">500+</div>
                     <div class="hm-stat-label">Satisfied Clients</div>
+                    <div class="hm-stat-bar" aria-hidden="true"></div>
                 </div>
                 <div class="hm-stat">
-                    <div class="hm-stat-num">99%</div>
+                    <div class="hm-stat-num" data-count="99" data-suffix="%">99%</div>
                     <div class="hm-stat-label">Supply Chain Reliability</div>
+                    <div class="hm-stat-bar" aria-hidden="true"></div>
                 </div>
                 <div class="hm-stat">
-                    <div class="hm-stat-num">~75</div>
+                    <div class="hm-stat-num" data-count="75" data-prefix="~">~75</div>
                     <div class="hm-stat-label">Days Global Lead Time · Sea Freight</div>
+                    <div class="hm-stat-bar" aria-hidden="true"></div>
                 </div>
                 <div class="hm-stat">
-                    <div class="hm-stat-num">95%</div>
+                    <div class="hm-stat-num" data-count="95" data-suffix="%">95%</div>
                     <div class="hm-stat-label">On-Time Delivery Rate</div>
+                    <div class="hm-stat-bar" aria-hidden="true"></div>
                 </div>
             </div>
         </div>
@@ -1236,6 +1254,8 @@
         <i class="fas fa-chevron-up"></i>
     </button>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="script.js"></script>
     <script>
     (function() {
@@ -1275,6 +1295,95 @@
 
         /* recalculate on resize */
         window.addEventListener('resize', () => goTo(idx));
+    })();
+    </script>
+
+    <script>
+    /* ── Stats counter animation ─────────────────────────────────────────────── */
+    (function () {
+        if (typeof gsap === 'undefined') return;
+        gsap.registerPlugin(ScrollTrigger);
+
+        const statNums = document.querySelectorAll('.hm-stat-num[data-count]');
+        if (!statNums.length) return;
+
+        const mm = gsap.matchMedia();
+
+        mm.add(
+            {
+                full:    '(prefers-reduced-motion: no-preference)',
+                reduced: '(prefers-reduced-motion: reduce)'
+            },
+            (ctx) => {
+                const { reduced } = ctx.conditions;
+
+                if (reduced) {
+                    /* Respect user motion preference — reveal instantly */
+                    statNums.forEach(el => {
+                        const prefix = el.dataset.prefix || '';
+                        const suffix = el.dataset.suffix || '';
+                        el.textContent = prefix + el.dataset.count + suffix;
+                        el.classList.add('counted');
+                    });
+                    return;
+                }
+
+                /* Initial hidden state */
+                gsap.set(statNums, { opacity: 0, y: 20 });
+
+                ScrollTrigger.create({
+                    trigger: '.hm-stats',
+                    start:   'top 78%',
+                    once:    true,
+                    onEnter() {
+                        /* Staggered reveal of each stat block */
+                        gsap.to(statNums, {
+                            opacity:  1,
+                            y:        0,
+                            duration: 0.65,
+                            ease:     'power3.out',
+                            stagger:  0.1
+                        });
+
+                        /* Individual counters + accent bars */
+                        statNums.forEach((el, i) => {
+                            const target = parseFloat(el.dataset.count);
+                            const prefix = el.dataset.prefix || '';
+                            const suffix = el.dataset.suffix || '';
+                            const bar    = el.closest('.hm-stat').querySelector('.hm-stat-bar');
+                            const proxy  = { val: 0 };
+                            const delay  = i * 0.1;
+
+                            gsap.to(proxy, {
+                                val:      target,
+                                duration: 2.2,
+                                delay,
+                                ease:     'power3.out',
+                                onUpdate() {
+                                    el.textContent = prefix + Math.round(proxy.val) + suffix;
+                                },
+                                onComplete() {
+                                    el.textContent = prefix + target + suffix;
+                                    el.classList.add('counted');
+                                }
+                            });
+
+                            if (bar) {
+                                gsap.fromTo(bar,
+                                    { width: 0 },
+                                    {
+                                        width:    36,
+                                        duration: 2.2,
+                                        delay,
+                                        ease:     'power3.out'
+                                    }
+                                );
+                            }
+                        });
+                    }
+                });
+            }
+        );
     })();
     </script>
 </body>
