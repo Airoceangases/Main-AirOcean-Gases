@@ -282,11 +282,11 @@
         }
 
         /* ══════════════════════════════
-           SAFETY (dark navy)
+           SAFETY (dark navy) — redesigned
         ══════════════════════════════ */
         .ab-safety {
             background: var(--navy);
-            padding: 80px 60px;
+            padding: 100px 60px;
             position: relative;
             overflow: hidden;
         }
@@ -305,13 +305,27 @@
             position: relative;
             z-index: 1;
         }
-        .ab-safety-hd {
-            display: flex;
-            align-items: baseline;
-            justify-content: space-between;
-            padding-bottom: 28px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            margin-bottom: 52px;
+
+        /* ─ Split top: left = eyebrow+heading, right = body text ─ */
+        .ab-safety-top {
+            display: grid;
+            grid-template-columns: 42% 58%;
+            gap: 0 80px;
+            align-items: start;
+            padding-bottom: 52px;
+        }
+        .ab-safety-top-left {
+            position: relative;
+            padding-left: 20px;
+        }
+        .ab-safety-accent-bar {
+            position: absolute;
+            left: 0;
+            top: 2px;
+            width: 2px;
+            height: 86px;
+            background: linear-gradient(180deg, #c8a96e 0%, rgba(200,169,110,0.15) 100%);
+            border-radius: 2px;
         }
         .ab-safety-label {
             font-size: 0.68rem;
@@ -319,51 +333,88 @@
             letter-spacing: 0.22em;
             text-transform: uppercase;
             color: rgba(255,255,255,0.3);
+            margin-bottom: 18px;
         }
         .ab-safety-title {
-            font-size: clamp(1.7rem, 3vw, 2.4rem);
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
             font-weight: 700;
             letter-spacing: -0.03em;
             color: #fff;
+            line-height: 1.05;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 22px;
         }
-        .ab-safety-body {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0 80px;
-            margin-bottom: 52px;
+        .ab-safety-title-line { display: block; }
+        .ab-safety-underline {
+            width: 48px;
+            height: 2px;
+            background: linear-gradient(90deg, #c8a96e 0%, rgba(200,169,110,0.25) 100%);
+            border-radius: 2px;
+        }
+        .ab-safety-top-right {
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+            padding-top: 4px;
         }
         .ab-safety-para {
             font-size: 0.97rem;
-            color: rgba(255,255,255,0.52);
+            color: rgba(255,255,255,0.5);
             line-height: 1.82;
             font-weight: 300;
         }
+
+        /* ─ Scanning divider ─ */
+        .ab-safety-divider {
+            width: 100%;
+            height: 1px;
+            background: rgba(255,255,255,0.08);
+            margin-bottom: 52px;
+        }
+
+        /* ─ Feature cards ─ */
         .ab-safety-features {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            border-top: 1px solid rgba(255,255,255,0.1);
         }
         .ab-safety-feat {
-            padding: 28px 0;
-            border-right: 1px solid rgba(255,255,255,0.1);
+            padding: 0 32px 0 0;
+            border-right: 1px solid rgba(255,255,255,0.07);
+            transition: transform 0.35s cubic-bezier(0.16,1,0.3,1);
         }
-        .ab-safety-feat:last-child { border-right: none; }
+        .ab-safety-feat:last-child { border-right: none; padding-right: 0; }
+        .ab-safety-feat:first-child { padding-left: 0; }
+        .ab-safety-feat:hover { transform: translateY(-6px); }
+        .ab-safety-feat:hover .ab-safety-feat-icon {
+            border-color: rgba(200,169,110,0.45);
+            color: #c8a96e;
+        }
         .ab-safety-feat-icon {
-            width: 36px;
-            height: 36px;
-            border: 1px solid rgba(255,255,255,0.15);
+            width: 42px;
+            height: 42px;
+            border: 1px solid rgba(255,255,255,0.13);
+            border-radius: 2px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: rgba(255,255,255,0.5);
-            font-size: 0.88rem;
-            margin-bottom: 14px;
+            color: rgba(255,255,255,0.45);
+            font-size: 0.92rem;
+            margin-bottom: 18px;
+            transition: border-color 0.3s ease, color 0.3s ease;
         }
         .ab-safety-feat-name {
-            font-size: 0.82rem;
-            font-weight: 500;
-            color: rgba(255,255,255,0.6);
-            letter-spacing: 0.04em;
+            font-size: 0.86rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.82);
+            letter-spacing: 0.02em;
+            margin-bottom: 10px;
+        }
+        .ab-safety-feat-desc {
+            font-size: 0.77rem;
+            color: rgba(255,255,255,0.35);
+            line-height: 1.72;
+            font-weight: 300;
         }
 
         /* ══════════════════════════════
@@ -575,8 +626,10 @@
             .ab-mission-inner { grid-template-columns: 1fr; gap: 24px; }
             .ab-history { padding: 60px 32px; }
             .ab-safety { padding: 60px 32px; }
-            .ab-safety-body { grid-template-columns: 1fr; gap: 24px; }
-            .ab-safety-features { grid-template-columns: 1fr 1fr; }
+            .ab-safety-top { grid-template-columns: 1fr; gap: 32px; }
+            .ab-safety-features { grid-template-columns: 1fr 1fr; gap: 32px 0; }
+            .ab-safety-feat { padding: 0 24px 0 0; }
+            .ab-safety-feat:nth-child(even) { border-right: none; padding-right: 0; }
             .ab-leadership { padding: 60px 32px; }
             .ab-leader { grid-template-columns: 220px 1fr; gap: 36px; }
             .ab-careers-inner { grid-template-columns: 1fr; padding: 60px 32px; }
@@ -588,7 +641,8 @@
             .ab-history-grid { grid-template-columns: 1fr; gap: 32px; }
             .ab-history-img { order: -1; }
             .ab-safety { padding: 52px 20px; }
-            .ab-safety-features { grid-template-columns: 1fr 1fr; }
+            .ab-safety-top { gap: 24px; }
+            .ab-safety-features { grid-template-columns: 1fr 1fr; gap: 28px 0; }
             .ab-leadership { padding: 52px 20px; }
             .ab-leader { grid-template-columns: 1fr; gap: 28px; }
             .ab-leader-photo { aspect-ratio: 3/2; max-width: 280px; }
@@ -756,33 +810,52 @@
     <!-- ═══ HEALTH & SAFETY ═══ -->
     <section class="ab-safety">
         <div class="ab-safety-grid-bg"></div>
-        <div class="ab-safety-inner sr">
-            <div class="ab-safety-hd">
-                <p class="ab-safety-label">Commitment</p>
-                <h2 class="ab-safety-title">Health &amp; Safety</h2>
+        <div class="ab-safety-inner">
+
+            <!-- Split header -->
+            <div class="ab-safety-top">
+                <div class="ab-safety-top-left">
+                    <div class="ab-safety-accent-bar"></div>
+                    <p class="ab-safety-label">Commitment</p>
+                    <h2 class="ab-safety-title">
+                        <span class="ab-safety-title-line">Health &amp;</span>
+                        <span class="ab-safety-title-line">Safety</span>
+                    </h2>
+                    <div class="ab-safety-underline"></div>
+                </div>
+                <div class="ab-safety-top-right">
+                    <p class="ab-safety-para">We are committed to providing a safe and healthy working environment for employees, customers, and visitors. We have established a comprehensive health and safety management system ensuring all business activities meet the highest safety standards.</p>
+                    <p class="ab-safety-para">We emphasize sustainable development and have built a positive safety culture supported by ownership, management, and every employee — through continuous training, strict execution standards, and full regulatory compliance at every operational stage.</p>
+                </div>
             </div>
-            <div class="ab-safety-body">
-                <p class="ab-safety-para">We are committed to providing a safe and healthy working environment for employees, customers, and visitors. We have established a comprehensive health and safety management system ensuring all business activities meet the highest safety standards.</p>
-                <p class="ab-safety-para">We emphasize sustainable development and have built a positive safety culture supported by ownership, management, and every employee — through continuous training, strict execution standards, and full regulatory compliance at every operational stage.</p>
-            </div>
+
+            <!-- Scanning divider -->
+            <div class="ab-safety-divider"></div>
+
+            <!-- Feature cards with descriptions -->
             <div class="ab-safety-features">
                 <div class="ab-safety-feat">
                     <div class="ab-safety-feat-icon"><i class="fas fa-shield-alt"></i></div>
                     <p class="ab-safety-feat-name">Safety Standards</p>
+                    <p class="ab-safety-feat-desc">Rigorous protocols across all handling, storage, and transport operations — compliant with DOT, OSHA, and international hazardous materials regulations.</p>
                 </div>
                 <div class="ab-safety-feat">
                     <div class="ab-safety-feat-icon"><i class="fas fa-heartbeat"></i></div>
                     <p class="ab-safety-feat-name">Health Management</p>
+                    <p class="ab-safety-feat-desc">Continuous monitoring of workplace conditions and employee wellbeing, with regular safety training, health assessments, and incident-prevention programs.</p>
                 </div>
                 <div class="ab-safety-feat">
                     <div class="ab-safety-feat-icon"><i class="fas fa-leaf"></i></div>
                     <p class="ab-safety-feat-name">Sustainable Development</p>
+                    <p class="ab-safety-feat-desc">Minimizing environmental impact through responsible sourcing, emissions tracking, and ISO-aligned sustainability practices at every operational stage.</p>
                 </div>
                 <div class="ab-safety-feat">
                     <div class="ab-safety-feat-icon"><i class="fas fa-users"></i></div>
                     <p class="ab-safety-feat-name">Team Support</p>
+                    <p class="ab-safety-feat-desc">Investing in every team member through ongoing safety education, clear reporting channels, and a culture of shared accountability from ownership to operations.</p>
                 </div>
             </div>
+
         </div>
     </section>
 
@@ -948,7 +1021,87 @@
         })();
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="script.js"></script>
+    <script>
+    /* ── Health & Safety GSAP timeline ──────────────────────────────────────── */
+    (function () {
+        if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+        gsap.registerPlugin(ScrollTrigger);
+
+        const section = document.querySelector('.ab-safety');
+        if (!section) return;
+
+        const mm = gsap.matchMedia();
+        mm.add(
+            {
+                full:    '(prefers-reduced-motion: no-preference)',
+                reduced: '(prefers-reduced-motion: reduce)'
+            },
+            (ctx) => {
+                if (ctx.conditions.reduced) return;
+
+                /* Initial states */
+                gsap.set('.ab-safety-accent-bar', { scaleY: 0, transformOrigin: 'top center' });
+                gsap.set('.ab-safety-label',      { opacity: 0, y: 10 });
+                gsap.set('.ab-safety-title-line', { opacity: 0, x: -44 });
+                gsap.set('.ab-safety-underline',  { scaleX: 0, transformOrigin: 'left center' });
+                gsap.set('.ab-safety-para',       { opacity: 0, y: 22 });
+                gsap.set('.ab-safety-divider',    { scaleX: 0, transformOrigin: 'left center' });
+                gsap.set('.ab-safety-feat',       { opacity: 0, y: 32 });
+                gsap.set('.ab-safety-feat-icon',  { scale: 0, opacity: 0 });
+
+                const tl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: '.ab-safety',
+                        start:   'top 76%',
+                        once:    true
+                    },
+                    defaults: { ease: 'power3.out', duration: 0.7 }
+                });
+
+                tl
+                  /* 1 · Gold bar grows downward */
+                  .to('.ab-safety-accent-bar', { scaleY: 1, duration: 0.55 })
+
+                  /* 2 · Eyebrow */
+                  .to('.ab-safety-label', { opacity: 1, y: 0 }, '<0.1')
+
+                  /* 3 · Title lines slide from left, staggered */
+                  .to('.ab-safety-title-line',
+                      { opacity: 1, x: 0, duration: 0.85, stagger: 0.1 },
+                      '<0.15')
+
+                  /* 4 · Gold underline sweeps right */
+                  .to('.ab-safety-underline',
+                      { scaleX: 1, ease: 'power2.inOut', duration: 0.5 },
+                      '-=0.45')
+
+                  /* 5 · Body paragraphs fade up */
+                  .to('.ab-safety-para',
+                      { opacity: 1, y: 0, stagger: 0.14 },
+                      '-=0.55')
+
+                  /* 6 · Divider scans left → right */
+                  .to('.ab-safety-divider',
+                      { scaleX: 1, ease: 'power2.inOut', duration: 1.0 },
+                      '-=0.3')
+
+                  /* 7 · Feature cards stagger up */
+                  .to('.ab-safety-feat',
+                      { opacity: 1, y: 0, duration: 0.6, stagger: 0.1 },
+                      '-=0.6')
+
+                  /* 8 · Icons pop in with back.out overshoot */
+                  .to('.ab-safety-feat-icon',
+                      { scale: 1, opacity: 1, stagger: 0.1,
+                        ease: 'back.out(1.7)', duration: 0.45 },
+                      '<');
+            }
+        );
+    })();
+    </script>
+
     <script>
     document.querySelectorAll('.ab-bio-toggle').forEach(btn => {
         const extra = btn.previousElementSibling;
