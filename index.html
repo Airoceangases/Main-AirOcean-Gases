@@ -273,7 +273,7 @@
         .hm-gases-grid {
             display: grid;
             grid-template-columns: repeat(7, 25%);
-            grid-template-rows: auto auto auto 1fr auto;
+            grid-template-rows: auto auto auto 1fr auto auto auto;
             column-gap: 0;
             row-gap: 0;
             background: var(--bg);
@@ -312,11 +312,10 @@
         }
         .hm-gdot.active { background: var(--ink); transform: scale(1.4); }
         .hm-gas-tile {
-            grid-row: 1 / 6;
+            grid-row: 1 / 8;
             display: grid;
             grid-template-rows: subgrid;
             background: var(--bg);
-            text-decoration: none;
             color: var(--ink);
             border-top: 3px solid var(--gc, var(--rule));
             border-right: 1px solid var(--rule);
@@ -324,6 +323,40 @@
         }
         .hm-gas-tile:last-child { border-right: none; }
         .hm-gas-tile:hover { background: #fff; }
+
+        /* shared style for all three action rows */
+        .hm-gas-link,
+        .hm-gas-link-doc {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--gc, var(--ink));
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 14px 24px;
+            text-decoration: none;
+            border-top: 1px solid var(--rule);
+            transition: opacity 0.2s, gap 0.2s;
+        }
+        /* first row (VIEW PRODUCT) gets no border-top — sits against the desc */
+        .hm-gas-link {
+            border-top: none;
+            padding-top: 0;
+            padding-bottom: 20px;
+            align-self: end;
+        }
+        .hm-gas-link-doc { align-self: start; }
+        .hm-gas-link:hover,
+        .hm-gas-link-doc:hover { opacity: 0.5; gap: 10px; }
+
+        /* disabled = no file yet */
+        .hm-gas-link-doc.disabled {
+            opacity: 0.2;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
         .hm-gas-atnum {
             font-size: 0.68rem;
             font-weight: 600;
@@ -874,55 +907,69 @@
             <div class="hm-gases-carousel">
                 <div class="hm-gases-viewport">
                     <div class="hm-gases-grid" id="gasesGrid">
-                        <a href="product-detail-kr.html" class="hm-gas-tile" style="--gc:var(--kr)">
+                        <div class="hm-gas-tile" style="--gc:var(--kr)">
                             <div class="hm-gas-atnum">36 · Atomic Number</div>
                             <div class="hm-gas-sym">Kr</div>
                             <div class="hm-gas-name">Krypton</div>
                             <p class="hm-gas-desc">High-purity krypton for excimer laser photolithography, semiconductor manufacturing, and high-efficiency lighting systems.</p>
-                            <div class="hm-gas-link">View Product <i class="fas fa-arrow-right" style="font-size:0.65rem"></i></div>
-                        </a>
-                        <a href="product-detail-xe.html" class="hm-gas-tile" style="--gc:var(--xe)">
+                            <a href="product-detail-kr.html" class="hm-gas-link">View Product <i class="fas fa-arrow-right" style="font-size:0.65rem"></i></a>
+                            <a href="sds/Krypton_SDS.pdf" class="hm-gas-link-doc" target="_blank" rel="noopener">View SDS <i class="fas fa-arrow-right" style="font-size:0.65rem"></i></a>
+                            <a class="hm-gas-link-doc disabled">View COA <i class="fas fa-arrow-right" style="font-size:0.65rem"></i></a>
+                        </div>
+                        <div class="hm-gas-tile" style="--gc:var(--xe)">
                             <div class="hm-gas-atnum">54 · Atomic Number</div>
                             <div class="hm-gas-sym">Xe</div>
                             <div class="hm-gas-name">Xenon</div>
                             <p class="hm-gas-desc">Ultra-pure xenon for ion propulsion, medical imaging, anesthesia, and specialized plasma etching applications.</p>
-                            <div class="hm-gas-link">View Product <i class="fas fa-arrow-right" style="font-size:0.65rem"></i></div>
-                        </a>
-                        <a href="product-detail-ne.html" class="hm-gas-tile" style="--gc:var(--ne)">
+                            <a href="product-detail-xe.html" class="hm-gas-link">View Product <i class="fas fa-arrow-right" style="font-size:0.65rem"></i></a>
+                            <a href="sds/Xenon_SDS.pdf" class="hm-gas-link-doc" target="_blank" rel="noopener">View SDS <i class="fas fa-arrow-right" style="font-size:0.65rem"></i></a>
+                            <a class="hm-gas-link-doc disabled">View COA <i class="fas fa-arrow-right" style="font-size:0.65rem"></i></a>
+                        </div>
+                        <div class="hm-gas-tile" style="--gc:var(--ne)">
                             <div class="hm-gas-atnum">10 · Atomic Number</div>
                             <div class="hm-gas-sym">Ne</div>
                             <div class="hm-gas-name">Neon</div>
                             <p class="hm-gas-desc">High-quality neon for excimer laser media, photolithography, display lighting, and plasma deposition processes.</p>
-                            <div class="hm-gas-link">View Product <i class="fas fa-arrow-right" style="font-size:0.65rem"></i></div>
-                        </a>
-                        <a href="product-detail-he.html" class="hm-gas-tile" style="--gc:var(--he)">
+                            <a href="product-detail-ne.html" class="hm-gas-link">View Product <i class="fas fa-arrow-right" style="font-size:0.65rem"></i></a>
+                            <a href="sds/Neon_SDS.pdf" class="hm-gas-link-doc" target="_blank" rel="noopener">View SDS <i class="fas fa-arrow-right" style="font-size:0.65rem"></i></a>
+                            <a class="hm-gas-link-doc disabled">View COA <i class="fas fa-arrow-right" style="font-size:0.65rem"></i></a>
+                        </div>
+                        <div class="hm-gas-tile" style="--gc:var(--he)">
                             <div class="hm-gas-atnum">2 · Atomic Number</div>
                             <div class="hm-gas-sym">He</div>
                             <div class="hm-gas-name">Helium</div>
                             <p class="hm-gas-desc">Ultra-pure helium for cryogenic MRI cooling, fiber optic drawing, leak detection, and gas chromatography carrier gas.</p>
-                            <div class="hm-gas-link">View Product <i class="fas fa-arrow-right" style="font-size:0.65rem"></i></div>
-                        </a>
-                        <a href="product-detail-sf6.html" class="hm-gas-tile" style="--gc:var(--sf6)">
+                            <a href="product-detail-he.html" class="hm-gas-link">View Product <i class="fas fa-arrow-right" style="font-size:0.65rem"></i></a>
+                            <a href="sds/Helium_SDS.pdf" class="hm-gas-link-doc" target="_blank" rel="noopener">View SDS <i class="fas fa-arrow-right" style="font-size:0.65rem"></i></a>
+                            <a class="hm-gas-link-doc disabled">View COA <i class="fas fa-arrow-right" style="font-size:0.65rem"></i></a>
+                        </div>
+                        <div class="hm-gas-tile" style="--gc:var(--sf6)">
                             <div class="hm-gas-atnum">Dielectric · Etchant</div>
                             <div class="hm-gas-sym">SF&#x2086;</div>
                             <div class="hm-gas-name">Sulfur<br>Hexafluoride</div>
                             <p class="hm-gas-desc">Industry-standard dielectric for high-voltage switchgear and key plasma etchant for silicon in advanced semiconductor fabs.</p>
-                            <div class="hm-gas-link">View Product <i class="fas fa-arrow-right" style="font-size:0.65rem"></i></div>
-                        </a>
-                        <a href="product-detail-n2o.html" class="hm-gas-tile" style="--gc:var(--n2o)">
+                            <a href="product-detail-sf6.html" class="hm-gas-link">View Product <i class="fas fa-arrow-right" style="font-size:0.65rem"></i></a>
+                            <a class="hm-gas-link-doc disabled">View SDS <i class="fas fa-arrow-right" style="font-size:0.65rem"></i></a>
+                            <a class="hm-gas-link-doc disabled">View COA <i class="fas fa-arrow-right" style="font-size:0.65rem"></i></a>
+                        </div>
+                        <div class="hm-gas-tile" style="--gc:var(--n2o)">
                             <div class="hm-gas-atnum">Medical · CVD Oxidant</div>
                             <div class="hm-gas-sym">N&#x2082;O</div>
                             <div class="hm-gas-name">Nitrous Oxide</div>
                             <p class="hm-gas-desc">Century-proven clinical anesthetic and essential oxidant source for PECVD gate dielectric growth in advanced CMOS fabrication.</p>
-                            <div class="hm-gas-link">View Product <i class="fas fa-arrow-right" style="font-size:0.65rem"></i></div>
-                        </a>
-                        <a href="product-detail-cf4.html" class="hm-gas-tile" style="--gc:var(--cf4)">
+                            <a href="product-detail-n2o.html" class="hm-gas-link">View Product <i class="fas fa-arrow-right" style="font-size:0.65rem"></i></a>
+                            <a class="hm-gas-link-doc disabled">View SDS <i class="fas fa-arrow-right" style="font-size:0.65rem"></i></a>
+                            <a class="hm-gas-link-doc disabled">View COA <i class="fas fa-arrow-right" style="font-size:0.65rem"></i></a>
+                        </div>
+                        <div class="hm-gas-tile" style="--gc:var(--cf4)">
                             <div class="hm-gas-atnum">Etchant · Chamber Clean</div>
                             <div class="hm-gas-sym">CF&#x2084;</div>
                             <div class="hm-gas-name">Tetrafluoro-<br>methane</div>
                             <p class="hm-gas-desc">High-selectivity fluorine plasma source for Si/SiO&#x2082; etching and PECVD chamber cleaning in high-volume wafer production.</p>
-                            <div class="hm-gas-link">View Product <i class="fas fa-arrow-right" style="font-size:0.65rem"></i></div>
-                        </a>
+                            <a href="product-detail-cf4.html" class="hm-gas-link">View Product <i class="fas fa-arrow-right" style="font-size:0.65rem"></i></a>
+                            <a class="hm-gas-link-doc disabled">View SDS <i class="fas fa-arrow-right" style="font-size:0.65rem"></i></a>
+                            <a class="hm-gas-link-doc disabled">View COA <i class="fas fa-arrow-right" style="font-size:0.65rem"></i></a>
+                        </div>
                     </div>
                 </div>
                 <div class="hm-gases-nav">

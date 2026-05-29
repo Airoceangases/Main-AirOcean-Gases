@@ -335,6 +335,98 @@
 
         .gs-link:hover { opacity: 0.5; gap: 16px; }
 
+        /* ─── CTA ROW (Full Specs + SDS) ──────────────── */
+        .gs-ctas {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .gs-ctas-divider {
+            width: 1px;
+            height: 28px;
+            background: var(--rule);
+            flex-shrink: 0;
+        }
+
+        .gs-sds {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            cursor: pointer;
+            position: relative;
+            padding: 7px 12px 7px 10px;
+            border: 1px solid var(--rule);
+            border-radius: 2px;
+            overflow: hidden;
+            background: transparent;
+            font-family: var(--f);
+        }
+
+        .gs-sds-fill {
+            position: absolute;
+            inset: 0;
+            background: var(--ink);
+            transform: scaleX(0);
+            transform-origin: left center;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .gs-sds-icon {
+            position: relative;
+            z-index: 1;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gs-sds-icon svg {
+            width: 16px;
+            height: 20px;
+        }
+
+        .gs-sds-text {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .gs-sds-label {
+            font-size: 0.62rem;
+            font-weight: 800;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--ink);
+            line-height: 1;
+        }
+
+        .gs-sds-sub {
+            font-size: 0.58rem;
+            font-weight: 500;
+            letter-spacing: 0.4px;
+            color: var(--ink-3);
+            line-height: 1;
+        }
+
+        .gs-sds-arrow {
+            position: relative;
+            z-index: 1;
+            color: var(--ink-3);
+            font-size: 0.6rem;
+            margin-left: 2px;
+        }
+
+        .gs-sds.gs-sds--empty {
+            opacity: 0.38;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
         /* ─── STATS ─────────────────────────────────── */
         .p-stats {
             background: var(--navy);
@@ -585,7 +677,19 @@
                     <span class="gs-tag">Photovoltaics</span>
                     <span class="gs-tag">IC Packaging</span>
                 </div>
-                <a href="product-detail-kr.html" class="gs-link">Full Specifications <i class="fas fa-arrow-right"></i></a>
+                <div class="gs-ctas">
+                    <a href="product-detail-kr.html" class="gs-link" style="border-color:var(--kr);color:var(--kr);">Full Specifications <i class="fas fa-arrow-right"></i></a>
+                    <span class="gs-ctas-divider" aria-hidden="true"></span>
+                    <a href="sds/Krypton_SDS.pdf" class="gs-sds" aria-label="View Krypton Safety Data Sheet PDF" target="_blank" rel="noopener">
+                        <span class="gs-sds-fill" aria-hidden="true"></span>
+                        <span class="gs-sds-icon" aria-hidden="true"><svg viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 1H3C1.9 1 1 1.9 1 3v14c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V7L9 1z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 1v6h6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 14v-4M8 14l-2-2M8 14l2-2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                        <span class="gs-sds-text">
+                            <span class="gs-sds-label">SDS</span>
+                            <span class="gs-sds-sub">Safety Data Sheet</span>
+                        </span>
+                        <i class="fas fa-download gs-sds-arrow" aria-hidden="true"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -632,7 +736,19 @@
                     <span class="gs-tag">XeCl Lasers</span>
                     <span class="gs-tag">Arc Lighting</span>
                 </div>
-                <a href="product-detail-xe.html" class="gs-link">Full Specifications <i class="fas fa-arrow-right"></i></a>
+                <div class="gs-ctas">
+                    <a href="product-detail-xe.html" class="gs-link" style="border-color:var(--xe);color:var(--xe);">Full Specifications <i class="fas fa-arrow-right"></i></a>
+                    <span class="gs-ctas-divider" aria-hidden="true"></span>
+                    <a href="sds/Xenon_SDS.pdf" class="gs-sds" aria-label="View Xenon Safety Data Sheet PDF" target="_blank" rel="noopener">
+                        <span class="gs-sds-fill" aria-hidden="true"></span>
+                        <span class="gs-sds-icon" aria-hidden="true"><svg viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 1H3C1.9 1 1 1.9 1 3v14c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V7L9 1z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 1v6h6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 14v-4M8 14l-2-2M8 14l2-2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                        <span class="gs-sds-text">
+                            <span class="gs-sds-label">SDS</span>
+                            <span class="gs-sds-sub">Safety Data Sheet</span>
+                        </span>
+                        <i class="fas fa-download gs-sds-arrow" aria-hidden="true"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -679,7 +795,19 @@
                     <span class="gs-tag">Environmental Tracing</span>
                     <span class="gs-tag">Photovoltaics</span>
                 </div>
-                <a href="product-detail-ne.html" class="gs-link">Full Specifications <i class="fas fa-arrow-right"></i></a>
+                <div class="gs-ctas">
+                    <a href="product-detail-ne.html" class="gs-link" style="border-color:var(--ne);color:var(--ne);">Full Specifications <i class="fas fa-arrow-right"></i></a>
+                    <span class="gs-ctas-divider" aria-hidden="true"></span>
+                    <a href="sds/Neon_SDS.pdf" class="gs-sds" aria-label="View Neon Safety Data Sheet PDF" target="_blank" rel="noopener">
+                        <span class="gs-sds-fill" aria-hidden="true"></span>
+                        <span class="gs-sds-icon" aria-hidden="true"><svg viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 1H3C1.9 1 1 1.9 1 3v14c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V7L9 1z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 1v6h6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 14v-4M8 14l-2-2M8 14l2-2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                        <span class="gs-sds-text">
+                            <span class="gs-sds-label">SDS</span>
+                            <span class="gs-sds-sub">Safety Data Sheet</span>
+                        </span>
+                        <i class="fas fa-download gs-sds-arrow" aria-hidden="true"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -726,7 +854,19 @@
                     <span class="gs-tag">Fiber Optics</span>
                     <span class="gs-tag">Lifting</span>
                 </div>
-                <a href="product-detail-he.html" class="gs-link">Full Specifications <i class="fas fa-arrow-right"></i></a>
+                <div class="gs-ctas">
+                    <a href="product-detail-he.html" class="gs-link" style="border-color:var(--he);color:var(--he);">Full Specifications <i class="fas fa-arrow-right"></i></a>
+                    <span class="gs-ctas-divider" aria-hidden="true"></span>
+                    <a href="sds/Helium_SDS.pdf" class="gs-sds" aria-label="View Helium Safety Data Sheet PDF" target="_blank" rel="noopener">
+                        <span class="gs-sds-fill" aria-hidden="true"></span>
+                        <span class="gs-sds-icon" aria-hidden="true"><svg viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 1H3C1.9 1 1 1.9 1 3v14c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V7L9 1z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 1v6h6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 14v-4M8 14l-2-2M8 14l2-2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                        <span class="gs-sds-text">
+                            <span class="gs-sds-label">SDS</span>
+                            <span class="gs-sds-sub">Safety Data Sheet</span>
+                        </span>
+                        <i class="fas fa-download gs-sds-arrow" aria-hidden="true"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -773,7 +913,19 @@
                     <span class="gs-tag">Medical Ultrasound</span>
                     <span class="gs-tag">Leak Detection</span>
                 </div>
-                <a href="product-detail-sf6.html" class="gs-link" style="border-color:var(--sf6);color:var(--sf6);">Full Specifications <i class="fas fa-arrow-right"></i></a>
+                <div class="gs-ctas">
+                    <a href="product-detail-sf6.html" class="gs-link" style="border-color:var(--sf6);color:var(--sf6);">Full Specifications <i class="fas fa-arrow-right"></i></a>
+                    <span class="gs-ctas-divider" aria-hidden="true"></span>
+                    <a href="#" class="gs-sds gs-sds--empty" aria-label="Download SF6 Safety Data Sheet PDF" title="SDS — coming soon">
+                        <span class="gs-sds-fill" aria-hidden="true"></span>
+                        <span class="gs-sds-icon" aria-hidden="true"><svg viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 1H3C1.9 1 1 1.9 1 3v14c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V7L9 1z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 1v6h6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 14v-4M8 14l-2-2M8 14l2-2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                        <span class="gs-sds-text">
+                            <span class="gs-sds-label">SDS</span>
+                            <span class="gs-sds-sub">Safety Data Sheet</span>
+                        </span>
+                        <i class="fas fa-download gs-sds-arrow" aria-hidden="true"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -820,7 +972,19 @@
                     <span class="gs-tag">Food Processing</span>
                     <span class="gs-tag">Analytical</span>
                 </div>
-                <a href="product-detail-n2o.html" class="gs-link" style="border-color:var(--n2o);color:var(--n2o);">Full Specifications <i class="fas fa-arrow-right"></i></a>
+                <div class="gs-ctas">
+                    <a href="product-detail-n2o.html" class="gs-link" style="border-color:var(--n2o);color:var(--n2o);">Full Specifications <i class="fas fa-arrow-right"></i></a>
+                    <span class="gs-ctas-divider" aria-hidden="true"></span>
+                    <a href="#" class="gs-sds gs-sds--empty" aria-label="Download N2O Safety Data Sheet PDF" title="SDS — coming soon">
+                        <span class="gs-sds-fill" aria-hidden="true"></span>
+                        <span class="gs-sds-icon" aria-hidden="true"><svg viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 1H3C1.9 1 1 1.9 1 3v14c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V7L9 1z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 1v6h6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 14v-4M8 14l-2-2M8 14l2-2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                        <span class="gs-sds-text">
+                            <span class="gs-sds-label">SDS</span>
+                            <span class="gs-sds-sub">Safety Data Sheet</span>
+                        </span>
+                        <i class="fas fa-download gs-sds-arrow" aria-hidden="true"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -867,7 +1031,19 @@
                     <span class="gs-tag">Excimer Lasers</span>
                     <span class="gs-tag">Cryogenic Research</span>
                 </div>
-                <a href="product-detail-cf4.html" class="gs-link" style="border-color:var(--cf4);color:var(--cf4);">Full Specifications <i class="fas fa-arrow-right"></i></a>
+                <div class="gs-ctas">
+                    <a href="product-detail-cf4.html" class="gs-link" style="border-color:var(--cf4);color:var(--cf4);">Full Specifications <i class="fas fa-arrow-right"></i></a>
+                    <span class="gs-ctas-divider" aria-hidden="true"></span>
+                    <a href="#" class="gs-sds gs-sds--empty" aria-label="Download CF4 Safety Data Sheet PDF" title="SDS — coming soon">
+                        <span class="gs-sds-fill" aria-hidden="true"></span>
+                        <span class="gs-sds-icon" aria-hidden="true"><svg viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 1H3C1.9 1 1 1.9 1 3v14c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V7L9 1z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 1v6h6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 14v-4M8 14l-2-2M8 14l2-2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                        <span class="gs-sds-text">
+                            <span class="gs-sds-label">SDS</span>
+                            <span class="gs-sds-sub">Safety Data Sheet</span>
+                        </span>
+                        <i class="fas fa-download gs-sds-arrow" aria-hidden="true"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -951,6 +1127,40 @@
         <i class="fas fa-chevron-up"></i>
     </button>
 
+    <!-- SDS hover animation -->
+    <script>
+    (function() {
+        function initSDSHover() {
+            if (typeof gsap === 'undefined') return;
+            document.querySelectorAll('.gs-sds:not(.gs-sds--empty)').forEach(function(btn) {
+                var fill  = btn.querySelector('.gs-sds-fill');
+                var label = btn.querySelector('.gs-sds-label');
+                var sub   = btn.querySelector('.gs-sds-sub');
+                var arrow = btn.querySelector('.gs-sds-arrow');
+                var icon  = btn.querySelector('.gs-sds-icon svg');
+
+                gsap.set(fill, { scaleX: 0, transformOrigin: 'left center' });
+
+                btn.addEventListener('mouseenter', function() {
+                    gsap.to(fill,  { scaleX: 1, duration: 0.28, ease: 'power2.out' });
+                    gsap.to([label, sub, arrow, icon], { color: '#fff', duration: 0.18, ease: 'none' });
+                    gsap.to(arrow, { y: 2, duration: 0.22, ease: 'power2.out' });
+                });
+                btn.addEventListener('mouseleave', function() {
+                    gsap.to(fill,  { scaleX: 0, duration: 0.22, ease: 'power2.in' });
+                    gsap.to([label, arrow, icon], { color: '', duration: 0.22, ease: 'none' });
+                    gsap.to(sub,   { color: 'var(--ink-3)', duration: 0.22, ease: 'none' });
+                    gsap.to(arrow, { y: 0, duration: 0.22, ease: 'power2.in' });
+                });
+            });
+        }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initSDSHover);
+        } else {
+            initSDSHover();
+        }
+    })();
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="script.js"></script>
