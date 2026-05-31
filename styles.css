@@ -37,18 +37,6 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-@keyframes gradientBG {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
 .container {
     width: 90%;
     max-width: 1600px;
@@ -101,25 +89,6 @@ header h1 {
     font-size: 2rem;
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    gap: 15px; /* 减少菜单项间距 */
-}
-
-nav a {
-    color: rgba(255, 255, 255, 0.85);
-    text-decoration: none;
-    font-size: 14px;
-    padding: 5px 8px;
-    transition: color 0.25s ease;
-}
-
-nav a:hover,
-nav a.active-link {
-    color: #ffffff;
-}
 
 /* 英雄区域容器 - 已废弃，使用 hero-slider-container 替代 */
 
@@ -282,7 +251,6 @@ nav a.active-link {
     gap: 30px;
     max-width: 1200px;
     margin: 0 auto;
-    min-height: 100vh;
 }
 
 .product-card {
@@ -352,8 +320,8 @@ nav a.active-link {
 
 /* 底部信息 */
 footer {
-    background: white !important; /* 白色背景，与产品页面保持一致 */
-    color: #333; /* 深色文字 */
+    background: white;
+    color: #333;
     text-align: center;
     padding: 10px 0; /* 减少padding与顶部导航栏保持一致 */
     position: relative;
@@ -362,18 +330,6 @@ footer {
     border-top: 1px solid #e0e0e0; /* 添加顶部边框线 */
     /* 移除动画效果 */
 }
-
-/* 移除footer动画 */
-/* @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-} */
 
 /* Footer内容样式 */
 .footer-content {
@@ -405,7 +361,7 @@ footer {
 }
 
 .footer-column a:hover {
-    color: #007bff; /* 悬停时变为蓝色 */
+    color: var(--navy);
 }
 
 .footer-column ul {
@@ -531,12 +487,6 @@ footer {
 
 
 
-/* 旧轮播图样式 - 已废弃，使用新的 hero-slider-container 替代 */
-
-/* 重复的指示点样式 - 已在上方定义 */
-
-/* 移除页面切换动画，避免灰色内容浮现 */
-
 /* 新增英雄使命区域样式 */
 .hero-mission-section {
     margin: 20px 0 10px;
@@ -586,18 +536,6 @@ footer {
     border-radius: 0 10px 10px 0;
     margin-left: -20px;
 }
-
-/* 移除fadeInUp动画 */
-/* @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-} */
 
 .hero-buttons {
     display: flex;
@@ -1359,48 +1297,6 @@ footer {
     }
 }
 
-/* 添加背景图片样式 */
-.header-background {
-    background-image: url('images/header-bg.jpg'); /* 替换为你的背景图片路径 */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    padding: 20px 0;
-    position: relative;
-}
-
-/* 添加遮罩层，确保文字可读 */
-.header-background::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* 调整遮罩层的透明度 */
-    z-index: 1;
-}
-
-/* 确保标题和导航栏在遮罩层上方 */
-.header-background .container {
-    position: relative;
-    z-index: 2;
-}
-
-/* 调整标题颜色 */
-.header-background h1 {
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-/* 调整导航栏链接颜色 */
-.header-background nav a {
-    color: white;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-}
-
-
-
 /* 响应式设计 */
 @media (max-width: 768px) {
     .contact-title { font-size: 2.2rem; }
@@ -2137,10 +2033,6 @@ html {
 .company-history {
     margin-bottom: 50px; /* 添加空白区域 */
 }
-
-/* 英雄区域标题和扩展按钮 - 已废弃，使用新的轮播图结构 */
-
-/* 英雄区域内容 - 已废弃，使用新的轮播图结构 */
 
 /* 服务特色区域样式 */
 .service-section {
@@ -3860,7 +3752,7 @@ html {
     right: 32px;
     width: 44px;
     height: 44px;
-    background: #007bff;
+    background: var(--navy);
     color: white;
     border: none;
     border-radius: 50%;
@@ -3884,36 +3776,7 @@ html {
 }
 
 #back-to-top:hover {
-    background: #0056b3;
-}
-
-/* --- Popular product card hover enhancement --- */
-.popular-product-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
-}
-
-.popular-product-card:hover {
-    transform: translateY(-6px) !important;
-    box-shadow: 0 12px 32px rgba(0,0,0,0.12) !important;
-}
-
-/* --- Service item hover --- */
-.service-item {
-    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
-}
-
-.service-item:hover {
-    transform: translateY(-4px) !important;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.10) !important;
-}
-
-/* --- Featured card subtle lift --- */
-.featured-card {
-    transition: transform 0.35s ease !important;
-}
-
-.featured-card:hover {
-    transform: scale(1.025) !important;
+    background: var(--ink);
 }
 
 /* --- CTA button shine effect --- */
