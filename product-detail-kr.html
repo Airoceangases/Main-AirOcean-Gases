@@ -170,6 +170,9 @@
 
 <!-- HERO -->
 <section class="pd-hero">
+        <canvas class="pd-canvas" id="pd-nebula"></canvas>
+        <canvas class="pd-canvas" id="pd-particles"></canvas>
+
     <div class="pd-ghost">Kr</div>
     <div class="pd-hero-inner">
         <div class="pd-eyebrow">
@@ -417,5 +420,63 @@
     }, { threshold: 0.12 });
     document.querySelectorAll('.sr').forEach(el => obs.observe(el));
 </script>
+
+    <!-- ── ENHANCED PARTICLE SYSTEM ── -->
+    <script>
+    (function(){
+        const GAS=[
+            {r:248,g:113,b:113},{r:167,g:139,b:250},{r:96,g:165,b:250},
+            {r:52,g:211,b:153},{r:251,g:191,b:36},{r:251,g:146,b:60},{r:244,g:114,b:182}
+        ];
+        const rgba=(g,a)=>`rgba(${g.r},${g.g},${g.b},${a})`;
+        const section=document.querySelector('.pd-hero');
+        const NC=document.getElementById('pd-nebula');
+        const MC=document.getElementById('pd-particles');
+        if(!NC||!MC||!section) return;
+        const nx=NC.getContext('2d'),mx=MC.getContext('2d');
+        let W,H;
+        function resize(){const r=section.getBoundingClientRect();W=r.width;H=r.height;NC.width=MC.width=W;NC.height=MC.height=H;}
+        resize(); window.addEventListener('resize',resize);
+        const mouse={x:0,y:0,on:false};
+        section.addEventListener('mousemove',e=>{const r=section.getBoundingClientRect();mouse.x=e.clientX-r.left;mouse.y=e.clientY-r.top;mouse.on=true;});
+        section.addEventListener('mouseleave',()=>{mouse.on=false;});
+        const BLOBS=GAS.map(g=>({g,x:Math.random()*1.3-.15,y:Math.random()*1.3-.15,vx:(Math.random()-.5)*0.00007,vy:(Math.random()-.5)*0.00006,r:0.16+Math.random()*0.18,ph:Math.random()*Math.PI*2,sp:0.0005+Math.random()*0.0004}));
+        function drawNebula(t){
+            nx.clearRect(0,0,W,H);
+            BLOBS.forEach(b=>{
+                b.x+=b.vx;b.y+=b.vy;
+                if(b.x<-.3)b.vx=Math.abs(b.vx);if(b.x>1.3)b.vx=-Math.abs(b.vx);
+                if(b.y<-.3)b.vy=Math.abs(b.vy);if(b.y>1.3)b.vy=-Math.abs(b.vy);
+                const pulse=1+0.14*Math.sin(t*b.sp*1000+b.ph);
+                const rx=b.x*W,ry=b.y*H,rr=b.r*Math.min(W,H)*pulse;
+                const grad=nx.createRadialGradient(rx,ry,0,rx,ry,rr);
+                grad.addColorStop(0,rgba(b.g,.13));grad.addColorStop(.4,rgba(b.g,.055));grad.addColorStop(1,rgba(b.g,0));
+                nx.beginPath();nx.arc(rx,ry,rr,0,Math.PI*2);nx.fillStyle=grad;nx.fill();
+            });
+        }
+        function mkP(depth){return{x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*(0.15+Math.random()*.25),vy:(Math.random()-.5)*(0.15+Math.random()*.25),gas:GAS[Math.floor(Math.random()*7)],depth,ph:Math.random()*Math.PI*2,pSpd:0.5+Math.random()*1.2,ring:depth===2&&Math.random()<.2,ringAngle:Math.random()*Math.PI*2,rSpd:(Math.random()-.5)*.045,r:depth===2?1.8+Math.random()*1.6:depth===1?0.9+Math.random()*.9:0.4+Math.random()*.5,alpha:depth===2?.72:depth===1?.45:.22};}
+        const PTS=[...Array.from({length:25},()=>mkP(0)),...Array.from({length:55},()=>mkP(1)),...Array.from({length:35},()=>mkP(2))];
+        function mkShooter(){const fl=Math.random()<.5;return{x:fl?-20:W+20,y:Math.random()*H,vx:(fl?1:-1)*(3.5+Math.random()*4.5),vy:(Math.random()-.5)*1.8,len:50+Math.random()*90,gas:GAS[Math.floor(Math.random()*7)],life:1,decay:.007+Math.random()*.006,alive(){return this.life>0&&this.x>-120&&this.x<W+120;}};}
+        const shooters=[];let nextShoot=2000;
+        function drawParticles(t){
+            mx.clearRect(0,0,W,H);
+            const cp=PTS.filter(p=>p.depth>=1);
+            for(let i=0;i<cp.length;i++){for(let j=i+1;j<cp.length;j++){const a=cp[i],b=cp[j];if(a.depth!==b.depth)continue;const dx=a.x-b.x,dy=a.y-b.y,d=Math.sqrt(dx*dx+dy*dy),maxD=a.depth===2?95:130;if(d>maxD)continue;const al=(1-d/maxD)*(a.depth===2?.22:.10);const g=mx.createLinearGradient(a.x,a.y,b.x,b.y);g.addColorStop(0,rgba(a.gas,al));g.addColorStop(1,rgba(b.gas,al));mx.beginPath();mx.moveTo(a.x,a.y);mx.lineTo(b.x,b.y);mx.strokeStyle=g;mx.lineWidth=a.depth===2?.85:.5;mx.stroke();}}
+            PTS.forEach(p=>{
+                if(mouse.on&&p.depth>=1){const dx=p.x-mouse.x,dy=p.y-mouse.y,d=Math.sqrt(dx*dx+dy*dy),rep=p.depth===2?110:75;if(d<rep&&d>0){const f=(rep-d)/rep;p.vx+=(dx/d)*f*.38;p.vy+=(dy/d)*f*.38;}}
+                p.vx*=.991;p.vy*=.991;p.x+=p.vx;p.y+=p.vy;
+                if(p.x<-10)p.x=W+10;if(p.x>W+10)p.x=-10;if(p.y<-10)p.y=H+10;if(p.y>H+10)p.y=-10;
+                const pulse=1+.22*Math.sin(t*p.pSpd+p.ph),r=p.r*pulse;
+                if(p.depth===2){const gw=mx.createRadialGradient(p.x,p.y,0,p.x,p.y,r*5);gw.addColorStop(0,rgba(p.gas,p.alpha*.38));gw.addColorStop(1,rgba(p.gas,0));mx.beginPath();mx.arc(p.x,p.y,r*5,0,Math.PI*2);mx.fillStyle=gw;mx.fill();}
+                mx.beginPath();mx.arc(p.x,p.y,r,0,Math.PI*2);mx.fillStyle=rgba(p.gas,p.alpha);mx.fill();
+                if(p.ring){p.ringAngle+=p.rSpd;const rr=r*3.6;mx.beginPath();mx.ellipse(p.x,p.y,rr,rr*.32,p.ringAngle,0,Math.PI*2);mx.strokeStyle=rgba(p.gas,.24);mx.lineWidth=.7;mx.stroke();const ex=p.x+Math.cos(p.ringAngle*2.2)*rr,ey=p.y+Math.sin(p.ringAngle*2.2)*rr*.32;mx.beginPath();mx.arc(ex,ey,1.3,0,Math.PI*2);mx.fillStyle=rgba(p.gas,.62);mx.fill();}
+            });
+            shooters.forEach((s,i)=>{if(!s.alive()){shooters.splice(i,1);return;}s.x+=s.vx;s.y+=s.vy;s.life-=s.decay;const tx=s.x-s.vx*(s.len/Math.abs(s.vx||1)),tr=mx.createLinearGradient(tx,s.y,s.x,s.y);tr.addColorStop(0,rgba(s.gas,0));tr.addColorStop(1,rgba(s.gas,s.life*.72));mx.beginPath();mx.moveTo(tx,s.y);mx.lineTo(s.x,s.y);mx.strokeStyle=tr;mx.lineWidth=1.5;mx.stroke();mx.beginPath();mx.arc(s.x,s.y,2.2,0,Math.PI*2);mx.fillStyle=rgba(s.gas,s.life);mx.fill();const hg=mx.createRadialGradient(s.x,s.y,0,s.x,s.y,8);hg.addColorStop(0,rgba(s.gas,s.life*.38));hg.addColorStop(1,rgba(s.gas,0));mx.beginPath();mx.arc(s.x,s.y,8,0,Math.PI*2);mx.fillStyle=hg;mx.fill();});
+        }
+        let last=performance.now();
+        function tick(now){requestAnimationFrame(tick);const t=now/1000,dt=now-last;last=now;nextShoot-=dt;if(nextShoot<=0){shooters.push(mkShooter());nextShoot=2200+Math.random()*4500;}drawNebula(t);drawParticles(t);}
+        requestAnimationFrame(tick);
+    })();
+    </script>
 </body>
 </html>
