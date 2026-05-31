@@ -1,3 +1,29 @@
+/* ── Global design tokens ─────────────────────────────────────────── */
+:root {
+    /* Text */
+    --ink:   #0c0e10;
+    --ink-2: #3d4147;
+    --ink-3: #8a909a;
+
+    /* Backgrounds */
+    --bg:    #f8f7f4;
+    --bg-2:  #f0ede8;
+    --rule:  #d8d4ce;
+
+    /* Brand dark */
+    --navy:  #080f1d;
+
+    /* Gas accent colors */
+    --kr:  #6d28d9;
+    --xe:  #1d4ed8;
+    --ne:  #b91c1c;
+    --he:  #047857;
+    --sf6: #0e7490;
+    --n2o: #b45309;
+    --cf4: #be185d;
+}
+
+/* ── Base styles ──────────────────────────────────────────────────── */
 /* 基本样式 */
 body {
     margin: 0;
