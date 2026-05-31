@@ -74,6 +74,19 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
+    // ─── Hide header on nav link click (prevents flash on new page) ──────────
+    if (header) {
+        header.querySelectorAll('a[href]').forEach(link => {
+            link.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href && !href.startsWith('#') && !href.startsWith('javascript')) {
+                    header.style.opacity = '0';
+                }
+            });
+        });
+    }
+
+
     // ─── Scroll reveal ────────────────────────────────────────────────────────
     const revealEls = document.querySelectorAll('.reveal');
 

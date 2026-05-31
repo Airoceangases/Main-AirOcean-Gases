@@ -56,6 +56,11 @@ body {
 }
 
 /* 顶部导航栏 — 默认透明，浮于深色 hero 之上 */
+@keyframes header-appear {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
 header {
     background: transparent;
     color: #fff;
@@ -67,7 +72,8 @@ header {
     z-index: 1000;
     border-bottom: 1px solid transparent;
     box-shadow: none;
-    transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+    transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, opacity 0.15s ease;
+    animation: header-appear 0.18s ease forwards;
 }
 
 /* 滚动后：深色半透明背景 */
