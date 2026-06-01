@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <link rel="shortcut icon" href="images/logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Documents — Airocean Gases | SDS & COA Library</title>
+    <meta name="description" content="Download GHS-compliant Safety Data Sheets (SDS) and Certificates of Analysis (COA) for Krypton, Xenon, Neon, Helium, SF6, N2O, and CF4. Updated to OSHA HazCom 2012 and international standards.">
+    <meta name="keywords" content="SDS, COA, Safety Data Sheet, Certificate of Analysis, krypton SDS, xenon SDS, neon SDS, helium SDS, specialty gas safety, GHS">
+    <meta name="author" content="Airocean Gases">
+    <meta property="og:title" content="Product Documents — Airocean Gases">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.airoceangases.com/sds.html">
+    <link rel="canonical" href="https://www.airoceangases.com/sds.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        .sds-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+
+        /* ── Match content width to contact/applications (1140px) ── */
+        .sds-hero .container,
+        .sds-main .container {
+            max-width: 1140px;
+            padding-left: 32px;
+            padding-right: 32px;
+        }
+        @media (max-width: 600px) {
+            .sds-hero .container,
+            .sds-main .container { padding-left: 20px; padding-right: 20px; }
+        }
+
+        /* ── PAGE BASE ── */
+        .sds-page {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg);
+            color: var(--ink);
+        }
+
+        /* ══════════════════════════════
+           HERO
+        ══════════════════════════════ */
+        .sds-hero {
+            background: var(--navy);
+            padding: 130px 0 44px;
+            position: relative;
+            overflow: hidden;
+        }
+        .sds-hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+            background-size: 48px 48px;
+            pointer-events: none;
+        }
+        .sds-hero-glow {
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 560px;
+            height: 560px;
+            background: radial-gradient(circle, rgba(29,78,216,0.18) 0%, transparent 68%);
+            pointer-events: none;
+        }
+        .sds-hero-inner {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: end;
+            gap: 48px;
+        }
+        @media (max-width: 768px) {
+            .sds-hero-inner { grid-template-columns: 1fr; }
+            .sds-hero-stat  { display: none; }
+        }
+
+        .sds-hero-eyebrow {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.42);
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .sds-hero-eyebrow::before {
+            content: '';
+            display: inline-block;
+            width: 24px;
+            height: 1px;
+            background: rgba(255,255,255,0.28);
+        }
+        .sds-hero h1 {
+            font-size: clamp(2.4rem, 5.5vw, 4rem);
+            font-weight: 800;
+            color: #fff;
+            line-height: 1.08;
+            letter-spacing: -0.025em;
+            margin-bottom: 22px;
+        }
+        .sds-hero h1 em {
+            font-style: normal;
+            color: rgba(255,255,255,0.48);
+        }
+        .sds-hero-sub {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.54);
+            max-width: 500px;
+            line-height: 1.7;
+            margin-bottom: 36px;
+        }
+        .sds-hero-chips {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .sds-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.12);
+            background: rgba(255,255,255,0.05);
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: rgba(255,255,255,0.64);
+        }
+        .sds-chip i { color: #4ade80; font-size: 0.65rem; }
+
+        /* Ghost number — editorial accent */
+        .sds-hero-stat {
+            text-align: right;
+            align-self: flex-end;
+        }
+        .sds-hero-stat-num {
+            font-size: clamp(5rem, 10vw, 9rem);
+            font-weight: 900;
+            color: rgba(255,255,255,0.06);
+            line-height: 1;
+            letter-spacing: -0.05em;
+            display: block;
+            user-select: none;
+        }
+        .sds-hero-stat-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.2);
+        }
+
+        /* ══════════════════════════════
+           MAIN CONTENT
+        ══════════════════════════════ */
+        .sds-main {
+            padding: 36px 0 80px;
+        }
+
+        /* ── WHAT IS SDS STRIP ── */
+        .sds-what {
+            background: #fff;
+            border: 1px solid var(--rule);
+            border-radius: 20px;
+            padding: 48px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 56px;
+            align-items: start;
+            margin-bottom: 72px;
+        }
+        @media (max-width: 768px) {
+            .sds-what { grid-template-columns: 1fr; gap: 32px; padding: 32px; }
+        }
+
+        .sds-what-left h2 {
+            font-size: 1.45rem;
+            font-weight: 700;
+            color: var(--navy);
+            letter-spacing: -0.02em;
+            margin-bottom: 14px;
+        }
+        .sds-what-left p {
+            font-size: 0.92rem;
+            color: var(--ink-2);
+            line-height: 1.75;
+            margin-bottom: 10px;
+        }
+
+        .sds-what-right {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+        .sds-fact {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--rule);
+        }
+        .sds-fact:first-child { padding-top: 0; }
+        .sds-fact:last-child  { border-bottom: none; padding-bottom: 0; }
+        .sds-fact-icon {
+            width: 34px;
+            height: 34px;
+            border-radius: 9px;
+            background: var(--navy);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+        .sds-fact strong {
+            display: block;
+            font-size: 0.84rem;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 2px;
+        }
+        .sds-fact span {
+            font-size: 0.78rem;
+            color: var(--ink-3);
+            line-height: 1.5;
+        }
+
+        /* ── SECTION TITLE ── */
+        .sds-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--ink-3);
+            margin-bottom: 10px;
+        }
+        .sds-section-h {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--navy);
+            letter-spacing: -0.02em;
+            margin-bottom: 28px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .sds-section-h::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--rule);
+        }
+
+        /* ── CARDS GRID ── */
+        .sds-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 18px;
+            margin-bottom: 28px;
+        }
+
+        .sds-card {
+            position: relative;
+            background: #fff;
+            border: 1px solid var(--rule);
+            border-radius: 18px;
+            padding: 26px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            overflow: hidden;
+            transition: box-shadow 0.28s ease, transform 0.28s ease, border-color 0.28s ease;
+        }
+        /* Coloured top bar — hidden until hover */
+        .sds-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: var(--c);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .sds-card:hover {
+            box-shadow: 0 10px 36px rgba(0,0,0,0.09);
+            transform: translateY(-3px);
+            border-color: rgba(0,0,0,0.06);
+        }
+        .sds-card:hover::before { transform: scaleX(1); }
+
+        .sds-card-head { display: flex; align-items: center; gap: 14px; }
+
+        .sds-symbol {
+            width: 52px;
+            height: 52px;
+            border-radius: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 900;
+            color: #fff;
+            flex-shrink: 0;
+            letter-spacing: -0.05em;
+            background: var(--c);
+        }
+
+        .sds-card-name {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1.2;
+        }
+        .sds-card-cas {
+            font-size: 0.75rem;
+            color: var(--ink-3);
+            margin-top: 2px;
+        }
+
+        .sds-tags { display: flex; gap: 5px; flex-wrap: wrap; flex: 1; align-content: flex-start; }
+        .sds-tag {
+            font-size: 0.67rem;
+            font-weight: 600;
+            padding: 3px 9px;
+            border-radius: 50px;
+            background: var(--bg-2);
+            color: var(--ink-2);
+            letter-spacing: 0.04em;
+        }
+
+        .sds-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: auto;
+        }
+        .sds-actions-row {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        /* ── SDS button (solid) ── */
+        .sds-dl {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            padding: 10px 16px;
+            background: var(--navy);
+            color: #fff;
+            border-radius: 10px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.18s ease, transform 0.12s ease;
+        }
+        .sds-dl:hover { background: #1a2540; transform: scale(1.015); }
+        .sds-dl i { font-size: 0.75rem; }
+
+        /* ── COA button (ghost/outline) ── */
+        .sds-coa {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            padding: 10px 16px;
+            border: 1.5px solid var(--rule);
+            color: var(--ink-2);
+            border-radius: 10px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            text-decoration: none;
+            background: transparent;
+            transition: border-color 0.18s ease, color 0.18s ease, background 0.18s ease;
+        }
+        .sds-coa:hover { border-color: var(--navy); color: var(--navy); background: var(--bg); }
+        .sds-coa i { font-size: 0.75rem; }
+
+        .sds-link-product {
+            align-self: flex-end;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--ink-3);
+            text-decoration: none;
+            transition: color 0.18s ease;
+            padding: 2px 0;
+        }
+        .sds-link-product:hover { color: var(--navy); }
+        .sds-link-product i { font-size: 0.65rem; transition: transform 0.18s ease; }
+        .sds-link-product:hover i { transform: translateX(3px); }
+
+        /* Pending card */
+        .sds-card--pending {
+            background: var(--bg);
+            border-style: dashed;
+        }
+        .sds-card--pending .sds-symbol { opacity: 0.38; }
+
+        .sds-coming {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 9px 8px;
+            border: 1.5px dashed var(--rule);
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: var(--ink-3);
+        }
+
+        /* ── REQUEST CTA ── */
+        .sds-cta {
+            background: var(--navy);
+            border-radius: 20px;
+            padding: 52px 56px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 36px;
+            position: relative;
+            overflow: hidden;
+        }
+        .sds-cta::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+        }
+        .sds-cta-glow {
+            position: absolute;
+            top: -60px; right: -60px;
+            width: 320px; height: 320px;
+            background: radial-gradient(circle, rgba(29,78,216,0.2) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .sds-cta-text { position: relative; z-index: 1; }
+        .sds-cta-text h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+        .sds-cta-text p {
+            font-size: 0.88rem;
+            color: rgba(255,255,255,0.52);
+            max-width: 440px;
+            line-height: 1.65;
+        }
+        .sds-cta-btns {
+            display: flex;
+            gap: 12px;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+        }
+        @media (max-width: 640px) {
+            .sds-cta { flex-direction: column; padding: 36px; }
+            .sds-cta-btns { flex-direction: column; width: 100%; }
+        }
+        .sds-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 11px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .sds-cta-btn--solid { background: #fff; color: var(--navy); }
+        .sds-cta-btn--solid:hover { background: #edf1f8; transform: translateY(-1px); }
+        .sds-cta-btn--ghost {
+            border: 1px solid rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.75);
+        }
+        .sds-cta-btn--ghost:hover { border-color: rgba(255,255,255,0.55); color: #fff; }
+    </style>
+</head>
+<body class="sds-page">
+
+    <!-- ── Navigation ── -->
+    <header>
+        <div class="header-utility">
+            <div class="container">
+                <div class="utility-content">
+                    <div class="utility-right">
+                        <a href="sds.html" class="utility-link utility-sds active-util">Documents</a>
+                        <div class="utility-social">
+                            <a href="https://www.linkedin.com/company/hygas/" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://www.instagram.com/airoceangases/?hl=en" target="_blank" rel="noopener" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="https://api.whatsapp.com/send/?phone=9174317883&text&type=phone_number&app_absent=0" target="_blank" rel="noopener" class="social-icon" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                        <a href="contact.html" class="utility-cta">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-main">
+            <div class="container">
+                <div class="header-content">
+                    <div class="header-logo">
+                        <img src="images/logo.png" alt="Airocean Gases Logo" class="logo-img">
+                    </div>
+                    <nav>
+                        <ul class="nav-menu">
+                            <li><a href="index.html" class="nav-link">Home</a></li>
+                            <li><a href="about.html" class="nav-link">About Us</a></li>
+                            <li><a href="products.html" class="nav-link">Products &amp; Services</a></li>
+                            <li><a href="applications.html" class="nav-link">Applications</a></li>
+                            <li><a href="contact.html" class="nav-link">Contact Us</a></li>
+                        </ul>
+                        <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                            <span></span><span></span><span></span>
+                        </button>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ══ HERO ══ -->
+    <section class="sds-hero">
+        <div class="sds-hero-grid"></div>
+        <canvas class="sds-canvas" id="sds-nebula"></canvas>
+        <canvas class="sds-canvas" id="sds-particles"></canvas>
+        <div class="container">
+            <div class="sds-hero-inner">
+                <div class="sds-hero-text">
+                    <p class="sds-hero-eyebrow" id="sds-eyebrow">Safety & Quality Documentation</p>
+                    <h1 id="sds-h1">Product<br><em>Documents</em></h1>
+                    <p class="sds-hero-sub" id="sds-sub">GHS-compliant Safety Data Sheets and Certificates of Analysis for every gas we supply. Download, print, and keep on file — updated to meet OSHA HazCom 2012 and international standards.</p>
+                </div>
+                <div class="sds-hero-stat" id="sds-stat">
+                    <span class="sds-hero-stat-num">16</span>
+                    <span class="sds-hero-stat-label">GHS Sections</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ MAIN ══ -->
+    <main class="sds-main">
+        <div class="container">
+
+            <!-- Available for Download -->
+            <p class="sds-label">Available Now</p>
+            <h3 class="sds-section-h">Download</h3>
+
+            <div class="sds-grid" id="sds-available">
+
+                <!-- Kr -->
+                <div class="sds-card" style="--c: var(--kr);">
+                    <div class="sds-card-head">
+                        <div class="sds-symbol">Kr</div>
+                        <div>
+                            <div class="sds-card-name">Krypton</div>
+                            <div class="sds-card-cas">Noble Gas · CAS 7439-90-9</div>
+                        </div>
+                    </div>
+                    <div class="sds-tags">
+                        <span class="sds-tag">Semiconductor</span>
+                        <span class="sds-tag">Laser</span>
+                        <span class="sds-tag">Lighting</span>
+                    </div>
+                    <div class="sds-actions">
+                        <a href="sds/Krypton_SDS.pdf" class="sds-dl" target="_blank" rel="noopener">
+                            <i class="fas fa-download"></i> Download SDS
+                        </a>
+                        <a href="coa/Krypton_COA.pdf" class="sds-coa" target="_blank" rel="noopener">
+                            <i class="fas fa-file-alt"></i> Download COA
+                        </a>
+                        <a href="product-detail-kr.html" class="sds-link-product">
+                            View product <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Xe -->
+                <div class="sds-card" style="--c: var(--xe);">
+                    <div class="sds-card-head">
+                        <div class="sds-symbol">Xe</div>
+                        <div>
+                            <div class="sds-card-name">Xenon</div>
+                            <div class="sds-card-cas">Noble Gas · CAS 7440-63-3</div>
+                        </div>
+                    </div>
+                    <div class="sds-tags">
+                        <span class="sds-tag">Medical Imaging</span>
+                        <span class="sds-tag">Propulsion</span>
+                        <span class="sds-tag">Lighting</span>
+                    </div>
+                    <div class="sds-actions">
+                        <a href="sds/Xenon_SDS.pdf" class="sds-dl" target="_blank" rel="noopener">
+                            <i class="fas fa-download"></i> Download SDS
+                        </a>
+                        <a href="coa/Xenon_COA.pdf" class="sds-coa" target="_blank" rel="noopener">
+                            <i class="fas fa-file-alt"></i> Download COA
+                        </a>
+                        <a href="product-detail-xe.html" class="sds-link-product">
+                            View product <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Ne -->
+                <div class="sds-card" style="--c: var(--ne);">
+                    <div class="sds-card-head">
+                        <div class="sds-symbol">Ne</div>
+                        <div>
+                            <div class="sds-card-name">Neon</div>
+                            <div class="sds-card-cas">Noble Gas · CAS 7440-01-9</div>
+                        </div>
+                    </div>
+                    <div class="sds-tags">
+                        <span class="sds-tag">EUV Lithography</span>
+                        <span class="sds-tag">Laser</span>
+                        <span class="sds-tag">Signage</span>
+                    </div>
+                    <div class="sds-actions">
+                        <a href="sds/Neon_SDS.pdf" class="sds-dl" target="_blank" rel="noopener">
+                            <i class="fas fa-download"></i> Download SDS
+                        </a>
+                        <a href="coa/Neon_COA.pdf" class="sds-coa" target="_blank" rel="noopener">
+                            <i class="fas fa-file-alt"></i> Download COA
+                        </a>
+                        <a href="product-detail-ne.html" class="sds-link-product">
+                            View product <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- He -->
+                <div class="sds-card" style="--c: var(--he);">
+                    <div class="sds-card-head">
+                        <div class="sds-symbol">He</div>
+                        <div>
+                            <div class="sds-card-name">Helium</div>
+                            <div class="sds-card-cas">Noble Gas · CAS 7440-59-7</div>
+                        </div>
+                    </div>
+                    <div class="sds-tags">
+                        <span class="sds-tag">MRI / NMR</span>
+                        <span class="sds-tag">Semiconductor</span>
+                        <span class="sds-tag">Welding</span>
+                    </div>
+                    <div class="sds-actions">
+                        <a href="sds/Helium_SDS.pdf" class="sds-dl" target="_blank" rel="noopener">
+                            <i class="fas fa-download"></i> Download SDS
+                        </a>
+                        <a href="coa/Helium_COA.pdf" class="sds-coa" target="_blank" rel="noopener">
+                            <i class="fas fa-file-alt"></i> Download COA
+                        </a>
+                        <a href="product-detail-he.html" class="sds-link-product">
+                            View product <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Coming Soon -->
+            <p class="sds-label">In Preparation</p>
+            <h3 class="sds-section-h">Coming Soon</h3>
+
+            <div class="sds-grid" id="sds-pending">
+
+                <!-- SF6 -->
+                <div class="sds-card sds-card--pending" style="--c: var(--sf6);">
+                    <div class="sds-card-head">
+                        <div class="sds-symbol">SF₆</div>
+                        <div>
+                            <div class="sds-card-name">Sulfur Hexafluoride</div>
+                            <div class="sds-card-cas">Specialty Gas · CAS 2551-62-4</div>
+                        </div>
+                    </div>
+                    <div class="sds-tags">
+                        <span class="sds-tag">Electrical Insulation</span>
+                        <span class="sds-tag">Plasma Etching</span>
+                    </div>
+                    <div class="sds-actions">
+                        <span class="sds-coming"><i class="fas fa-clock"></i> SDS</span>
+                        <span class="sds-coming"><i class="fas fa-clock"></i> COA</span>
+                        <a href="product-detail-sf6.html" class="sds-link-product">
+                            View product <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- N2O -->
+                <div class="sds-card sds-card--pending" style="--c: var(--n2o);">
+                    <div class="sds-card-head">
+                        <div class="sds-symbol">N₂O</div>
+                        <div>
+                            <div class="sds-card-name">Nitrous Oxide</div>
+                            <div class="sds-card-cas">Specialty Gas · CAS 10024-97-2</div>
+                        </div>
+                    </div>
+                    <div class="sds-tags">
+                        <span class="sds-tag">Medical Anaesthesia</span>
+                        <span class="sds-tag">CVD Process</span>
+                    </div>
+                    <div class="sds-actions">
+                        <span class="sds-coming"><i class="fas fa-clock"></i> SDS</span>
+                        <span class="sds-coming"><i class="fas fa-clock"></i> COA</span>
+                        <a href="product-detail-n2o.html" class="sds-link-product">
+                            View product <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- CF4 -->
+                <div class="sds-card sds-card--pending" style="--c: var(--cf4);">
+                    <div class="sds-card-head">
+                        <div class="sds-symbol">CF₄</div>
+                        <div>
+                            <div class="sds-card-name">Carbon Tetrafluoride</div>
+                            <div class="sds-card-cas">Specialty Gas · CAS 75-73-0</div>
+                        </div>
+                    </div>
+                    <div class="sds-tags">
+                        <span class="sds-tag">Plasma Etching</span>
+                        <span class="sds-tag">Semiconductor</span>
+                    </div>
+                    <div class="sds-actions">
+                        <span class="sds-coming"><i class="fas fa-clock"></i> SDS</span>
+                        <span class="sds-coming"><i class="fas fa-clock"></i> COA</span>
+                        <a href="product-detail-cf4.html" class="sds-link-product">
+                            View product <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Request CTA -->
+            <div class="sds-cta sr" id="sds-cta">
+                <div class="sds-cta-glow"></div>
+                <div class="sds-cta-text">
+                    <h3>Need an SDS not listed here?</h3>
+                    <p>Our technical team can provide SDS documents for custom gas mixtures, language-specific versions, or alternative formats. We respond within one business day.</p>
+                </div>
+                <div class="sds-cta-btns">
+                    <a href="contact.html" class="sds-cta-btn sds-cta-btn--solid">
+                        <i class="fas fa-envelope"></i> Request SDS
+                    </a>
+                    <a href="products.html" class="sds-cta-btn sds-cta-btn--ghost">All Products</a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- ── Standard Footer ── -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/logo.png" alt="Airocean Gases Logo" class="logo-img">
+                </div>
+                <div class="footer-column">
+                    <h3>Follow Us</h3>
+                    <ul>
+                        <li><a href="https://api.whatsapp.com/send/?phone=9174317883&text&type=phone_number&app_absent=0"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
+                        <li><a href="https://www.linkedin.com/company/hygas/?viewAsMember=true"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                        <li><a href="https://www.instagram.com/airoceangases/?hl=en"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-conditions.html">Terms &amp; Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="products.html">Products &amp; Services</a></li>
+                        <li><a href="applications.html">Applications</a></li>
+                        <li><a href="sds.html">Documents</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Airocean Gases. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="back-to-top" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- GSAP -->
+    <!-- ── Hero nebula + particle system (ported from contact.html) ── -->
+    <script>
+    (function(){
+        const GAS=[
+            {r:248,g:113,b:113},{r:167,g:139,b:250},{r:96,g:165,b:250},
+            {r:52,g:211,b:153},{r:251,g:191,b:36},{r:251,g:146,b:60},{r:244,g:114,b:182}
+        ];
+        const rgba=(g,a)=>`rgba(${g.r},${g.g},${g.b},${a})`;
+        const section=document.querySelector('.sds-hero');
+        const NC=document.getElementById('sds-nebula');
+        const MC=document.getElementById('sds-particles');
+        if(!NC||!MC||!section) return;
+        const nx=NC.getContext('2d'),mx=MC.getContext('2d');
+        let W,H;
+        function resize(){const r=section.getBoundingClientRect();W=r.width;H=r.height;NC.width=MC.width=W;NC.height=MC.height=H;}
+        resize(); window.addEventListener('resize',resize);
+        const mouse={x:0,y:0,on:false};
+        section.addEventListener('mousemove',e=>{const r=section.getBoundingClientRect();mouse.x=e.clientX-r.left;mouse.y=e.clientY-r.top;mouse.on=true;});
+        section.addEventListener('mouseleave',()=>{mouse.on=false;});
+        const BLOBS=GAS.map(g=>({g,x:Math.random()*1.3-.15,y:Math.random()*1.3-.15,vx:(Math.random()-.5)*0.00007,vy:(Math.random()-.5)*0.00006,r:0.16+Math.random()*0.18,ph:Math.random()*Math.PI*2,sp:0.0005+Math.random()*0.0004}));
+        function drawNebula(t){
+            nx.clearRect(0,0,W,H);
+            BLOBS.forEach(b=>{
+                b.x+=b.vx;b.y+=b.vy;
+                if(b.x<-.3)b.vx=Math.abs(b.vx);if(b.x>1.3)b.vx=-Math.abs(b.vx);
+                if(b.y<-.3)b.vy=Math.abs(b.vy);if(b.y>1.3)b.vy=-Math.abs(b.vy);
+                const pulse=1+0.14*Math.sin(t*b.sp*1000+b.ph);
+                const rx=b.x*W,ry=b.y*H,rr=b.r*Math.min(W,H)*pulse;
+                const grad=nx.createRadialGradient(rx,ry,0,rx,ry,rr);
+                grad.addColorStop(0,rgba(b.g,.10));grad.addColorStop(.4,rgba(b.g,.04));grad.addColorStop(1,rgba(b.g,0));
+                nx.beginPath();nx.arc(rx,ry,rr,0,Math.PI*2);nx.fillStyle=grad;nx.fill();
+            });
+        }
+        function mkP(depth){return{x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*(0.12+Math.random()*.2),vy:(Math.random()-.5)*(0.12+Math.random()*.2),gas:GAS[Math.floor(Math.random()*7)],depth,ph:Math.random()*Math.PI*2,pSpd:0.5+Math.random()*1.2,r:depth===2?1.6+Math.random()*1.4:depth===1?0.8+Math.random()*.8:0.3+Math.random()*.4,alpha:depth===2?.65:depth===1?.38:.18};}
+        const PTS=[...Array.from({length:20},()=>mkP(0)),...Array.from({length:45},()=>mkP(1)),...Array.from({length:28},()=>mkP(2))];
+        function drawParticles(t){
+            mx.clearRect(0,0,W,H);
+            const cp=PTS.filter(p=>p.depth>=1);
+            for(let i=0;i<cp.length;i++){for(let j=i+1;j<cp.length;j++){const a=cp[i],b=cp[j];if(a.depth!==b.depth)continue;const dx=a.x-b.x,dy=a.y-b.y,d=Math.sqrt(dx*dx+dy*dy),maxD=a.depth===2?90:120;if(d>maxD)continue;const al=(1-d/maxD)*(a.depth===2?.18:.08);mx.beginPath();mx.moveTo(a.x,a.y);mx.lineTo(b.x,b.y);mx.strokeStyle=rgba(a.gas,al);mx.lineWidth=a.depth===2?.7:.4;mx.stroke();}}
+            PTS.forEach(p=>{
+                if(mouse.on&&p.depth>=1){const dx=p.x-mouse.x,dy=p.y-mouse.y,d=Math.sqrt(dx*dx+dy*dy),rep=p.depth===2?100:70;if(d<rep&&d>0){const f=(rep-d)/rep;p.vx+=(dx/d)*f*.3;p.vy+=(dy/d)*f*.3;}}
+                p.vx*=.992;p.vy*=.992;p.x+=p.vx;p.y+=p.vy;
+                if(p.x<-10)p.x=W+10;if(p.x>W+10)p.x=-10;if(p.y<-10)p.y=H+10;if(p.y>H+10)p.y=-10;
+                const pulse=1+.2*Math.sin(t*p.pSpd+p.ph),r=p.r*pulse;
+                mx.beginPath();mx.arc(p.x,p.y,r,0,Math.PI*2);mx.fillStyle=rgba(p.gas,p.alpha);mx.fill();
+            });
+        }
+        function tick(now){requestAnimationFrame(tick);const t=now/1000;drawNebula(t);drawParticles(t);}
+        requestAnimationFrame(tick);
+    })();
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        /* ── Available cards — fade only, no y offset to avoid staircase ── */
+        gsap.from('#sds-available .sds-card', {
+            scrollTrigger: { trigger: '#sds-available', start: 'top 82%' },
+            opacity: 0, duration: 0.5, stagger: 0.08, ease: 'power2.out'
+        });
+
+        /* ── Pending cards ── */
+        gsap.from('#sds-pending .sds-card', {
+            scrollTrigger: { trigger: '#sds-pending', start: 'top 82%' },
+            opacity: 0, duration: 0.5, stagger: 0.08, ease: 'power2.out'
+        });
+
+        /* ── CTA banner ── */
+        gsap.from('#sds-cta', {
+            scrollTrigger: { trigger: '#sds-cta', start: 'top 85%' },
+            opacity: 0, duration: 0.5, ease: 'power2.out'
+        });
+    </script>
+</body>
+</html>
