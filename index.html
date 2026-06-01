@@ -779,6 +779,20 @@
             .hm-stats-inner { grid-template-columns: 1fr; }
             .hm-stat { border-right: none !important; }
         }
+        /* ── Mobile: 2-up gas carousel ── */
+        @media (max-width: 600px) {
+            /* Hero: shorter so content below is hinted */
+            .hm-hero-wrap { min-height: 70dvh; }
+            .hm-hero-wrap .hero-slider { height: 70dvh; min-height: unset; }
+
+            /* Gas carousel: 2 tiles at a time */
+            .hm-gases-grid { grid-template-columns: repeat(7, 50%); }
+            .hm-gas-atnum { padding: 28px 16px 8px; font-size: 0.62rem; }
+            .hm-gas-sym   { padding: 0 16px 8px; font-size: 3.2rem; }
+            .hm-gas-name  { padding: 0 16px 8px; }
+            .hm-gas-desc  { padding: 0 16px 16px; }
+            .hm-gas-link, .hm-gas-link-doc { padding-left: 16px; padding-right: 16px; }
+        }
     </style>
 
 </head>
@@ -1332,27 +1346,28 @@
     <script src="script.js"></script>
     <script>
     (function() {
-        const VISIBLE = 4;
-        const grid   = document.getElementById('gasesGrid');
-        const prev   = document.getElementById('gasesPrev');
-        const next   = document.getElementById('gasesNext');
+        const grid     = document.getElementById('gasesGrid');
+        const prev     = document.getElementById('gasesPrev');
+        const next     = document.getElementById('gasesNext');
         const dotsWrap = document.getElementById('gasesDots');
-        const tiles  = grid.querySelectorAll('.hm-gas-tile');
-        const total  = tiles.length;                   // 7
-        const steps  = total - VISIBLE;                // 3
-        let idx = 0;
+        const tiles    = grid.querySelectorAll('.hm-gas-tile');
+        const total    = tiles.length; // 7
+        let idx = 0, steps = 0, dots = [];
 
-        /* build dots */
-        const dots = Array.from({ length: steps + 1 }, (_, i) => {
-            const d = document.createElement('span');
-            d.className = 'hm-gdot' + (i === 0 ? ' active' : '');
-            d.addEventListener('click', () => goTo(i));
-            dotsWrap.appendChild(d);
-            return d;
-        });
+        function getVisible() { return window.innerWidth <= 600 ? 2 : 4; }
+        function tileWidth()  { return tiles[0].offsetWidth; }
 
-        function tileWidth() {
-            return tiles[0].offsetWidth;
+        function buildDots() {
+            const visible = getVisible();
+            steps = total - visible;
+            dotsWrap.innerHTML = '';
+            dots = Array.from({ length: steps + 1 }, (_, i) => {
+                const d = document.createElement('span');
+                d.className = 'hm-gdot' + (i === 0 ? ' active' : '');
+                d.addEventListener('click', () => goTo(i));
+                dotsWrap.appendChild(d);
+                return d;
+            });
         }
 
         function goTo(i) {
@@ -1366,8 +1381,16 @@
         prev.addEventListener('click', () => goTo(idx - 1));
         next.addEventListener('click', () => goTo(idx + 1));
 
-        /* recalculate on resize */
-        window.addEventListener('resize', () => goTo(idx));
+        /* rebuild on resize if visible count changes */
+        let lastVisible = getVisible();
+        window.addEventListener('resize', () => {
+            const v = getVisible();
+            if (v !== lastVisible) { lastVisible = v; buildDots(); }
+            else goTo(idx);
+        });
+
+        buildDots();
+        goTo(0);
     })();
     </script>
 

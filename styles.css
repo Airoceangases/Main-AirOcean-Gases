@@ -822,6 +822,12 @@ footer {
 }
 
 @media (max-width: 600px) {
+    /* Hero: shorter on mobile so content below is hinted */
+    .hero-slider-container { height: 70vh; }
+
+    /* Utility bar: hide social icons on small screens to save space */
+    .utility-social { display: none; }
+
     .hero-mission-section {
         margin: 40px 0;
         padding: 20px 0;
