@@ -177,6 +177,7 @@
         .af-btn[data-filter="sf6"].active { color: var(--sf6); border-bottom-color: var(--sf6); }
         .af-btn[data-filter="n2o"].active { color: var(--n2o); border-bottom-color: var(--n2o); }
         .af-btn[data-filter="cf4"].active { color: var(--cf4); border-bottom-color: var(--cf4); }
+        .af-btn[data-filter="wf6"].active { color: var(--wf6); border-bottom-color: var(--wf6); }
 
         /* ── Result bar ── */
         .ap-result-bar {
@@ -294,6 +295,7 @@
         .ac-gas-tag.sf6 { color: var(--sf6); }
         .ac-gas-tag.n2o { color: var(--n2o); }
         .ac-gas-tag.cf4 { color: var(--cf4); }
+        .ac-gas-tag.wf6 { color: var(--wf6); }
 
         .ac-title {
             font-size: 1.02rem;
@@ -535,7 +537,7 @@
             <div>
                 <p class="ap-hero-eyebrow">Noble & Specialty Gases · Critical Industries</p>
                 <h1>Gas<br>Applications</h1>
-                <p class="ap-hero-sub">24 applications spanning semiconductor fabrication, medical imaging, electrical insulation, aerospace propulsion, and precision analytical science — powered by seven high-purity gases.</p>
+                <p class="ap-hero-sub">26 applications spanning semiconductor fabrication, medical imaging, electrical insulation, aerospace propulsion, and precision analytical science — powered by eight high-purity gases.</p>
                 <div class="ap-hero-gases">
                     <div class="ap-hero-gas">
                         <span class="ap-hero-gas-dot" style="background:var(--kr)"></span>
@@ -565,10 +567,14 @@
                         <span class="ap-hero-gas-dot" style="background:var(--cf4)"></span>
                         CF&#x2084;
                     </div>
+                    <div class="ap-hero-gas">
+                        <span class="ap-hero-gas-dot" style="background:var(--wf6)"></span>
+                        WF&#x2086;
+                    </div>
                 </div>
             </div>
             <div class="ap-hero-count">
-                <span class="ap-hero-count-num">24</span>
+                <span class="ap-hero-count-num">26</span>
                 <span class="ap-hero-count-label">Applications</span>
             </div>
         </div>
@@ -607,6 +613,10 @@
                 <span class="af-dot" style="background:var(--cf4)"></span>
                 CF&#x2084;
             </button>
+            <button class="af-btn" data-filter="wf6">
+                <span class="af-dot" style="background:var(--wf6)"></span>
+                WF&#x2086;
+            </button>
         </div>
         <div class="ap-filters-row">
             <span class="af-label">Industry</span>
@@ -623,7 +633,7 @@
     <!-- ── Applications grid ── -->
     <section class="ap-section">
         <div class="ap-result-bar">
-            <span class="ap-result-count" id="apCount">18 Applications</span>
+            <span class="ap-result-count" id="apCount">26 Applications</span>
         </div>
         <div class="ap-grid-wrap">
             <div class="ap-grid sr" id="apGrid">
@@ -1047,6 +1057,40 @@
                     </div>
                 </div>
 
+                <!-- 25 WF6 CVD Via Fill -->
+                <div class="ac" data-gases="wf6" data-industry="semiconductor" style="--gas-color:var(--wf6)">
+                    <div class="ac-img-wrap">
+                        <div class="ac-img" style="background-image:url('https://picsum.photos/seed/wf6-cvd/800/500')"></div>
+                        <div class="ac-img-overlay"></div>
+                        <span class="ac-index">25</span>
+                    </div>
+                    <div class="ac-rule"></div>
+                    <div class="ac-body">
+                        <div class="ac-gases">
+                            <span class="ac-gas-tag wf6">WF&#x2086;</span>
+                        </div>
+                        <h3 class="ac-title">Tungsten CVD Via Fill</h3>
+                        <p class="ac-desc">WF&#x2086; is reduced by H&#x2082; or SiH&#x2084; in CVD reactors to deposit conformal tungsten that fills contact holes and via structures, forming the low-resistivity tungsten plugs that connect transistor junctions to the first metal layer in advanced logic and memory devices.</p>
+                    </div>
+                </div>
+
+                <!-- 26 WF6 Gate Metallization & ALD -->
+                <div class="ac" data-gases="wf6" data-industry="semiconductor" style="--gas-color:var(--wf6)">
+                    <div class="ac-img-wrap">
+                        <div class="ac-img" style="background-image:url('https://picsum.photos/seed/wf6-ald/800/500')"></div>
+                        <div class="ac-img-overlay"></div>
+                        <span class="ac-index">26</span>
+                    </div>
+                    <div class="ac-rule"></div>
+                    <div class="ac-body">
+                        <div class="ac-gases">
+                            <span class="ac-gas-tag wf6">WF&#x2086;</span>
+                        </div>
+                        <h3 class="ac-title">Tungsten Gate Metallization & ALD</h3>
+                        <p class="ac-desc">Ultra-high-purity WF&#x2086; (6N grade) serves as the tungsten precursor in atomic layer deposition for metal gate electrodes and diffusion barrier nucleation layers in FinFET and gate-all-around transistor architectures at advanced process nodes.</p>
+                    </div>
+                </div>
+
                 <div class="no-res" id="noRes">No applications found for this filter.</div>
             </div>
         </div>
@@ -1056,12 +1100,12 @@
     <div class="ap-stats sr">
         <div class="ap-stats-inner">
             <div class="ap-stat">
-                <div class="ap-stat-num" data-count="24">24</div>
+                <div class="ap-stat-num" data-count="26">26</div>
                 <div class="ap-stat-label">Application Areas</div>
                 <div class="ap-stat-bar" aria-hidden="true"></div>
             </div>
             <div class="ap-stat">
-                <div class="ap-stat-num" data-count="7">7</div>
+                <div class="ap-stat-num" data-count="8">8</div>
                 <div class="ap-stat-label">High-Purity Gases</div>
                 <div class="ap-stat-bar" aria-hidden="true"></div>
             </div>
@@ -1138,7 +1182,7 @@
       "name": "Airocean Gases",
       "url": "https://www.airoceangases.com",
       "logo": "https://www.airoceangases.com/images/logo.png",
-      "description": "High-purity noble and specialty gas supplier — Krypton, Xenon, Neon, Helium, SF₆, N₂O, and CF₄ — for semiconductor, medical, aerospace, and analytical applications."
+      "description": "High-purity noble and specialty gas supplier — Krypton, Xenon, Neon, Helium, SF₆, N₂O, CF₄, and WF₆ — for semiconductor, medical, aerospace, and analytical applications."
     }
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -1285,7 +1329,8 @@
     (function(){
         const GAS=[
             {r:248,g:113,b:113},{r:167,g:139,b:250},{r:96,g:165,b:250},
-            {r:52,g:211,b:153},{r:251,g:191,b:36},{r:251,g:146,b:60},{r:244,g:114,b:182}
+            {r:52,g:211,b:153},{r:251,g:191,b:36},{r:251,g:146,b:60},{r:244,g:114,b:182},
+            {r:232,g:121,b:249}
         ];
         const rgba=(g,a)=>`rgba(${g.r},${g.g},${g.b},${a})`;
         const section=document.querySelector('.ap-hero');
@@ -1313,7 +1358,7 @@
                 nx.beginPath();nx.arc(rx,ry,rr,0,Math.PI*2);nx.fillStyle=grad;nx.fill();
             });
         }
-        function mkP(depth){return{x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*(0.12+Math.random()*.2),vy:(Math.random()-.5)*(0.12+Math.random()*.2),gas:GAS[Math.floor(Math.random()*7)],depth,ph:Math.random()*Math.PI*2,pSpd:0.5+Math.random()*1.2,r:depth===2?1.6+Math.random()*1.4:depth===1?0.8+Math.random()*.8:0.3+Math.random()*.4,alpha:depth===2?.65:depth===1?.38:.18};}
+        function mkP(depth){return{x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*(0.12+Math.random()*.2),vy:(Math.random()-.5)*(0.12+Math.random()*.2),gas:GAS[Math.floor(Math.random()*8)],depth,ph:Math.random()*Math.PI*2,pSpd:0.5+Math.random()*1.2,r:depth===2?1.6+Math.random()*1.4:depth===1?0.8+Math.random()*.8:0.3+Math.random()*.4,alpha:depth===2?.65:depth===1?.38:.18};}
         const PTS=[...Array.from({length:20},()=>mkP(0)),...Array.from({length:45},()=>mkP(1)),...Array.from({length:28},()=>mkP(2))];
         function drawParticles(t){
             mx.clearRect(0,0,W,H);
