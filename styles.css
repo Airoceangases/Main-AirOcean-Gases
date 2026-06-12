@@ -3808,7 +3808,7 @@ html {
 /* Mobile nav extras — hidden on desktop */
 .nav-mob-cta { display: none; }
 .nav-mob-util { display: none; }
-.nav-arrow { display: none; }
+.nav-link .nav-arrow { display: none; }
 
 /* --- Mobile menu --- */
 @media (max-width: 768px) {
@@ -3941,7 +3941,7 @@ html {
     }
 
     /* ── Chevron arrows on nav links ── */
-    .nav-arrow {
+    .nav-link .nav-arrow {
         display: inline-block;
         opacity: 0.3;
         font-size: 0.65rem;
