@@ -229,14 +229,14 @@ header h1 {
 /* 轮播图滑动容器 */
 .hero-slider {
     display: flex;
-    width: 300%; /* 3张图片的宽度 */
+    width: 400%; /* 4张图片的宽度 */
     height: 100%;
     transition: transform 0.5s ease-in-out;
 }
 
 /* 轮播图单张 */
 .hero-slide {
-    width: 33.333%; /* 每张图片占1/3宽度 */
+    width: 25%; /* 每张图片占1/4宽度 */
     height: 100%;
     background-size: cover;
     background-position: center;

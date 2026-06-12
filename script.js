@@ -9,7 +9,7 @@ const dots     = document.querySelectorAll('.dot');
 let currentIndex = 0;
 
 function updateSlider() {
-    if (slider) slider.style.transform = `translateX(-${currentIndex * 33.333}%)`;
+    if (slider) slider.style.transform = `translateX(-${currentIndex * (100 / slides.length)}%)`;
     dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
 }
 
