@@ -3805,13 +3805,15 @@ html {
 .hamburger.open span:nth-child(2) { opacity: 0; }
 .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
+/* Mobile nav extras — hidden on desktop */
+.nav-mob-cta { display: none; }
+.nav-mob-util { display: none; }
+.nav-arrow { display: none; }
+
 /* --- Mobile menu --- */
 @media (max-width: 768px) {
-    /* Utility bar: hide phone, keep only SDS + CTA */
-    .utility-phone { display: none; }
-    .utility-divider:first-of-type { display: none; }
-    .utility-social { display: none; }
-    .utility-right { gap: 10px; }
+    /* Hide entire utility bar on mobile — content moved into dropdown */
+    .header-utility { display: none; }
 
     .hamburger {
         display: flex;
@@ -3868,6 +3870,86 @@ html {
 
     .logo-img {
         width: 100px;
+    }
+
+    /* ── Mobile pill CTA (next to hamburger) ── */
+    .nav-mob-cta {
+        display: inline-flex;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.92);
+        color: #080f1d;
+        font-size: 0.67rem;
+        font-weight: 700;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 7px 16px;
+        border-radius: 20px;
+        white-space: nowrap;
+        transition: background 0.2s;
+    }
+    .nav-mob-cta:hover { background: #fff; }
+
+    /* ── Utility info row at top of dropdown ── */
+    .nav-mob-util {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 24px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 4px;
+    }
+    .nav-mob-phone {
+        color: rgba(255, 255, 255, 0.52);
+        font-size: 0.72rem;
+        font-weight: 500;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        letter-spacing: 0.02em;
+    }
+    .nav-mob-phone i { font-size: 0.6rem; opacity: 0.7; }
+    .nav-mob-util-right {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+    .nav-mob-docs {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.65rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        text-decoration: none;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        padding: 2px 9px;
+        border-radius: 4px;
+        background: rgba(255, 255, 255, 0.05);
+    }
+    .nav-mob-socials {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+    .nav-mob-socials a {
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 0.82rem;
+        text-decoration: none;
+    }
+
+    /* ── Chevron arrows on nav links ── */
+    .nav-arrow {
+        display: inline-block;
+        opacity: 0.3;
+        font-size: 0.65rem;
+    }
+    .nav-link {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 }
 
