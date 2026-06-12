@@ -28,10 +28,26 @@ dots.forEach((dot, i) => dot.addEventListener('click', () => {
     updateSlider();
 }));
 
-setInterval(() => {
+const autoplay = setInterval(() => {
     currentIndex = currentIndex < slides.length - 1 ? currentIndex + 1 : 0;
     updateSlider();
 }, 5000);
+
+// ─── Touch swipe ──────────────────────────────────────────────────────────────
+if (slider) {
+    let touchStartX = 0;
+    slider.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].clientX; }, { passive: true });
+    slider.addEventListener('touchend', e => {
+        const delta = touchStartX - e.changedTouches[0].clientX;
+        if (Math.abs(delta) < 40) return;
+        if (delta > 0) {
+            currentIndex = currentIndex < slides.length - 1 ? currentIndex + 1 : 0;
+        } else {
+            currentIndex = currentIndex > 0 ? currentIndex - 1 : slides.length - 1;
+        }
+        updateSlider();
+    }, { passive: true });
+}
 
 
 // ─── Header scroll shadow ─────────────────────────────────────────────────────

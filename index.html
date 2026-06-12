@@ -796,11 +796,19 @@
             .hm-stats-inner { grid-template-columns: 1fr; }
             .hm-stat { border-right: none !important; }
         }
-        /* ── Mobile: 2-up gas carousel ── */
+        /* ── Mobile ≤600px ── */
         @media (max-width: 600px) {
-            /* Hero: shorter so content below is hinted */
-            .hm-hero-wrap { min-height: 70dvh; }
-            .hm-hero-wrap .hero-slider { height: 70dvh; min-height: unset; }
+            /* Hero: tall enough to show full content + hint next section */
+            .hm-hero-wrap { min-height: 85dvh; }
+            .hm-hero-wrap .hero-slider { height: 85dvh; min-height: unset; }
+
+            /* Hero content: smaller title + sub, clear dots at bottom */
+            .hm-slide-title { font-size: clamp(1.75rem, 7.5vw, 2.3rem); line-height: 1.1; }
+            .hm-slide-sub   { font-size: 0.86rem; line-height: 1.62; margin-bottom: 24px; }
+            .hm-slide-body  { padding-bottom: 68px; }
+            .hm-slide-tags  { gap: 10px; margin-bottom: 14px; }
+            .hm-slide-tag   { font-size: 0.7rem; letter-spacing: 0.1em; }
+            .hm-slide-btn   { padding: 11px 20px; font-size: 0.76rem; }
 
             /* Gas carousel: 2 tiles at a time */
             .hm-gases-grid { grid-template-columns: repeat(8, 50%); }
@@ -809,6 +817,27 @@
             .hm-gas-name  { padding: 0 16px 8px; }
             .hm-gas-desc  { padding: 0 16px 16px; }
             .hm-gas-link, .hm-gas-link-doc { padding-left: 16px; padding-right: 16px; }
+
+            /* Industries: taller cards so content breathes */
+            .hm-ind-card { min-height: 260px; }
+            .hm-ind-ghost { font-size: clamp(4rem, 22vw, 8rem); }
+
+            /* Section spacing tightened */
+            .hm-gases { padding: 52px 0; }
+            .hm-services { padding: 52px 0; }
+            .hm-guarantee { padding: 52px 0 0; }
+            .hm-section-header { margin-bottom: 36px; }
+
+            /* Hide prev/next arrows — swipe + dots handle navigation */
+            .hm-hero-wrap .slider-nav { display: none; }
+        }
+
+        /* ── Very small phones ≤380px ── */
+        @media (max-width: 380px) {
+            .hm-slide-title { font-size: 1.65rem; }
+            .hm-slide-sub   { font-size: 0.82rem; }
+            .hm-slide-body  { padding: 40px 20px 68px; }
+            .hm-hero-wrap .slider-dots { left: 20px; bottom: 22px; }
         }
     </style>
 
