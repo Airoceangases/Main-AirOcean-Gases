@@ -533,17 +533,6 @@
 
         .p-cta-btn:hover { opacity: 0.75; transform: translateX(4px); }
 
-        /* ─── SCROLL REVEAL ─────────────────────────── */
-        .sr {
-            opacity: 1;
-            transform: none;
-        }
-
-        .sr.in { opacity: 1; transform: translateY(0); }
-        .sr-d1 { transition-delay: 0.08s; }
-        .sr-d2 { transition-delay: 0.16s; }
-        .sr-d3 { transition-delay: 0.24s; }
-
         /* ─── RESPONSIVE ────────────────────────────── */
         @media (max-width: 960px) {
             .ph {
@@ -715,7 +704,7 @@
 
     <!-- ─── KRYPTON ──────────────────────────────── -->
     <section class="gs" id="gas-kr">
-        <div class="gs-inner sr">
+        <div class="gs-inner">
             <div class="gs-ident">
                 <div class="gs-ghost">36</div>
                 <div class="gs-sym kr">Kr</div>
@@ -783,7 +772,7 @@
 
     <!-- ─── XENON ────────────────────────────────── -->
     <section class="gs" id="gas-xe">
-        <div class="gs-inner rev sr">
+        <div class="gs-inner rev">
             <div class="gs-ident">
                 <div class="gs-ghost">54</div>
                 <div class="gs-sym xe">Xe</div>
@@ -851,7 +840,7 @@
 
     <!-- ─── NEON ─────────────────────────────────── -->
     <section class="gs" id="gas-ne">
-        <div class="gs-inner sr">
+        <div class="gs-inner">
             <div class="gs-ident">
                 <div class="gs-ghost">10</div>
                 <div class="gs-sym ne">Ne</div>
@@ -919,7 +908,7 @@
 
     <!-- ─── HELIUM ───────────────────────────────── -->
     <section class="gs" id="gas-he">
-        <div class="gs-inner rev sr">
+        <div class="gs-inner rev">
             <div class="gs-ident">
                 <div class="gs-ghost">2</div>
                 <div class="gs-sym he">He</div>
@@ -987,7 +976,7 @@
 
     <!-- ─── SULFUR HEXAFLUORIDE ─────────────────── -->
     <section class="gs" id="gas-sf6">
-        <div class="gs-inner sr">
+        <div class="gs-inner">
             <div class="gs-ident">
                 <div class="gs-ghost" style="font-size:clamp(4rem,8vw,7rem);letter-spacing:-4px;">SF&#x2086;</div>
                 <div class="gs-sym sf6">SF&#x2086;</div>
@@ -1054,7 +1043,7 @@
 
     <!-- ─── NITROUS OXIDE ─────────────────────── -->
     <section class="gs" id="gas-n2o">
-        <div class="gs-inner rev sr">
+        <div class="gs-inner rev">
             <div class="gs-ident">
                 <div class="gs-ghost" style="font-size:clamp(4rem,8vw,7rem);letter-spacing:-4px;">N&#x2082;O</div>
                 <div class="gs-sym n2o">N&#x2082;O</div>
@@ -1121,7 +1110,7 @@
 
     <!-- ─── TETRAFLUOROMETHANE ────────────────── -->
     <section class="gs" id="gas-cf4">
-        <div class="gs-inner sr">
+        <div class="gs-inner">
             <div class="gs-ident">
                 <div class="gs-ghost" style="font-size:clamp(4rem,8vw,7rem);letter-spacing:-4px;">CF&#x2084;</div>
                 <div class="gs-sym cf4">CF&#x2084;</div>
@@ -1188,7 +1177,7 @@
 
     <!-- ─── TUNGSTEN HEXAFLUORIDE ──────────────── -->
     <section class="gs" id="gas-wf6">
-        <div class="gs-inner rev sr">
+        <div class="gs-inner rev">
             <div class="gs-ident">
                 <div class="gs-ghost" style="font-size:clamp(4rem,8vw,7rem);letter-spacing:-4px;">WF&#x2086;</div>
                 <div class="gs-sym wf6">WF&#x2086;</div>
@@ -1257,22 +1246,22 @@
     <!-- ─── STATS ────────────────────────────────── -->
     <div class="p-stats">
         <div class="p-stats-inner">
-            <div class="p-stat sr">
+            <div class="p-stat">
                 <div class="p-stat-n" data-count="6" data-suffix="N">6N</div>
                 <div class="p-stat-l">Maximum purity grade<br>available (99.9999%)</div>
                 <div class="p-stat-bar" aria-hidden="true"></div>
             </div>
-            <div class="p-stat sr sr-d1">
+            <div class="p-stat">
                 <div class="p-stat-n" data-count="8">8</div>
                 <div class="p-stat-l">High-purity gases<br>in portfolio</div>
                 <div class="p-stat-bar" aria-hidden="true"></div>
             </div>
-            <div class="p-stat sr sr-d2">
+            <div class="p-stat">
                 <div class="p-stat-n" data-count="99" data-suffix="%">99%</div>
                 <div class="p-stat-l">Supply chain<br>on-time reliability</div>
                 <div class="p-stat-bar" aria-hidden="true"></div>
             </div>
-            <div class="p-stat sr sr-d3">
+            <div class="p-stat">
                 <div class="p-stat-n" data-count="500" data-suffix="+">500+</div>
                 <div class="p-stat-l">Satisfied clients<br>worldwide</div>
                 <div class="p-stat-bar" aria-hidden="true"></div>
@@ -1283,8 +1272,8 @@
     <!-- ─── CTA ──────────────────────────────────── -->
     <div class="p-cta-wrap">
         <div class="p-cta">
-            <h2 class="sr">Need a<br>Custom<br>Quotation?</h2>
-            <div class="p-cta-right sr sr-d1">
+            <h2>Need a<br>Custom<br>Quotation?</h2>
+            <div class="p-cta-right">
                 <p>Tell us your required purity grade, cylinder pressure, volume, and delivery location. Our team responds within one business day.</p>
                 <a href="contact.html" class="p-cta-btn">Request a Quote <i class="fas fa-arrow-right"></i></a>
             </div>
@@ -1380,16 +1369,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="script.js"></script>
-    <script>
-        // Scroll reveal
-        const srEls = document.querySelectorAll('.sr');
-        const srObs = new IntersectionObserver(entries => {
-            entries.forEach(e => {
-                if (e.isIntersecting) { e.target.classList.add('in'); srObs.unobserve(e.target); }
-            });
-        }, { threshold: 0.1 });
-        srEls.forEach(el => srObs.observe(el));
-    </script>
     <script>
     /* ── Stats counter animation ─────────────────────────────────────────────── */
     (function () {

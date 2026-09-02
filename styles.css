@@ -3954,17 +3954,6 @@ html {
     }
 }
 
-/* --- Scroll reveal --- */
-.reveal {
-    opacity: 1;
-    transform: none;
-}
-
-.reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
 /* --- Back to top button --- */
 #back-to-top {
     position: fixed;

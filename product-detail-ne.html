@@ -22,7 +22,6 @@
         :root { --accent: #b91c1c; }
         *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
         body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;}
-        .sr{opacity:1;transform:none;} .sr.in{opacity:1;transform:none;}
         .pd-hero{position:relative;background:var(--navy);min-height:100dvh;display:flex;align-items:flex-end;padding-bottom:80px;overflow:hidden;}
         .pd-hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;}
         .pd-ghost{position:absolute;right:-2vw;bottom:-0.1em;font-family:'Outfit',sans-serif;font-size:clamp(18rem,32vw,38rem);font-weight:900;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.06);user-select:none;pointer-events:none;}
@@ -183,7 +182,7 @@
 
 <section class="pd-info-section">
     <div class="pd-info-grid">
-        <div class="pd-info-col sr">
+        <div class="pd-info-col">
             <p class="pd-section-label">Shipping Information</p>
             <div class="pd-data-row"><span class="pd-data-key">UN Number</span><span class="pd-data-val">UN1065</span></div>
             <div class="pd-data-row"><span class="pd-data-key">Hazard Class</span><span class="pd-data-val">Class 2.2</span></div>
@@ -191,7 +190,7 @@
             <div class="pd-data-row"><span class="pd-data-key">Hazard Label</span><span class="pd-data-val">Non-Flammable Gas</span></div>
             <div class="pd-data-row"><span class="pd-data-key">Appearance</span><span class="pd-data-val">Colorless, Odorless Gas</span></div>
         </div>
-        <div class="pd-info-col sr">
+        <div class="pd-info-col">
             <p class="pd-section-label">Technical Data</p>
             <div class="pd-data-row"><span class="pd-data-key">CAS Number</span><span class="pd-data-val">7440-01-9</span></div>
             <div class="pd-data-row"><span class="pd-data-key">Molecular Weight</span><span class="pd-data-val">20.18 g/mol</span></div>
@@ -204,14 +203,14 @@
 
 <section class="pd-about">
     <div class="pd-about-inner">
-        <div class="pd-about-aside sr">
+        <div class="pd-about-aside">
             <p class="pd-section-label">About This Gas</p>
             <h2 class="pd-about-h2">Ne<span>on</span></h2>
             <div class="pd-about-photo">
                 <img src="images/NEON_FIN.png" alt="Airocean Gases neon compressed gas cylinder">
             </div>
         </div>
-        <div class="pd-about-body sr">
+        <div class="pd-about-body">
             <p>Neon is present in Earth's atmosphere at approximately 18.2 parts per million — making it the fifth most abundant gas in air yet still remarkably scarce in practical terms. First isolated in 1898 by Ramsay and Travers alongside krypton and xenon, its name comes from the Greek "neos," meaning new. Despite its rarity, neon's distinctive luminescence and unique atomic properties place it at the heart of several transformative technologies.</p>
             <p>The iconic glow of neon lighting — a vivid red-orange produced when electrical current excites neon atoms in a sealed tube — has shaped the visual language of cities for over a century. More critically, neon is an essential component of the excimer laser systems that drive modern semiconductor manufacturing. ArF (argon fluoride) and KrF (krypton fluoride) excimer lasers, used in deep-ultraviolet (DUV) photolithography, rely on high-purity neon as a diluent gas — present in concentrations of 96% or more in the lasing gas mixture. The sub-nanometer stability demanded by advanced semiconductor nodes makes neon purity a direct determinant of photolithographic accuracy.</p>
             <p>Given neon's critical role in chip manufacturing, supply disruptions have significant downstream impact on global semiconductor output. Airocean Gases maintains robust supply infrastructure and supplies Grade 5.0 neon (99.999% minimum purity) with CGA 580 and CGA 178 valve connections to match all standard process tool configurations.</p>
@@ -243,7 +242,7 @@
 
 <section class="pd-pkg-section">
     <div class="pd-pkg-inner">
-        <h2 class="pd-pkg-title sr">Cylinder &amp; Packaging Options</h2>
+        <h2 class="pd-pkg-title">Cylinder &amp; Packaging Options</h2>
         <div class="pd-pkg-tabs">
             <button class="pd-pkg-tab active" data-pkg="T">T Cylinder</button>
             <button class="pd-pkg-tab" data-pkg="K">K Cylinder</button>
@@ -251,7 +250,7 @@
             <button class="pd-pkg-tab" data-pkg="55">Size 55</button>
             <button class="pd-pkg-tab" data-pkg="R">R Cylinder</button>
         </div>
-        <div class="pd-pkg-content sr">
+        <div class="pd-pkg-content">
             <div class="pd-pkg-panel active" id="pkg-T">
                 <div class="pd-pkg-grid">
                     <div class="pd-pkg-cell"><p class="pd-pkg-cell-label">Type</p><p class="pd-pkg-cell-value">T High-Pressure Cylinder</p></div>
@@ -309,11 +308,11 @@
 
 <section class="pd-cta">
     <div class="pd-cta-inner">
-        <div class="pd-cta-text sr">
+        <div class="pd-cta-text">
             <h2>Request a Quote</h2>
             <p>Our technical sales team is ready to provide pricing, SDS documents, and supply solutions for neon.</p>
         </div>
-        <div class="pd-cta-btns sr">
+        <div class="pd-cta-btns">
             <a href="contact.html" class="pd-btn-primary">Get a Quote</a>
             <a href="sds/Neon_SDS.pdf" class="pd-btn-ghost" target="_blank" rel="noopener">View SDS <i class="fas fa-file-pdf" style="font-size:0.75em;opacity:0.7;"></i></a>
             <a href="coa/Neon_COA.pdf" class="pd-btn-ghost" target="_blank" rel="noopener">View COA <i class="fas fa-file-pdf" style="font-size:0.75em;opacity:0.7;"></i></a>
@@ -427,10 +426,6 @@
             document.getElementById('pkg-' + btn.dataset.pkg).classList.add('active');
         });
     });
-    const obs = new IntersectionObserver((entries) => {
-        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }});
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.sr').forEach(el => obs.observe(el));
 </script>
 
     <!-- ── ENHANCED PARTICLE SYSTEM ── -->

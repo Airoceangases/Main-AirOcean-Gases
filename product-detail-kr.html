@@ -22,9 +22,6 @@
         :root { --accent: #6d28d9; }
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--ink); -webkit-font-smoothing: antialiased; }
-        .sr { opacity: 1; transform: none; }
-        .sr.in { opacity: 1; transform: none; }
-
         /* HERO */
         .pd-hero { position: relative; background: var(--navy); min-height: 100dvh; display: flex; align-items: flex-end; padding-bottom: 80px; overflow: hidden; }
         .pd-hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px); background-size: 48px 48px; pointer-events: none; }
@@ -217,7 +214,7 @@
 <!-- INFO GRID -->
 <section class="pd-info-section">
     <div class="pd-info-grid">
-        <div class="pd-info-col sr">
+        <div class="pd-info-col">
             <p class="pd-section-label">Shipping Information</p>
             <div class="pd-data-row"><span class="pd-data-key">UN Number</span><span class="pd-data-val">UN1056</span></div>
             <div class="pd-data-row"><span class="pd-data-key">Hazard Class</span><span class="pd-data-val">Class 2.2</span></div>
@@ -225,7 +222,7 @@
             <div class="pd-data-row"><span class="pd-data-key">Hazard Label</span><span class="pd-data-val">Non-Flammable Gas</span></div>
             <div class="pd-data-row"><span class="pd-data-key">Appearance</span><span class="pd-data-val">Colorless, Odorless Gas</span></div>
         </div>
-        <div class="pd-info-col sr">
+        <div class="pd-info-col">
             <p class="pd-section-label">Technical Data</p>
             <div class="pd-data-row"><span class="pd-data-key">CAS Number</span><span class="pd-data-val">7439-90-9</span></div>
             <div class="pd-data-row"><span class="pd-data-key">Molecular Weight</span><span class="pd-data-val">83.80 g/mol</span></div>
@@ -239,14 +236,14 @@
 <!-- ABOUT -->
 <section class="pd-about">
     <div class="pd-about-inner">
-        <div class="pd-about-aside sr">
+        <div class="pd-about-aside">
             <p class="pd-section-label">About This Gas</p>
             <h2 class="pd-about-h2">Kryp<span>ton</span></h2>
             <div class="pd-about-photo">
                 <img src="images/KRYPTON_FIN.png" alt="Airocean Gases krypton compressed gas cylinder">
             </div>
         </div>
-        <div class="pd-about-body sr">
+        <div class="pd-about-body">
             <p>Krypton is an inert noble gas present in Earth's atmosphere at approximately 1.1 parts per million. First isolated in 1898 by Sir William Ramsay and Morris Travers through fractional distillation of liquid air, its name derives from the Greek word for "hidden." Its remarkable chemical stability makes it indispensable in applications requiring precise environmental control.</p>
             <p>In the lighting industry, krypton-filled incandescent lamps operate at higher filament temperatures than argon-filled counterparts, delivering superior luminous efficacy and longer operational lifetimes. High-intensity discharge (HID) krypton arc lamps are standard in high-speed photography, stroboscopic measurement instruments, and cinema projection systems.</p>
             <p>In semiconductor manufacturing, high-purity krypton serves as a carrier and shield gas in plasma etch processes, where its mass and ionization characteristics enable controlled material removal at the sub-nanometer scale. Airocean Gases supplies Grade 5.0 krypton (99.999% min. purity) to meet the rigorous demands of semiconductor fabrication, laser development, and precision scientific research.</p>
@@ -280,7 +277,7 @@
 <!-- PACKAGING -->
 <section class="pd-pkg-section">
     <div class="pd-pkg-inner">
-        <h2 class="pd-pkg-title sr">Cylinder & Packaging Options</h2>
+        <h2 class="pd-pkg-title">Cylinder & Packaging Options</h2>
         <div class="pd-pkg-tabs">
             <button class="pd-pkg-tab active" data-pkg="T">T Cylinder</button>
             <button class="pd-pkg-tab" data-pkg="K">K Cylinder</button>
@@ -288,7 +285,7 @@
             <button class="pd-pkg-tab" data-pkg="55">Size 55</button>
             <button class="pd-pkg-tab" data-pkg="R">R Cylinder</button>
         </div>
-        <div class="pd-pkg-content sr">
+        <div class="pd-pkg-content">
             <div class="pd-pkg-panel active" id="pkg-T">
                 <div class="pd-pkg-grid">
                     <div class="pd-pkg-cell"><p class="pd-pkg-cell-label">Type</p><p class="pd-pkg-cell-value">T High-Pressure Cylinder</p></div>
@@ -347,11 +344,11 @@
 <!-- CTA -->
 <section class="pd-cta">
     <div class="pd-cta-inner">
-        <div class="pd-cta-text sr">
+        <div class="pd-cta-text">
             <h2>Request a Quote</h2>
             <p>Our technical sales team is ready to provide pricing, SDS documents, and supply solutions for krypton.</p>
         </div>
-        <div class="pd-cta-btns sr">
+        <div class="pd-cta-btns">
             <a href="contact.html" class="pd-btn-primary">Get a Quote</a>
             <a href="sds/Krypton_SDS.pdf" class="pd-btn-ghost" target="_blank" rel="noopener">View SDS <i class="fas fa-file-pdf" style="font-size:0.75em;opacity:0.7;"></i></a>
             <a href="coa/Krypton_COA.pdf" class="pd-btn-ghost" target="_blank" rel="noopener">View COA <i class="fas fa-file-pdf" style="font-size:0.75em;opacity:0.7;"></i></a>
@@ -466,10 +463,6 @@
             document.getElementById('pkg-' + btn.dataset.pkg).classList.add('active');
         });
     });
-    const obs = new IntersectionObserver((entries) => {
-        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.sr').forEach(el => obs.observe(el));
 </script>
 
     <!-- ── ENHANCED PARTICLE SYSTEM ── -->

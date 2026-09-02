@@ -22,9 +22,6 @@
         :root { --accent: #0e7490; }
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--ink); -webkit-font-smoothing: antialiased; }
-        .sr { opacity: 1; transform: none; }
-        .sr.in { opacity: 1; transform: none; }
-
         /* HERO */
         .pd-hero { position: relative; background: var(--navy); min-height: 100dvh; display: flex; align-items: flex-end; padding-bottom: 80px; overflow: hidden; }
         .pd-hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px); background-size: 48px 48px; pointer-events: none; }
@@ -214,7 +211,7 @@
 <!-- INFO GRID -->
 <section class="pd-info-section">
     <div class="pd-info-grid">
-        <div class="pd-info-col sr">
+        <div class="pd-info-col">
             <p class="pd-section-label">Shipping Information</p>
             <div class="pd-data-row"><span class="pd-data-key">UN Number</span><span class="pd-data-val">UN1080</span></div>
             <div class="pd-data-row"><span class="pd-data-key">Hazard Class</span><span class="pd-data-val">Class 2.2</span></div>
@@ -222,7 +219,7 @@
             <div class="pd-data-row"><span class="pd-data-key">Hazard Label</span><span class="pd-data-val">Non-Flammable Gas</span></div>
             <div class="pd-data-row"><span class="pd-data-key">Appearance</span><span class="pd-data-val">Colorless Gas, Faint Aromatic Odor</span></div>
         </div>
-        <div class="pd-info-col sr">
+        <div class="pd-info-col">
             <p class="pd-section-label">Technical Data</p>
             <div class="pd-data-row"><span class="pd-data-key">CAS Number</span><span class="pd-data-val">2551-62-4</span></div>
             <div class="pd-data-row"><span class="pd-data-key">Molecular Weight</span><span class="pd-data-val">146.05 g/mol</span></div>
@@ -236,11 +233,11 @@
 <!-- ABOUT -->
 <section class="pd-about">
     <div class="pd-about-inner">
-        <div class="pd-about-aside sr">
+        <div class="pd-about-aside">
             <p class="pd-section-label">About This Gas</p>
             <h2 class="pd-about-h2">Sul<span>fur</span><br>Hexa<span>flu</span>oride</h2>
         </div>
-        <div class="pd-about-body sr">
+        <div class="pd-about-body">
             <p>Sulfur hexafluoride is a dense, non-toxic, non-flammable gas with one of the highest dielectric strengths of any known substance — approximately 2.5 times greater than air at equal pressure. This exceptional electrical insulating capability makes it the gas of choice for high-voltage gas-insulated switchgear (GIS), circuit breakers, and transmission substations, where it prevents arcing at voltages exceeding 1,000 kV. Utility operators and grid infrastructure developers across North America depend on high-purity SF₆ to ensure reliable, compact, and low-maintenance electrical installations.</p>
             <p>In semiconductor fabrication, SF₆ serves as a primary plasma etchant for silicon, silicon nitride, and silicon dioxide. Its high fluorine radical yield under plasma conditions enables rapid, highly anisotropic material removal in both MEMS device patterning and advanced logic node patterning. It is also employed as a chamber-cleaning agent in CVD tools, where NF₃ is unavailable or undesirable. Electronic-grade SF₆ (99.9999% min.) meets the stringent trace-moisture and particle specifications demanded by leading-edge fab processes.</p>
             <p>Beyond power and electronics, SF₆ is used as an echocardiographic contrast agent in diagnostic ultrasound — encapsulated in microbubbles, it dramatically improves endocardial border definition during cardiac imaging procedures. Airocean Gases supplies SF₆ across a full range of purity grades from Chemical Pure (99.9%) to Electronic Grade (99.9999%), in cylinder sizes from laboratory samples to bulk tube trailers, backed by full certificates of analysis and same-day SDS access.</p>
@@ -301,7 +298,7 @@
 <!-- PACKAGING -->
 <section class="pd-pkg-section">
     <div class="pd-pkg-inner">
-        <h2 class="pd-pkg-title sr">Cylinder &amp; Packaging Options</h2>
+        <h2 class="pd-pkg-title">Cylinder &amp; Packaging Options</h2>
         <div class="pd-pkg-tabs">
             <button class="pd-pkg-tab active" data-pkg="T">T Cylinder</button>
             <button class="pd-pkg-tab" data-pkg="K">K Cylinder</button>
@@ -310,7 +307,7 @@
             <button class="pd-pkg-tab" data-pkg="55">Size 55</button>
             <button class="pd-pkg-tab" data-pkg="R">R Cylinder</button>
         </div>
-        <div class="pd-pkg-content sr">
+        <div class="pd-pkg-content">
             <div class="pd-pkg-panel active" id="pkg-T">
                 <div class="pd-pkg-grid">
                     <div class="pd-pkg-cell"><p class="pd-pkg-cell-label">Type</p><p class="pd-pkg-cell-value">T High-Pressure Cylinder</p></div>
@@ -379,11 +376,11 @@
 <!-- CTA -->
 <section class="pd-cta">
     <div class="pd-cta-inner">
-        <div class="pd-cta-text sr">
+        <div class="pd-cta-text">
             <h2>Request a Quote</h2>
             <p>Our technical sales team is ready to provide pricing, SDS documents, and supply solutions for sulfur hexafluoride.</p>
         </div>
-        <div class="pd-cta-btns sr">
+        <div class="pd-cta-btns">
             <a href="contact.html" class="pd-btn-primary">Get a Quote</a>
             <a class="pd-btn-ghost" style="opacity:0.35;cursor:not-allowed;pointer-events:none;" aria-disabled="true">SDS Coming Soon</a>
             <a class="pd-btn-ghost" style="opacity:0.35;cursor:not-allowed;pointer-events:none;" aria-disabled="true">COA Coming Soon</a>
@@ -497,10 +494,6 @@
             document.getElementById('pkg-' + btn.dataset.pkg).classList.add('active');
         });
     });
-    const obs = new IntersectionObserver((entries) => {
-        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.sr').forEach(el => obs.observe(el));
 </script>
 
     <!-- ── ENHANCED PARTICLE SYSTEM ── -->

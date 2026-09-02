@@ -22,9 +22,6 @@
         :root { --accent: #a21caf; }
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--ink); -webkit-font-smoothing: antialiased; }
-        .sr { opacity: 1; transform: none; }
-        .sr.in { opacity: 1; transform: none; }
-
         /* HERO */
         .pd-hero { position: relative; background: var(--navy); min-height: 100dvh; display: flex; align-items: flex-end; padding-bottom: 80px; overflow: hidden; }
         .pd-hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px); background-size: 48px 48px; pointer-events: none; }
@@ -240,7 +237,7 @@
 <!-- INFO GRID -->
 <section class="pd-info-section">
     <div class="pd-info-grid">
-        <div class="pd-info-col sr">
+        <div class="pd-info-col">
             <p class="pd-section-label">Shipping Information</p>
             <div class="pd-data-row"><span class="pd-data-key">UN Number</span><span class="pd-data-val">UN2196</span></div>
             <div class="pd-data-row"><span class="pd-data-key">Hazard Class</span><span class="pd-data-val">Class 2.3 (Toxic Gas)</span></div>
@@ -248,7 +245,7 @@
             <div class="pd-data-row"><span class="pd-data-key">Hazard Label</span><span class="pd-data-val">Toxic Gas / Corrosive</span></div>
             <div class="pd-data-row"><span class="pd-data-key">Appearance</span><span class="pd-data-val">Colorless to Pale Yellow</span></div>
         </div>
-        <div class="pd-info-col sr">
+        <div class="pd-info-col">
             <p class="pd-section-label">Technical Data</p>
             <div class="pd-data-row"><span class="pd-data-key">CAS Number</span><span class="pd-data-val">7783-82-6</span></div>
             <div class="pd-data-row"><span class="pd-data-key">Molecular Weight</span><span class="pd-data-val">297.83 g/mol</span></div>
@@ -262,11 +259,11 @@
 <!-- ABOUT -->
 <section class="pd-about">
     <div class="pd-about-inner">
-        <div class="pd-about-aside sr">
+        <div class="pd-about-aside">
             <p class="pd-section-label">About This Gas</p>
             <h2 class="pd-about-h2">Tungsten<br><span>Hexa</span>-<br><span>flu</span>oride</h2>
         </div>
-        <div class="pd-about-body sr">
+        <div class="pd-about-body">
             <p>Tungsten hexafluoride is the dominant precursor gas for chemical vapor deposition of metallic tungsten films in semiconductor manufacturing. With a boiling point of just 17.1 °C, WF₆ exists as a liquid slightly below room temperature and is stored and shipped as a liquefied gas under its own vapor pressure. This near-ambient vapor pressure makes it exceptionally convenient for delivery into CVD reactors at controlled, reproducible flow rates — a critical advantage for uniformity-sensitive deposition processes.</p>
             <p>In W-CVD, WF₆ is reduced by silane (SiH₄) or hydrogen (H₂) at 300–450 °C to deposit conformal tungsten metal. The silane-reduction nucleation step forms thin tungsten nucleation layers on titanium nitride barriers, followed by bulk fill using the hydrogen-reduction reaction. This process fills submicron contact holes and vias with near-void-free tungsten plugs, enabling the vertical interconnect structures that connect transistors across multiple metal layers in advanced DRAM, NAND flash, and leading-edge logic technologies.</p>
             <p>Purity is paramount: metallic impurities such as molybdenum (from precursor synthesis), oxygen-bearing species (WO₂F₂, WOF₄), and moisture must be controlled at or below single-digit ppb levels to prevent junction leakage, contact resistance drift, and particle-induced yield loss. Airocean Gases offers WF₆ at three electronic grades — 5N, 5.5N, and 6N — with full lot traceability, sub-ppb metallic impurity analysis by ICP-MS, and dedicated stainless-steel fill equipment to maintain gas integrity from cylinder to tool.</p>
@@ -370,14 +367,14 @@
 <!-- PACKAGING -->
 <section class="pd-pkg-section">
     <div class="pd-pkg-inner">
-        <h2 class="pd-pkg-title sr">Cylinder &amp; Packaging Options</h2>
+        <h2 class="pd-pkg-title">Cylinder &amp; Packaging Options</h2>
         <div class="pd-pkg-tabs">
             <button class="pd-pkg-tab active" data-pkg="2lb">2.5 lb</button>
             <button class="pd-pkg-tab" data-pkg="5lb">5 lb</button>
             <button class="pd-pkg-tab" data-pkg="10lb">10 lb</button>
             <button class="pd-pkg-tab" data-pkg="25lb">25 lb</button>
         </div>
-        <div class="pd-pkg-content sr">
+        <div class="pd-pkg-content">
             <div class="pd-pkg-panel active" id="pkg-2lb">
                 <div class="pd-pkg-grid">
                     <div class="pd-pkg-cell"><p class="pd-pkg-cell-label">Container Type</p><p class="pd-pkg-cell-value">DOT 3A / 3AA Steel</p></div>
@@ -426,11 +423,11 @@
 <!-- CTA -->
 <section class="pd-cta">
     <div class="pd-cta-inner">
-        <div class="pd-cta-text sr">
+        <div class="pd-cta-text">
             <h2>Request a Quote</h2>
             <p>Our technical sales team is ready to provide pricing, SDS documents, and supply solutions for tungsten hexafluoride.</p>
         </div>
-        <div class="pd-cta-btns sr">
+        <div class="pd-cta-btns">
             <a href="contact.html" class="pd-btn-primary">Get a Quote <i class="fas fa-arrow-right"></i></a>
             <a class="pd-btn-ghost" style="opacity:0.35;cursor:not-allowed;pointer-events:none;" aria-disabled="true">SDS Coming Soon</a>
             <a class="pd-btn-ghost" style="opacity:0.35;cursor:not-allowed;pointer-events:none;" aria-disabled="true">COA Coming Soon</a>
@@ -545,10 +542,6 @@
             document.getElementById('pkg-' + btn.dataset.pkg).classList.add('active');
         });
     });
-    const obs = new IntersectionObserver((entries) => {
-        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.sr').forEach(el => obs.observe(el));
 </script>
 
 <!-- PARTICLE SYSTEM -->

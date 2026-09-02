@@ -22,9 +22,6 @@
         :root { --accent: #be185d; }
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--ink); -webkit-font-smoothing: antialiased; }
-        .sr { opacity: 1; transform: none; }
-        .sr.in { opacity: 1; transform: none; }
-
         /* HERO */
         .pd-hero { position: relative; background: var(--navy); min-height: 100dvh; display: flex; align-items: flex-end; padding-bottom: 80px; overflow: hidden; }
         .pd-hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px); background-size: 48px 48px; pointer-events: none; }
@@ -214,7 +211,7 @@
 <!-- INFO GRID -->
 <section class="pd-info-section">
     <div class="pd-info-grid">
-        <div class="pd-info-col sr">
+        <div class="pd-info-col">
             <p class="pd-section-label">Shipping Information</p>
             <div class="pd-data-row"><span class="pd-data-key">UN Number</span><span class="pd-data-val">UN1982</span></div>
             <div class="pd-data-row"><span class="pd-data-key">Hazard Class</span><span class="pd-data-val">Class 2.2</span></div>
@@ -222,7 +219,7 @@
             <div class="pd-data-row"><span class="pd-data-key">Hazard Label</span><span class="pd-data-val">Non-Flammable Gas</span></div>
             <div class="pd-data-row"><span class="pd-data-key">Appearance</span><span class="pd-data-val">Colorless, Odorless Gas</span></div>
         </div>
-        <div class="pd-info-col sr">
+        <div class="pd-info-col">
             <p class="pd-section-label">Technical Data</p>
             <div class="pd-data-row"><span class="pd-data-key">CAS Number</span><span class="pd-data-val">75-73-0</span></div>
             <div class="pd-data-row"><span class="pd-data-key">Molecular Weight</span><span class="pd-data-val">88.01 g/mol</span></div>
@@ -236,11 +233,11 @@
 <!-- ABOUT -->
 <section class="pd-about">
     <div class="pd-about-inner">
-        <div class="pd-about-aside sr">
+        <div class="pd-about-aside">
             <p class="pd-section-label">About This Gas</p>
             <h2 class="pd-about-h2">Tetra<span>flu</span>oro-<br><span>meth</span>ane</h2>
         </div>
-        <div class="pd-about-body sr">
+        <div class="pd-about-body">
             <p>Tetrafluoromethane — also known as carbon tetrafluoride or R-14 — is a chemically stable, non-flammable perfluorocarbon (PFC) gas with an extremely low boiling point of −127.8 °C. Its exceptional thermal and chemical stability, combined with a high ionization energy, makes it one of the most widely used etch gases in semiconductor plasma processing. CF₄ dissociates in a plasma environment to generate reactive fluorine radicals (F·) and CF₃⁺ ions that aggressively etch silicon-based materials with high selectivity and controllable anisotropy.</p>
             <p>In dry etch applications, CF₄ is employed for patterning silicon, polysilicon, silicon dioxide, and silicon nitride — covering gate, isolation, and inter-layer dielectric (ILD) etch steps across DRAM, NAND flash, and advanced logic technologies. It is also a primary chamber-clean gas in PECVD tools, where plasma-activated CF₄ removes deposited silicon nitride and oxide residues between wafer runs, maintaining tool throughput and film quality. Semiconductor-grade CF₄ (99.999% min.) must meet strict specifications for moisture (&#60; 1 ppmv), oxygen (&#60; 1 ppmv), and total hydrocarbons to avoid contamination of gate stacks and thin dielectric films.</p>
             <p>Beyond semiconductor fabrication, CF₄ is used as a calibration gas for atmospheric infrared spectroscopy monitoring, as a component in specialty gas mixtures for excimer laser operation, and in low-temperature cryogenic research. Airocean Gases supplies semiconductor-grade CF₄ in a full range of cylinder sizes with lot-traceable certificates of analysis, ultra-clean fill procedures, and rapid delivery across North America to support both R&amp;D laboratories and high-volume production fabs.</p>
@@ -274,7 +271,7 @@
 <!-- PACKAGING -->
 <section class="pd-pkg-section">
     <div class="pd-pkg-inner">
-        <h2 class="pd-pkg-title sr">Cylinder &amp; Packaging Options</h2>
+        <h2 class="pd-pkg-title">Cylinder &amp; Packaging Options</h2>
         <div class="pd-pkg-tabs">
             <button class="pd-pkg-tab active" data-pkg="T">T Cylinder</button>
             <button class="pd-pkg-tab" data-pkg="K">K Cylinder</button>
@@ -283,7 +280,7 @@
             <button class="pd-pkg-tab" data-pkg="55">Size 55</button>
             <button class="pd-pkg-tab" data-pkg="R">R Cylinder</button>
         </div>
-        <div class="pd-pkg-content sr">
+        <div class="pd-pkg-content">
             <div class="pd-pkg-panel active" id="pkg-T">
                 <div class="pd-pkg-grid">
                     <div class="pd-pkg-cell"><p class="pd-pkg-cell-label">Type</p><p class="pd-pkg-cell-value">T High-Pressure Cylinder</p></div>
@@ -352,11 +349,11 @@
 <!-- CTA -->
 <section class="pd-cta">
     <div class="pd-cta-inner">
-        <div class="pd-cta-text sr">
+        <div class="pd-cta-text">
             <h2>Request a Quote</h2>
             <p>Our technical sales team is ready to provide pricing, SDS documents, and supply solutions for tetrafluoromethane.</p>
         </div>
-        <div class="pd-cta-btns sr">
+        <div class="pd-cta-btns">
             <a href="contact.html" class="pd-btn-primary">Get a Quote</a>
             <a class="pd-btn-ghost" style="opacity:0.35;cursor:not-allowed;pointer-events:none;" aria-disabled="true">SDS Coming Soon</a>
             <a class="pd-btn-ghost" style="opacity:0.35;cursor:not-allowed;pointer-events:none;" aria-disabled="true">COA Coming Soon</a>
@@ -470,10 +467,6 @@
             document.getElementById('pkg-' + btn.dataset.pkg).classList.add('active');
         });
     });
-    const obs = new IntersectionObserver((entries) => {
-        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.sr').forEach(el => obs.observe(el));
 </script>
 
     <!-- ── ENHANCED PARTICLE SYSTEM ── -->

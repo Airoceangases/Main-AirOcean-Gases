@@ -22,9 +22,6 @@
         :root { --accent: #b45309; }
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--ink); -webkit-font-smoothing: antialiased; }
-        .sr { opacity: 1; transform: none; }
-        .sr.in { opacity: 1; transform: none; }
-
         /* HERO */
         .pd-hero { position: relative; background: var(--navy); min-height: 100dvh; display: flex; align-items: flex-end; padding-bottom: 80px; overflow: hidden; }
         .pd-hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px); background-size: 48px 48px; pointer-events: none; }
@@ -214,7 +211,7 @@
 <!-- INFO GRID -->
 <section class="pd-info-section">
     <div class="pd-info-grid">
-        <div class="pd-info-col sr">
+        <div class="pd-info-col">
             <p class="pd-section-label">Shipping Information</p>
             <div class="pd-data-row"><span class="pd-data-key">UN Number</span><span class="pd-data-val">UN1070</span></div>
             <div class="pd-data-row"><span class="pd-data-key">Hazard Class</span><span class="pd-data-val">Class 2.2 (5.1)</span></div>
@@ -222,7 +219,7 @@
             <div class="pd-data-row"><span class="pd-data-key">Hazard Label</span><span class="pd-data-val">Non-Flammable Gas + Oxidizer</span></div>
             <div class="pd-data-row"><span class="pd-data-key">Appearance</span><span class="pd-data-val">Colorless Gas, Slightly Sweet Odor</span></div>
         </div>
-        <div class="pd-info-col sr">
+        <div class="pd-info-col">
             <p class="pd-section-label">Technical Data</p>
             <div class="pd-data-row"><span class="pd-data-key">CAS Number</span><span class="pd-data-val">10024-97-2</span></div>
             <div class="pd-data-row"><span class="pd-data-key">Molecular Weight</span><span class="pd-data-val">44.013 g/mol</span></div>
@@ -236,11 +233,11 @@
 <!-- ABOUT -->
 <section class="pd-about">
     <div class="pd-about-inner">
-        <div class="pd-about-aside sr">
+        <div class="pd-about-aside">
             <p class="pd-section-label">About This Gas</p>
             <h2 class="pd-about-h2">Ni<span>trous</span><br>Ox<span>ide</span></h2>
         </div>
-        <div class="pd-about-body sr">
+        <div class="pd-about-body">
             <p>Nitrous oxide is a colorless, non-flammable oxidizing gas with a faintly sweet odor. It is one of the most broadly applied specialty gases in North America, spanning medical care, semiconductor manufacturing, food processing, and analytical chemistry. As a liquefied gas stored under its own vapor pressure (~750 psi at 70 °F), it offers exceptional volumetric yield per cylinder — making it cost-effective at scale while maintaining the high purity levels demanded by critical processes.</p>
             <p>In healthcare, nitrous oxide is an established analgesic and anesthetic adjunct used in procedural sedation, dental care, and labor analgesia. Medical-grade N₂O (USP/NF) must meet strict pharmacopoeial purity specifications, with total impurities controlled at the sub-ppm level. Airocean Gases supplies medical-grade nitrous oxide in dedicated DOT-compliant cylinders with full chain-of-custody documentation, supporting ambulatory surgical centers, dental clinics, and hospital anesthesia departments throughout the region.</p>
             <p>In semiconductor fabrication, N₂O is a primary oxidant source for thermal and plasma-enhanced CVD of silicon dioxide and silicon oxynitride gate dielectric films. Its controlled oxidizing potential enables precise stoichiometry tuning in thin-film deposition — critical for sub-10 nm node transistor gate stacks. Electronic-grade N₂O (99.9995% min.) is also used in III-V compound semiconductor epitaxy and MOCVD processes. Airocean Gases maintains dedicated semiconductor-grade inventory with lot-level certificates of analysis and moisture content verified at the ppb level.</p>
@@ -310,7 +307,7 @@
 <!-- PACKAGING -->
 <section class="pd-pkg-section">
     <div class="pd-pkg-inner">
-        <h2 class="pd-pkg-title sr">Cylinder &amp; Packaging Options</h2>
+        <h2 class="pd-pkg-title">Cylinder &amp; Packaging Options</h2>
         <div class="pd-pkg-tabs">
             <button class="pd-pkg-tab active" data-pkg="T">T Cylinder</button>
             <button class="pd-pkg-tab" data-pkg="K">K Cylinder</button>
@@ -319,7 +316,7 @@
             <button class="pd-pkg-tab" data-pkg="55">Size 55</button>
             <button class="pd-pkg-tab" data-pkg="R">R Cylinder</button>
         </div>
-        <div class="pd-pkg-content sr">
+        <div class="pd-pkg-content">
             <div class="pd-pkg-panel active" id="pkg-T">
                 <div class="pd-pkg-grid">
                     <div class="pd-pkg-cell"><p class="pd-pkg-cell-label">Type</p><p class="pd-pkg-cell-value">T High-Pressure Cylinder</p></div>
@@ -388,11 +385,11 @@
 <!-- CTA -->
 <section class="pd-cta">
     <div class="pd-cta-inner">
-        <div class="pd-cta-text sr">
+        <div class="pd-cta-text">
             <h2>Request a Quote</h2>
             <p>Our technical sales team is ready to provide pricing, SDS documents, and supply solutions for nitrous oxide.</p>
         </div>
-        <div class="pd-cta-btns sr">
+        <div class="pd-cta-btns">
             <a href="contact.html" class="pd-btn-primary">Get a Quote</a>
             <a class="pd-btn-ghost" style="opacity:0.35;cursor:not-allowed;pointer-events:none;" aria-disabled="true">SDS Coming Soon</a>
             <a class="pd-btn-ghost" style="opacity:0.35;cursor:not-allowed;pointer-events:none;" aria-disabled="true">COA Coming Soon</a>
@@ -506,10 +503,6 @@
             document.getElementById('pkg-' + btn.dataset.pkg).classList.add('active');
         });
     });
-    const obs = new IntersectionObserver((entries) => {
-        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.sr').forEach(el => obs.observe(el));
 </script>
 
     <!-- ── ENHANCED PARTICLE SYSTEM ── -->

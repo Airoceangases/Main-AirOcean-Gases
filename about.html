@@ -432,9 +432,9 @@
         .ab-leadership { padding: 80px 60px; }
         .ab-leadership-inner { max-width: 1300px; margin: 0 auto; }
         .ab-leadership-sub {
-            font-size: 0.92rem;
-            color: var(--ink-3);
-            font-weight: 300;
+            font-size: 1.05rem;
+            color: var(--xe);
+            font-weight: 400;
         }
 
         .ab-leader {
@@ -613,15 +613,6 @@
         .ab-careers-btn:hover { opacity: 0.82; }
 
         /* ══════════════════════════════
-           SCROLL REVEAL
-        ══════════════════════════════ */
-        .sr {
-            opacity: 1;
-            transform: none;
-        }
-        .sr.in { opacity: 1; transform: none; }
-
-        /* ══════════════════════════════
            RESPONSIVE
         ══════════════════════════════ */
         @media (max-width: 960px) {
@@ -738,7 +729,7 @@
     </section>
 
     <!-- ═══ MISSION ═══ -->
-    <section class="ab-mission sr">
+    <section class="ab-mission">
         <div class="ab-mission-inner">
             <div>
                 <p class="ab-mission-label">Our Mission</p>
@@ -898,7 +889,7 @@
     <!-- ═══ LEADERSHIP ═══ -->
     <section class="ab-leadership">
         <div class="ab-leadership-inner">
-            <div class="ab-section-hd sr">
+            <div class="ab-section-hd">
                 <div>
                     <p class="ab-section-label">Our People</p>
                     <h2 class="ab-section-title">Leadership</h2>
@@ -906,7 +897,7 @@
                 <p class="ab-leadership-sub">Family-owned and operated since 1982.</p>
             </div>
 
-            <div class="ab-leader sr">
+            <div class="ab-leader">
                 <div class="ab-leader-photo">
                     <img src="images/cfo.jpg" alt="Wentao Guo">
                 </div>
@@ -931,7 +922,7 @@
                 </div>
             </div>
 
-            <div class="ab-leader sr">
+            <div class="ab-leader">
                 <div class="ab-leader-photo">
                     <img src="images/ceo.jpg" alt="Wenhao Guo">
                 </div>
@@ -957,7 +948,7 @@
                 </div>
             </div>
 
-            <div class="ab-leader sr">
+            <div class="ab-leader">
                 <div class="ab-leader-photo">
                     <img src="images/cto.png" alt="Jiahao Guo">
                 </div>
@@ -989,7 +980,7 @@
 
     <!-- ═══ CAREERS CTA ═══ -->
     <section class="ab-careers">
-        <div class="ab-careers-inner sr">
+        <div class="ab-careers-inner">
             <div class="ab-careers-photo">
                 <img src="images/about_page_2.jpg" alt="Airocean Gases team">
             </div>
@@ -1044,18 +1035,6 @@
         <i class="fas fa-chevron-up"></i>
     </button>
 
-    <script>
-        (function () {
-            var els = document.querySelectorAll('.sr');
-            if (!els.length) return;
-            var obs = new IntersectionObserver(function (entries) {
-                entries.forEach(function (e) {
-                    if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
-                });
-            }, { threshold: 0.1 });
-            els.forEach(function (el) { obs.observe(el); });
-        })();
-    </script>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",

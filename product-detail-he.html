@@ -22,9 +22,6 @@
         :root { --accent: #047857; }
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--ink); -webkit-font-smoothing: antialiased; }
-        .sr { opacity: 1; transform: none; }
-        .sr.in { opacity: 1; transform: none; }
-
         /* HERO */
         .pd-hero { position: relative; background: var(--navy); min-height: 100dvh; display: flex; align-items: flex-end; padding-bottom: 80px; overflow: hidden; }
         .pd-hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px); background-size: 48px 48px; pointer-events: none; }
@@ -218,7 +215,7 @@
 <!-- INFO GRID -->
 <section class="pd-info-section">
     <div class="pd-info-grid">
-        <div class="pd-info-col sr">
+        <div class="pd-info-col">
             <p class="pd-section-label">Shipping Information</p>
             <div class="pd-data-row"><span class="pd-data-key">UN Number (Gas)</span><span class="pd-data-val">UN1046</span></div>
             <div class="pd-data-row"><span class="pd-data-key">UN Number (Liquid)</span><span class="pd-data-val">UN1963</span></div>
@@ -227,7 +224,7 @@
             <div class="pd-data-row"><span class="pd-data-key">Hazard Label</span><span class="pd-data-val">Non-Flammable Gas</span></div>
             <div class="pd-data-row"><span class="pd-data-key">Appearance</span><span class="pd-data-val">Colorless, Odorless Gas</span></div>
         </div>
-        <div class="pd-info-col sr">
+        <div class="pd-info-col">
             <p class="pd-section-label">Technical Data</p>
             <div class="pd-data-row"><span class="pd-data-key">CAS Number</span><span class="pd-data-val">7440-59-7</span></div>
             <div class="pd-data-row"><span class="pd-data-key">Molecular Weight</span><span class="pd-data-val">4.003 g/mol</span></div>
@@ -242,14 +239,14 @@
 <!-- ABOUT -->
 <section class="pd-about">
     <div class="pd-about-inner">
-        <div class="pd-about-aside sr">
+        <div class="pd-about-aside">
             <p class="pd-section-label">About This Gas</p>
             <h2 class="pd-about-h2">Heli<span>um</span></h2>
             <div class="pd-about-photo">
                 <img src="images/HELIUM_FIN.png" alt="Airocean Gases helium compressed gas cylinder">
             </div>
         </div>
-        <div class="pd-about-body sr">
+        <div class="pd-about-body">
             <p>Helium is the second most abundant element in the universe and the lightest noble gas. Its exceptionally low boiling point of −268.9 °C — just 4.2 K above absolute zero — makes it the only substance capable of maintaining the superconducting state in MRI magnets and particle accelerators. Airocean supplies high-purity helium across eight grades, from industrial 4.5 through ultra-low-impurity 6.0 LC, ensuring the right specification for every downstream application.</p>
             <p>In semiconductor manufacturing, helium serves as a carrier and cooling medium in CVD/PECVD chambers, and as a primary purge gas for quartz-tube diffusion furnaces. Its extraordinary thermal conductivity and inertness allow precise temperature control without chemical interaction with process wafers. High-purity 6.0-grade helium is mandatory for EUV lithography equipment purging to suppress UV absorption by residual oxygen and water vapor.</p>
             <p>Aerospace and defense programs rely on helium to pressure-feed liquid-propellant rocket engines, purge cryogenic tanks, and pre-cool hydrogen fuel systems. Its low density and chemical neutrality make it the gas of choice for helium mass spectrometer leak detection — a technique capable of locating leaks smaller than 10⁻¹⁰ mbar·L/s in vacuum systems, spacecraft structures, and industrial process vessels.</p>
@@ -412,13 +409,13 @@
 <!-- PACKAGING -->
 <section class="pd-pkg-section">
     <div class="pd-pkg-inner">
-        <h2 class="pd-pkg-title sr">Cylinder &amp; Packaging Options</h2>
+        <h2 class="pd-pkg-title">Cylinder &amp; Packaging Options</h2>
         <div class="pd-pkg-tabs">
             <button class="pd-pkg-tab active" data-pkg="al">Aluminum Cylinders (AL)</button>
             <button class="pd-pkg-tab" data-pkg="cs">Steel Cylinders (CS)</button>
             <button class="pd-pkg-tab" data-pkg="pk">Liquid Dewar (PK)</button>
         </div>
-        <div class="pd-pkg-content sr">
+        <div class="pd-pkg-content">
 
             <!-- Aluminum Cylinders -->
             <div class="pd-pkg-panel active" id="pkg-al">
@@ -464,11 +461,11 @@
 <!-- CTA -->
 <section class="pd-cta">
     <div class="pd-cta-inner">
-        <div class="pd-cta-text sr">
+        <div class="pd-cta-text">
             <h2>Request a Quote</h2>
             <p>Our technical sales team is ready to provide pricing, SDS documents, and supply solutions for helium across all eight purity grades.</p>
         </div>
-        <div class="pd-cta-btns sr">
+        <div class="pd-cta-btns">
             <a href="contact.html" class="pd-btn-primary">Get a Quote</a>
             <a href="sds/Helium_SDS.pdf" class="pd-btn-ghost" target="_blank" rel="noopener">View SDS <i class="fas fa-file-pdf" style="font-size:0.75em;opacity:0.7;"></i></a>
             <a href="coa/Helium_COA.pdf" class="pd-btn-ghost" target="_blank" rel="noopener">View COA <i class="fas fa-file-pdf" style="font-size:0.75em;opacity:0.7;"></i></a>
@@ -582,10 +579,6 @@
             document.getElementById('pkg-' + btn.dataset.pkg).classList.add('active');
         });
     });
-    const obs = new IntersectionObserver((entries) => {
-        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.sr').forEach(el => obs.observe(el));
 </script>
 
     <!-- ── ENHANCED PARTICLE SYSTEM ── -->

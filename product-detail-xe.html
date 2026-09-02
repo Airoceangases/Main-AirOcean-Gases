@@ -22,7 +22,6 @@
         :root { --accent: #1d4ed8; }
         *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
         body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;}
-        .sr{opacity:1;transform:none;} .sr.in{opacity:1;transform:none;}
         .pd-hero{position:relative;background:var(--navy);min-height:100dvh;display:flex;align-items:flex-end;padding-bottom:80px;overflow:hidden;}
         .pd-hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;}
         .pd-ghost{position:absolute;right:-2vw;bottom:-0.1em;font-family:'Outfit',sans-serif;font-size:clamp(18rem,32vw,38rem);font-weight:900;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.06);user-select:none;pointer-events:none;}
@@ -183,7 +182,7 @@
 
 <section class="pd-info-section">
     <div class="pd-info-grid">
-        <div class="pd-info-col sr">
+        <div class="pd-info-col">
             <p class="pd-section-label">Shipping Information</p>
             <div class="pd-data-row"><span class="pd-data-key">UN Number</span><span class="pd-data-val">UN2036</span></div>
             <div class="pd-data-row"><span class="pd-data-key">Hazard Class</span><span class="pd-data-val">Class 2.2</span></div>
@@ -191,7 +190,7 @@
             <div class="pd-data-row"><span class="pd-data-key">Hazard Label</span><span class="pd-data-val">Non-Flammable Gas</span></div>
             <div class="pd-data-row"><span class="pd-data-key">Appearance</span><span class="pd-data-val">Colorless, Odorless Gas</span></div>
         </div>
-        <div class="pd-info-col sr">
+        <div class="pd-info-col">
             <p class="pd-section-label">Technical Data</p>
             <div class="pd-data-row"><span class="pd-data-key">CAS Number</span><span class="pd-data-val">7440-63-3</span></div>
             <div class="pd-data-row"><span class="pd-data-key">Molecular Weight</span><span class="pd-data-val">131.29 g/mol</span></div>
@@ -204,14 +203,14 @@
 
 <section class="pd-about">
     <div class="pd-about-inner">
-        <div class="pd-about-aside sr">
+        <div class="pd-about-aside">
             <p class="pd-section-label">About This Gas</p>
             <h2 class="pd-about-h2">Xe<span>non</span></h2>
             <div class="pd-about-photo">
                 <img src="images/XENON_FIN.png" alt="Airocean Gases xenon compressed gas cylinder">
             </div>
         </div>
-        <div class="pd-about-body sr">
+        <div class="pd-about-body">
             <p>Xenon is one of the rarest stable elements in Earth's atmosphere, present at only 87 parts per billion by volume — earning it the designation "the golden gas" among rare gas specialists. Discovered in 1898 by Ramsay and Travers, its name derives from the Greek word for "stranger." Its exceptional density, high atomic cross-section, and chemical inertness make it uniquely valuable across some of the most demanding technological applications on earth and beyond.</p>
             <p>In aerospace, xenon is the propellant of choice for ion propulsion systems (Hall-effect and gridded ion thrusters), powering attitude control and station-keeping for commercial satellites and deep-space probes. Its superior specific impulse — compared to conventional chemical propellants — translates directly into payload mass savings and extended mission life. Xenon has been selected for major space programs including NASA's Dawn and ESA's SMART-1 missions.</p>
             <p>In semiconductor manufacturing, high-purity xenon is employed in excimer laser systems for deep-ultraviolet photolithography and as a process gas in plasma etch chambers. In medicine, xenon serves as an inhaled anesthetic with a favorable safety profile: it requires no hepatic metabolism, produces rapid emergence, and offers neuroprotective properties under investigation for cardiac and neurological applications. Airocean Gases supplies Grade 5.0 (99.999%) and Grade 6.0 (99.9999%) xenon to meet the strictest industry requirements.</p>
@@ -252,13 +251,13 @@
 
 <section class="pd-pkg-section">
     <div class="pd-pkg-inner">
-        <h2 class="pd-pkg-title sr">Cylinder &amp; Packaging Options</h2>
+        <h2 class="pd-pkg-title">Cylinder &amp; Packaging Options</h2>
         <div class="pd-pkg-tabs">
             <button class="pd-pkg-tab active" data-pkg="T">T Cylinder</button>
             <button class="pd-pkg-tab" data-pkg="K">K Cylinder</button>
             <button class="pd-pkg-tab" data-pkg="Q">Q Cylinder</button>
         </div>
-        <div class="pd-pkg-content sr">
+        <div class="pd-pkg-content">
             <div class="pd-pkg-panel active" id="pkg-T">
                 <div class="pd-pkg-grid">
                     <div class="pd-pkg-cell"><p class="pd-pkg-cell-label">Type</p><p class="pd-pkg-cell-value">T High-Pressure Cylinder</p></div>
@@ -296,11 +295,11 @@
 
 <section class="pd-cta">
     <div class="pd-cta-inner">
-        <div class="pd-cta-text sr">
+        <div class="pd-cta-text">
             <h2>Request a Quote</h2>
             <p>Our technical sales team is ready to provide pricing, SDS documents, and supply solutions for xenon.</p>
         </div>
-        <div class="pd-cta-btns sr">
+        <div class="pd-cta-btns">
             <a href="contact.html" class="pd-btn-primary">Get a Quote</a>
             <a href="sds/Xenon_SDS.pdf" class="pd-btn-ghost" target="_blank" rel="noopener">View SDS <i class="fas fa-file-pdf" style="font-size:0.75em;opacity:0.7;"></i></a>
             <a href="coa/Xenon_COA.pdf" class="pd-btn-ghost" target="_blank" rel="noopener">View COA <i class="fas fa-file-pdf" style="font-size:0.75em;opacity:0.7;"></i></a>
@@ -414,10 +413,6 @@
             document.getElementById('pkg-' + btn.dataset.pkg).classList.add('active');
         });
     });
-    const obs = new IntersectionObserver((entries) => {
-        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }});
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.sr').forEach(el => obs.observe(el));
 </script>
 
     <!-- ── ENHANCED PARTICLE SYSTEM ── -->

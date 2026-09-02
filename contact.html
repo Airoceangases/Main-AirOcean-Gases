@@ -467,13 +467,6 @@
             display: block;
         }
 
-        /* ── Scroll reveal ── */
-        .sr {
-            opacity: 1;
-            transform: none;
-        }
-        .sr.in { opacity: 1; transform: none; }
-
         /* ── Responsive ── */
         @media (max-width: 960px) {
             .ct-hero-inner       { grid-template-columns: 1fr; }
@@ -607,7 +600,7 @@
     </div>
 
     <!-- ── Main: info + form ── -->
-    <section class="ct-main sr">
+    <section class="ct-main">
         <div class="ct-main-inner">
 
             <!-- Left: contact info -->
@@ -745,7 +738,7 @@
     </section>
 
     <!-- ── Map ── -->
-    <div class="ct-map sr">
+    <div class="ct-map">
         <div class="ct-map-inner">
             <div class="ct-map-header">
                 <div>
@@ -828,21 +821,6 @@
     }
     </script>
     <script src="script.js"></script>
-
-    <!-- Scroll reveal -->
-    <script>
-        const srEls = document.querySelectorAll('.sr');
-        if ('IntersectionObserver' in window) {
-            const obs = new IntersectionObserver(entries => {
-                entries.forEach(e => {
-                    if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
-                });
-            }, { threshold: 0.08 });
-            srEls.forEach(el => obs.observe(el));
-        } else {
-            srEls.forEach(el => el.classList.add('in'));
-        }
-    </script>
 
     <!-- EmailJS form submission — logic preserved exactly -->
     <script type="text/javascript">

@@ -455,13 +455,6 @@
         }
         .af-btn[data-industry].active { color: var(--ink); border-bottom-color: var(--ink); }
 
-        /* ── Scroll reveal ── */
-        .sr {
-            opacity: 1;
-            transform: none;
-        }
-        .sr.in { opacity: 1; transform: none; }
-
         /* ── Responsive ── */
         @media (max-width: 960px) {
             .ap-grid { grid-template-columns: repeat(2, 1fr); }
@@ -653,7 +646,7 @@
             <span class="ap-result-count" id="apCount">26 Applications</span>
         </div>
         <div class="ap-grid-wrap">
-            <div class="ap-grid sr" id="apGrid">
+            <div class="ap-grid" id="apGrid">
 
                 <!-- 01 Semiconductors -->
                 <div class="ac" data-gases="kr ne xe he" data-industry="semiconductor" style="--gas-color:var(--kr)">
@@ -1114,7 +1107,7 @@
     </section>
 
     <!-- ── Stats strip ── -->
-    <div class="ap-stats sr">
+    <div class="ap-stats">
         <div class="ap-stats-inner">
             <div class="ap-stat">
                 <div class="ap-stat-num" data-count="26">26</div>
@@ -1135,7 +1128,7 @@
     </div>
 
     <!-- ── CTA ── -->
-    <section class="ap-cta sr">
+    <section class="ap-cta">
         <div class="ap-cta-inner">
             <div>
                 <p class="ap-cta-eyebrow">Precision Supply · Expert Consultation</p>
@@ -1252,21 +1245,6 @@
             });
         });
 
-        // ── Scroll reveal ──
-        const srEls = document.querySelectorAll('.sr');
-        if ('IntersectionObserver' in window) {
-            const obs = new IntersectionObserver(entries => {
-                entries.forEach(e => {
-                    if (e.isIntersecting) {
-                        e.target.classList.add('in');
-                        obs.unobserve(e.target);
-                    }
-                });
-            }, { threshold: 0.08 });
-            srEls.forEach(el => obs.observe(el));
-        } else {
-            srEls.forEach(el => el.classList.add('in'));
-        }
     </script>
 
     <script>
