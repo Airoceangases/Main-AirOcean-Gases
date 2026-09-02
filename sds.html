@@ -880,29 +880,6 @@
     })();
     </script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="script.js"></script>
-    <script>
-        gsap.registerPlugin(ScrollTrigger);
-
-        /* ── Available cards — fade only, no y offset to avoid staircase ── */
-        gsap.from('#sds-available .sds-card', {
-            scrollTrigger: { trigger: '#sds-available', start: 'top 82%' },
-            opacity: 0, duration: 0.5, stagger: 0.08, ease: 'power2.out'
-        });
-
-        /* ── Pending cards ── */
-        gsap.from('#sds-pending .sds-card', {
-            scrollTrigger: { trigger: '#sds-pending', start: 'top 82%' },
-            opacity: 0, duration: 0.5, stagger: 0.08, ease: 'power2.out'
-        });
-
-        /* ── CTA banner ── */
-        gsap.from('#sds-cta', {
-            scrollTrigger: { trigger: '#sds-cta', start: 'top 85%' },
-            opacity: 0, duration: 0.5, ease: 'power2.out'
-        });
-    </script>
 </body>
 </html>
