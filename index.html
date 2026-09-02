@@ -425,17 +425,31 @@
         .hm-gawda-badge {
             display: inline-flex;
             align-items: center;
-            gap: 7px;
-            padding: 5px 13px 5px 10px;
+            gap: 9px;
+            padding: 8px 18px 8px 14px;
             border: 1px solid var(--rule);
-            font-size: 0.68rem;
+            font-size: 0.8rem;
             font-weight: 700;
             letter-spacing: 0.12em;
             text-transform: uppercase;
-            color: var(--ink-3);
+            color: var(--xe);
             margin-top: 18px;
         }
-        .hm-gawda-badge i { font-size: 0.75rem; color: var(--n2o); }
+        .hm-gawda-badge i { font-size: 0.9rem; color: var(--xe); }
+        .hm-inv-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 8px 18px 8px 14px;
+            border: 1px solid var(--rule);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--xe);
+            margin-top: 18px;
+        }
+        .hm-inv-badge i { font-size: 0.9rem; color: var(--xe); }
         .hm-svc-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -484,7 +498,6 @@
         .hm-industries {
             background: var(--bg);
             padding: 96px 0 0;
-            border-top: 1px solid var(--rule);
         }
         .hm-ind-bento {
             margin-top: 52px;
@@ -599,7 +612,6 @@
         .hm-guarantee {
             background: var(--bg);
             padding: 96px 0 0;
-            border-top: 1px solid var(--rule);
         }
         .hm-guarantee .hm-inner { padding-bottom: 80px; }
         .hm-gtee-eyebrow {
@@ -625,39 +637,53 @@
             font-weight: 300;
             max-width: 520px;
         }
-        .hm-gtee-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
+        .hm-gallery-bento {
             margin-top: 52px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: 260px 220px;
+            gap: 1px;
+            background: var(--rule);
         }
-        .hm-gtee-card {
+        .hm-gallery-hero { grid-column: span 2; }
+        .hm-gallery-tall { grid-column: 4; grid-row: span 2; }
+        .hm-gallery-bento .hm-gallery-tile:nth-child(2) { grid-column: 3; grid-row: 1; }
+        .hm-gallery-bento .hm-gallery-tile:nth-child(3) { grid-column: 3; grid-row: 2; }
+        .hm-gallery-tile {
+            display: flex;
+            flex-direction: column;
             background: #fff;
-            padding: 36px 32px;
-            border-top: 3px solid var(--gtee-accent, var(--rule));
-            transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+            transition: box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
         }
-        .hm-gtee-card:hover {
-            transform: translateY(-3px);
+        .hm-gallery-tile:hover {
             box-shadow: 0 12px 36px rgba(8,15,29,0.08);
+            z-index: 2;
         }
-        .hm-gtee-icon {
-            font-size: 1.1rem;
-            color: var(--gtee-accent, var(--ink-3));
-            margin-bottom: 20px;
+        .hm-gallery-photo {
+            position: relative;
+            flex: 1;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            background-color: var(--bg-2);
         }
-        .hm-gtee-card-title {
-            font-size: 0.95rem;
+        .hm-gallery-caption {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 20px;
+            border-top: 1px solid var(--rule);
+        }
+        .hm-gallery-icon {
+            font-size: 0.85rem;
+            color: var(--gal-accent, var(--ink-3));
+            flex-shrink: 0;
+        }
+        .hm-gallery-caption span {
+            font-size: 0.85rem;
             font-weight: 600;
-            color: var(--ink);
             letter-spacing: -0.01em;
-            margin-bottom: 9px;
-        }
-        .hm-gtee-card-text {
-            font-size: 0.8rem;
-            color: var(--ink-2);
-            line-height: 1.7;
-            font-weight: 300;
+            color: var(--ink);
         }
 
         /* Stats strip */
@@ -760,6 +786,10 @@
             .hm-gases-grid { /* flex scroll — no grid override needed */ }
             .hm-ind-bento { grid-template-columns: repeat(2, 1fr); grid-template-rows: 340px 260px 260px; }
             .hm-ind-large { grid-column: span 2; }
+            .hm-gallery-bento { grid-template-columns: repeat(2, 1fr); grid-template-rows: 260px; grid-auto-rows: 220px; }
+            .hm-gallery-tall { grid-column: auto; grid-row: auto; }
+            .hm-gallery-bento .hm-gallery-tile:nth-child(2),
+            .hm-gallery-bento .hm-gallery-tile:nth-child(3) { grid-column: auto; grid-row: auto; }
             .hm-stats-inner { grid-template-columns: repeat(2, 1fr); }
             .hm-stat { border-bottom: 1px solid rgba(255,255,255,0.07); }
             .hm-stat:nth-child(2) { border-right: none; }
@@ -785,7 +815,9 @@
             .hm-ind-large { grid-column: span 1; }
             .hm-ind-card { min-height: 240px; }
             .hm-guarantee { padding: 64px 0 0; }
-            .hm-gtee-grid { grid-template-columns: 1fr; }
+            .hm-gallery-bento { grid-template-columns: 1fr; grid-template-rows: none; grid-auto-rows: auto; }
+            .hm-gallery-hero { grid-column: span 1; }
+            .hm-gallery-tile { min-height: 220px; }
             .hm-stats-inner { grid-template-columns: 1fr 1fr; padding: 0 20px; }
             .hm-stat { padding: 32px 20px; }
             .hm-stat:first-child { padding-left: 20px; }
@@ -1094,74 +1126,63 @@
     </section>
 
     <!-- ══════════════════════════════════
-         SERVICES
+         OUR GUARANTEE — VISUAL PROOF
     ══════════════════════════════════ -->
-    <section class="hm-services reveal">
+    <section class="hm-guarantee reveal">
         <div class="hm-inner">
             <div class="hm-section-header split">
                 <div>
-                    <p class="hm-eyebrow">Our Capabilities</p>
-                    <h2 class="hm-section-title">Commitment to<br>Excellence</h2>
-                    <div class="hm-gawda-badge">
-                        <i class="fas fa-certificate"></i> GAWDA Member
+                    <p class="hm-gtee-eyebrow">Our Guarantee</p>
+                    <h2 class="hm-gtee-title">See It For<br>Yourself</h2>
+                    <div class="hm-inv-badge">
+                        <i class="fas fa-warehouse"></i> Pennsylvania Inventory
                     </div>
                 </div>
-                <p class="hm-section-sub">As a GAWDA-member supplier, we deliver comprehensive specialty gas solutions — backed by certified documentation, deep application expertise, and a supply chain built for demanding industries.</p>
+                <p class="hm-gtee-sub">A look inside our cylinder inventory, industry partnerships, and packaging operations — the real facilities and people behind every certified cylinder.</p>
             </div>
 
-            <div class="hm-svc-grid">
-                <div class="hm-svc-item" style="--svc-accent:var(--kr)">
-                    <div class="hm-svc-num">01</div>
-                    <h3 class="hm-svc-title">
-                        <i class="fas fa-atom hm-svc-icon"></i>
-                        Ultra-High Purity Manufacturing
-                    </h3>
-                    <p class="hm-svc-text">Our gases are produced and verified to 4N–6N purity grades (99.99%–99.9999%), meeting the stringent specifications required by semiconductor fabrication, medical imaging, and aerospace propulsion systems.</p>
+            <div class="hm-gallery-bento">
+                <div class="hm-gallery-tile hm-gallery-hero" style="--gal-accent:var(--ne)">
+                    <div class="hm-gallery-photo" style="background-image:url('images/gallery-neon-warehouse.jpg')"></div>
+                    <div class="hm-gallery-caption">
+                        <i class="fas fa-warehouse hm-gallery-icon"></i>
+                        <span>Neon Cylinder Inventory</span>
+                    </div>
                 </div>
-
-                <div class="hm-svc-item" style="--svc-accent:var(--he)">
-                    <div class="hm-svc-num">02</div>
-                    <h3 class="hm-svc-title">
-                        <i class="fas fa-file-alt hm-svc-icon"></i>
-                        CoA & SDS on Every Shipment
-                    </h3>
-                    <p class="hm-svc-text">Every cylinder ships with a Certificate of Analysis documenting measured impurity levels and a Safety Data Sheet — giving your team full traceability and compliance documentation from day one.</p>
+                <div class="hm-gallery-tile" style="--gal-accent:var(--kr)">
+                    <div class="hm-gallery-photo" style="background-image:url('images/gallery-krypton.jpg')"></div>
+                    <div class="hm-gallery-caption">
+                        <i class="fas fa-warehouse hm-gallery-icon"></i>
+                        <span>Krypton Cylinder Inventory</span>
+                    </div>
                 </div>
-
-                <div class="hm-svc-item" style="--svc-accent:var(--xe)">
-                    <div class="hm-svc-num">03</div>
-                    <h3 class="hm-svc-title">
-                        <i class="fas fa-microchip hm-svc-icon"></i>
-                        Application-Specific Expertise
-                    </h3>
-                    <p class="hm-svc-text">Deep technical knowledge across semiconductor, medical, and aerospace applications — we help you select the right gas grade and purity specification for your exact process requirements, not just the closest available option.</p>
+                <div class="hm-gallery-tile" style="--gal-accent:var(--n2o)">
+                    <div class="hm-gallery-photo" style="background-image:url('images/gallery-cages.jpg')"></div>
+                    <div class="hm-gallery-caption">
+                        <i class="fas fa-truck hm-gallery-icon"></i>
+                        <span>Packaging & Transport</span>
+                    </div>
                 </div>
-
-                <div class="hm-svc-item" style="--svc-accent:var(--n2o)">
-                    <div class="hm-svc-num">04</div>
-                    <h3 class="hm-svc-title">
-                        <i class="fas fa-globe hm-svc-icon"></i>
-                        Reliable Global Supply Chain
-                    </h3>
-                    <p class="hm-svc-text">99% supply chain reliability and 95% on-time delivery rate across international freight routes — with consistent sourcing for rare noble gases that many suppliers cannot reliably stock.</p>
+                <div class="hm-gallery-tile hm-gallery-tall" style="--gal-accent:var(--sf6)">
+                    <div class="hm-gallery-photo" style="background-image:url('images/gallery-gawda-handshake.jpg')"></div>
+                    <div class="hm-gallery-caption">
+                        <i class="fas fa-handshake hm-gallery-icon"></i>
+                        <span>GAWDA Member & Partnerships</span>
+                    </div>
                 </div>
-
-                <div class="hm-svc-item" style="--svc-accent:var(--sf6)">
-                    <div class="hm-svc-num">05</div>
-                    <h3 class="hm-svc-title">
-                        <i class="fas fa-shield-alt hm-svc-icon"></i>
-                        Safe Handling & Certified Packaging
-                    </h3>
-                    <p class="hm-svc-text">Specialty and cryogenic gases require more than standard logistics. Our packaging and transport protocols meet international hazardous materials regulations, ensuring safe arrival and integrity of every cylinder.</p>
+                <div class="hm-gallery-tile" style="--gal-accent:var(--xe)">
+                    <div class="hm-gallery-photo" style="background-image:url('images/gallery-xenon.jpg')"></div>
+                    <div class="hm-gallery-caption">
+                        <i class="fas fa-warehouse hm-gallery-icon"></i>
+                        <span>Xenon Cylinder Inventory</span>
+                    </div>
                 </div>
-
-                <div class="hm-svc-item" style="--svc-accent:var(--cf4)">
-                    <div class="hm-svc-num">06</div>
-                    <h3 class="hm-svc-title">
-                        <i class="fas fa-headset hm-svc-icon"></i>
-                        Technical Consultation & Custom Sourcing
-                    </h3>
-                    <p class="hm-svc-text">From initial inquiry to long-term supply agreements — our team provides hands-on consultation, custom volume sourcing, and responsive support for procurement teams and process engineers alike.</p>
+                <div class="hm-gallery-tile" style="--gal-accent:var(--he)">
+                    <div class="hm-gallery-photo" style="background-image:url('images/gallery-helium.jpg')"></div>
+                    <div class="hm-gallery-caption">
+                        <i class="fas fa-warehouse hm-gallery-icon"></i>
+                        <span>Helium Cylinder Inventory</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1273,51 +1294,79 @@
     </section>
 
     <!-- ══════════════════════════════════
-         OUR GUARANTEE
+         SERVICES
     ══════════════════════════════════ -->
-    <section class="hm-guarantee reveal">
+    <section class="hm-services reveal">
         <div class="hm-inner">
             <div class="hm-section-header split">
                 <div>
-                    <p class="hm-gtee-eyebrow">Our Guarantee</p>
-                    <h2 class="hm-gtee-title">Built on<br>Accountability</h2>
+                    <p class="hm-eyebrow">Our Capabilities</p>
+                    <h2 class="hm-section-title">Commitment to<br>Excellence</h2>
+                    <div class="hm-gawda-badge">
+                        <i class="fas fa-certificate"></i> GAWDA Member
+                    </div>
                 </div>
-                <p class="hm-gtee-sub">Every order is backed by documentation, traceability, and a commitment to purity that holds up to the most demanding quality audits.</p>
+                <p class="hm-section-sub">As a GAWDA-member supplier, we deliver comprehensive specialty gas solutions — backed by certified documentation, deep application expertise, and a supply chain built for demanding industries.</p>
             </div>
 
-            <div class="hm-gtee-grid">
-                <div class="hm-gtee-card" style="--gtee-accent:var(--kr)">
-                    <div class="hm-gtee-icon"><i class="fas fa-atom"></i></div>
-                    <div class="hm-gtee-card-title">Purity Verified, Every Batch</div>
-                    <p class="hm-gtee-card-text">Each production lot is analytically tested to confirm purity grade — from 4N to 6N — before leaving our facility.</p>
+            <div class="hm-svc-grid">
+                <div class="hm-svc-item" style="--svc-accent:var(--kr)">
+                    <div class="hm-svc-num">01</div>
+                    <h3 class="hm-svc-title">
+                        <i class="fas fa-atom hm-svc-icon"></i>
+                        Ultra-High Purity Manufacturing
+                    </h3>
+                    <p class="hm-svc-text">Our gases are produced and verified to 4N–6N purity grades (99.99%–99.9999%), meeting the stringent specifications required by semiconductor fabrication, medical imaging, and aerospace propulsion systems.</p>
                 </div>
-                <div class="hm-gtee-card" style="--gtee-accent:var(--he)">
-                    <div class="hm-gtee-icon"><i class="fas fa-file-alt"></i></div>
-                    <div class="hm-gtee-card-title">Certificate of Analysis</div>
-                    <p class="hm-gtee-card-text">Every cylinder ships with a CoA documenting actual measured impurity levels — not just nominal specifications.</p>
+
+                <div class="hm-svc-item" style="--svc-accent:var(--he)">
+                    <div class="hm-svc-num">02</div>
+                    <h3 class="hm-svc-title">
+                        <i class="fas fa-file-alt hm-svc-icon"></i>
+                        CoA & SDS on Every Shipment
+                    </h3>
+                    <p class="hm-svc-text">Every cylinder ships with a Certificate of Analysis documenting measured impurity levels and a Safety Data Sheet — giving your team full traceability and compliance documentation from day one.</p>
                 </div>
-                <div class="hm-gtee-card" style="--gtee-accent:var(--xe)">
-                    <div class="hm-gtee-icon"><i class="fas fa-shield-alt"></i></div>
-                    <div class="hm-gtee-card-title">SDS Compliant</div>
-                    <p class="hm-gtee-card-text">Safety Data Sheets meeting OSHA HazCom and North American regulatory requirements included with every order.</p>
+
+                <div class="hm-svc-item" style="--svc-accent:var(--xe)">
+                    <div class="hm-svc-num">03</div>
+                    <h3 class="hm-svc-title">
+                        <i class="fas fa-microchip hm-svc-icon"></i>
+                        Application-Specific Expertise
+                    </h3>
+                    <p class="hm-svc-text">Deep technical knowledge across semiconductor, medical, and aerospace applications — we help you select the right gas grade and purity specification for your exact process requirements, not just the closest available option.</p>
                 </div>
-                <div class="hm-gtee-card" style="--gtee-accent:var(--n2o)">
-                    <div class="hm-gtee-icon"><i class="fas fa-certificate"></i></div>
-                    <div class="hm-gtee-card-title">GAWDA Member</div>
-                    <p class="hm-gtee-card-text">As a Gases and Welding Distributors Association member, we operate under North America's recognized industry standards and accountability framework.</p>
+
+                <div class="hm-svc-item" style="--svc-accent:var(--n2o)">
+                    <div class="hm-svc-num">04</div>
+                    <h3 class="hm-svc-title">
+                        <i class="fas fa-globe hm-svc-icon"></i>
+                        Reliable Global Supply Chain
+                    </h3>
+                    <p class="hm-svc-text">99% supply chain reliability and 95% on-time delivery rate across international freight routes — with consistent sourcing for rare noble gases that many suppliers cannot reliably stock.</p>
                 </div>
-                <div class="hm-gtee-card" style="--gtee-accent:var(--sf6)">
-                    <div class="hm-gtee-icon"><i class="fas fa-search"></i></div>
-                    <div class="hm-gtee-card-title">Full Lot Traceability</div>
-                    <p class="hm-gtee-card-text">Every cylinder is traceable from production source to your facility — enabling root-cause analysis if your quality audit ever requires it.</p>
+
+                <div class="hm-svc-item" style="--svc-accent:var(--sf6)">
+                    <div class="hm-svc-num">05</div>
+                    <h3 class="hm-svc-title">
+                        <i class="fas fa-shield-alt hm-svc-icon"></i>
+                        Safe Handling & Certified Packaging
+                    </h3>
+                    <p class="hm-svc-text">Specialty and cryogenic gases require more than standard logistics. Our packaging and transport protocols meet international hazardous materials regulations, ensuring safe arrival and integrity of every cylinder.</p>
                 </div>
-                <div class="hm-gtee-card" style="--gtee-accent:var(--cf4)">
-                    <div class="hm-gtee-icon"><i class="fas fa-headset"></i></div>
-                    <div class="hm-gtee-card-title">24-Hour Response Commitment</div>
-                    <p class="hm-gtee-card-text">Technical and procurement questions answered within 24 hours — from first inquiry through long-term supply.</p>
+
+                <div class="hm-svc-item" style="--svc-accent:var(--cf4)">
+                    <div class="hm-svc-num">06</div>
+                    <h3 class="hm-svc-title">
+                        <i class="fas fa-headset hm-svc-icon"></i>
+                        Technical Consultation & Custom Sourcing
+                    </h3>
+                    <p class="hm-svc-text">From initial inquiry to long-term supply agreements — our team provides hands-on consultation, custom volume sourcing, and responsive support for procurement teams and process engineers alike.</p>
                 </div>
             </div>
         </div>
+    </section>
+
 
         <div class="hm-stats">
             <div class="hm-stats-inner">
@@ -1343,7 +1392,6 @@
                 </div>
             </div>
         </div>
-    </section>
 
     <!-- ══════════════════════════════════
          CTA BAND
@@ -1508,23 +1556,11 @@
                     return;
                 }
 
-                /* Initial hidden state */
-                gsap.set(statNums, { opacity: 0, y: 20 });
-
                 ScrollTrigger.create({
                     trigger: '.hm-stats',
                     start:   'top 78%',
                     once:    true,
                     onEnter() {
-                        /* Staggered reveal of each stat block */
-                        gsap.to(statNums, {
-                            opacity:  1,
-                            y:        0,
-                            duration: 0.65,
-                            ease:     'power3.out',
-                            stagger:  0.1
-                        });
-
                         /* Individual counters + accent bars */
                         statNums.forEach((el, i) => {
                             const target = parseFloat(el.dataset.count);

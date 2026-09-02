@@ -1,51 +1,85 @@
 
 // ─── Slider ───────────────────────────────────────────────────────────────────
-const slider   = document.querySelector('.hero-slider');
-const slides   = document.querySelectorAll('.hero-slide');
-const prevBtn  = document.querySelector('.prev-btn');
-const nextBtn  = document.querySelector('.next-btn');
-const dots     = document.querySelectorAll('.dot');
+// Infinite loop via leading/trailing clones, so wrapping (last → first,
+// first → last) always continues sliding in the same direction instead of
+// snapping backward.
+const slider  = document.querySelector('.hero-slider');
+const slides  = document.querySelectorAll('.hero-slide');
+const prevBtn = document.querySelector('.prev-btn');
+const nextBtn = document.querySelector('.next-btn');
+const dots    = document.querySelectorAll('.dot');
 
-let currentIndex = 0;
+if (slider && slides.length > 1) {
+    const total = slides.length;
 
-function updateSlider() {
-    if (slider) slider.style.transform = `translateX(-${currentIndex * (100 / slides.length)}%)`;
-    dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
-}
+    const firstClone = slides[0].cloneNode(true);
+    const lastClone   = slides[total - 1].cloneNode(true);
+    [firstClone, lastClone].forEach(clone => {
+        clone.setAttribute('aria-hidden', 'true');
+        clone.setAttribute('inert', '');
+    });
+    slider.appendChild(firstClone);
+    slider.insertBefore(lastClone, slides[0]);
 
-if (prevBtn) prevBtn.addEventListener('click', () => {
-    currentIndex = currentIndex > 0 ? currentIndex - 1 : slides.length - 1;
-    updateSlider();
-});
+    const trackLength = total + 2;
+    let position  = 1;   // DOM position within the track (0 = leading clone)
+    let realIndex = 0;   // logical slide index (0..total-1), drives the dots
+    let animating = false;
 
-if (nextBtn) nextBtn.addEventListener('click', () => {
-    currentIndex = currentIndex < slides.length - 1 ? currentIndex + 1 : 0;
-    updateSlider();
-});
+    function render(instant) {
+        slider.style.transition = instant ? 'none' : '';
+        slider.style.transform = `translateX(-${position * (100 / trackLength)}%)`;
+        dots.forEach((dot, i) => dot.classList.toggle('active', i === realIndex));
+    }
 
-dots.forEach((dot, i) => dot.addEventListener('click', () => {
-    currentIndex = i;
-    updateSlider();
-}));
+    render(true);
 
-const autoplay = setInterval(() => {
-    currentIndex = currentIndex < slides.length - 1 ? currentIndex + 1 : 0;
-    updateSlider();
-}, 5000);
+    // Timeout-based completion (not transitionend) so the carousel can never
+    // get stuck: transitionend won't fire if the transform doesn't actually
+    // change visually (e.g. a hidden/zero-width tab), which would otherwise
+    // leave `animating` stuck true and permanently block further clicks.
+    function finishTransition() {
+        animating = false;
+        if (position === trackLength - 1) {
+            position = 1;
+            render(true);
+        } else if (position === 0) {
+            position = trackLength - 2;
+            render(true);
+        }
+    }
 
-// ─── Touch swipe ──────────────────────────────────────────────────────────────
-if (slider) {
+    function step(delta) {
+        if (animating) return;
+        animating = true;
+        position  += delta;
+        realIndex = (realIndex + delta + total) % total;
+        render(false);
+        setTimeout(finishTransition, 520);
+    }
+
+    function goToSlide(i) {
+        if (animating || i === realIndex) return;
+        animating = true;
+        position  = i + 1;
+        realIndex = i;
+        render(false);
+        setTimeout(finishTransition, 520);
+    }
+
+    if (prevBtn) prevBtn.addEventListener('click', () => step(-1));
+    if (nextBtn) nextBtn.addEventListener('click', () => step(1));
+    dots.forEach((dot, i) => dot.addEventListener('click', () => goToSlide(i)));
+
+    setInterval(() => step(1), 5000);
+
+    // ─── Touch swipe ────────────────────────────────────────────────────────
     let touchStartX = 0;
     slider.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].clientX; }, { passive: true });
     slider.addEventListener('touchend', e => {
         const delta = touchStartX - e.changedTouches[0].clientX;
         if (Math.abs(delta) < 40) return;
-        if (delta > 0) {
-            currentIndex = currentIndex < slides.length - 1 ? currentIndex + 1 : 0;
-        } else {
-            currentIndex = currentIndex > 0 ? currentIndex - 1 : slides.length - 1;
-        }
-        updateSlider();
+        step(delta > 0 ? 1 : -1);
     }, { passive: true });
 }
 
