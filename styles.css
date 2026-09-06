@@ -3851,9 +3851,10 @@ html {
     .nav-caret {
         display: inline-flex;
         align-items: center;
-        justify-content: center;
-        padding: 10px 14px;
+        justify-content: flex-end;
+        padding: 10px 0;
         margin-left: auto;
+        margin-right: -10px;
         font-size: 0.75rem;
         opacity: 0.9;
         transform: rotate(0deg);
