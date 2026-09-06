@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="../images/logo_1.png" type="image/png">
+    <link rel="shortcut icon" href="../images/logo_1.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scientific & Research — Airocean Gases</title>
+    <meta name="description" content="Research-grade Helium (99.9999% / 6N) and Neon for gas chromatography, GC-MS, LC-MS/MS, and environmental tracer analysis. Airocean Gases supplies analytical laboratories with ultra-high-purity carrier gas.">
+    <meta property="og:title" content="Scientific & Research — Airocean Gases">
+    <meta property="og:description" content="Research-grade Helium (99.9999% / 6N) and Neon for gas chromatography, GC-MS, LC-MS/MS, and environmental tracer analysis. Airocean Gases supplies analytical laboratories with ultra-high-purity carrier gas.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.airoceangases.com/industries/scientific.html">
+    <link rel="canonical" href="https://www.airoceangases.com/industries/scientific.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        .ig-page { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--ink); }
+
+        .ig-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+
+        .ig-hero { background: var(--navy); color: #fff; padding: 120px 0 64px; position: relative; overflow: hidden; }
+        .ig-hero::before {
+            content: ''; position: absolute; inset: 0;
+            background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+            background-size: 48px 48px; pointer-events: none;
+        }
+        .ig-hero-photo {
+            position: absolute; inset: 0; background-size: cover; background-position: center;
+            filter: brightness(0.5) saturate(0.85);
+        }
+        .ig-hero-photo-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(100deg, rgba(8,15,29,0.93) 15%, rgba(8,15,29,0.6) 55%, rgba(8,15,29,0.25) 100%);
+        }
+        .ig-inner { max-width: 1000px; margin: 0 auto; padding: 0 32px; position: relative; z-index: 1; }
+        .ig-eyebrow { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 20px; }
+        .ig-hero h1 { font-size: clamp(2.4rem, 5vw, 3.6rem); font-weight: 700; line-height: 1.08; letter-spacing: -0.03em; color: #fff; margin-bottom: 20px; max-width: 720px; }
+        .ig-hero-sub { font-size: 0.98rem; color: rgba(255,255,255,0.55); line-height: 1.75; font-weight: 300; max-width: 620px; margin-bottom: 32px; }
+        .ig-hero-cta {
+            display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; background: #fff; color: var(--navy);
+            text-decoration: none; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+        .ig-hero-cta:hover { background: var(--bg); transform: translateY(-1px); }
+
+        .ig-section { padding: 76px 0; }
+        .ig-section.alt { background: #fff; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+        .ig-section-eyebrow { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--kr); margin-bottom: 12px; }
+        .ig-section-title { font-size: clamp(1.5rem, 2.6vw, 2rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 40px; max-width: 560px; }
+
+        .ig-gas-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 6px; }
+        .ig-gas-card { background: var(--navy); color: #fff; padding: 30px 26px; text-decoration: none; display: block; transition: background 0.25s ease; }
+        .ig-gas-card:hover { background: #0f1a2e; }
+        .ig-gas-sym { font-size: 2.4rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 4px; }
+        .ig-gas-name { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 14px; }
+        .ig-gas-note { font-size: 0.83rem; color: rgba(255,255,255,0.6); line-height: 1.6; font-weight: 300; margin-bottom: 16px; }
+        .ig-gas-link { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+        .ig-gas-card:hover .ig-gas-link { color: #fff; }
+
+        .ig-app-list { display: flex; flex-direction: column; gap: 1px; background: var(--rule); }
+        .ig-app-item { background: var(--bg); padding: 28px 32px; display: grid; grid-template-columns: 220px 1fr; gap: 24px; }
+        .ig-app-title { font-size: 1.05rem; font-weight: 700; letter-spacing: -0.015em; }
+        .ig-app-desc { font-size: 0.9rem; color: var(--ink-2, #52555c); line-height: 1.75; font-weight: 300; }
+
+        .ig-cta { background: var(--navy); color: #fff; padding: 64px 32px; text-align: center; }
+        .ig-cta h2 { font-size: clamp(1.4rem, 2.6vw, 1.9rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 14px; }
+        .ig-cta p { font-size: 0.9rem; color: rgba(255,255,255,0.5); max-width: 480px; margin: 0 auto 26px; line-height: 1.7; font-weight: 300; }
+        .ig-cta-btn {
+            display: inline-flex; align-items: center; gap: 10px; padding: 15px 30px; background: #fff; color: var(--navy);
+            text-decoration: none; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+        .ig-cta-btn:hover { background: var(--bg); transform: translateY(-1px); }
+
+        .ig-other { padding: 76px 32px 90px; }
+        .ig-other-inner { max-width: 1140px; margin: 0 auto; }
+        .ig-other-label { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3, #9fa3ab); margin-bottom: 24px; text-align: center; }
+        .ig-other-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--rule); }
+        .ig-other-card {
+            position: relative; overflow: hidden; display: block; text-decoration: none; color: #fff;
+            aspect-ratio: 4 / 5; background: var(--navy);
+        }
+        .ig-other-bg {
+            position: absolute; inset: 0; background-size: cover; background-position: center;
+            filter: brightness(0.6) saturate(0.88);
+            transition: transform 0.6s cubic-bezier(0.22,1,0.36,1), filter 0.4s cubic-bezier(0.22,1,0.36,1);
+        }
+        .ig-other-card:hover .ig-other-bg { transform: scale(1.06); filter: brightness(0.45) saturate(0.7); }
+        .ig-other-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(5,10,22,0.85) 0%, rgba(5,10,22,0.15) 55%, transparent 100%);
+        }
+        .ig-other-ghost {
+            position: absolute; bottom: -0.05em; right: -0.02em; font-size: 3.4rem; font-weight: 900;
+            letter-spacing: -0.04em; line-height: 1; color: rgba(255,255,255,0.1); pointer-events: none;
+        }
+        .ig-other-title {
+            position: absolute; left: 0; right: 0; bottom: 0; padding: 18px 16px; font-size: 0.92rem;
+            font-weight: 700; line-height: 1.25; letter-spacing: -0.01em; z-index: 2;
+        }
+
+        @media (max-width: 900px) {
+            .ig-other-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 700px) {
+            .ig-app-item { grid-template-columns: 1fr; gap: 8px; }
+            .ig-hero { padding: 110px 0 48px; }
+        }
+    </style>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PG2X14CVMH"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-PG2X14CVMH');
+    </script>
+</head>
+<body class="ig-page">
+
+    <!-- ── Navigation ── -->
+    <header>
+        <div class="header-utility">
+            <div class="container">
+                <div class="utility-content">
+                    <div class="utility-right">
+                        <a href="../sds.html" class="utility-link utility-sds">Documents</a>
+                        <div class="utility-social">
+                            <a href="https://www.linkedin.com/company/airoceangases/" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://www.instagram.com/airoceangases/?hl=en" target="_blank" rel="noopener" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="https://api.whatsapp.com/send/?phone=9174317883&text&type=phone_number&app_absent=0" target="_blank" rel="noopener" class="social-icon" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                        <a href="../contact.html" class="utility-cta">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-main">
+            <div class="container">
+                <div class="header-content">
+                    <div class="header-logo">
+                        <img src="../images/logo.png" alt="Airocean Gases Logo" class="logo-img">
+                    </div>
+                    <nav>
+                        <a href="../contact.html" class="nav-mob-cta">Get Started</a>
+                        <ul class="nav-menu">
+                            <li class="nav-mob-util">
+                                <a href="tel:+13025612790" class="nav-mob-phone"><i class="fas fa-phone-alt"></i> +1 (302) 561-2790</a>
+                                <div class="nav-mob-util-right">
+                                    <a href="../sds.html" class="nav-mob-docs">Documents</a>
+                                    <div class="nav-mob-socials">
+                                        <a href="https://www.linkedin.com/company/airoceangases/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                        <a href="https://www.instagram.com/airoceangases/?hl=en" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                                        <a href="https://api.whatsapp.com/send/?phone=9174317883&text&type=phone_number&app_absent=0" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li><a href="/" class="nav-link">Home <i class="fas fa-chevron-right nav-arrow"></i></a></li>
+                            <li><a href="../about.html" class="nav-link">About Us <i class="fas fa-chevron-right nav-arrow"></i></a></li>
+                            <li class="nav-item-dropdown">
+                                <a href="../products.html" class="nav-link">Products &amp; Services <i class="fas fa-chevron-down nav-caret"></i> <i class="fas fa-chevron-right nav-arrow"></i></a>
+                                <div class="nav-dropdown">
+                                    <a href="../product-detail-kr.html" class="nav-dropdown-link">Krypton (Kr)</a>
+                                    <a href="../product-detail-xe.html" class="nav-dropdown-link">Xenon (Xe)</a>
+                                    <a href="../product-detail-ne.html" class="nav-dropdown-link">Neon (Ne)</a>
+                                    <a href="../product-detail-he.html" class="nav-dropdown-link">Helium (He)</a>
+                                    <a href="../product-detail-sf6.html" class="nav-dropdown-link">Sulfur Hexafluoride (SF&#x2086;)</a>
+                                    <a href="../product-detail-n2o.html" class="nav-dropdown-link">Nitrous Oxide (N&#x2082;O)</a>
+                                    <a href="../product-detail-cf4.html" class="nav-dropdown-link">Tetrafluoromethane (CF&#x2084;)</a>
+                                    <a href="../product-detail-wf6.html" class="nav-dropdown-link">Tungsten Hexafluoride (WF&#x2086;)</a>
+                                </div>
+                            </li>
+                            <li class="nav-item-dropdown">
+                                <a href="../industries.html" class="nav-link active-link">Industries <i class="fas fa-chevron-down nav-caret"></i> <i class="fas fa-chevron-right nav-arrow"></i></a>
+                                <div class="nav-dropdown">
+                                    <a href="semiconductor.html" class="nav-dropdown-link">Semiconductor Manufacturing</a>
+                                    <a href="aerospace.html" class="nav-dropdown-link">Aerospace Propulsion</a>
+                                    <a href="window.html" class="nav-dropdown-link">Window Manufacturing</a>
+                                    <a href="electrical.html" class="nav-dropdown-link">Electric &amp; Switchgear</a>
+                                    <a href="scientific.html" class="nav-dropdown-link">Scientific &amp; Research</a>
+                                    <a href="lighting.html" class="nav-dropdown-link">Lighting Manufacturing</a>
+                                </div>
+                            </li>
+                            <li><a href="../applications.html" class="nav-link">Applications <i class="fas fa-chevron-right nav-arrow"></i></a></li>
+                            <li><a href="../contact.html" class="nav-link">Contact Us <i class="fas fa-chevron-right nav-arrow"></i></a></li>
+                        </ul>
+                        <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                            <span></span><span></span><span></span>
+                        </button>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ── Hero ── -->
+    <section class="ig-hero">
+        <div class="ig-hero-photo" style="background-image:url('../images/industry_research.jpg')"></div>
+        <div class="ig-hero-photo-overlay"></div>
+        <div class="ig-inner">
+            <p class="ig-eyebrow">Noble & Specialty Gases · Scientific & Research</p>
+            <h1>Scientific & Research</h1>
+            <p class="ig-hero-sub">Analytical laboratories demand carrier and purge gas purity that won't introduce baseline noise or spectral interference. We supply research-grade helium — 99.9999% (6N) — for gas chromatography, GC-MS, LC-MS/MS, and atomic absorption spectroscopy, alongside neon for environmental tracer studies.</p>
+            <a href="../contact.html?industry=scientific" class="ig-hero-cta">Request a Quote <i class="fas fa-arrow-right" style="font-size:0.7rem"></i></a>
+        </div>
+    </section>
+
+    <!-- ── Gases we supply ── -->
+    <section class="ig-section">
+        <div class="ig-inner" style="max-width:1140px">
+            <p class="ig-section-eyebrow">Relevant Gases</p>
+            <h2 class="ig-section-title">Gases We Supply for Scientific & Research</h2>
+            <div class="ig-gas-grid">
+                <a href="../product-detail-he.html" class="ig-gas-card">
+                    <div class="ig-gas-sym">He</div>
+                    <div class="ig-gas-name">Helium</div>
+                    <p class="ig-gas-note">Research Grade — 99.9999% (6N) purity — carrier gas for GC, GC-MS, LC-MS/MS, and AAS analytical instrumentation.</p>
+                    <div class="ig-gas-link">View Spec Sheet <i class="fas fa-arrow-right" style="font-size:0.6rem"></i></div>
+                </a>
+                <a href="../product-detail-ne.html" class="ig-gas-card">
+                    <div class="ig-gas-sym">Ne</div>
+                    <div class="ig-gas-name">Neon</div>
+                    <p class="ig-gas-note">Used alongside helium in environmental tracer studies and atmospheric testing.</p>
+                    <div class="ig-gas-link">View Spec Sheet <i class="fas fa-arrow-right" style="font-size:0.6rem"></i></div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── How it's used ── -->
+    <section class="ig-section alt">
+        <div class="ig-inner" style="max-width:1140px">
+            <p class="ig-section-eyebrow">Application</p>
+            <h2 class="ig-section-title">How It's Used</h2>
+            <div class="ig-app-list">
+            <div class="ig-app-item">
+                <div class="ig-app-title">Gas Chromatography</div>
+                <p class="ig-app-desc">Helium is the preferred carrier gas for GC, offering low viscosity, compatibility with all detectors, and excellent separation efficiency.</p>
+            </div>
+            <div class="ig-app-item">
+                <div class="ig-app-title">GC-MS Analysis</div>
+                <p class="ig-app-desc">Helium carrier gas enables gas chromatography–mass spectrometry, the gold standard for trace compound identification in analytical laboratories.</p>
+            </div>
+            <div class="ig-app-item">
+                <div class="ig-app-title">Heat Transfer & Cooling</div>
+                <p class="ig-app-desc">Helium's exceptionally high thermal conductivity makes it the preferred medium for cooling superconducting magnets, nuclear reactors, and precision instruments.</p>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── CTA ── -->
+    <section class="ig-cta">
+        <h2>Sourcing Gas for Scientific & Research?</h2>
+        <p>Tell us your specification, volume, and delivery location — our team will confirm the right gas grade and packaging format.</p>
+        <a href="../contact.html?industry=scientific" class="ig-cta-btn">Contact Specialists <i class="fas fa-arrow-right" style="font-size:0.75rem"></i></a>
+    </section>
+
+    <div class="ig-other">
+        <div class="ig-other-inner">
+            <p class="ig-other-label">Explore Other Industries</p>
+            <div class="ig-other-grid">
+            <a href="semiconductor.html" class="ig-other-card">
+                <div class="ig-other-bg" style="background-image:url('../images/applications_page_90.jpg')"></div>
+                <div class="ig-other-overlay"></div>
+                <div class="ig-other-ghost" aria-hidden="true">Semi</div>
+                <div class="ig-other-title">Semiconductor Manufacturing</div>
+            </a>
+            <a href="aerospace.html" class="ig-other-card">
+                <div class="ig-other-bg" style="background-image:url('../images/applications_page_89.jpg')"></div>
+                <div class="ig-other-overlay"></div>
+                <div class="ig-other-ghost" aria-hidden="true">Aero</div>
+                <div class="ig-other-title">Aerospace Propulsion</div>
+            </a>
+            <a href="window.html" class="ig-other-card">
+                <div class="ig-other-bg" style="background-image:url('../images/industry_window.jpg')"></div>
+                <div class="ig-other-overlay"></div>
+                <div class="ig-other-ghost" aria-hidden="true">Win</div>
+                <div class="ig-other-title">Window Manufacturing</div>
+            </a>
+            <a href="electrical.html" class="ig-other-card">
+                <div class="ig-other-bg" style="background-image:url('../images/industry_electrical.jpg')"></div>
+                <div class="ig-other-overlay"></div>
+                <div class="ig-other-ghost" aria-hidden="true">GIS</div>
+                <div class="ig-other-title">Electric & Switchgear Applications</div>
+            </a>
+            <a href="lighting.html" class="ig-other-card">
+                <div class="ig-other-bg" style="background-image:url('../images/industry_lighting.jpg')"></div>
+                <div class="ig-other-overlay"></div>
+                <div class="ig-other-ghost" aria-hidden="true">Lite</div>
+                <div class="ig-other-title">Lighting Manufacturing</div>
+            </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── Footer ── -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../images/logo_1.png" alt="Airocean Gases Logo" class="logo-img">
+                </div>
+                <div class="footer-column">
+                    <h3>Follow Us</h3>
+                    <ul>
+                        <li><a href="https://api.whatsapp.com/send/?phone=9174317883&text&type=phone_number&app_absent=0"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
+                        <li><a href="https://www.linkedin.com/company/airoceangases/?viewAsMember=true"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                        <li><a href="https://www.instagram.com/airoceangases/?hl=en"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="../privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="../terms-conditions.html">Terms &amp; Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="../products.html">Products &amp; Services</a></li>
+                        <li><a href="../industries.html">Industries</a></li>
+                        <li><a href="../applications.html">Applications</a></li>
+                        <li><a href="../contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Airocean Gases. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="back-to-top" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="../script.js"></script>
+
+    <script>
+    (function(){
+        const GAS=[
+            {r:248,g:113,b:113},{r:167,g:139,b:250},{r:96,g:165,b:250},
+            {r:52,g:211,b:153},{r:251,g:191,b:36},{r:251,g:146,b:60},{r:244,g:114,b:182},
+            {r:232,g:121,b:249}
+        ];
+        const rgba=(g,a)=>`rgba(${g.r},${g.g},${g.b},${a})`;
+        const section=document.querySelector('.ig-hero');
+        const NC=document.getElementById('ig-nebula');
+        const MC=document.getElementById('ig-particles');
+        if(!NC||!MC||!section) return;
+        const nx=NC.getContext('2d'),mx=MC.getContext('2d');
+        let W,H;
+        function resize(){const r=section.getBoundingClientRect();W=r.width;H=r.height;NC.width=MC.width=W;NC.height=MC.height=H;}
+        resize(); window.addEventListener('resize',resize);
+        const mouse={x:0,y:0,on:false};
+        section.addEventListener('mousemove',e=>{const r=section.getBoundingClientRect();mouse.x=e.clientX-r.left;mouse.y=e.clientY-r.top;mouse.on=true;});
+        section.addEventListener('mouseleave',()=>{mouse.on=false;});
+        const BLOBS=GAS.map(g=>({g,x:Math.random()*1.3-.15,y:Math.random()*1.3-.15,vx:(Math.random()-.5)*0.00007,vy:(Math.random()-.5)*0.00006,r:0.16+Math.random()*0.18,ph:Math.random()*Math.PI*2,sp:0.0005+Math.random()*0.0004}));
+        function drawNebula(t){
+            nx.clearRect(0,0,W,H);
+            BLOBS.forEach(b=>{
+                b.x+=b.vx;b.y+=b.vy;
+                if(b.x<-.3)b.vx=Math.abs(b.vx);if(b.x>1.3)b.vx=-Math.abs(b.vx);
+                if(b.y<-.3)b.vy=Math.abs(b.vy);if(b.y>1.3)b.vy=-Math.abs(b.vy);
+                const pulse=1+0.14*Math.sin(t*b.sp*1000+b.ph);
+                const rx=b.x*W,ry=b.y*H,rr=b.r*Math.min(W,H)*pulse;
+                const grad=nx.createRadialGradient(rx,ry,0,rx,ry,rr);
+                grad.addColorStop(0,rgba(b.g,.10));grad.addColorStop(.4,rgba(b.g,.04));grad.addColorStop(1,rgba(b.g,0));
+                nx.beginPath();nx.arc(rx,ry,rr,0,Math.PI*2);nx.fillStyle=grad;nx.fill();
+            });
+        }
+        function mkP(depth){return{x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*(0.12+Math.random()*.2),vy:(Math.random()-.5)*(0.12+Math.random()*.2),gas:GAS[Math.floor(Math.random()*8)],depth,ph:Math.random()*Math.PI*2,pSpd:0.5+Math.random()*1.2,r:depth===2?1.6+Math.random()*1.4:depth===1?0.8+Math.random()*.8:0.3+Math.random()*.4,alpha:depth===2?.65:depth===1?.38:.18};}
+        const PTS=[...Array.from({length:14},()=>mkP(0)),...Array.from({length:30},()=>mkP(1)),...Array.from({length:18},()=>mkP(2))];
+        function drawParticles(t){
+            mx.clearRect(0,0,W,H);
+            const cp=PTS.filter(p=>p.depth>=1);
+            for(let i=0;i<cp.length;i++){for(let j=i+1;j<cp.length;j++){const a=cp[i],b=cp[j];if(a.depth!==b.depth)continue;const dx=a.x-b.x,dy=a.y-b.y,d=Math.sqrt(dx*dx+dy*dy),maxD=a.depth===2?90:120;if(d>maxD)continue;const al=(1-d/maxD)*(a.depth===2?.18:.08);mx.beginPath();mx.moveTo(a.x,a.y);mx.lineTo(b.x,b.y);mx.strokeStyle=rgba(a.gas,al);mx.lineWidth=a.depth===2?.7:.4;mx.stroke();}}
+            PTS.forEach(p=>{
+                if(mouse.on&&p.depth>=1){const dx=p.x-mouse.x,dy=p.y-mouse.y,d=Math.sqrt(dx*dx+dy*dy),rep=p.depth===2?100:70;if(d<rep&&d>0){const f=(rep-d)/rep;p.vx+=(dx/d)*f*.3;p.vy+=(dy/d)*f*.3;}}
+                p.vx*=.992;p.vy*=.992;p.x+=p.vx;p.y+=p.vy;
+                if(p.x<-10)p.x=W+10;if(p.x>W+10)p.x=-10;if(p.y<-10)p.y=H+10;if(p.y>H+10)p.y=-10;
+                const pulse=1+.2*Math.sin(t*p.pSpd+p.ph),r=p.r*pulse;
+                mx.beginPath();mx.arc(p.x,p.y,r,0,Math.PI*2);mx.fillStyle=rgba(p.gas,p.alpha);mx.fill();
+            });
+        }
+        let last=performance.now();
+        function tick(now){requestAnimationFrame(tick);const t=now/1000;last=now;drawNebula(t);drawParticles(t);}
+        requestAnimationFrame(tick);
+    })();
+    </script>
+</body>
+</html>

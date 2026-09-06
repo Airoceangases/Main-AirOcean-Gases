@@ -15,7 +15,6 @@
     <meta property="og:url" content="https://www.airoceangases.com/">
     <meta property="og:image" content="https://www.airoceangases.com/images/applications_page_90.jpg">
     <link rel="canonical" href="https://www.airoceangases.com/">
-    <link rel="preload" as="image" href="images/applications_page_90.jpg" fetchpriority="high">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
@@ -269,8 +268,7 @@
         ══════════════════════════════ */
         .hm-gases {
             background: var(--bg);
-            padding: 96px 0;
-            border-top: 1px solid var(--rule);
+            padding: 86px 0;
         }
         .hm-gases-carousel { margin-top: 48px; position: relative; }
         .hm-gases-viewport { overflow: hidden; }
@@ -418,9 +416,8 @@
            SERVICES
         ══════════════════════════════ */
         .hm-services {
-            background: #fff;
-            padding: 96px 0;
-            border-top: 1px solid var(--rule);
+            background: var(--bg);
+            padding: 86px 0;
         }
         .hm-gawda-badge {
             display: inline-flex;
@@ -491,129 +488,13 @@
             line-height: 1.72;
             font-weight: 300;
         }
-
-        /* ══════════════════════════════
-           INDUSTRIES WE SERVE
-        ══════════════════════════════ */
-        .hm-industries {
-            background: var(--bg);
-            padding: 96px 0 0;
-        }
-        .hm-ind-bento {
-            margin-top: 52px;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: 390px 268px;
-            gap: 1px;
-            background: var(--rule);
-        }
-        .hm-ind-card {
-            position: relative;
-            overflow: hidden;
-            background: var(--navy);
-            display: block;
-            text-decoration: none;
-            color: #fff;
-        }
-        .hm-ind-large { grid-column: span 2; }
-        .hm-ind-bg {
-            position: absolute;
-            inset: 0;
-            background-size: cover;
-            background-position: center;
-            filter: brightness(0.58) saturate(0.88);
-            transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), filter 0.45s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        .hm-ind-card:hover .hm-ind-bg {
-            transform: scale(1.06);
-            filter: brightness(0.36) saturate(0.62);
-        }
-        .hm-ind-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(5,10,22,0.93) 0%, rgba(5,10,22,0.18) 52%, transparent 100%);
-        }
-        .hm-ind-ghost {
-            position: absolute;
-            bottom: -0.08em;
-            right: -0.03em;
-            font-size: clamp(4.5rem, 9vw, 8.5rem);
-            font-weight: 900;
-            letter-spacing: -0.06em;
-            line-height: 1;
-            color: rgba(255,255,255,0.04);
-            -webkit-text-stroke: 1px rgba(255,255,255,0.08);
-            pointer-events: none;
-            user-select: none;
-            transition: color 0.45s cubic-bezier(0.22,1,0.36,1), -webkit-text-stroke 0.45s cubic-bezier(0.22,1,0.36,1);
-        }
-        .hm-ind-card:hover .hm-ind-ghost {
-            color: rgba(255,255,255,0.07);
-            -webkit-text-stroke: 1px rgba(255,255,255,0.14);
-        }
-        .hm-ind-body {
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            padding: 22px 26px;
-            z-index: 2;
-        }
-        .hm-ind-tags {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 9px;
-            flex-wrap: wrap;
-        }
-        .hm-ind-tag {
-            font-size: 0.82rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            opacity: 0.9;
-        }
-        .hm-ind-title {
-            font-size: 1.05rem;
-            font-weight: 700;
-            line-height: 1.22;
-            letter-spacing: -0.02em;
-            color: #fff;
-            margin-bottom: 7px;
-        }
-        .hm-ind-large .hm-ind-title { font-size: 1.45rem; margin-bottom: 10px; }
-        .hm-ind-desc {
-            font-size: 0.79rem;
-            color: rgba(255,255,255,0.5);
-            line-height: 1.62;
-            font-weight: 300;
-            margin-bottom: 14px;
-        }
-        .hm-ind-large .hm-ind-desc { max-width: 420px; }
-        .hm-ind-cta {
-            font-size: 0.68rem;
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.45);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            opacity: 0;
-            transform: translateY(7px);
-            transition: opacity 0.32s cubic-bezier(0.22,1,0.36,1), transform 0.32s cubic-bezier(0.22,1,0.36,1), color 0.25s;
-        }
-        .hm-ind-card:hover .hm-ind-cta {
-            opacity: 1;
-            transform: translateY(0);
-            color: rgba(255,255,255,0.85);
-        }
-
         /* ══════════════════════════════
            OUR GUARANTEE
         ══════════════════════════════ */
         .hm-guarantee {
-            background: var(--bg);
-            padding: 96px 0 0;
+            background: #fff;
+            padding: 86px 0;
         }
-        .hm-guarantee .hm-inner { padding-bottom: 80px; }
         .hm-gtee-eyebrow {
             font-size: 0.69rem;
             font-weight: 600;
@@ -784,8 +665,6 @@
         @media (max-width: 960px) {
             .hm-section-header.split { grid-template-columns: 1fr; gap: 16px; }
             .hm-gases-grid { /* flex scroll — no grid override needed */ }
-            .hm-ind-bento { grid-template-columns: repeat(2, 1fr); grid-template-rows: 340px 260px 260px; }
-            .hm-ind-large { grid-column: span 2; }
             .hm-gallery-bento { grid-template-columns: repeat(2, 1fr); grid-template-rows: 260px; grid-auto-rows: 220px; }
             .hm-gallery-tall { grid-column: auto; grid-row: auto; }
             .hm-gallery-bento .hm-gallery-tile:nth-child(2),
@@ -810,11 +689,7 @@
             .hm-svc-item,
             .hm-svc-item:nth-child(even) { border-right: none !important; padding: 28px 0 !important; }
             .hm-svc-item:last-child { border-bottom: none; }
-            .hm-industries { padding: 64px 0 0; }
-            .hm-ind-bento { grid-template-columns: 1fr; grid-template-rows: none; }
-            .hm-ind-large { grid-column: span 1; }
-            .hm-ind-card { min-height: 240px; }
-            .hm-guarantee { padding: 64px 0 0; }
+            .hm-guarantee { padding: 64px 0; }
             .hm-gallery-bento { grid-template-columns: 1fr; grid-template-rows: none; grid-auto-rows: auto; }
             .hm-gallery-hero { grid-column: span 1; }
             .hm-gallery-tile { min-height: 220px; }
@@ -851,13 +726,11 @@
             .hm-gas-link, .hm-gas-link-doc { padding-left: 16px; padding-right: 16px; }
 
             /* Industries: taller cards so content breathes */
-            .hm-ind-card { min-height: 260px; }
-            .hm-ind-ghost { font-size: clamp(4rem, 22vw, 8rem); }
 
             /* Section spacing tightened */
             .hm-gases { padding: 52px 0; }
             .hm-services { padding: 52px 0; }
-            .hm-guarantee { padding: 52px 0 0; }
+            .hm-guarantee { padding: 52px 0; }
             .hm-section-header { margin-bottom: 36px; }
 
             /* Hide prev/next arrows — swipe + dots handle navigation */
@@ -922,7 +795,30 @@
                             </li>
                             <li><a href="/" class="nav-link active-link">Home <i class="fas fa-chevron-right nav-arrow"></i></a></li>
                             <li><a href="about.html" class="nav-link">About Us <i class="fas fa-chevron-right nav-arrow"></i></a></li>
-                            <li><a href="products.html" class="nav-link">Products &amp; Services <i class="fas fa-chevron-right nav-arrow"></i></a></li>
+                            <li class="nav-item-dropdown">
+                                <a href="products.html" class="nav-link">Products &amp; Services <i class="fas fa-chevron-down nav-caret"></i> <i class="fas fa-chevron-right nav-arrow"></i></a>
+                                <div class="nav-dropdown">
+                                    <a href="product-detail-kr.html" class="nav-dropdown-link">Krypton (Kr)</a>
+                                    <a href="product-detail-xe.html" class="nav-dropdown-link">Xenon (Xe)</a>
+                                    <a href="product-detail-ne.html" class="nav-dropdown-link">Neon (Ne)</a>
+                                    <a href="product-detail-he.html" class="nav-dropdown-link">Helium (He)</a>
+                                    <a href="product-detail-sf6.html" class="nav-dropdown-link">Sulfur Hexafluoride (SF&#x2086;)</a>
+                                    <a href="product-detail-n2o.html" class="nav-dropdown-link">Nitrous Oxide (N&#x2082;O)</a>
+                                    <a href="product-detail-cf4.html" class="nav-dropdown-link">Tetrafluoromethane (CF&#x2084;)</a>
+                                    <a href="product-detail-wf6.html" class="nav-dropdown-link">Tungsten Hexafluoride (WF&#x2086;)</a>
+                                </div>
+                            </li>
+                            <li class="nav-item-dropdown">
+                                <a href="industries.html" class="nav-link">Industries <i class="fas fa-chevron-down nav-caret"></i> <i class="fas fa-chevron-right nav-arrow"></i></a>
+                                <div class="nav-dropdown">
+                                    <a href="industries/semiconductor.html" class="nav-dropdown-link">Semiconductor Manufacturing</a>
+                                    <a href="industries/aerospace.html" class="nav-dropdown-link">Aerospace Propulsion</a>
+                                    <a href="industries/window.html" class="nav-dropdown-link">Window Manufacturing</a>
+                                    <a href="industries/electrical.html" class="nav-dropdown-link">Electric &amp; Switchgear</a>
+                                    <a href="industries/scientific.html" class="nav-dropdown-link">Scientific &amp; Research</a>
+                                    <a href="industries/lighting.html" class="nav-dropdown-link">Lighting Manufacturing</a>
+                                </div>
+                            </li>
                             <li><a href="applications.html" class="nav-link">Applications <i class="fas fa-chevron-right nav-arrow"></i></a></li>
                             <li><a href="contact.html" class="nav-link">Contact Us <i class="fas fa-chevron-right nav-arrow"></i></a></li>
                         </ul>
@@ -1188,110 +1084,6 @@
         </div>
     </section>
 
-    <!-- ══════════════════════════════════
-         INDUSTRIES WE SERVE
-    ══════════════════════════════════ -->
-    <section class="hm-industries">
-        <div class="hm-inner">
-            <div class="hm-section-header split">
-                <div>
-                    <p class="hm-eyebrow">Industries We Serve</p>
-                    <h2 class="hm-section-title">Where Our Gases<br>Power the World</h2>
-                </div>
-                <p class="hm-section-sub">From chip fabrication clean rooms to deep-space ion thrusters — our eight high-purity gases serve the industries defining tomorrow's technology.</p>
-            </div>
-        </div>
-
-        <div class="hm-ind-bento">
-
-            <!-- Semiconductor & Microelectronics — large hero card -->
-            <a href="applications.html" class="hm-ind-card hm-ind-large">
-                <div class="hm-ind-bg" style="background-image:url('images/applications_page_90.jpg')"></div>
-                <div class="hm-ind-overlay"></div>
-                <div class="hm-ind-ghost" aria-hidden="true">Semi</div>
-                <div class="hm-ind-body">
-                    <div class="hm-ind-tags">
-                        <span class="hm-ind-tag" style="color:var(--kr)">Kr</span>
-                        <span class="hm-ind-tag" style="color:var(--ne)">Ne</span>
-                        <span class="hm-ind-tag" style="color:var(--sf6)">SF&#x2086;</span>
-                        <span class="hm-ind-tag" style="color:var(--cf4)">CF&#x2084;</span>
-                        <span class="hm-ind-tag" style="color:var(--n2o)">N&#x2082;O</span>
-                        <span class="hm-ind-tag" style="color:var(--wf6)">WF&#x2086;</span>
-                    </div>
-                    <h3 class="hm-ind-title">Semiconductor &<br>Microelectronics</h3>
-                    <p class="hm-ind-desc">Excimer laser photolithography, plasma etching, and CVD dielectric growth — our gases power chip fabrication at every critical stage, from front-end lithography to final packaging.</p>
-                    <div class="hm-ind-cta">Explore Applications <i class="fas fa-arrow-right" style="font-size:0.62rem"></i></div>
-                </div>
-            </a>
-
-            <!-- Medical & Healthcare -->
-            <a href="applications.html" class="hm-ind-card">
-                <div class="hm-ind-bg" style="background-image:url('images/applications_page_66.jpg')"></div>
-                <div class="hm-ind-overlay"></div>
-                <div class="hm-ind-ghost" aria-hidden="true">Med</div>
-                <div class="hm-ind-body">
-                    <div class="hm-ind-tags">
-                        <span class="hm-ind-tag" style="color:var(--he)">He</span>
-                        <span class="hm-ind-tag" style="color:var(--xe)">Xe</span>
-                        <span class="hm-ind-tag" style="color:var(--n2o)">N&#x2082;O</span>
-                    </div>
-                    <h3 class="hm-ind-title">Medical &<br>Healthcare</h3>
-                    <p class="hm-ind-desc">MRI superconducting magnet cooling, xenon anesthesia, and clinical sedation with N₂O.</p>
-                    <div class="hm-ind-cta">Explore <i class="fas fa-arrow-right" style="font-size:0.62rem"></i></div>
-                </div>
-            </a>
-
-            <!-- Aerospace & Defense -->
-            <a href="applications.html" class="hm-ind-card">
-                <div class="hm-ind-bg" style="background-image:url('images/applications_page_89.jpg')"></div>
-                <div class="hm-ind-overlay"></div>
-                <div class="hm-ind-ghost" aria-hidden="true">Aero</div>
-                <div class="hm-ind-body">
-                    <div class="hm-ind-tags">
-                        <span class="hm-ind-tag" style="color:var(--xe)">Xe</span>
-                        <span class="hm-ind-tag" style="color:var(--kr)">Kr</span>
-                    </div>
-                    <h3 class="hm-ind-title">Aerospace &<br>Defense</h3>
-                    <p class="hm-ind-desc">Xenon ion thruster propellant for deep-space missions and satellite station-keeping.</p>
-                    <div class="hm-ind-cta">Explore <i class="fas fa-arrow-right" style="font-size:0.62rem"></i></div>
-                </div>
-            </a>
-
-            <!-- Electrical & Energy -->
-            <a href="applications.html" class="hm-ind-card">
-                <div class="hm-ind-bg" style="background-image:url('images/applications_page_39.jpg')"></div>
-                <div class="hm-ind-overlay"></div>
-                <div class="hm-ind-ghost" aria-hidden="true">Power</div>
-                <div class="hm-ind-body">
-                    <div class="hm-ind-tags">
-                        <span class="hm-ind-tag" style="color:var(--sf6)">SF&#x2086;</span>
-                        <span class="hm-ind-tag" style="color:var(--he)">He</span>
-                    </div>
-                    <h3 class="hm-ind-title">Electrical &<br>Energy</h3>
-                    <p class="hm-ind-desc">SF₆ for high-voltage switchgear insulation and helium for precision industrial cooling.</p>
-                    <div class="hm-ind-cta">Explore <i class="fas fa-arrow-right" style="font-size:0.62rem"></i></div>
-                </div>
-            </a>
-
-            <!-- Scientific Research & Analytics -->
-            <a href="applications.html" class="hm-ind-card">
-                <div class="hm-ind-bg" style="background-image:url('images/applications_page_33.jpg')"></div>
-                <div class="hm-ind-overlay"></div>
-                <div class="hm-ind-ghost" aria-hidden="true">Lab</div>
-                <div class="hm-ind-body">
-                    <div class="hm-ind-tags">
-                        <span class="hm-ind-tag" style="color:var(--he)">He</span>
-                        <span class="hm-ind-tag" style="color:var(--ne)">Ne</span>
-                        <span class="hm-ind-tag" style="color:var(--xe)">Xe</span>
-                    </div>
-                    <h3 class="hm-ind-title">Scientific Research<br>& Analytics</h3>
-                    <p class="hm-ind-desc">Gas chromatography, GC-MS, spectroscopy, and environmental tracer applications.</p>
-                    <div class="hm-ind-cta">Explore <i class="fas fa-arrow-right" style="font-size:0.62rem"></i></div>
-                </div>
-            </a>
-
-        </div>
-    </section>
 
     <!-- ══════════════════════════════════
          SERVICES
@@ -1414,7 +1206,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="images/logo.png" alt="Airocean Gases Logo" class="logo-img">
+                    <img src="images/logo_1.png" alt="Airocean Gases Logo" class="logo-img">
                 </div>
                 <div class="footer-column">
                     <h3>Follow Us</h3>
@@ -1437,6 +1229,7 @@
                         <li><a href="/">Home</a></li>
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="products.html">Products & Services</a></li>
+                        <li><a href="industries.html">Industries</a></li>
                         <li><a href="applications.html">Applications</a></li>
                         <li><a href="contact.html">Contact Us</a></li>
                     </ul>
