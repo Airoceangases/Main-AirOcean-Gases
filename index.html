@@ -53,9 +53,9 @@
             inset: 0;
             background: linear-gradient(
                 108deg,
-                rgba(8,15,29,0.88) 0%,
-                rgba(8,15,29,0.60) 48%,
-                rgba(8,15,29,0.32) 100%
+                rgba(8,15,29,0.45) 0%,
+                rgba(8,15,29,0.28) 48%,
+                rgba(8,15,29,0.12) 100%
             );
             pointer-events: none;
         }
@@ -178,6 +178,8 @@
             gap: 8px;
         }
         .hm-hero-wrap .dot {
+            position: relative;
+            overflow: hidden;
             width: 24px;
             height: 2px;
             border-radius: 0;
@@ -187,7 +189,22 @@
         }
         .hm-hero-wrap .dot.active {
             width: 48px;
-            background: #fff;
+            background: rgba(255,255,255,0.3);
+        }
+        .hm-hero-wrap .dot::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--xe);
+            transform: scaleX(0);
+            transform-origin: left;
+        }
+        .hm-hero-wrap .dot.active::after {
+            animation: hmDotFill 5s linear forwards;
+        }
+        @keyframes hmDotFill {
+            from { transform: scaleX(0); }
+            to   { transform: scaleX(1); }
         }
 
         /* ══════════════════════════════

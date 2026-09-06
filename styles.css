@@ -93,7 +93,7 @@ header.header-solid {
 }
 
 .utility-phone {
-    color: rgba(255, 255, 255, 0.52);
+    color: rgba(255, 255, 255, 0.92);
     font-family: 'Outfit', sans-serif;
     font-size: 0.72rem;
     font-weight: 500;
@@ -123,7 +123,7 @@ header.header-solid {
 }
 
 .utility-link {
-    color: rgba(255, 255, 255, 0.58);
+    color: rgba(255, 255, 255, 0.92);
     font-family: 'Outfit', sans-serif;
     font-size: 0.68rem;
     font-weight: 600;
@@ -168,7 +168,7 @@ header.header-solid {
 }
 
 .social-icon {
-    color: rgba(255, 255, 255, 0.42);
+    color: rgba(255, 255, 255, 0.92);
     font-size: 0.78rem;
     text-decoration: none;
     line-height: 1;
@@ -3737,7 +3737,7 @@ html {
 }
 
 .nav-link {
-    color: rgba(255, 255, 255, 0.82);
+    color: rgba(255, 255, 255, 0.92);
     text-decoration: none;
     font-size: 14px;
     font-weight: 500;
@@ -3973,7 +3973,7 @@ html {
         padding: 12px 24px;
         border-radius: 0;
         font-size: 15px;
-        color: rgba(255, 255, 255, 0.78);
+        color: rgba(255, 255, 255, 0.92);
     }
 
     .nav-link:hover {
@@ -4024,7 +4024,7 @@ html {
         margin-bottom: 4px;
     }
     .nav-mob-phone {
-        color: rgba(255, 255, 255, 0.52);
+        color: rgba(255, 255, 255, 0.92);
         font-size: 0.72rem;
         font-weight: 500;
         text-decoration: none;
@@ -4040,7 +4040,7 @@ html {
         gap: 14px;
     }
     .nav-mob-docs {
-        color: rgba(255, 255, 255, 0.5);
+        color: rgba(255, 255, 255, 0.92);
         font-size: 0.65rem;
         font-weight: 600;
         letter-spacing: 0.1em;
@@ -4057,17 +4057,11 @@ html {
         gap: 12px;
     }
     .nav-mob-socials a {
-        color: rgba(255, 255, 255, 0.4);
+        color: rgba(255, 255, 255, 0.92);
         font-size: 0.82rem;
         text-decoration: none;
     }
 
-    /* ── Chevron arrows on nav links ── */
-    .nav-link .nav-arrow {
-        display: inline-block;
-        opacity: 0.3;
-        font-size: 0.65rem;
-    }
     .nav-link {
         display: flex;
         justify-content: space-between;
