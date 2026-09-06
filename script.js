@@ -104,6 +104,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const isOpen = navMenu.classList.toggle('open');
             hamburger.classList.toggle('open', isOpen);
             hamburger.setAttribute('aria-expanded', isOpen);
+            document.body.classList.toggle('nav-locked', isOpen);
         });
 
         navMenu.querySelectorAll('.nav-link').forEach(link => {
@@ -111,6 +112,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 navMenu.classList.remove('open');
                 hamburger.classList.remove('open');
                 hamburger.setAttribute('aria-expanded', 'false');
+                document.body.classList.remove('nav-locked');
             });
         });
 
@@ -119,7 +121,18 @@ document.addEventListener('DOMContentLoaded', function () {
                 navMenu.classList.remove('open');
                 hamburger.classList.remove('open');
                 hamburger.setAttribute('aria-expanded', 'false');
+                document.body.classList.remove('nav-locked');
             }
+        });
+
+        // Tap the caret to collapse/expand a dropdown's sub-items without
+        // navigating or closing the whole mobile menu.
+        navMenu.querySelectorAll('.nav-item-dropdown .nav-caret').forEach(caret => {
+            caret.addEventListener('click', e => {
+                e.preventDefault();
+                e.stopPropagation();
+                caret.closest('.nav-item-dropdown').classList.toggle('dd-closed');
+            });
         });
     }
 

@@ -3842,8 +3842,27 @@ html {
 }
 
 @media (max-width: 768px) {
-    .nav-caret { display: none; }
     .nav-item-dropdown::after { display: none; }
+
+    /* Tap the caret to collapse/expand — default (no .dd-closed) is open */
+    .nav-caret {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 14px;
+        margin-left: auto;
+        font-size: 0.75rem;
+        opacity: 0.7;
+        transform: rotate(180deg);
+        transition: transform 0.2s ease;
+    }
+    .nav-item-dropdown.dd-closed .nav-caret {
+        transform: rotate(0deg);
+    }
+    .nav-item-dropdown.dd-closed .nav-dropdown {
+        display: none;
+    }
+
     .nav-dropdown {
         position: static;
         opacity: 1;
@@ -3930,6 +3949,13 @@ html {
 
     .nav-menu.open {
         display: flex;
+        max-height: 80vh;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    body.nav-locked {
+        overflow: hidden;
     }
 
     .nav-menu li {
