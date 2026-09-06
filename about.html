@@ -195,6 +195,7 @@
         /* ══════════════════════════════
            HISTORY TIMELINE — year tabs
         ══════════════════════════════ */
+        #history, #leadership, #careers { scroll-margin-top: 100px; }
         .ab-history { padding: 80px 60px; }
         .ab-history-inner { max-width: 1300px; margin: 0 auto; }
         .ab-history .ab-section-hd { border-bottom: none; padding-bottom: 0; }
@@ -696,7 +697,14 @@
                                 </div>
                             </li>
                             <li><a href="/" class="nav-link">Home <i class="fas fa-chevron-right nav-arrow"></i></a></li>
-                            <li><a href="about.html" class="nav-link active-link">About Us <i class="fas fa-chevron-right nav-arrow"></i></a></li>
+                            <li class="nav-item-dropdown">
+                                <a href="about.html" class="nav-link active-link">About Us <i class="fas fa-chevron-down nav-caret"></i> <i class="fas fa-chevron-right nav-arrow"></i></a>
+                                <div class="nav-dropdown">
+                                    <a href="about.html#history" class="nav-dropdown-link">Company History</a>
+                                    <a href="about.html#leadership" class="nav-dropdown-link">Leadership</a>
+                                    <a href="about.html#careers" class="nav-dropdown-link">Careers</a>
+                                </div>
+                            </li>
                             <li class="nav-item-dropdown">
                                 <a href="products.html" class="nav-link">Products &amp; Services <i class="fas fa-chevron-down nav-caret"></i> <i class="fas fa-chevron-right nav-arrow"></i></a>
                                 <div class="nav-dropdown">
@@ -763,7 +771,7 @@
     </section>
 
     <!-- ═══ HISTORY TIMELINE ═══ -->
-    <section class="ab-history">
+    <section class="ab-history" id="history">
         <div class="ab-history-inner">
             <div class="ab-section-hd">
                 <p class="ab-section-label">Company History</p>
@@ -910,7 +918,7 @@
     </section>
 
     <!-- ═══ LEADERSHIP ═══ -->
-    <section class="ab-leadership">
+    <section class="ab-leadership" id="leadership">
         <div class="ab-leadership-inner">
             <div class="ab-section-hd">
                 <div>
@@ -1002,7 +1010,7 @@
     </section>
 
     <!-- ═══ CAREERS CTA ═══ -->
-    <section class="ab-careers">
+    <section class="ab-careers" id="careers">
         <div class="ab-careers-inner">
             <div class="ab-careers-photo">
                 <img src="images/about_page_2.jpg" alt="Airocean Gases team">
