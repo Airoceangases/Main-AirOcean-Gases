@@ -3781,7 +3781,8 @@ html {
 .nav-caret {
     margin-left: 5px;
     font-size: 0.6rem;
-    opacity: 0.55;
+    color: var(--xe);
+    opacity: 0.9;
     transition: transform 0.25s ease;
 }
 
@@ -3844,7 +3845,7 @@ html {
 @media (max-width: 768px) {
     .nav-item-dropdown::after { display: none; }
 
-    /* Tap the caret to collapse/expand — default (no .dd-closed) is open */
+    /* Tap the caret to expand — default (no .dd-open) is collapsed */
     .nav-caret {
         display: inline-flex;
         align-items: center;
@@ -3852,15 +3853,18 @@ html {
         padding: 10px 14px;
         margin-left: auto;
         font-size: 0.75rem;
-        opacity: 0.7;
-        transform: rotate(180deg);
+        opacity: 0.9;
+        transform: rotate(0deg);
         transition: transform 0.2s ease;
     }
-    .nav-item-dropdown.dd-closed .nav-caret {
-        transform: rotate(0deg);
+    .nav-item-dropdown.dd-open .nav-caret {
+        transform: rotate(180deg);
     }
-    .nav-item-dropdown.dd-closed .nav-dropdown {
+    .nav-dropdown {
         display: none;
+    }
+    .nav-item-dropdown.dd-open .nav-dropdown {
+        display: block;
     }
 
     .nav-dropdown {

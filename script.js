@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function () {
             caret.addEventListener('click', e => {
                 e.preventDefault();
                 e.stopPropagation();
-                caret.closest('.nav-item-dropdown').classList.toggle('dd-closed');
+                caret.closest('.nav-item-dropdown').classList.toggle('dd-open');
             });
         });
     }
