@@ -3781,8 +3781,8 @@ html {
 .nav-caret {
     margin-left: 5px;
     font-size: 0.6rem;
-    color: var(--xe);
-    opacity: 0.9;
+    color: #60a5fa;
+    opacity: 1;
     transition: transform 0.25s ease;
 }
 
