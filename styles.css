@@ -3786,9 +3786,11 @@ html {
     transition: transform 0.25s ease;
 }
 
-.nav-item-dropdown:hover .nav-caret,
-.nav-item-dropdown:focus-within .nav-caret {
-    transform: rotate(180deg);
+@media (hover: hover) and (pointer: fine) {
+    .nav-item-dropdown:hover .nav-caret,
+    .nav-item-dropdown:focus-within .nav-caret {
+        transform: rotate(180deg);
+    }
 }
 
 /* invisible bridge so the pointer can cross the gap without the menu closing */
