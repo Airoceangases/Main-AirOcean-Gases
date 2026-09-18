@@ -99,13 +99,30 @@
 
         /* CTA */
         .pd-cta { background: var(--navy); padding: 80px 0; position: relative; overflow: hidden; }
-        .pd-cta-inner { width: 90%; max-width: 1400px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+        .pd-cta-grid { position: relative; z-index: 2; width: 90%; max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px; align-items: start; }
+        .pd-cta-faq-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 16px; }
+        .pd-cta-faq-title { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 800; color: #fff; letter-spacing: -0.02em; margin-bottom: 32px; }
+        .pd-faq-list { border-top: 1px solid rgba(255,255,255,0.12); }
+        .pd-faq-item { border-bottom: 1px solid rgba(255,255,255,0.12); }
+        .pd-faq-q { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 20px 0; background: none; border: none; cursor: pointer; text-align: left; font-family: 'Outfit', sans-serif; font-size: 0.95rem; font-weight: 600; color: rgba(255,255,255,0.85); transition: color 0.2s; }
+        .pd-faq-q:hover { color: #fff; }
+        .pd-faq-plus { position: relative; width: 16px; height: 16px; flex-shrink: 0; }
+        .pd-faq-plus::before, .pd-faq-plus::after { content: ''; position: absolute; background: #1d4ed8; border-radius: 1px; }
+        .pd-faq-plus::before { top: 50%; left: 0; width: 100%; height: 2px; margin-top: -1px; }
+        .pd-faq-plus::after { left: 50%; top: 0; width: 2px; height: 100%; margin-left: -1px; transition: transform 0.3s ease; }
+        .pd-faq-item.open .pd-faq-plus::after { transform: rotate(90deg); }
+        .pd-faq-a-wrap { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s cubic-bezier(.16,1,.3,1); }
+        .pd-faq-item.open .pd-faq-a-wrap { grid-template-rows: 1fr; }
+        .pd-faq-a { overflow: hidden; }
+        .pd-faq-a p { padding-bottom: 20px; font-size: 0.88rem; line-height: 1.7; color: rgba(255,255,255,0.55); max-width: 50ch; }
+        .pd-cta-panel { display: flex; flex-direction: column; align-items: flex-start; gap: 28px; padding-top: 6px; }
         .pd-cta-text h2 { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 800; color: #fff; letter-spacing: -0.02em; margin-bottom: 12px; }
         .pd-cta-text p { font-size: 1rem; color: rgba(255,255,255,0.5); max-width: 50ch; }
-        .pd-cta-btns { display: flex; gap: 16px; flex-shrink: 0; }
-        .pd-btn-primary { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; background: var(--accent); color: #fff; font-family: 'Outfit', sans-serif; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; transition: opacity 0.2s; }
+        .pd-cta-btns { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 320px; }
+        .pd-cta-btns-secondary { display: flex; gap: 12px; }
+        .pd-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 16px 28px; background: var(--accent); color: #fff; font-family: 'Outfit', sans-serif; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; transition: opacity 0.2s; }
         .pd-btn-primary:hover { opacity: 0.85; }
-        .pd-btn-ghost { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.7); font-family: 'Outfit', sans-serif; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; transition: border-color 0.2s, color 0.2s; }
+        .pd-btn-ghost { display: inline-flex; align-items: center; justify-content: center; gap: 8px; flex: 1; padding: 13px 16px; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.7); font-family: 'Outfit', sans-serif; font-size: 0.76rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; transition: border-color 0.2s, color 0.2s; }
         .pd-btn-ghost:hover { border-color: rgba(255,255,255,0.5); color: #fff; }
 
         @media (max-width: 900px) {
@@ -116,7 +133,7 @@
             .pd-grade-row { grid-template-columns: repeat(2, 1fr); }
             .pd-pkg-grid { grid-template-columns: 1fr 1fr; }
             .pd-pkg-grid-5 { grid-template-columns: 1fr; }
-            .pd-cta-inner { flex-direction: column; align-items: flex-start; }
+            .pd-cta-grid { grid-template-columns: 1fr; gap: 48px; }
         }
         @media (max-width: 600px) {
             .pd-stats { grid-template-columns: 1fr 1fr; }
@@ -288,22 +305,6 @@
     </div>
 </section>
 
-<!-- FAQ -->
-<section class="pd-grade-section" aria-labelledby="he-faq-heading">
-    <div class="pd-grade-inner">
-        <div class="pd-grade-header">
-            <p class="pd-section-label" style="color:rgba(255,255,255,.35);">Buying Helium Gas</p>
-            <h2 class="pd-grade-title" id="he-faq-heading">Frequently Asked Questions</h2>
-        </div>
-        <div class="pd-about-body" style="max-width:65ch;">
-            <p style="color:rgba(255,255,255,.7);"><strong style="color:#fff;">How do I get a quote for helium gas?</strong> Fill out our contact form or email us directly — our technical sales team responds within 24 hours with pricing, lead time, and available grades.</p>
-            <p style="color:rgba(255,255,255,.7);"><strong style="color:#fff;">What documentation comes with each order?</strong> Every order includes a Certificate of Analysis (COA) for the specific batch and a Safety Data Sheet (SDS) — both linked below on this page, or we can send them ahead of your order for review.</p>
-            <p style="color:rgba(255,255,255,.7);"><strong style="color:#fff;">What cylinder sizes and packaging are available?</strong> We currently stock helium exclusively in C300 cylinders (50 L, CGA-580 valve). Need a different cylinder size or valve configuration? We can custom-fill to match your exact requirements — just mention it when requesting a quote.</p>
-            <p style="color:rgba(255,255,255,.7);"><strong style="color:#fff;">Do you ship internationally?</strong> Yes — Airocean Gases supplies helium to customers domestically and internationally.</p>
-        </div>
-    </div>
-</section>
-
 <!-- GRADE -->
 <section class="pd-grade-section">
     <div class="pd-grade-inner">
@@ -366,15 +367,61 @@
 
 <!-- CTA -->
 <section class="pd-cta">
-    <div class="pd-cta-inner">
-        <div class="pd-cta-text">
-            <h2>Request a Quote</h2>
-            <p>Our technical sales team is ready to provide pricing, SDS documents, and supply solutions for helium.</p>
+    <div class="pd-cta-grid">
+        <div class="pd-cta-panel">
+            <div class="pd-cta-text">
+                <h2>Request a Quote</h2>
+                <p>Our technical sales team is ready to provide pricing, SDS documents, and supply solutions for helium.</p>
+            </div>
+            <div class="pd-cta-btns">
+                <a href="contact.html" class="pd-btn-primary">Get a Quote</a>
+                <div class="pd-cta-btns-secondary">
+                    <a href="sds/Helium_SDS.pdf" class="pd-btn-ghost" target="_blank" rel="noopener">View SDS <i class="fas fa-file-pdf" style="font-size:0.75em;opacity:0.7;"></i></a>
+                    <a href="coa/Helium_COA.pdf" class="pd-btn-ghost" target="_blank" rel="noopener">View COA <i class="fas fa-file-pdf" style="font-size:0.75em;opacity:0.7;"></i></a>
+                </div>
+            </div>
         </div>
-        <div class="pd-cta-btns">
-            <a href="contact.html" class="pd-btn-primary">Get a Quote</a>
-            <a href="sds/Helium_SDS.pdf" class="pd-btn-ghost" target="_blank" rel="noopener">View SDS <i class="fas fa-file-pdf" style="font-size:0.75em;opacity:0.7;"></i></a>
-            <a href="coa/Helium_COA.pdf" class="pd-btn-ghost" target="_blank" rel="noopener">View COA <i class="fas fa-file-pdf" style="font-size:0.75em;opacity:0.7;"></i></a>
+        <div class="pd-cta-faq">
+            <p class="pd-cta-faq-label">Buying Helium Gas</p>
+            <h2 class="pd-cta-faq-title">Frequently Asked Questions</h2>
+            <div class="pd-faq-list">
+                <div class="pd-faq-item">
+                    <button class="pd-faq-q" type="button" aria-expanded="false">
+                        <span>How do I get a quote for helium gas?</span>
+                        <span class="pd-faq-plus" aria-hidden="true"></span>
+                    </button>
+                    <div class="pd-faq-a-wrap">
+                        <div class="pd-faq-a"><p>Fill out our contact form or email us directly — our technical sales team responds within 24 hours with pricing, lead time, and available grades.</p></div>
+                    </div>
+                </div>
+                <div class="pd-faq-item">
+                    <button class="pd-faq-q" type="button" aria-expanded="false">
+                        <span>What documentation comes with each order?</span>
+                        <span class="pd-faq-plus" aria-hidden="true"></span>
+                    </button>
+                    <div class="pd-faq-a-wrap">
+                        <div class="pd-faq-a"><p>Every order includes a Certificate of Analysis (COA) for the specific batch and a Safety Data Sheet (SDS) — both linked in the Request a Quote panel on this page, or we can send them ahead of your order for review.</p></div>
+                    </div>
+                </div>
+                <div class="pd-faq-item">
+                    <button class="pd-faq-q" type="button" aria-expanded="false">
+                        <span>What cylinder sizes and packaging are available?</span>
+                        <span class="pd-faq-plus" aria-hidden="true"></span>
+                    </button>
+                    <div class="pd-faq-a-wrap">
+                        <div class="pd-faq-a"><p>We currently stock helium exclusively in C300 cylinders (50 L, CGA-580 valve). Need a different cylinder size or valve configuration? We can custom-fill to match your exact requirements — just mention it when requesting a quote.</p></div>
+                    </div>
+                </div>
+                <div class="pd-faq-item">
+                    <button class="pd-faq-q" type="button" aria-expanded="false">
+                        <span>Do you ship internationally?</span>
+                        <span class="pd-faq-plus" aria-hidden="true"></span>
+                    </button>
+                    <div class="pd-faq-a-wrap">
+                        <div class="pd-faq-a"><p>Yes — Airocean Gases supplies helium to customers domestically and internationally.</p></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -499,6 +546,14 @@
             document.querySelectorAll('.pd-pkg-panel').forEach(p => p.classList.remove('active'));
             btn.classList.add('active');
             document.getElementById('pkg-' + btn.dataset.pkg).classList.add('active');
+        });
+    });
+    document.querySelectorAll('.pd-faq-q').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const item = btn.closest('.pd-faq-item');
+            const isOpen = item.classList.contains('open');
+            item.classList.toggle('open', !isOpen);
+            btn.setAttribute('aria-expanded', String(!isOpen));
         });
     });
 </script>
