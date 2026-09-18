@@ -91,6 +91,7 @@
         .pd-pkg-panel { display: none; }
         .pd-pkg-panel.active { display: block; }
         .pd-pkg-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+        .pd-pkg-grid-5 { grid-template-columns: repeat(5, 1fr); }
         .pd-pkg-cell { background: var(--bg); padding: 24px 28px; }
         .pd-pkg-cell-label { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 8px; }
         .pd-pkg-cell-value { font-size: 0.95rem; font-weight: 600; color: var(--ink); }
@@ -114,6 +115,7 @@
             .pd-about-aside { position: static; }
             .pd-grade-row { grid-template-columns: repeat(2, 1fr); }
             .pd-pkg-grid { grid-template-columns: 1fr 1fr; }
+            .pd-pkg-grid-5 { grid-template-columns: 1fr; }
             .pd-cta-inner { flex-direction: column; align-items: flex-start; }
         }
         @media (max-width: 600px) {
@@ -286,6 +288,22 @@
     </div>
 </section>
 
+<!-- FAQ -->
+<section class="pd-grade-section" aria-labelledby="he-faq-heading">
+    <div class="pd-grade-inner">
+        <div class="pd-grade-header">
+            <p class="pd-section-label" style="color:rgba(255,255,255,.35);">Buying Helium Gas</p>
+            <h2 class="pd-grade-title" id="he-faq-heading">Frequently Asked Questions</h2>
+        </div>
+        <div class="pd-about-body" style="max-width:65ch;">
+            <p style="color:rgba(255,255,255,.7);"><strong style="color:#fff;">How do I get a quote for helium gas?</strong> Fill out our contact form or email us directly — our technical sales team responds within 24 hours with pricing, lead time, and available grades.</p>
+            <p style="color:rgba(255,255,255,.7);"><strong style="color:#fff;">What documentation comes with each order?</strong> Every order includes a Certificate of Analysis (COA) for the specific batch and a Safety Data Sheet (SDS) — both linked below on this page, or we can send them ahead of your order for review.</p>
+            <p style="color:rgba(255,255,255,.7);"><strong style="color:#fff;">What cylinder sizes and packaging are available?</strong> We currently stock helium exclusively in C300 cylinders (50 L, CGA-580 valve). Need a different cylinder size or valve configuration? We can custom-fill to match your exact requirements — just mention it when requesting a quote.</p>
+            <p style="color:rgba(255,255,255,.7);"><strong style="color:#fff;">Do you ship internationally?</strong> Yes — Airocean Gases supplies helium to customers domestically and internationally.</p>
+        </div>
+    </div>
+</section>
+
 <!-- GRADE -->
 <section class="pd-grade-section">
     <div class="pd-grade-inner">
@@ -332,7 +350,7 @@
         </div>
         <div class="pd-pkg-content">
             <div class="pd-pkg-panel active" id="pkg-C300">
-                <div class="pd-pkg-grid">
+                <div class="pd-pkg-grid pd-pkg-grid-5">
                     <div class="pd-pkg-cell"><p class="pd-pkg-cell-label">Type</p><p class="pd-pkg-cell-value">C300 Seamless Steel Cylinder (50 L)</p></div>
                     <div class="pd-pkg-cell"><p class="pd-pkg-cell-label">Gas Volume</p><p class="pd-pkg-cell-value">~354 SCF (~10 m³)</p></div>
                     <div class="pd-pkg-cell"><p class="pd-pkg-cell-label">Working Pressure</p><p class="pd-pkg-cell-value">20 MPa (2,900 psig @ 70°F)</p></div>
