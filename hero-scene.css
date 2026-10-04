@@ -1,0 +1,336 @@
+/* ══════════════════════════════════════════════════════════════
+   HERO SCENE — isometric supply-chain map with hover cards
+   Image + hotspot coordinates come from scene-src/airocean_scene.py
+══════════════════════════════════════════════════════════════ */
+.hs-hero {
+    --hs-blue: var(--xe, #1d4ed8);
+    --hs-ink: var(--navy, #080f1d);
+    --hs-ease: cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    background: #e6ebf1;                   /* matches the render's ground colour */
+    font-family: 'Outfit', sans-serif;
+}
+
+/* Full-width 16:9 window onto the render, starting at the very top of the page so the
+   transparent header floats over it. It never crops left/right, so every hotspot stays
+   on screen; on screens wider than 16:9 it is capped at the viewport height and trims a
+   little from the top and bottom instead. */
+.hs-viewport {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    max-height: 100dvh;
+    overflow: hidden;
+}
+/* Centred vertically with a negative margin instead of a transform: percentage margins
+   resolve against the width, so -28.125% is exactly half the 16:9 height. Avoiding a
+   transform keeps the stage out of its own stacking context, which lets the header fade
+   below sit between the render and the hotspots. */
+.hs-stage {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    margin-top: -28.125%;
+}
+
+/* Soft light haze behind the transparent header so the dark nav stays legible over the scene. */
+.hs-viewport::after {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto 0;
+    z-index: 1;
+    height: min(150px, 24%);
+    background: linear-gradient(to bottom,
+        rgba(238, 242, 247, 0.9) 0%,
+        rgba(238, 242, 247, 0.6) 45%,
+        rgba(238, 242, 247, 0) 100%);
+    pointer-events: none;
+}
+/* The poster (the loop's first frame) sits under the video; the video is positioned too so it
+   paints above it, and it stays transparent until its first frame is decoded. */
+.hs-poster,
+.hs-poster img {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.hs-img {                                 /* the looping scene video */
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background: transparent;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.hs-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* ── Hotspots ─────────────────────────────────────────────── */
+/* .hs-spot is a zero-size anchor at the hotspot point. It stays transform-free: on
+   small screens its card is position:fixed, which a transformed ancestor would break. */
+.hs-spot {
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    z-index: 2;
+    width: 0;
+    height: 0;
+}
+.hs-spot.is-open { z-index: 5; }
+
+.hs-dot {
+    position: absolute;
+    left: -15px;
+    top: -15px;
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+    opacity: 0;
+    transform: scale(0.6);
+    transition: opacity 0.5s var(--hs-ease), transform 0.5s var(--hs-ease);
+    transition-delay: calc(var(--i, 0) * 70ms);
+}
+.hs-hero.is-ready .hs-dot { opacity: 1; transform: scale(1); }
+.hs-dot::before {                         /* the visible marker */
+    content: '';
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--hs-blue);
+    border: 3px solid #fff;
+    box-shadow: 0 2px 10px rgba(8, 15, 29, 0.35);
+    transition: transform 0.25s var(--hs-ease), background 0.25s ease;
+}
+.hs-dot::after {                          /* pulse ring */
+    content: '';
+    position: absolute;
+    inset: 7px;
+    border-radius: 50%;
+    border: 2px solid var(--hs-blue);
+    animation: hs-pulse 2.4s var(--hs-ease) infinite;
+    animation-delay: calc(var(--i, 0) * 180ms);
+    pointer-events: none;
+}
+.hs-dot:hover::before,
+.hs-dot:focus-visible::before,
+.hs-spot.is-open .hs-dot::before { transform: scale(1.25); }
+.hs-spot.is-open .hs-dot::before { background: var(--hs-ink); }
+.hs-spot.is-open .hs-dot::after { animation: none; opacity: 0; }
+.hs-dot:focus-visible { outline: 2px solid var(--hs-ink); outline-offset: 3px; }
+
+@keyframes hs-pulse {
+    from { transform: scale(1);   opacity: 0.7; }
+    to   { transform: scale(2.8); opacity: 0; }
+}
+
+/* ── Industry tags: the six customer industries are named on the map ──
+   Always visible, so the map reads without hovering. A tag sits right of its dot unless
+   hero-scene.js flips it left (data-tag="l") to keep clear of other dots and the frame
+   edge; it hides while its own card is open, since the card repeats the name. */
+.hs-tag {
+    position: absolute;
+    top: 0;
+    left: 17px;
+    translate: 0 -50%;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px 4px 8px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 2px 10px rgba(8, 15, 29, 0.16);
+    color: var(--hs-ink);
+    font-size: 0.74rem;
+    font-weight: 600;
+    line-height: 1.2;
+    white-space: nowrap;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.5s var(--hs-ease);
+    transition-delay: calc(var(--i, 0) * 70ms + 150ms);
+}
+.hs-tag i { color: var(--hs-blue); font-size: 0.7rem; }
+.hs-spot[data-tag="l"] .hs-tag { left: auto; right: 17px; }
+.hs-hero.is-ready .hs-tag { opacity: 1; }
+.hs-spot.is-open .hs-tag { opacity: 0; transition-delay: 0s; }
+
+/* ── Hover card ───────────────────────────────────────────── */
+.hs-card {
+    position: absolute;
+    width: 300px;
+    overflow: hidden;
+    border-radius: 14px;
+    background: #fff;
+    color: var(--hs-ink);
+    box-shadow: 0 24px 60px rgba(8, 15, 29, 0.24), 0 2px 6px rgba(8, 15, 29, 0.08);
+    text-align: left;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(6px) scale(0.98);
+    transition: opacity 0.18s ease, transform 0.28s var(--hs-ease), visibility 0s linear 0.28s;
+}
+.hs-spot.is-open .hs-card {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition: opacity 0.18s ease, transform 0.28s var(--hs-ease), visibility 0s;
+}
+.hs-spot[data-side="r"] .hs-card { left: 22px; }
+.hs-spot[data-side="l"] .hs-card { right: 22px; }
+.hs-spot[data-vert="t"] .hs-card { bottom: -12px; }
+.hs-spot[data-vert="b"] .hs-card { top: -12px; }
+.hs-spot[data-vert="m"] .hs-card { top: 0; translate: 0 -50%; }   /* vertically centred on the dot */
+
+.hs-card-media {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 640 / 300;
+    object-fit: cover;
+    background: #dfe5ee;
+}
+.hs-card-body { padding: 14px 18px 16px; }
+.hs-card-kicker {
+    margin-bottom: 5px;
+    color: var(--hs-blue);
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+.hs-card-title {
+    margin-bottom: 6px;
+    font-size: 1.08rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+}
+.hs-card-text {
+    margin-bottom: 12px;
+    color: var(--ink-2, #3d4147);
+    font-size: 0.82rem;
+    line-height: 1.55;
+}
+.hs-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.hs-chip {
+    padding: 3px 9px;
+    border-radius: 6px;
+    background: color-mix(in srgb, var(--gc) 10%, #fff);
+    border: 1px solid color-mix(in srgb, var(--gc) 35%, #fff);
+    color: var(--gc);
+    font-size: 0.74rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+.hs-chip:hover, .hs-chip:focus-visible { background: var(--gc); color: #fff; }
+.hs-card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 2px;
+    border-bottom: 1.5px solid var(--hs-blue);
+    color: var(--hs-ink);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+.hs-card-link i { font-size: 0.66rem; transition: transform 0.25s var(--hs-ease); }
+.hs-card-link:hover i, .hs-card-link:focus-visible i { transform: translateX(3px); }
+.hs-card-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 28px;
+    height: 28px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.88);
+    color: var(--hs-ink);
+    font-size: 0.8rem;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(8, 15, 29, 0.18);
+}
+.hs-card-close:hover, .hs-card-close:focus-visible { background: var(--hs-ink); color: #fff; }
+
+/* ── Transparent header over the light scene ─────────────────
+   At the top of the page the header floats over the render with dark text and the
+   dark-text logo; once script.js adds .scrolled it returns to the site's navy bar. */
+header.hs-on-light .logo-dark,
+header.hs-on-light:not(.scrolled) .logo-light { display: none; }
+header.hs-on-light:not(.scrolled) .logo-dark { display: block; }
+
+header.hs-on-light:not(.scrolled) .utility-link,
+header.hs-on-light:not(.scrolled) .social-icon { color: var(--navy, #080f1d); }
+header.hs-on-light:not(.scrolled) .utility-link:hover,
+header.hs-on-light:not(.scrolled) .social-icon:hover { color: var(--xe, #1d4ed8); }
+header.hs-on-light:not(.scrolled) .utility-sds {
+    border-color: rgba(8, 15, 29, 0.22);
+    background: rgba(255, 255, 255, 0.6);
+}
+header.hs-on-light:not(.scrolled) .utility-sds:hover {
+    border-color: rgba(8, 15, 29, 0.45);
+    background: #fff;
+    color: var(--navy, #080f1d);
+}
+header.hs-on-light:not(.scrolled) .utility-cta { background: var(--navy, #080f1d); color: #fff; }
+header.hs-on-light:not(.scrolled) .utility-cta:hover { background: var(--xe, #1d4ed8); color: #fff; }
+header.hs-on-light:not(.scrolled) .hamburger span { background: var(--navy, #080f1d); }
+header.hs-on-light:not(.scrolled) .hamburger:hover { background: rgba(8, 15, 29, 0.06); }
+
+/* Desktop nav only — the phone menu opens on its own navy panel and keeps white links. */
+@media (min-width: 769px) {
+    header.hs-on-light:not(.scrolled) .nav-link,
+    header.hs-on-light:not(.scrolled) .nav-link.active-link { color: var(--navy, #080f1d); }
+    header.hs-on-light:not(.scrolled) .nav-link:hover { color: var(--navy, #080f1d); background: rgba(8, 15, 29, 0.06); }
+    header.hs-on-light:not(.scrolled) .nav-link::after { background: var(--xe, #1d4ed8); }
+}
+
+/* ── Phones: the portrait cut of the map (9:16, Airocean only, its own hotspot positions);
+      Hongyuan's hotspots are not in it. Cards open as a bottom sheet. ── */
+@media (max-width: 760px) {
+    .hs-viewport { aspect-ratio: 9 / 16; max-height: none; }
+    .hs-stage { aspect-ratio: 9 / 16; margin-top: -88.889%; }   /* half the 9:16 height */
+    .hs-viewport::after { height: min(96px, 14%); }              /* keep the moored ship clear */
+    .hs-spot { left: var(--px); top: var(--py); display: var(--pdisplay, block); }
+    .hs-tag { padding: 3px 8px 3px 7px; font-size: 0.68rem; }
+    .hs-spot[data-side] .hs-card,
+    .hs-card {
+        position: fixed;
+        left: 12px;
+        right: 12px;
+        top: auto;
+        bottom: 12px;
+        width: auto;
+        translate: none;
+        z-index: 1100;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hs-dot::after { animation: none; opacity: 0; }
+    .hs-dot, .hs-card, .hs-tag { transition: none; }
+}
