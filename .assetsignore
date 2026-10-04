@@ -1,0 +1,17 @@
+# Files Wrangler must not publish as website assets (same format as .gitignore).
+# Workers, unlike Pages, uploads everything in the assets directory unless it is listed here,
+# including the .git folder of the repository checkout used by Git-based deploys.
+
+# Not part of the website: Blender scene source, raw renders and build scripts.
+scene-src/
+# Local-only preview of the homepage hero.
+hero-preview.html
+
+# Repository, editor and deployment configuration.
+.git
+.github
+.claude
+.cursor
+.gitignore
+.assetsignore
+wrangler.jsonc
