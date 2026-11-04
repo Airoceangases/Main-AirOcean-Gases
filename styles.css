@@ -4162,3 +4162,25 @@ footer {
 .pd-about-h2 > span[aria-hidden="true"] {
     color: inherit;
 }
+
+/* Product pages: maximum-impurity specification table inside the dark grade panels */
+.pd-imp { margin-top: 28px; }
+.pd-imp-title { display: flex; align-items: center; justify-content: space-between; gap: 16px; max-width: 720px; padding: 16px 24px; cursor: pointer; list-style: none; background: rgba(8,15,29,0.7); border: 1px solid rgba(255,255,255,0.08); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.6); transition: color 0.2s; }
+.pd-imp-title::-webkit-details-marker { display: none; }
+.pd-imp-title:hover, .pd-imp-title:focus-visible { color: #fff; }
+.pd-imp[open] .pd-imp-title { border-bottom-color: transparent; }
+.pd-imp-plus { position: relative; width: 14px; height: 14px; flex-shrink: 0; }
+.pd-imp-plus::before, .pd-imp-plus::after { content: ""; position: absolute; background: #1d4ed8; border-radius: 1px; }
+.pd-imp-plus::before { top: 50%; left: 0; width: 100%; height: 2px; margin-top: -1px; }
+.pd-imp-plus::after { left: 50%; top: 0; width: 2px; height: 100%; margin-left: -1px; transition: transform 0.3s ease; }
+.pd-imp[open] .pd-imp-plus::after { transform: rotate(90deg); }
+.pd-imp-table { width: 100%; max-width: 720px; border-collapse: collapse; border: 1px solid rgba(255,255,255,0.08); }
+.pd-imp-table th, .pd-imp-table td { padding: 12px 24px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.08); background: rgba(8,15,29,0.7); }
+.pd-imp-table thead th { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
+.pd-imp-table tbody th { font-size: 0.88rem; font-weight: 400; color: rgba(255,255,255,0.75); }
+.pd-imp-table tbody td { font-size: 0.88rem; font-weight: 600; color: #fff; white-space: nowrap; }
+.pd-imp-note { margin-top: 14px; max-width: 720px; font-size: 0.78rem; line-height: 1.6; color: rgba(255,255,255,0.45); }
+.pd-imp-note a { color: rgba(255,255,255,0.75); text-decoration: underline; }
+@media (max-width: 600px) {
+    .pd-imp-table th, .pd-imp-table td { padding: 10px 14px; }
+}
