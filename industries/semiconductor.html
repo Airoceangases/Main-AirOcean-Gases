@@ -10,8 +10,8 @@
     <meta property="og:title" content="Semiconductor Manufacturing Gases — Airocean Gases">
     <meta property="og:description" content="High-purity Krypton, Neon, SF6, CF4, N2O, and WF6 for semiconductor photolithography, plasma etching, and CVD film growth. Talk to Airocean Gases about your fab's gas supply.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.airoceangases.com/industries/semiconductor.html">
-    <link rel="canonical" href="https://www.airoceangases.com/industries/semiconductor.html">
+    <meta property="og:url" content="https://www.airoceangases.com/industries/semiconductor">
+    <link rel="canonical" href="https://www.airoceangases.com/industries/semiconductor">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
@@ -104,6 +104,22 @@
             font-weight: 700; line-height: 1.25; letter-spacing: -0.01em; z-index: 2;
         }
 
+        /* Industry guide: a short visible answer, then questions visitors can open one by one */
+        .ig-guide-lead { font-size: 1rem; color: var(--ink-2, #52555c); line-height: 1.8; font-weight: 300; max-width: 760px; margin: -16px 0 36px; }
+        .ig-faq-list { border-top: 1px solid var(--rule); max-width: 900px; }
+        .ig-faq-item { border-bottom: 1px solid var(--rule); }
+        .ig-faq-q { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 20px 0; background: none; border: none; cursor: pointer; text-align: left; font-family: 'Outfit', sans-serif; font-size: 1rem; font-weight: 600; color: var(--ink); transition: color 0.2s; }
+        .ig-faq-q:hover, .ig-faq-q:focus-visible { color: var(--kr); }
+        .ig-faq-plus { position: relative; width: 16px; height: 16px; flex-shrink: 0; }
+        .ig-faq-plus::before, .ig-faq-plus::after { content: ''; position: absolute; background: var(--kr); border-radius: 1px; }
+        .ig-faq-plus::before { top: 50%; left: 0; width: 100%; height: 2px; margin-top: -1px; }
+        .ig-faq-plus::after { left: 50%; top: 0; width: 2px; height: 100%; margin-left: -1px; transition: transform 0.3s ease; }
+        .ig-faq-item.open .ig-faq-plus::after { transform: rotate(90deg); }
+        .ig-faq-a-wrap { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s cubic-bezier(.16,1,.3,1); }
+        .ig-faq-item.open .ig-faq-a-wrap { grid-template-rows: 1fr; }
+        .ig-faq-a { overflow: hidden; }
+        .ig-faq-a p { padding-bottom: 22px; font-size: 0.92rem; line-height: 1.75; color: var(--ink-2, #52555c); font-weight: 300; max-width: 70ch; }
+
         @media (max-width: 900px) {
             .ig-other-grid { grid-template-columns: repeat(2, 1fr); }
         }
@@ -128,13 +144,13 @@
             <div class="container">
                 <div class="utility-content">
                     <div class="utility-right">
-                        <a href="../sds.html" class="utility-link utility-sds">Documents</a>
+                        <a href="../sds" class="utility-link utility-sds">Documents</a>
                         <div class="utility-social">
                             <a href="https://www.linkedin.com/company/airoceangases/" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                             <a href="https://www.instagram.com/airoceangases/?hl=en" target="_blank" rel="noopener" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                             <a href="https://api.whatsapp.com/send/?phone=9174317883&text&type=phone_number&app_absent=0" target="_blank" rel="noopener" class="social-icon" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                         </div>
-                        <a href="../contact.html" class="utility-cta">Get Started</a>
+                        <a href="../contact" class="utility-cta">Get Started</a>
                     </div>
                 </div>
             </div>
@@ -146,12 +162,12 @@
                         <img src="../images/logo.png" alt="Airocean Gases Logo" class="logo-img">
                     </div>
                     <nav>
-                        <a href="../contact.html" class="nav-mob-cta">Get Started</a>
+                        <a href="../contact" class="nav-mob-cta">Get Started</a>
                         <ul class="nav-menu">
                             <li class="nav-mob-util">
                                 <a href="tel:+13025612790" class="nav-mob-phone"><i class="fas fa-phone-alt"></i> +1 (302) 561-2790</a>
                                 <div class="nav-mob-util-right">
-                                    <a href="../sds.html" class="nav-mob-docs">Documents</a>
+                                    <a href="../sds" class="nav-mob-docs">Documents</a>
                                     <div class="nav-mob-socials">
                                         <a href="https://www.linkedin.com/company/airoceangases/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                                         <a href="https://www.instagram.com/airoceangases/?hl=en" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -161,39 +177,39 @@
                             </li>
                             <li><a href="/" class="nav-link">Home <i class="fas fa-chevron-right nav-arrow"></i></a></li>
                             <li class="nav-item-dropdown">
-                                <a href="../about.html" class="nav-link">About Us <i class="fas fa-chevron-down nav-caret"></i> <i class="fas fa-chevron-right nav-arrow"></i></a>
+                                <a href="../about" class="nav-link">About Us <i class="fas fa-chevron-down nav-caret"></i> <i class="fas fa-chevron-right nav-arrow"></i></a>
                                 <div class="nav-dropdown">
-                                    <a href="../about.html#history" class="nav-dropdown-link">Company History</a>
-                                    <a href="../about.html#leadership" class="nav-dropdown-link">Leadership</a>
-                                    <a href="../about.html#careers" class="nav-dropdown-link">Careers</a>
+                                    <a href="../about#history" class="nav-dropdown-link">Company History</a>
+                                    <a href="../about#leadership" class="nav-dropdown-link">Leadership</a>
+                                    <a href="../about#careers" class="nav-dropdown-link">Careers</a>
                                 </div>
                             </li>
                             <li class="nav-item-dropdown">
-                                <a href="../products.html" class="nav-link">Products &amp; Services <i class="fas fa-chevron-down nav-caret"></i> <i class="fas fa-chevron-right nav-arrow"></i></a>
+                                <a href="../products" class="nav-link">Products &amp; Services <i class="fas fa-chevron-down nav-caret"></i> <i class="fas fa-chevron-right nav-arrow"></i></a>
                                 <div class="nav-dropdown">
-                                    <a href="../product-detail-kr.html" class="nav-dropdown-link">Krypton (Kr)</a>
-                                    <a href="../product-detail-xe.html" class="nav-dropdown-link">Xenon (Xe)</a>
-                                    <a href="../product-detail-ne.html" class="nav-dropdown-link">Neon (Ne)</a>
-                                    <a href="../product-detail-he.html" class="nav-dropdown-link">Helium (He)</a>
-                                    <a href="../product-detail-sf6.html" class="nav-dropdown-link">Sulfur Hexafluoride (SF&#x2086;)</a>
-                                    <a href="../product-detail-n2o.html" class="nav-dropdown-link">Nitrous Oxide (N&#x2082;O)</a>
-                                    <a href="../product-detail-cf4.html" class="nav-dropdown-link">Tetrafluoromethane (CF&#x2084;)</a>
-                                    <a href="../product-detail-wf6.html" class="nav-dropdown-link">Tungsten Hexafluoride (WF&#x2086;)</a>
+                                    <a href="../product-detail-kr" class="nav-dropdown-link">Krypton (Kr)</a>
+                                    <a href="../product-detail-xe" class="nav-dropdown-link">Xenon (Xe)</a>
+                                    <a href="../product-detail-ne" class="nav-dropdown-link">Neon (Ne)</a>
+                                    <a href="../product-detail-he" class="nav-dropdown-link">Helium (He)</a>
+                                    <a href="../product-detail-sf6" class="nav-dropdown-link">Sulfur Hexafluoride (SF&#x2086;)</a>
+                                    <a href="../product-detail-n2o" class="nav-dropdown-link">Nitrous Oxide (N&#x2082;O)</a>
+                                    <a href="../product-detail-cf4" class="nav-dropdown-link">Tetrafluoromethane (CF&#x2084;)</a>
+                                    <a href="../product-detail-wf6" class="nav-dropdown-link">Tungsten Hexafluoride (WF&#x2086;)</a>
                                 </div>
                             </li>
                             <li class="nav-item-dropdown">
-                                <a href="../industries.html" class="nav-link active-link">Industries <i class="fas fa-chevron-down nav-caret"></i> <i class="fas fa-chevron-right nav-arrow"></i></a>
+                                <a href="../industries" class="nav-link active-link">Industries <i class="fas fa-chevron-down nav-caret"></i> <i class="fas fa-chevron-right nav-arrow"></i></a>
                                 <div class="nav-dropdown">
-                                    <a href="semiconductor.html" class="nav-dropdown-link">Semiconductor Manufacturing</a>
-                                    <a href="aerospace.html" class="nav-dropdown-link">Aerospace Propulsion</a>
-                                    <a href="window.html" class="nav-dropdown-link">Window Manufacturing</a>
-                                    <a href="electrical.html" class="nav-dropdown-link">Electric &amp; Switchgear</a>
-                                    <a href="scientific.html" class="nav-dropdown-link">Scientific &amp; Research</a>
-                                    <a href="lighting.html" class="nav-dropdown-link">Lighting Manufacturing</a>
+                                    <a href="semiconductor" class="nav-dropdown-link">Semiconductor Manufacturing</a>
+                                    <a href="aerospace" class="nav-dropdown-link">Aerospace Propulsion</a>
+                                    <a href="window" class="nav-dropdown-link">Window Manufacturing</a>
+                                    <a href="electrical" class="nav-dropdown-link">Electric &amp; Switchgear</a>
+                                    <a href="scientific" class="nav-dropdown-link">Scientific &amp; Research</a>
+                                    <a href="lighting" class="nav-dropdown-link">Lighting Manufacturing</a>
                                 </div>
                             </li>
-                            <li><a href="../applications.html" class="nav-link">Applications <i class="fas fa-chevron-right nav-arrow"></i></a></li>
-                            <li><a href="../contact.html" class="nav-link">Contact Us <i class="fas fa-chevron-right nav-arrow"></i></a></li>
+                            <li><a href="../applications" class="nav-link">Applications <i class="fas fa-chevron-right nav-arrow"></i></a></li>
+                            <li><a href="../contact" class="nav-link">Contact Us <i class="fas fa-chevron-right nav-arrow"></i></a></li>
                         </ul>
                         <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
                             <span></span><span></span><span></span>
@@ -212,7 +228,7 @@
             <p class="ig-eyebrow">Noble & Specialty Gases · Semiconductor</p>
             <h1>Semiconductor Manufacturing</h1>
             <p class="ig-hero-sub">Chip fabrication depends on gas purity at every stage — from excimer laser lithography to plasma etching and CVD film growth. We supply six of the eight gases in our portfolio into semiconductor process lines.</p>
-            <a href="../contact.html?industry=semiconductor" class="ig-hero-cta">Request a Quote <i class="fas fa-arrow-right" style="font-size:0.7rem"></i></a>
+            <a href="../contact?industry=semiconductor" class="ig-hero-cta">Request a Quote <i class="fas fa-arrow-right" style="font-size:0.7rem"></i></a>
         </div>
     </section>
 
@@ -222,37 +238,37 @@
             <p class="ig-section-eyebrow">Relevant Gases</p>
             <h2 class="ig-section-title">Gases We Supply for Semiconductor Manufacturing</h2>
             <div class="ig-gas-grid">
-                <a href="../product-detail-kr.html" class="ig-gas-card">
+                <a href="../product-detail-kr" class="ig-gas-card">
                     <div class="ig-gas-sym">Kr</div>
                     <div class="ig-gas-name">Krypton</div>
                     <p class="ig-gas-note">Excimer laser media for photolithography and high-selectivity plasma etching.</p>
                     <div class="ig-gas-link">View Spec Sheet <i class="fas fa-arrow-right" style="font-size:0.6rem"></i></div>
                 </a>
-                <a href="../product-detail-ne.html" class="ig-gas-card">
+                <a href="../product-detail-ne" class="ig-gas-card">
                     <div class="ig-gas-sym">Ne</div>
                     <div class="ig-gas-name">Neon</div>
                     <p class="ig-gas-note">Excimer laser gas mixtures and plasma deposition processes.</p>
                     <div class="ig-gas-link">View Spec Sheet <i class="fas fa-arrow-right" style="font-size:0.6rem"></i></div>
                 </a>
-                <a href="../product-detail-sf6.html" class="ig-gas-card">
+                <a href="../product-detail-sf6" class="ig-gas-card">
                     <div class="ig-gas-sym">SF&#x2086;</div>
                     <div class="ig-gas-name">Sulfur Hexafluoride</div>
                     <p class="ig-gas-note">Anisotropic plasma etching of silicon and silicon dioxide.</p>
                     <div class="ig-gas-link">View Spec Sheet <i class="fas fa-arrow-right" style="font-size:0.6rem"></i></div>
                 </a>
-                <a href="../product-detail-cf4.html" class="ig-gas-card">
+                <a href="../product-detail-cf4" class="ig-gas-card">
                     <div class="ig-gas-sym">CF&#x2084;</div>
                     <div class="ig-gas-name">Tetrafluoromethane</div>
                     <p class="ig-gas-note">Fluorine plasma source for Si/SiO&#x2082; etch and PECVD chamber cleaning.</p>
                     <div class="ig-gas-link">View Spec Sheet <i class="fas fa-arrow-right" style="font-size:0.6rem"></i></div>
                 </a>
-                <a href="../product-detail-n2o.html" class="ig-gas-card">
+                <a href="../product-detail-n2o" class="ig-gas-card">
                     <div class="ig-gas-sym">N&#x2082;O</div>
                     <div class="ig-gas-name">Nitrous Oxide</div>
                     <p class="ig-gas-note">Oxidant source for PECVD gate dielectric growth.</p>
                     <div class="ig-gas-link">View Spec Sheet <i class="fas fa-arrow-right" style="font-size:0.6rem"></i></div>
                 </a>
-                <a href="../product-detail-wf6.html" class="ig-gas-card">
+                <a href="../product-detail-wf6" class="ig-gas-card">
                     <div class="ig-gas-sym">WF&#x2086;</div>
                     <div class="ig-gas-name">Tungsten Hexafluoride</div>
                     <p class="ig-gas-note">CVD source for low-resistivity tungsten interconnects and via fill.</p>
@@ -284,42 +300,102 @@
         </div>
     </section>
 
+    <!-- ── Guide + questions ── -->
+    <section class="ig-section">
+        <div class="ig-inner" style="max-width:1140px">
+            <p class="ig-section-eyebrow">Fab Process Gases</p>
+            <h2 class="ig-section-title">Where Each Gas Is Used in the Fab</h2>
+            <p class="ig-guide-lead">A modern fab uses specialty gases at nearly every step: neon and krypton in the excimer lasers that pattern wafers, CF₄ and SF₆ in plasma etch and chamber cleaning, N₂O as an oxidizer for dielectric films, and WF₆ for tungsten contacts and vias. At each step, trace impurities translate directly into yield loss.</p>
+            <div class="ig-faq-list">
+                <div class="ig-faq-item">
+                    <button class="ig-faq-q" type="button" aria-expanded="false">
+                        <span>Why is neon critical for lithography?</span>
+                        <span class="ig-faq-plus" aria-hidden="true"></span>
+                    </button>
+                    <div class="ig-faq-a-wrap"><div class="ig-faq-a"><p>Neon is the buffer gas that makes up the large majority of the gas mixture in ArF (193 nm) and KrF (248 nm) excimer lasers used for deep-ultraviolet lithography. Supply disruptions since 2022 have led many fabs to qualify more than one neon source. Airocean Gases supplies neon in 6N Research Grade and 5.5N UHP+ — see the <a href="../product-detail-ne">neon specifications</a>.</p></div></div>
+                </div>
+                <div class="ig-faq-item">
+                    <button class="ig-faq-q" type="button" aria-expanded="false">
+                        <span>How is krypton used in chip manufacturing?</span>
+                        <span class="ig-faq-plus" aria-hidden="true"></span>
+                    </button>
+                    <div class="ig-faq-a-wrap"><div class="ig-faq-a"><p>Krypton is the active gas in KrF excimer lasers (248 nm), which are still used for many lithography layers, and it is also used in some plasma processes. Airocean Gases supplies Grade 5.0 (99.999%) <a href="../product-detail-kr">krypton</a>.</p></div></div>
+                </div>
+                <div class="ig-faq-item">
+                    <button class="ig-faq-q" type="button" aria-expanded="false">
+                        <span>What are CF₄ and SF₆ used for?</span>
+                        <span class="ig-faq-plus" aria-hidden="true"></span>
+                    </button>
+                    <div class="ig-faq-a-wrap"><div class="ig-faq-a"><p>CF₄ is a fluorine source for plasma etching of silicon dioxide and silicon nitride, and for in-situ cleaning of PECVD chambers. SF₆ releases a high density of fluorine radicals, giving fast silicon etch rates; it is the etch gas in deep reactive-ion etching (the Bosch process) used for MEMS and through-silicon vias. See the <a href="../product-detail-cf4">CF₄</a> and <a href="../product-detail-sf6">SF₆</a> specifications.</p></div></div>
+                </div>
+                <div class="ig-faq-item">
+                    <button class="ig-faq-q" type="button" aria-expanded="false">
+                        <span>What is N₂O used for?</span>
+                        <span class="ig-faq-plus" aria-hidden="true"></span>
+                    </button>
+                    <div class="ig-faq-a-wrap"><div class="ig-faq-a"><p>Nitrous oxide is the oxidizer in PECVD deposition of silicon oxide and silicon oxynitride films, including oxynitride gate dielectrics. Airocean Gases supplies electronic-grade <a href="../product-detail-n2o">N₂O</a> up to 99.9995%.</p></div></div>
+                </div>
+                <div class="ig-faq-item">
+                    <button class="ig-faq-q" type="button" aria-expanded="false">
+                        <span>How is WF₆ used?</span>
+                        <span class="ig-faq-plus" aria-hidden="true"></span>
+                    </button>
+                    <div class="ig-faq-a-wrap"><div class="ig-faq-a"><p>In tungsten CVD, WF₆ is reduced by hydrogen or silane at roughly 300–450 °C to deposit conformal tungsten that fills contacts and vias, forming low-resistivity plugs between transistors and the first metal layer. It is also used in ALD tungsten nucleation layers. Airocean Gases supplies <a href="../product-detail-wf6">WF₆</a> up to 6N.</p></div></div>
+                </div>
+                <div class="ig-faq-item">
+                    <button class="ig-faq-q" type="button" aria-expanded="false">
+                        <span>Which impurities matter most?</span>
+                        <span class="ig-faq-plus" aria-hidden="true"></span>
+                    </button>
+                    <div class="ig-faq-a-wrap"><div class="ig-faq-a"><p>Moisture and oxygen are the most common yield killers, followed by CO, CO₂ and trace metals; for WF₆, HF and other metal fluorides are also controlled. Each grade is defined by maximum impurity levels, and a Certificate of Analysis documents the measured values for the shipped lot.</p></div></div>
+                </div>
+                <div class="ig-faq-item">
+                    <button class="ig-faq-q" type="button" aria-expanded="false">
+                        <span>How do we qualify Airocean Gases as a supplier?</span>
+                        <span class="ig-faq-plus" aria-hidden="true"></span>
+                    </button>
+                    <div class="ig-faq-a-wrap"><div class="ig-faq-a"><p>Share your process specification, volumes and packaging requirements through our <a href="../contact?industry=semiconductor">contact form</a>. Our team will confirm the matching grade and packaging and provide the documentation you need for qualification.</p></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ── CTA ── -->
     <section class="ig-cta">
         <h2>Sourcing Gas for Semiconductor Manufacturing?</h2>
         <p>Tell us your specification, volume, and delivery location — our team will confirm the right gas grade and packaging format.</p>
-        <a href="../contact.html?industry=semiconductor" class="ig-cta-btn">Contact Specialists <i class="fas fa-arrow-right" style="font-size:0.75rem"></i></a>
+        <a href="../contact?industry=semiconductor" class="ig-cta-btn">Contact Specialists <i class="fas fa-arrow-right" style="font-size:0.75rem"></i></a>
     </section>
 
     <div class="ig-other">
         <div class="ig-other-inner">
             <p class="ig-other-label">Explore Other Industries</p>
             <div class="ig-other-grid">
-            <a href="aerospace.html" class="ig-other-card">
+            <a href="aerospace" class="ig-other-card">
                 <div class="ig-other-bg" style="background-image:url('../images/applications_page_89.jpg')"></div>
                 <div class="ig-other-overlay"></div>
                 <div class="ig-other-ghost" aria-hidden="true">Aero</div>
                 <div class="ig-other-title">Aerospace Propulsion</div>
             </a>
-            <a href="window.html" class="ig-other-card">
+            <a href="window" class="ig-other-card">
                 <div class="ig-other-bg" style="background-image:url('../images/industry_window.jpg')"></div>
                 <div class="ig-other-overlay"></div>
                 <div class="ig-other-ghost" aria-hidden="true">Win</div>
                 <div class="ig-other-title">Window Manufacturing</div>
             </a>
-            <a href="electrical.html" class="ig-other-card">
+            <a href="electrical" class="ig-other-card">
                 <div class="ig-other-bg" style="background-image:url('../images/industry_electrical.jpg')"></div>
                 <div class="ig-other-overlay"></div>
                 <div class="ig-other-ghost" aria-hidden="true">GIS</div>
                 <div class="ig-other-title">Electric & Switchgear Applications</div>
             </a>
-            <a href="scientific.html" class="ig-other-card">
+            <a href="scientific" class="ig-other-card">
                 <div class="ig-other-bg" style="background-image:url('../images/industry_research.jpg')"></div>
                 <div class="ig-other-overlay"></div>
                 <div class="ig-other-ghost" aria-hidden="true">Sci</div>
                 <div class="ig-other-title">Scientific & Research</div>
             </a>
-            <a href="lighting.html" class="ig-other-card">
+            <a href="lighting" class="ig-other-card">
                 <div class="ig-other-bg" style="background-image:url('../images/industry_lighting.jpg')"></div>
                 <div class="ig-other-overlay"></div>
                 <div class="ig-other-ghost" aria-hidden="true">Lite</div>
@@ -347,19 +423,19 @@
                 <div class="footer-column">
                     <h3>Legal</h3>
                     <ul>
-                        <li><a href="../privacy-policy.html">Privacy Policy</a></li>
-                        <li><a href="../terms-conditions.html">Terms &amp; Conditions</a></li>
+                        <li><a href="../privacy-policy">Privacy Policy</a></li>
+                        <li><a href="../terms-conditions">Terms &amp; Conditions</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h3>Quick Links</h3>
                     <ul>
                         <li><a href="/">Home</a></li>
-                        <li><a href="../about.html">About Us</a></li>
-                        <li><a href="../products.html">Products &amp; Services</a></li>
-                        <li><a href="../industries.html">Industries</a></li>
-                        <li><a href="../applications.html">Applications</a></li>
-                        <li><a href="../contact.html">Contact Us</a></li>
+                        <li><a href="../about">About Us</a></li>
+                        <li><a href="../products">Products &amp; Services</a></li>
+                        <li><a href="../industries">Industries</a></li>
+                        <li><a href="../applications">Applications</a></li>
+                        <li><a href="../contact">Contact Us</a></li>
                     </ul>
                 </div>
             </div>
@@ -374,6 +450,15 @@
     </button>
 
     <script src="../script.js"></script>
+    <script>
+    document.querySelectorAll('.ig-faq-q').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const item = btn.closest('.ig-faq-item');
+            const isOpen = item.classList.toggle('open');
+            btn.setAttribute('aria-expanded', String(isOpen));
+        });
+    });
+    </script>
 
     <script>
     (function(){

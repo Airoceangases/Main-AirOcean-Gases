@@ -6,6 +6,7 @@
 scene-src/
 # Local-only preview of the homepage hero.
 hero-preview.html
+contact-card-preview.html
 
 # Repository, editor and deployment configuration.
 .git

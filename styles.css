@@ -4142,3 +4142,23 @@ footer {
     text-align: center;
 }
 
+
+/* Text read by search engines and screen readers but not shown (e.g. a product's full name
+   when the visible heading splits it across lines). */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Product headings: the wrapper around the split visible name keeps the heading colour;
+   only the inner accent spans are coloured. */
+.pd-about-h2 > span[aria-hidden="true"] {
+    color: inherit;
+}

@@ -173,14 +173,35 @@
     /* The loop plays only while the hero is on screen and the visitor allows motion;
        otherwise the poster (the loop's first frame) stays up. */
     let onScreen = true;
+    /* The video files are attached only once the page has finished loading, so the poster and
+       the rest of the page get the bandwidth first. With data-saver or reduced motion the video
+       is never downloaded at all. */
+    let pageLoaded = document.readyState === 'complete';
+    let filmAttached = false;
+    const saveData = Boolean(navigator.connection && navigator.connection.saveData);
+    function attachFilm() {
+        film.querySelectorAll('source[data-src]').forEach(source => {
+            source.src = source.dataset.src;
+            source.removeAttribute('data-src');
+        });
+        filmAttached = true;
+        film.load();
+    }
     function syncPlayback() {
         if (!film) return;
         if (onScreen && !reduced.matches) {
-            // A refused autoplay (e.g. data-saver) is fine: the poster simply stays visible.
+            if (!filmAttached) {
+                if (!pageLoaded || saveData) return;   // the poster stays up
+                attachFilm();
+            }
+            // A refused autoplay is fine: the poster simply stays visible.
             film.play().catch(() => {});
-        } else {
+        } else if (filmAttached) {
             film.pause();
         }
+    }
+    if (!pageLoaded) {
+        window.addEventListener('load', () => { pageLoaded = true; syncPlayback(); }, { once: true });
     }
     if (film && 'IntersectionObserver' in window) {
         new IntersectionObserver(([entry]) => { onScreen = entry.isIntersecting; syncPlayback(); }).observe(hero);
@@ -199,7 +220,7 @@
        is only evaluated when the video loads, so reload it (the <picture> poster swaps by itself). */
     compact.addEventListener('change', () => {
         closeSpot();
-        if (film) {
+        if (film && filmAttached) {
             film.load();
             syncPlayback();
         }

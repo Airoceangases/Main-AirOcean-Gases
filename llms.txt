@@ -1,0 +1,36 @@
+# Airocean Gases
+
+> Airocean Gases, LLC is a U.S. supplier of ultra high purity and research grade noble and specialty gases — helium, neon, krypton, xenon, SF6, N2O, CF4 and WF6 — based in Center Valley, Pennsylvania. Founded in 2024 and a GAWDA member, it serves semiconductor, aerospace, electrical, lighting, window and research customers across North America, backed by its parent company Hongyuan's 40+ years of rare-gas production.
+
+Contact: info@airoceangases.com · +1 302-561-2790 · 4647 Saucon Creek Road, Suite 201, Center Valley, PA 18034, USA. Pricing, minimum order and lead times are provided on request.
+
+## Products
+
+- [Helium (He)](https://www.airoceangases.com/product-detail-he): 5.5N (99.9995%) UHP+ and 6N (99.9999%) Research Grade; GC/GC-MS carrier gas, semiconductor, MRI, leak detection
+- [Neon (Ne)](https://www.airoceangases.com/product-detail-ne): 6N Research Grade and 5.5N UHP+; excimer laser gas for lithography, lighting
+- [Krypton (Kr)](https://www.airoceangases.com/product-detail-kr): Grade 5.0 (99.999%); insulated glass fill gas, KrF lasers, lighting
+- [Xenon (Xe)](https://www.airoceangases.com/product-detail-xe): 5.5N UHP+ and 6N Research Grade; electric propulsion, semiconductor, medical
+- [Sulfur Hexafluoride (SF6)](https://www.airoceangases.com/product-detail-sf6): 99.99% to 99.9999% electronic grade; switchgear insulation, plasma etch
+- [Nitrous Oxide (N2O)](https://www.airoceangases.com/product-detail-n2o): up to 99.9995% electronic grade; PECVD oxide and oxynitride films
+- [Tetrafluoromethane (CF4)](https://www.airoceangases.com/product-detail-cf4): semiconductor grade 5N; plasma etch and chamber cleaning
+- [Tungsten Hexafluoride (WF6)](https://www.airoceangases.com/product-detail-wf6): up to 6N; tungsten CVD for contacts and vias
+- [All products](https://www.airoceangases.com/products)
+
+## Industries
+
+- [Semiconductor manufacturing](https://www.airoceangases.com/industries/semiconductor)
+- [Aerospace propulsion](https://www.airoceangases.com/industries/aerospace)
+- [Electric & switchgear](https://www.airoceangases.com/industries/electrical)
+- [Window manufacturing (insulated glass)](https://www.airoceangases.com/industries/window)
+- [Lighting manufacturing](https://www.airoceangases.com/industries/lighting)
+- [Scientific & research laboratories](https://www.airoceangases.com/industries/scientific)
+
+## Documents
+
+- [SDS and COA library](https://www.airoceangases.com/sds): Safety Data Sheets and Certificates of Analysis
+
+## Company
+
+- [About Airocean Gases](https://www.airoceangases.com/about)
+- [Applications](https://www.airoceangases.com/applications)
+- [Contact and quote request](https://www.airoceangases.com/contact)

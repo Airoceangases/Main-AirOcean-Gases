@@ -1,0 +1,13 @@
+# Response headers for every page and file (Cloudflare Workers static assets read this file;
+# it is not served as a page).
+
+/*
+  Strict-Transport-Security: max-age=31536000
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+# Images and the hero videos: let browsers reuse them for a week instead of re-checking on every visit.
+/images/*
+  Cache-Control: public, max-age=604800
