@@ -11,3 +11,45 @@
 # Images and the hero videos: let browsers reuse them for a week instead of re-checking on every visit.
 /images/*
   Cache-Control: public, max-age=604800
+
+# Declare UTF-8 on every page, so crawlers and AI tools that ignore <meta charset> still read
+# characters like "—" and "SF₆" correctly. Pages are listed one by one because a catch-all rule
+# would also relabel images, videos and robots.txt. Add new pages here.
+/
+  Content-Type: text/html; charset=utf-8
+/about
+  Content-Type: text/html; charset=utf-8
+/products
+  Content-Type: text/html; charset=utf-8
+/applications
+  Content-Type: text/html; charset=utf-8
+/industries
+  Content-Type: text/html; charset=utf-8
+/industries/:page
+  Content-Type: text/html; charset=utf-8
+/contact
+  Content-Type: text/html; charset=utf-8
+/sds
+  Content-Type: text/html; charset=utf-8
+/privacy-policy
+  Content-Type: text/html; charset=utf-8
+/terms-conditions
+  Content-Type: text/html; charset=utf-8
+/product-detail-he
+  Content-Type: text/html; charset=utf-8
+/product-detail-ne
+  Content-Type: text/html; charset=utf-8
+/product-detail-kr
+  Content-Type: text/html; charset=utf-8
+/product-detail-xe
+  Content-Type: text/html; charset=utf-8
+/product-detail-sf6
+  Content-Type: text/html; charset=utf-8
+/product-detail-n2o
+  Content-Type: text/html; charset=utf-8
+/product-detail-cf4
+  Content-Type: text/html; charset=utf-8
+/product-detail-wf6
+  Content-Type: text/html; charset=utf-8
+/llms.txt
+  Content-Type: text/plain; charset=utf-8
