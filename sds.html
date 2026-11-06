@@ -407,6 +407,61 @@
         .sds-link-product i { font-size: 0.65rem; transition: transform 0.18s ease; }
         .sds-link-product:hover i { transform: translateX(3px); }
 
+        /* ── PRODUCT CATALOG ── */
+        .sds-catalog {
+            scroll-margin-top: 110px;
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 36px;
+            align-items: center;
+            background: #fff;
+            border: 1px solid var(--rule);
+            border-radius: 20px;
+            padding: 28px 36px 28px 28px;
+            margin-bottom: 64px;
+        }
+        @media (max-width: 768px) {
+            .sds-catalog { grid-template-columns: 1fr; gap: 24px; padding: 24px; }
+            .sds-catalog-cover { max-width: 150px; }
+        }
+        .sds-catalog-cover {
+            display: block;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 14px 34px rgba(16, 32, 64, 0.18);
+            transform: rotate(-1.5deg);
+            transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.32s ease;
+        }
+        .sds-catalog-cover:hover,
+        .sds-catalog-cover:focus-visible {
+            transform: rotate(0deg) translateY(-4px);
+            box-shadow: 0 20px 44px rgba(16, 32, 64, 0.24);
+        }
+        .sds-catalog-cover img { display: block; width: 100%; height: auto; }
+        .sds-catalog-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--navy);
+            letter-spacing: -0.02em;
+            margin-bottom: 6px;
+        }
+        .sds-catalog-meta {
+            font-size: 0.75rem;
+            color: var(--ink-3);
+            margin-bottom: 14px;
+        }
+        .sds-catalog-desc {
+            font-size: 0.9rem;
+            color: var(--ink-2);
+            line-height: 1.7;
+            max-width: 620px;
+            margin-bottom: 16px;
+        }
+        .sds-catalog .sds-tags { margin-bottom: 22px; }
+        .sds-catalog-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+        .sds-catalog-actions .sds-dl,
+        .sds-catalog-actions .sds-coa { min-width: 180px; }
+
         /* Pending card */
         .sds-card--pending {
             background: var(--bg);
@@ -604,6 +659,39 @@
     <!-- ══ MAIN ══ -->
     <main class="sds-main">
         <div class="container">
+
+            <!-- Product Catalog -->
+            <p class="sds-label">Company Brochure</p>
+            <h3 class="sds-section-h">Product Catalog</h3>
+
+            <section class="sds-catalog" id="catalog" aria-labelledby="catalog-title">
+                <a href="catalog/Airocean_Product_Catalog.pdf" class="sds-catalog-cover" target="_blank" rel="noopener" aria-label="Open the Airocean Gases product catalog (PDF)">
+                    <img src="images/catalog-cover.jpg" width="656" height="889" loading="lazy" alt="Cover of the Airocean Gases product catalog: high-purity specialty gas solutions">
+                </a>
+                <div>
+                    <h2 class="sds-catalog-title" id="catalog-title">Airocean Gases Product Catalog</h2>
+                    <p class="sds-catalog-meta">PDF · 12 pages · 10.8 MB</p>
+                    <p class="sds-catalog-desc">All eight of our specialty gas product lines in one guide: purity levels, cylinder and valve specifications, key applications, and our U.S. warehousing and distribution from Pennsylvania.</p>
+                    <div class="sds-tags">
+                        <span class="sds-tag">Krypton</span>
+                        <span class="sds-tag">Xenon</span>
+                        <span class="sds-tag">Neon</span>
+                        <span class="sds-tag">Helium</span>
+                        <span class="sds-tag">N₂O</span>
+                        <span class="sds-tag">SF₆</span>
+                        <span class="sds-tag">CF₄</span>
+                        <span class="sds-tag">WF₆</span>
+                    </div>
+                    <div class="sds-catalog-actions">
+                        <a href="catalog/Airocean_Product_Catalog.pdf" class="sds-dl" target="_blank" rel="noopener">
+                            <i class="fas fa-book-open"></i> View Catalog
+                        </a>
+                        <a href="catalog/Airocean_Product_Catalog.pdf" class="sds-coa" download>
+                            <i class="fas fa-download"></i> Download PDF
+                        </a>
+                    </div>
+                </div>
+            </section>
 
             <!-- Available for Download -->
             <p class="sds-label">Available Now</p>
